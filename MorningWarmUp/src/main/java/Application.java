@@ -2,57 +2,62 @@
 
 public class Application {
     public static void main(String[] args) {
-        System.out.println(canBalance(new int[]{1, 1, 1, 2, 1}));
-        System.out.println(noTriples1(new int[]{1, 1, 1, 2, 1}));
-        System.out.println(noTriples1(new int[]{5,2,3}));
-        System.out.println(noTriples(new int[]{1, 1, 1, 2, 1}));
-        System.out.println(noTriples(new int[]{5,2,3}));
-    }
 
-    public static boolean canBalance(int[] nums) {
-        //return true if there is any place where we can split the array
-        //each side of the array's sum is equal to each other
-        int rightSum = 0;
-        for (int i = 0; i < nums.length; i++) {
-            rightSum += nums[i];
-        }
-        int leftSum = 0;
-        for (int i = 0; i < nums.length; i++) {
-            leftSum += nums[i];
-            rightSum -= nums[i];
-            if (leftSum == rightSum) return true;
-        }
-        return false;
     }
-
-    //return true if there is no truples in the array
-    public static boolean noTriples1(int[] nums){
-        for(int i = 0; i < nums.length - 2; i++) {
-            if(nums[i+1] == nums[i] && nums[i+2] == nums[i])
-                return false;
-        }
-
-        return true;
-    }
-    public static boolean noTriples(int[] array){
-        int temp = array[0];
-        boolean isDouble = false;
-        for(int i = 1; i < array.length; i++ ){
-            if(array[i] == temp){
-                if(isDouble){
-                    return false;
-                }
-                isDouble = true;
-            }
-            else{
-                isDouble = false;
-            }
-            temp = array[i];
-        }
-        return true;
-    }
-
 }
+
+
+//        System.out.println(canBalance(new int[]{1, 1, 1, 2, 1}));
+//        System.out.println(noTriples1(new int[]{1, 1, 1, 2, 1}));
+//        System.out.println(noTriples1(new int[]{5,2,3}));
+//        System.out.println(noTriples(new int[]{1, 1, 1, 2, 1}));
+//        System.out.println(noTriples(new int[]{5,2,3}));
+//    }
+
+//    public static boolean canBalance(int[] nums) {
+//        //return true if there is any place where we can split the array
+//        //each side of the array's sum is equal to each other
+//        int rightSum = 0;
+//        for (int i = 0; i < nums.length; i++) {
+//            rightSum += nums[i];
+//        }
+//        int leftSum = 0;
+//        for (int i = 0; i < nums.length; i++) {
+//            leftSum += nums[i];
+//            rightSum -= nums[i];
+//            if (leftSum == rightSum) return true;
+//        }
+//        return false;
+//    }
+//
+//    //return true if there is no truples in the array
+//    public static boolean noTriples1(int[] nums){
+//        for(int i = 0; i < nums.length - 2; i++) {
+//            if(nums[i+1] == nums[i] && nums[i+2] == nums[i])
+//                return false;
+//        }
+//
+//        return true;
+//    }
+//    public static boolean noTriples(int[] array){
+//        int temp = array[0];
+//        boolean isDouble = false;
+//        for(int i = 1; i < array.length; i++ ){
+//            if(array[i] == temp){
+//                if(isDouble){
+//                    return false;
+//                }
+//                isDouble = true;
+//            }
+//            else{
+//                isDouble = false;
+//            }
+//            temp = array[i];
+//        }
+//        return true;
+//    }
+//
+//}
 //
 //        //bitwise operation
 //        int mask = 1;
@@ -184,3 +189,73 @@ public class Application {
 //        }
 //    }
 //}
+
+//We'll say that a "mirror" section in an array is a group of contiguous elements
+// such that somewhere in the array, the same group appears in reverse order.
+// For example, the largest mirror section in {1, 2, 3, 8, 9, 3, 2, 1} is length 3
+// (the {1, 2, 3} part). Return the size of the largest mirror section found in the given array.
+//
+//
+//maxMirror([1, 2, 3, 8, 9, 3, 2, 1]) → 3
+//maxMirror([1, 2, 1, 4]) → 3
+//maxMirror([7, 1, 2, 9, 7, 2, 1]) → 2
+//    public int maxMirror(int[] nums) {
+//        int totalLength = 0;
+//        for(int leftMatch = 0; leftMatch < nums.length; leftMatch++){
+//            for(int rightMatch = nums.length - 1; rightMatch >= leftMatch; rightMatch--){
+//
+//                int lengthSm = 0;
+//                int leftIndex, rightIndex = 0;
+//                Boolean isMatch = false;
+//
+//                if(nums[leftMatch] == nums[rightMatch]){
+//                    isMatch = true;
+//                }
+//                while(isMatch){
+//                    lengthSm++;
+//                    leftIndex = leftMatch + lengthSm;
+//                    rightIndex = rightMatch - lengthSm;
+//
+//                    isMatch =(rightIndex >= 0) && (nums.length > leftIndex) &&
+//                            (nums[leftIndex] == nums[rightIndex]);
+//                }
+//                if(lengthSm > totalLength){
+//                    totalLength = lengthSm;
+//                }
+//            }
+//        }
+//        return totalLength;
+//    }
+
+//    public int maxMirror(int[] nums) {
+//        int maxLength = 0;
+//        for(int i = 0; i < nums.length; i++){ //front loop
+//            for(int j = nums.length -1; j >= 0; j--){//back loop
+//
+//                if(nums[i] == nums[j]){
+//                    //we've found the match of at least length 1
+//                    //it could be the max, but we don't know
+//
+//                    //another length variable to hold the least/small length inside the loop
+//                    int currentLength = 1;
+//                    for(int offset = 1;
+//                        i + offset < nums.length && j - offset >= 0;
+//                        offset++){
+//                        if(nums[i+offset] == nums[j-offset]){
+//                            currentLength++;
+//                        }
+//                        else {
+//                            break;
+//                        }
+//                    }
+//                    if(currentLength > maxLength){
+//                        maxLength = currentLength;
+//                    }
+//                }
+//
+//            }
+//
+//        }
+//        return maxLength;
+//
+//    }

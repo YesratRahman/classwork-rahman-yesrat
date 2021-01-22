@@ -4,7 +4,12 @@ public class Console {
     public static void print(String prompt) {
         System.out.println(prompt);
     }
-
+    public static float readFloat(String msg)
+    {
+        boolean isValid = false;
+        float parsedFloat = Float.MIN_VALUE;
+        return parsedFloat;
+    }
     public static int readInt(String msg) {
         Scanner input = new Scanner(System.in);
 

@@ -165,11 +165,15 @@ public class PokerHand {
 
     //should return null when there is only one pair
     public FaceValue lowerPairValue(){
-
-        throw new UnsupportedOperationException();
+        FaceValue lowPair = null;
+        for (FaceValue key : countFaceValues().keySet()) {
+            if (key != pairValue()) {
+                if (countFaceValues().get(key) == 2)
+                    lowPair = key;
+            }
+        }
+        return lowPair;
     }
-
-
 
 
     //return 0 if "this" ties with "that"
@@ -179,14 +183,14 @@ public class PokerHand {
 
     public int compareTo( PokerHand that ){
 
-            if (this.) {
-                return -1;
-            }
-            if {
-                return 1;
-            }
-            return 0;
-
+//            if (this.) {
+//                return -1;
+//            }
+//            if {
+//                return 1;
+//            }
+//            return 0;
+throw new UnsupportedOperationException();
     }
 
     //in general compareTo() sematics are

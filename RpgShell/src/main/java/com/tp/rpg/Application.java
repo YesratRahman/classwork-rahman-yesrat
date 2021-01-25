@@ -1,5 +1,6 @@
 package com.tp.rpg;
 
+import com.tp.rpg.armors.*;
 import com.tp.rpg.playerClass.Goblin;
 import com.tp.rpg.playerClass.Mage;
 import com.tp.rpg.playerClass.Warrior;
@@ -30,12 +31,12 @@ public class Application {
                 case 3:
                     findWeapon();
                     break;
-//                case 4:
-//                    findArmor();
-//                    break;
-//                case 5:
-//                    viewCharacter(human);
-//                    break;
+                case 4:
+                    findArmor();
+                    break;
+                case 5:
+                    viewCharacter(player);
+                    break;
 //                case 6:
 //                    startFighting();
 //                    break;
@@ -157,11 +158,11 @@ public class Application {
             Console.print("Level of the weapon is "+ weapon.getLevel() +"\n");
 
 
-            int choice = Console.readInt("Do you want to equip it? \n1. Yes \n2.No\n", 1,2);
+            int choice = Console.readInt("Do you want to equip it? \n1. Yes \n2. No\n", 1,2);
 
             switch (choice){
                 case 1:
-                    //set the equipped weapon
+                    player.setEquipsWeapon(weapon);
                     Console.print("Congrats, your new weapon is " + weapon.getClass().getSimpleName());
                     break;
                 case 2:
@@ -178,21 +179,82 @@ public class Application {
 
     }
 
+
+    private static void findArmor() {
+        int newChoice;
+
+        Armor armor = null;
+
+        if(player!=null){
+            Console.print("You have found a new Armor.\n");
+            Random random = new Random();
+            newChoice = random.nextInt(4) + 1;
+
+            switch(newChoice){
+                case 1:
+                    armor = new Shield();
+                    break;
+                case 2:
+                    armor = new Robe();
+                    break;
+                case 3:
+                    armor = new ChainMail();
+                    break;
+                case 4:
+                    armor = new Leather();
+                    break;
+            }
+            Console.print("The new armor is " + armor.getClass().getSimpleName() + "\n");
+            Console.print("Level of the armor is "+ armor.getLevel() +"\n");
+
+
+            int choice = Console.readInt("Do you want to equip it? \n1. Yes \n2. No\n", 1,2);
+
+            switch (choice){
+                case 1:
+                    player.setEquipsArmor(armor);
+                    Console.print("Congrats, your new armor is " + armor.getClass().getSimpleName());
+                    break;
+                case 2:
+                    Console.print("Sorry you didn't choose any armor this time!");
+                    break;
+                default:
+                    Console.print("Invalid Choice! Try Again.");
+                    break;
+            }
+        }
+        else{
+            Console.print("No character was chosen first!");
+        }
+    }
+
+    private static void viewCharacter(Character newPlayer) {
+        if(newPlayer != null){
+            Console.print("Name: " + player.getName() + "\n");
+            Console.print("Gender: " + player.getGender()+ "\n");
+            Console.print("Character Type: " + player.getClass().getSimpleName()+ "\n");
+            Console.print("Level: " + player.getLevel()+ "\n");
+            Console.print("Strength: " + player.getStrength()+ "\n");
+
+
+
+        }
+        else{
+            Console.print("No character to view this time!");
+        }
+    }
+
+
 //    private static void saveACharacter() {
 //    }
 //
 //    private static void startFighting() {
 //    }
 //
-//    private static void viewCharacter(Character human) {
-//    }
-//
+
 
 //
 //    private static void loadCharacter(Character human) {
-//    }
-//
-//    private static void findArmor() {
 //    }
 //
 

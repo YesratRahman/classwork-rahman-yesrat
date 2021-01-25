@@ -97,4 +97,11 @@ public class Character {
     }
 
 
+    public void setEquipsWeapon(Weapon equippedWeapon) {
+        this.weapon = equippedWeapon;
+    }
+
+    public void setEquipsArmor(Armor newArmor) {
+        this.armor = newArmor;
+    }
 }

@@ -1,7 +1,9 @@
 package com.tp.rpg.armors;
 
+import com.tp.rpg.Tools;
+
 //public interface Armor {
-public abstract class Armor {
+public abstract class Armor extends Tools {
 
 
     //takes in an amount of damage dealt
@@ -11,4 +13,7 @@ public abstract class Armor {
 public Armor() {
     super();
 }
+
+
+
 }

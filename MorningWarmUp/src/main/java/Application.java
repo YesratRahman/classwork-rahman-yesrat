@@ -4,7 +4,37 @@ import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
+        System.out.println(digitReverse(321));
+        System.out.println(digitReverse(1));
+        System.out.println(digitReverse(11));
+        System.out.println(digitReverse(2000));
+        System.out.println(digitReverse(20001));
+        System.out.println(digitReverse(-321));
+        System.out.println(digitReverse(0));
 
+
+    }
+
+    //123->321
+    //2001->2002
+    //2000->2
+    //2->2
+    public static int digitReverse(int toFlip){
+        boolean isNeg = false;
+        int reverseNum = 0;
+        if(toFlip < 0){
+            isNeg = true;
+        }
+
+        if(isNeg){
+            toFlip = toFlip *  (-1);
+        }
+        while(toFlip > 0){
+            reverseNum *= 10;
+            reverseNum = reverseNum +  toFlip % 10;
+            toFlip /=10;
+        }
+        return isNeg == true? reverseNum * (-1) : reverseNum;
     }
 
     }

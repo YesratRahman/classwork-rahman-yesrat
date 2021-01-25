@@ -53,20 +53,6 @@ public class Application {
                     break;
             }
         }while (quit == false);
-
-
-        PlayerCharacter pc = setUpPlayer();
-
-        while( pc.isAlive() ){
-            NonPlayerCharacter enemy = setUpEnemy();
-
-            //battle( pc, enemy );
-
-
-        }
-
-        gameOverScreen();
-
     }
 
 
@@ -270,10 +256,10 @@ public class Application {
     }
 
     //create some NPC object (with armor & weapons?)
-    private static NonPlayerCharacter setUpEnemy() {
-
-        throw new UnsupportedOperationException();
-    }
+//    private static NonPlayerCharacter setUpEnemy() {
+//
+//        throw new UnsupportedOperationException();
+//    }
 
     //a and b battle until one is dead
 //    private static void battle(Character a, Character b) {

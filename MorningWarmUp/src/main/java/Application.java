@@ -4,21 +4,61 @@ import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
-        System.out.println(digitReverse(321));
-        System.out.println(digitReverse(1));
-        System.out.println(digitReverse(11));
-        System.out.println(digitReverse(2000));
-        System.out.println(digitReverse(20001));
-        System.out.println(digitReverse(-321));
-        System.out.println(digitReverse(0));
+        System.out.println(lengthOfLongestSubstring("abcabcbb"));
+        System.out.println(lengthOfLongestSubstring("bbbbb"));
+        System.out.println(lengthOfLongestSubstring("pwwkew"));
+        System.out.println(lengthOfLongestSubstring(""));
+
 
 
     }
+
+    public static int lengthOfLongestSubstring(String s){
+
+        HashMap<Character, Integer> map = new HashMap<>();
+        int maxLength = 0;
+        char[] character = s.toCharArray();
+
+        for(int i = 0; i < character.length; i++){
+
+        }
+
+        return maxLength;
+
+//        HashMap<Character, Integer> map = new HashMap<Character, Integer>();
+//        char[] character = s.toCharArray();
+//        int tmp = 0;
+//        int max = 0;
+//        for(int i = 0; i < character.length; i++){
+//            if(!map.containsKey(character[i])){
+//                map.put(character[i], i);
+//                tmp++;
+//            }else{
+//                if(map.get(character[i]) + tmp < i){
+//                    tmp++;
+//                }else{
+//                    max = Math.max(max, tmp);
+//                    tmp = i - map.get(character[i]);
+//                }
+//                map.put(character[i], i);
+//            }
+//        }
+//        max = Math.max(max, tmp);
+//        return max;
+    }
+
 
     //123->321
     //2001->2002
     //2000->2
     //2->2
+//        System.out.println(digitReverse(321));
+//        System.out.println(digitReverse(1));
+//        System.out.println(digitReverse(11));
+//        System.out.println(digitReverse(2000));
+//        System.out.println(digitReverse(20001));
+//        System.out.println(digitReverse(-321));
+//        System.out.println(digitReverse(0));
     public static int digitReverse(int toFlip){
         boolean isNeg = false;
         int reverseNum = 0;

@@ -1,8 +1,10 @@
 package com.tp.rpg.weapons;
 
-public interface Weapon {
+import com.tp.rpg.Tools;
 
-    //generate some amount of damage to be dealt
-    int generateDamage();
+public abstract class Weapon extends Tools {
 
+    public Weapon(){
+        super();
+    }
 }

@@ -1,38 +1,31 @@
 package com.tp.rpg;
 
-import com.tp.rpg.playerClass.MageRunner;
+import com.tp.rpg.playerClass.Goblin;
+import com.tp.rpg.playerClass.Mage;
 import com.tp.rpg.playerClass.Warrior;
-import com.tp.rpg.weapons.Fist;
-import com.tp.rpg.weapons.Gun;
-import com.tp.rpg.weapons.Weapon;
+import com.tp.rpg.weapons.*;
 
 import java.util.Random;
 import java.util.Scanner;
 
 public class Application {
     public static Character player;
-    //public static Scanner input;
-
     public static void main(String[] args) {
 
-        int choice = 9;
-        //boolean quit = false;
-        //input = new Scanner(System.in);
-
         Console.print("Welcome to the Game World");
-
+        boolean quit = false;
         do{
-            Console.print("\n1.Create Your Character\n2.Choose Class\n3.Find a Weapon\n4.Find an Armor" +
+            Console.print("\n1.Create Your Character\n2.Choose your character type\n3.Find a Weapon\n4.Find an Armor" +
                     "\n5.Checkout your Character\n6.Fight\n7.Save a Character\n8." +
                     "Exit the Game ");
-            choice = Console.readInt("\nPlease enter your selection: ", 1, 9);
+           int choice = Console.readInt("\nPlease enter your selection: ", 1, 9);
 
             switch(choice){
                 case 1:
                     createCharacter();
                     break;
                 case 2:
-                    chooseClass();
+                    chooseCharacterType();
                     break;
                 case 3:
                     findWeapon();
@@ -51,13 +44,15 @@ public class Application {
 //                    break;
 
 //                case 8:
+//                    quit = true;
 //                    Console.print("Thanks for Playing. GoodBye!");
 //                    break;
                 default:
                     Console.print("Invalid Choice! Try Again. ");
                     break;
             }
-        }while(choice < 9);
+        }while (quit == false);
+
 
         PlayerCharacter pc = setUpPlayer();
 
@@ -74,23 +69,23 @@ public class Application {
     }
 
 
-    private static void chooseClass() {
-        int choice;
-        Scanner scn = new Scanner(System.in);
+    private static void chooseCharacterType() {
+       // int choice;
+       // Scanner scn = new Scanner(System.in);
 
         if(player != null){
-            Console.print("Select your new class: \n");
-            Console.print("1. Warrior\n");
-            Console.print("2. Mage Runner\n");
-            choice = scn.nextInt();
-            scn.nextLine();
+            int choice = Console.readInt("Select your character type: \n1. Warrior \n2. Mage Runner \n3. Goblin\n", 1,3 );
             switch (choice){
                 case 1:
                     player = new Warrior(player);
                     Console.print("\nYou are now a " + player.getClass().getSimpleName());
                     break;
                 case 2:
-                    player = new MageRunner(player);
+                    player = new Mage(player);
+                    Console.print("\nYou are now a " + player.getClass().getSimpleName());
+                    break;
+                case 3:
+                    player = new Goblin(player);
                     Console.print("\nYou are now a " + player.getClass().getSimpleName());
                     break;
                 default:
@@ -104,35 +99,24 @@ public class Application {
         }
 
     }
-
-
     private static void createCharacter() {
         String name = null;
         String gender = null;
         Scanner scn = new Scanner(System.in);
-
         Console.print("\nPlease enter your name: \n");
         name = scn.nextLine();
-        Console.print("\nPlease enter your gender: ");
-        Console.print("\n1. Female");
-        Console.print("\n2. Male\n");
-        int choice = 0;
-        choice = scn.nextInt();
-        scn.nextLine();
-
-
-            switch(choice){
-                case 1:
-                    gender = "Female";
-                    break;
-                case 2:
-                    gender = "Male";
-                    break;
-                default:
-                    Console.print("Invalid Choice! Try Again. ");
-                    break;
-            }
-
+        int choice = Console.readInt("Please enter your gender: \n1. Female \n2. Male \n", 1,2 );
+        switch(choice){
+            case 1:
+                gender = "Female";
+                break;
+            case 2:
+                gender = "Male";
+                break;
+            default:
+                Console.print("Invalid Choice! Try Again. ");
+                break;
+        }
 
         player = new Character(name, gender);
         player.setName(name);
@@ -142,19 +126,16 @@ public class Application {
         Console.print("\nYou are a " + player.getGender());
         Console.print("\nYour class is  " + player.getClass().getSimpleName());
         Console.print("\nYour level is " + player.getLevel());
-
-
     }
 
 
     private static void findWeapon() {
-        int choice;
         int newChoice;
 
         Weapon weapon = null;
 
         if(player!=null){
-            Console.print("You have found a new Weapon.");
+            Console.print("You have found a new Weapon.\n");
             Random random = new Random();
             newChoice = random.nextInt(4) + 1;
 
@@ -163,13 +144,36 @@ public class Application {
                     weapon = new Fist();
                     break;
                 case 2:
-                    weapon = new Gun();
+                    weapon = new Sword();
+                    break;
+                case 3:
+                    weapon = new Hammer();
+                    break;
+                case 4:
+                    weapon = new Staff();
                     break;
             }
-            Console.print("You have found " + weapon.getClass().getSimpleName());
-            Console.print("Level of the weapon is " );
+            Console.print("The new weapon is " + weapon.getClass().getSimpleName() + "\n");
+            Console.print("Level of the weapon is "+ weapon.getLevel() +"\n");
 
 
+            int choice = Console.readInt("Do you want to equip it? \n1. Yes \n2.No\n", 1,2);
+
+            switch (choice){
+                case 1:
+                    //set the equipped weapon
+                    Console.print("Congrats, your new weapon is " + weapon.getClass().getSimpleName());
+                    break;
+                case 2:
+                    Console.print("Sorry you didn't choose any weapon this time!");
+                    break;
+                default:
+                    Console.print("Invalid Choice! Try Again.");
+                    break;
+            }
+        }
+        else{
+            Console.print("No character was chosen first!");
         }
 
     }

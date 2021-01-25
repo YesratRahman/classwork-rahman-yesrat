@@ -1,16 +1,16 @@
 package com.tp.rpg.weapons;
 
-public class Fist extends Weapon {
-    public Fist(){
+public class Sword extends Weapon {
+    public Sword(){
         super();
     }
     @Override
     public String getComLine(){
-        return "Attack with Fist";
+        return "Attack with Sword";
     }
 
     @Override
     public String getComEffectiveLine(){
-        return "Uses strength to power the attack of the fist";
+        return "Uses strength to power the attack of the Sword";
     }
 }

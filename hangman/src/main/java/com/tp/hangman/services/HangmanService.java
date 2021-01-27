@@ -26,6 +26,11 @@ public class HangmanService {
     //  get the service layer to properly censor un-guessed letters from the string that goes into the viewmodel
 
     public HangmanViewModel makeGuess(Integer gameId, String guess) {
+        if(guess == null)
+        {
+            return null;
+        }
+
         if( guess.length() != 1){
             //TODO: make and throw a custom exception here
             return null;

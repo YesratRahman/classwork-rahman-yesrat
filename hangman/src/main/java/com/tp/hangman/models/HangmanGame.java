@@ -6,11 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HangmanGame {
-    Integer gameId;
-    String hiddenWord;
-
-
-    List<Character> guessedLetters;
+    private Integer gameId;
+    private String hiddenWord;
+    private List<Character> guessedLetters;
 
     //constructor for a new game
     public HangmanGame( Integer gameId, String hiddenWord ){
@@ -26,6 +24,29 @@ public class HangmanGame {
         this.guessedLetters = guessedLetters;
     }
 
+    //copy constructor
+    public HangmanGame( HangmanGame that ){
+        this.gameId = that.gameId;
+        this.hiddenWord = that.hiddenWord;
+        this.guessedLetters = new ArrayList<>();
+        for( Character toCopy : that.guessedLetters ){
+            this.guessedLetters.add( toCopy );
+        }
+
+
+    }
+
+    public void setGameId(Integer gameId) {
+        this.gameId = gameId;
+    }
+
+    public void setHiddenWord(String hiddenWord) {
+        this.hiddenWord = hiddenWord;
+    }
+
+    public void setGuessedLetters(List<Character> guessedLetters) {
+        this.guessedLetters = guessedLetters;
+    }
 
     public Integer getGameId() {
         return gameId;

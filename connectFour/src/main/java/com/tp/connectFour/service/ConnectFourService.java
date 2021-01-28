@@ -1,13 +1,18 @@
 package com.tp.connectFour.service;
 
 import com.tp.connectFour.controller.ConnectFourController;
+import com.tp.connectFour.exception.InvalidColumnException;
+import com.tp.connectFour.exception.InvalidGameIdException;
+import com.tp.connectFour.exception.NullGameIdException;
 import com.tp.connectFour.model.ConnectFourGame;
 import com.tp.connectFour.model.MoveRequest;
 import com.tp.connectFour.persistence.ConnectFourDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class ConnectFourService {
@@ -16,7 +21,9 @@ public class ConnectFourService {
     @Autowired
     ConnectFourDao connectFourDao;
 
-    public ConnectFourGame getGameById(Integer game){
+    public ConnectFourGame getGameById(Integer game) throws NullGameIdException {
+
+        if(game == null) throw new NullGameIdException("Game ID cannot be null");
 
         return connectFourDao.getGameById(game);
     }
@@ -26,18 +33,51 @@ public class ConnectFourService {
     }
 
 
-    public ConnectFourGame makeMove(MoveRequest request) {
+    public ConnectFourGame makeMove(MoveRequest request) throws InvalidGameIdException,
+            InvalidColumnException, NullGameIdException {
+
+        if(request.getGameId() == null) {
+            throw new NullGameIdException("You must provide a game id");
+        }
+
+        //Finding the game with requested game id and throwing an exception if nothing is found
+        ConnectFourGame game = getAllGames().stream()
+                .filter(e -> e.getGameId() == request.getGameId())
+                .findAny()
+                .orElseThrow(InvalidGameIdException::new);
+
+        if(!isValidColumn(game.getGameBoard(), request.getColumn())) {
+            throw new InvalidColumnException("That is an invalid column or the column is full.");
+        }
+
+
+
         return null;
+    }
+
+    public boolean isValidColumn(Integer[][] board, Integer column) {
+        if(column < 0 || column > 7) return false;
+        for (Integer[] integers : board) {
+            if (integers[column] != null) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     public Integer startGame() {
         return connectFourDao.startGame();
     }
 
-    public String buildBoard(Integer[][] grid){
-        //StringBuilder str = new StringBuilder();
+    public void deleteGame(Integer gameId) throws InvalidGameIdException {
+        connectFourDao.deleteGame(gameId);
+    }
 
-        throw new UnsupportedOperationException(); 
+    public String buildBoard(Integer[][] grid){
+        StringBuilder str = new StringBuilder();
+
+        throw new UnsupportedOperationException();
     }
 
 }

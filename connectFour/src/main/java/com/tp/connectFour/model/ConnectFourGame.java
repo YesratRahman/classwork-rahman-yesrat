@@ -18,12 +18,12 @@ public class ConnectFourGame {
 
     }
 
-    public Integer[][] getNewBoard() {
+    public Integer[][] getGameBoard() {
         return gameBoard;
     }
 
-    public void setNewBoard(Integer[][] newBoard) {
-        this.gameBoard = newBoard;
+    public void setGameBoard(Integer[][] gameBoard) {
+        this.gameBoard = gameBoard;
     }
 
     public Integer getGameId() {

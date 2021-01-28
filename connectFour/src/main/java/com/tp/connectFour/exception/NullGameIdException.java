@@ -3,7 +3,10 @@ package com.tp.connectFour.exception;
 public class NullGameIdException extends Exception{
 
     public NullGameIdException(String message){
-throw new UnsupportedOperationException();
+        super(message);
+    }
 
+    public NullGameIdException(String message, Throwable throwable) {
+        super(message, throwable);
     }
 }

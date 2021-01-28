@@ -3,8 +3,17 @@ package com.tp.hangman.models;
 import java.util.List;
 
 public class HangmanViewModel {
+    Integer gameId;
     String partialWord;
     List<Character> guessedLetters;
+
+    public Integer getGameId() {
+        return gameId;
+    }
+
+    public void setGameId(Integer gameId) {
+        this.gameId = gameId;
+    }
 
     public String getPartialWord() {
         return partialWord;

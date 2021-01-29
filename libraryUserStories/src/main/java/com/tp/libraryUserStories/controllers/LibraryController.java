@@ -1,13 +1,15 @@
 package com.tp.libraryUserStories.controllers;
 
+import com.tp.libraryUserStories.exceptions.InvalidAuthorsException;
 import com.tp.libraryUserStories.exceptions.InvalidBookIdException;
+import com.tp.libraryUserStories.exceptions.InvalidPublicationYearException;
+import com.tp.libraryUserStories.exceptions.InvalidTitleException;
 import com.tp.libraryUserStories.models.Book;
 import com.tp.libraryUserStories.services.LibraryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,16 +23,52 @@ public class LibraryController {
         return service.getAllBooks();
     }
 
-    @GetMapping( "/book/{bookId}" )
+    @GetMapping("/book/{bookId}" )
     public ResponseEntity getBooksById(@PathVariable Integer bookId){
-//        try {
-//            return ResponseEntity.ok(service.getAllBookById(bookId));
-//        } catch (InvalidBookIdException e) {
-//            return ResponseEntity.badRequest().body(e.getMessage());
-//        }
+        try {
+            return ResponseEntity.ok(service.getAllBookById(bookId));
+        } catch (InvalidBookIdException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
 
-throw new UnsupportedOperationException(); 
+    @PostMapping("/addBooks")
+    public ResponseEntity addBooks(@RequestBody BookRequest request){
+        Book toReturn = null;
+        try{
+            toReturn = service.addBooks( request.getTitle(), request.getAuthors(), request.getPublicationYear());
+        } catch(InvalidAuthorsException | InvalidTitleException | InvalidPublicationYearException exception ){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.getMessage());
+        }
+        return ResponseEntity.ok(toReturn);
+    }
+
+    @GetMapping("/book/title/{title}")
+    public List<Book> getBooksByTitle(@PathVariable String title) throws InvalidTitleException {
+        return service.getBooksByTitle(title);
+    }
+
+    @GetMapping("/book/author/{author}")
+    public List<Book> getBooksByAuthor(@PathVariable String author) throws InvalidAuthorsException {
+        return service.getBooksByAuthor(author);
+    }
+
+    @GetMapping("/book/year/{year}")
+    public List<Book> getBooksByYear(@PathVariable Integer year) throws InvalidPublicationYearException {
+        return service.getBooksByYear(year);
+    }
+
+
+    @DeleteMapping("/delete/{bookId}")
+    public String deleteBook( @PathVariable Integer bookId ){
+        try {
+            service.deleteBook(bookId);
+            return "Book with id " + bookId + " successfully deleted.";
+        } catch (InvalidBookIdException e) {
+            return e.getMessage();
+        }
     }
 
 
 }
+

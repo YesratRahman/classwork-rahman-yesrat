@@ -58,17 +58,20 @@ public class LibraryController {
         return service.getBooksByYear(year);
     }
 
+    @PutMapping("/book/{bookId}")
+    public Book updateBook(@PathVariable Integer id, @RequestBody Book newBook) throws InvalidPublicationYearException, InvalidAuthorsException, InvalidTitleException, InvalidBookIdException {
+        return service.updateBook(id, newBook);
+    }
 
     @DeleteMapping("/delete/{bookId}")
     public String deleteBook( @PathVariable Integer bookId ){
         try {
-            service.deleteBook(bookId);
+            service.deleteBooks(bookId);
             return "Book with id " + bookId + " successfully deleted.";
         } catch (InvalidBookIdException e) {
             return e.getMessage();
         }
     }
-
 
 }
 

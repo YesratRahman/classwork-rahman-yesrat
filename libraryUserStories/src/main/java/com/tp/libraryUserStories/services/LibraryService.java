@@ -6,6 +6,7 @@ import com.tp.libraryUserStories.persistence.LibraryDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Component
@@ -36,13 +37,38 @@ public class LibraryService {
             throws InvalidPublicationYearException,
             InvalidAuthorsException,
             InvalidTitleException {
+        if(title == null || title.equals("")){
+            throw new InvalidTitleException("Tried to look up Book by null title");
+        }
 
+        if(publicationYear == null){
+            throw new InvalidPublicationYearException("Tried to look up Book by null publication year");
+
+        }
+        if(authors == null){
+            throw new InvalidAuthorsException("Tried to look up Book by null author");
+        }
+
+        int newYear = LocalDate.now().getYear();
+
+        if(publicationYear > newYear){
+            throw new InvalidPublicationYearException("The year can not be more than recent year");
+        }
+
+        if(authors.size() == 0){
+            throw new InvalidAuthorsException("Each book should have one author");
+        }
+        for(String str: authors){
+            if(str == null || str == ""){
+                throw new InvalidAuthorsException("Tried to look up Book by null author");
+            }
+        }
         int id = libraryDao.addBooks(title, authors, publicationYear);
         return libraryDao.getAllBookById(id);
 
     }
 
-    public void deleteBook(Integer bookId) throws InvalidBookIdException {
+    public void deleteBooks(Integer bookId) throws InvalidBookIdException {
         libraryDao.deleteBooks(bookId);
     }
 
@@ -56,5 +82,9 @@ public class LibraryService {
 
     public List<Book> getBooksByYear(Integer year) throws InvalidPublicationYearException {
         return libraryDao.getBooksByYear(year);
+    }
+
+    public Book updateBook(Integer id, Book newBook) throws InvalidPublicationYearException, InvalidAuthorsException, InvalidBookIdException, InvalidTitleException {
+        return libraryDao.updateBook(id, newBook);
     }
 }

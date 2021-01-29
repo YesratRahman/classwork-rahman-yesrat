@@ -17,6 +17,5 @@ public interface LibraryDao {
     List<Book> getBooksByTitle(String title) throws InvalidTitleException;
     List<Book> getBooksByAuthors(String author) throws InvalidAuthorsException;
     List<Book> getBooksByYear(Integer year) throws InvalidPublicationYearException;
-    Book editBook(Integer bookId, Book newBook) throws InvalidTitleException, InvalidAuthorsException, InvalidPublicationYearException;
-    Book thatBook(Book book) throws InvalidBookIdException, InvalidAuthorsException;
+    Book updateBook(Integer id, Book newBook) throws InvalidTitleException, InvalidAuthorsException, InvalidPublicationYearException, InvalidBookIdException;
 }

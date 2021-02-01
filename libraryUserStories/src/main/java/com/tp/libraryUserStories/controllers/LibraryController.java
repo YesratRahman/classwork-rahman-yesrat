@@ -59,10 +59,10 @@ public class LibraryController {
     }
 
     @PutMapping("update/title/{bookId}")
-    public ResponseEntity updateBookTitle(@PathVariable Integer id, @RequestBody BookRequest requestTitle){
+    public ResponseEntity updateBookByTitle(@PathVariable Integer bookId, @RequestBody BookRequest requestTitle){
         Book toReturn = null;
         try{
-            toReturn = service.updateBookByTitle(id, requestTitle.getTitle());
+            toReturn = service.updateBookByTitle(bookId, requestTitle.getTitle());
         }catch(InvalidTitleException| InvalidBookIdException exception){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.getMessage());
         }
@@ -70,21 +70,21 @@ public class LibraryController {
     }
 
     @PutMapping("update/author/{bookId}")
-    public ResponseEntity updateBookAuthor(@PathVariable Integer id, @RequestBody BookRequest requestAuthor){
+    public ResponseEntity updateBookByAuthor(@PathVariable Integer bookId, @RequestBody BookRequest requestAuthor){
         Book toReturn = null;
         try{
-            toReturn = service.updateBookByAuthor(id, requestAuthor.getAuthors());
+            toReturn = service.updateBookByAuthor(bookId, requestAuthor.getAuthors());
         }catch(InvalidAuthorsException| InvalidBookIdException exception){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.getMessage());
         }
         return ResponseEntity.ok(toReturn);
     }
 
-    @PutMapping("update/publicationYear/{bookId}")
-    public ResponseEntity updateBookPublicationYear(@PathVariable Integer id, @RequestBody BookRequest requestYear){
+    @PutMapping("update/year/{bookId}")
+    public ResponseEntity updateBookByPublicationYear(@PathVariable Integer bookId, @RequestBody BookRequest requestYear){
         Book toReturn = null;
         try{
-            toReturn = service.updateBookByPublicationYear(id, requestYear.getPublicationYear());
+            toReturn = service.updateBookByPublicationYear(bookId, requestYear.getPublicationYear());
         }catch(InvalidPublicationYearException| InvalidBookIdException exception){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.getMessage());
         }

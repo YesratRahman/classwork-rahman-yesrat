@@ -173,7 +173,7 @@ class LibraryServiceTest {
         assertEquals(Arrays.asList("Author1"), validation.getAuthors());
         assertEquals("The Prince", validation.getTitle());
     }
-    
+
     @Test
     public void testUpdateBookByNullTitle(){
         try{

@@ -38,15 +38,15 @@ public class LibraryService {
             InvalidAuthorsException,
             InvalidTitleException {
         if(title == null || title.equals("")){
-            throw new InvalidTitleException("Tried to look up Book by null title");
+            throw new InvalidTitleException("Tried to add Book by null title");
         }
 
         if(publicationYear == null){
-            throw new InvalidPublicationYearException("Tried to look up Book by null publication year");
+            throw new InvalidPublicationYearException("Tried to add Book by null publication year");
 
         }
         if(authors == null){
-            throw new InvalidAuthorsException("Tried to look up Book by null author");
+            throw new InvalidAuthorsException("Tried to add Book by null author");
         }
 
         int newYear = LocalDate.now().getYear();
@@ -60,7 +60,7 @@ public class LibraryService {
         }
         for(String str: authors){
             if(str == null || str == ""){
-                throw new InvalidAuthorsException("Tried to look up Book by null author");
+                throw new InvalidAuthorsException("Tried to add Book by null author");
             }
         }
         int id = libraryDao.addBooks(title, authors, publicationYear);

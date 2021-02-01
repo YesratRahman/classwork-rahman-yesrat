@@ -161,6 +161,18 @@ class LibraryServiceTest {
             fail();
         }
     }
+    @Test
+    public void testUpdateBookGoldenPath() throws InvalidAuthorsException, InvalidPublicationYearException, InvalidTitleException, InvalidBookIdException {
+        int id = toTest.addBooks("new Book", Arrays.asList("author1", "author2"), 2010).getBookId();
+        assertEquals(2, id);
+        toTest.updateBookByPublicationYear(2,2021);
+        toTest.updateBookByAuthor(2, Arrays.asList("Author1"));
+        toTest.updateBookByTitle(2, "The Prince");
+        Book validation = toTest.getAllBookById(2);
+        assertEquals(2021, validation.getPublicationYear());
+        assertEquals(Arrays.asList("Author1"), validation.getAuthors());
+        assertEquals("The Prince", validation.getTitle());
+    }
     
     @Test
     public void testUpdateBookByNullTitle(){

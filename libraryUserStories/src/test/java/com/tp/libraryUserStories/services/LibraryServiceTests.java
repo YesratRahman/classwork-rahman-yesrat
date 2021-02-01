@@ -1,6 +1,5 @@
 package com.tp.libraryUserStories.services;
 
-
 import com.tp.libraryUserStories.exceptions.InvalidAuthorsException;
 import com.tp.libraryUserStories.exceptions.InvalidBookIdException;
 import com.tp.libraryUserStories.exceptions.InvalidPublicationYearException;
@@ -10,10 +9,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import java.util.Arrays;
 import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -155,6 +152,160 @@ class LibraryServiceTest {
     }
 
     @Test
+    public void testUpdateBookByTitleGoldenPath(){
+        try{
+            Book toBook = toTest.updateBookByTitle(1, "The King");
+            assertEquals("The King", toTest.getAllBookById(1).getTitle());
+            assertEquals("The King", toBook.getTitle());
+        }catch (InvalidTitleException | InvalidBookIdException exception){
+            fail();
+        }
+    }
+    
+    @Test
+    public void testUpdateBookByNullTitle(){
+        try{
+            Book toBook = toTest.updateBookByTitle(1, null);
+            fail();
+        }catch (InvalidBookIdException e){
+            fail();
+        }catch (InvalidTitleException e){
+        }
+    }
+
+    @Test
+    public void testUpdateBookByEmptyTitle(){
+        try{
+            Book toBook = toTest.updateBookByTitle(1, "");
+            fail();
+        }catch (InvalidBookIdException e){
+            fail();
+        }catch (InvalidTitleException e){
+        }
+    }
+
+
+
+
+    @Test
+    public void testUpdateBookByAuthorGoldenPath(){
+        try{
+            Book toBook = toTest.updateBookByAuthor(1, Arrays.asList("Author1"));
+            assertEquals("Author1", toTest.getAllBookById(1).getAuthors().get(0));
+            assertEquals("Author1", toBook.getAuthors().get(0));
+        }catch (InvalidAuthorsException | InvalidBookIdException exception){
+            fail();
+        }
+    }
+
+    @Test
+    public void testUpdateBookByListAuthorGoldenPath(){
+        try{
+            Book toBook = toTest.updateBookByAuthor(1, Arrays.asList("Author1", ""));
+            fail();
+        }catch(InvalidBookIdException ex){
+            fail();
+        }
+        catch (InvalidAuthorsException ex){
+            try{
+                Book newBook = toTest.updateBookByAuthor(1, Arrays.asList(null, "Author1"));
+                fail();
+            }catch(InvalidBookIdException e){
+                fail();
+            }catch (InvalidAuthorsException e){
+            }
+
+        }
+    }
+    @Test
+    public void testUpdateBookByNullAuthor(){
+        try{
+            Book toBook = toTest.updateBookByAuthor(1, null);
+            fail();
+        }catch (InvalidBookIdException e){
+            fail();
+        }catch (InvalidAuthorsException e){
+        }
+    }
+
+    @Test
+    public void testUpdateBookByEmptyAuthor(){
+        try{
+            Book toBook = toTest.updateBookByAuthor(1, Arrays.asList());
+            fail();
+        }catch (InvalidBookIdException e){
+            fail();
+        }catch (InvalidAuthorsException e){
+        }
+    }
+
+    @Test
+    public void testUpdateBookByYearGoldenPath(){
+        try{
+            Book toBook = toTest.updateBookByPublicationYear(1, 2005);
+            assertEquals(2005, toTest.getAllBookById(1).getPublicationYear());
+            assertEquals(2005, toBook.getPublicationYear());
+        }catch (InvalidPublicationYearException | InvalidBookIdException exception){
+            fail();
+        }
+    }
+
+    @Test
+    public void testUpdateBookByNullYear(){
+        try{
+            Book toBook = toTest.updateBookByPublicationYear(1, null);
+            fail();
+        }catch (InvalidBookIdException e){
+            fail();
+        }catch (InvalidPublicationYearException e){
+        }
+    }
+
+    @Test
+    public void testUpdateBookByInvalidYear(){
+        try{
+            Book toBook = toTest.updateBookByPublicationYear(1, 2030);
+            fail();
+        }catch (InvalidBookIdException e){
+            fail();
+        }catch (InvalidPublicationYearException e){
+        }
+    }
+
+    @Test
+    public void testUpdateBookByTitleInvalidBookId(){
+        try{
+            Book toBook = toTest.updateBookByTitle(-100, "The king");
+            fail();
+        }catch (InvalidTitleException e){
+            fail();
+        }catch (InvalidBookIdException e){
+        }
+    }
+
+    @Test
+    public void testUpdateBookByYearInvalidBookId(){
+        try{
+            Book toBook = toTest.updateBookByPublicationYear(-100, 2005);
+            fail();
+        }catch (InvalidPublicationYearException e){
+            fail();
+        }catch (InvalidBookIdException e){
+        }
+    }
+
+    @Test
+    public void testUpdateBookByAuthorInvalidBookId(){
+        try{
+            Book toBook = toTest.updateBookByAuthor(-100, Arrays.asList("The author"));
+            fail();
+        }catch (InvalidAuthorsException e){
+            fail();
+        }catch (InvalidBookIdException e){
+        }
+    }
+
+    @Test
     public void testDeleteBookGoldenPath() {
         try {
             toTest.deleteBooks(1);
@@ -178,7 +329,6 @@ class LibraryServiceTest {
     @Test
     public void testGetBookByIdGoldenPath() throws InvalidBookIdException {
         Book book = toTest.getAllBookById(1);
-
         assertEquals("The Example", book.getTitle());
         assertEquals(2005, book.getPublicationYear());
     }

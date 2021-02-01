@@ -84,7 +84,65 @@ public class LibraryService {
         return libraryDao.getBooksByYear(year);
     }
 
-    public Book updateBook(Integer id, Book newBook) throws InvalidPublicationYearException, InvalidAuthorsException, InvalidBookIdException, InvalidTitleException {
-        return libraryDao.updateBook(id, newBook);
+//    public Book updateBook(Integer id, Book newBook) throws InvalidPublicationYearException, InvalidAuthorsException, InvalidBookIdException, InvalidTitleException {
+//        return libraryDao.updateBook(id, newBook);
+//    }
+
+    public Book updateBookByTitle(Integer id, String title) throws InvalidTitleException, InvalidBookIdException {
+        if(title == null || title == ""){
+            throw new InvalidTitleException("Title of the Book can not be null or empty");
+        }
+
+        Book newBook = getAllBookById(id);
+        if(newBook == null ){
+            throw new InvalidBookIdException("Book with id " + id + "is not found.");
+        }
+
+        newBook.setTitle(title);
+        libraryDao.updateBook(newBook);
+        return libraryDao.getAllBookById(id);
+    }
+
+    public Book updateBookByAuthor(Integer id, List<String> authors) throws InvalidAuthorsException, InvalidBookIdException {
+        if(authors == null || authors.size() == 0){
+            throw new InvalidAuthorsException("Book must have one author at least and can not be null");
+        }
+        for(String newAuthor: authors){
+            if(newAuthor == null || newAuthor == ""){
+                throw new InvalidAuthorsException("Authors can not be null or empty.");
+            }
+        }
+        Book newBook = getAllBookById(id);
+        if(newBook == null ){
+            throw new InvalidBookIdException("Book with id " + id + "is not found.");
+        }
+
+        newBook.setAuthors(authors);
+        libraryDao.updateBook(newBook);
+        return libraryDao.getAllBookById(id);
+
+
+    }
+
+    public Book updateBookByPublicationYear(Integer id, Integer publicationYear) throws InvalidPublicationYearException, InvalidBookIdException{
+        if(publicationYear == null){
+            throw new InvalidPublicationYearException("Publication year can not be null.");
+
+        }
+        int newYear = LocalDate.now().getYear();
+
+        if(publicationYear > newYear){
+            throw new InvalidPublicationYearException("The year can not be more than recent year");
+        }
+
+        Book newBook = getAllBookById(id);
+        if(newBook == null ){
+            throw new InvalidBookIdException("Book with id " + id + "is not found.");
+        }
+
+        newBook.setPublicationYear(publicationYear);
+        libraryDao.updateBook(newBook);
+        return libraryDao.getAllBookById(id);
+
     }
 }

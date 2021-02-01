@@ -140,40 +140,14 @@ public class LibraryInMemDao implements LibraryDao{
     }
 
     @Override
-    public Book updateBook(Integer id, Book newBook) throws InvalidTitleException, InvalidAuthorsException, InvalidPublicationYearException, InvalidBookIdException {
-       if(id == null){
-           throw new InvalidBookIdException("A book with null id can not be updated");
-       }
-
-       for(Book book : allBooks){
-           if(book.getBookId().equals(id)){
-               if(!newBook.getTitle().equals("")){
-                   book.setTitle(newBook.getTitle());
-               }
-               if(book.getAuthors().size() != 0){
-                   Book toCopy = new Book(newBook);
-                   for(String author : newBook.getAuthors()){
-                       if(!author.equals("")){
-                           toCopy.getAuthors().add(author);
-                       }
-                   }
-                   if(toCopy.getAuthors().size() == 0){
-                       throw new InvalidAuthorsException("Book can not be updated without author");
-                   }
-                   else {
-                       book.setAuthors(toCopy.getAuthors());
-                   }
-               }
-               if(newBook.getPublicationYear() != null){
-                   book.setPublicationYear(newBook.getPublicationYear());
-               }
-               return book;
-           }
-       }
-       throw new InvalidBookIdException("Can not be updated without any " + id);
-
-
+    public void updateBook(Book newBook) {
+        for(int i = 0; i < allBooks.size(); i++){
+            if(allBooks.get(i).getBookId().equals(newBook.getBookId())){
+                allBooks.set(i, new Book(newBook));
+            }
+        }
     }
+
     @Override
     public void deleteBooks(Integer bookId) throws InvalidBookIdException {
         int removeIndex = -1;

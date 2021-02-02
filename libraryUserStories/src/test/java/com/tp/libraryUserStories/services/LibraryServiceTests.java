@@ -35,8 +35,8 @@ class LibraryServiceTest {
     }
 
     @Test
-    public void testAddBooksGoldenPath() {
-        try {
+    public void testAddBooksGoldenPath() throws InvalidAuthorsException, InvalidPublicationYearException, InvalidTitleException, InvalidBookIdException {
+
             int id = toTest.addBooks("new Book", Arrays.asList("author1", "author2"), 2010).getBookId();
             assertEquals(2, id);
             int nextId = toTest.addBooks("The Prince", Arrays.asList("author3"), 2004).getBookId();
@@ -48,9 +48,7 @@ class LibraryServiceTest {
             assertEquals("author3", validationAuthors.get(0));
             assertEquals(2004, validation.getPublicationYear());
             assertEquals(3, validation.getBookId());
-        } catch (InvalidAuthorsException | InvalidTitleException | InvalidPublicationYearException | InvalidBookIdException ex) {
-            fail();
-        }
+
     }
 
     @Test

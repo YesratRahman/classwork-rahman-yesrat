@@ -78,17 +78,25 @@ public class LibraryService {
     }
 
     public List<Book> getBooksByTitle(String title) throws InvalidTitleException {
+        if(title == null){
+            throw new InvalidTitleException("You can not get a book by null title");
+        }
         return libraryDao.getBooksByTitle(title);
     }
 
     public List<Book> getBooksByAuthor(String author) throws InvalidAuthorsException {
+        if(author == null){
+            throw new InvalidAuthorsException("You can not get a book by null author");
+        }
        return libraryDao.getBooksByAuthors(author);
     }
 
     public List<Book> getBooksByYear(Integer year) throws InvalidPublicationYearException {
+        if(year == null){
+            throw new InvalidPublicationYearException("You can not get a book by null year");
+        }
         return libraryDao.getBooksByYear(year);
     }
-
 
 
     public Book updateBookByTitle(Integer id, String title) throws InvalidTitleException, InvalidBookIdException {
@@ -135,7 +143,7 @@ public class LibraryService {
         if(publicationYear == 0){
             throw new InvalidPublicationYearException("Year have to be greater than zero");
         }
- 
+
         int newYear = LocalDate.now().getYear();
 
         if(publicationYear > newYear){

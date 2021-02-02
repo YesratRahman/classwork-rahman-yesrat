@@ -44,7 +44,7 @@ public class LibraryController {
     }
 
     @GetMapping("/book/title/{title}")
-    public List<Book> getBooksByTitle(@PathVariable String title) throws InvalidTitleException {
+    public List<Book> getBooksByTitle(@PathVariable String title) throws InvalidTitleException{
         return service.getBooksByTitle(title);
     }
 
@@ -100,5 +100,16 @@ public class LibraryController {
             return e.getMessage();
         }
     }
+
+
+//    @GetMapping("/book/title/{title}")
+//    public ResponseEntity getBooksByTitle(@PathVariable String title) throws InvalidTitleException {
+//        Book toReturn = null;
+//        try{
+//            return ResponseEntity.ok(service.getBooksByTitle(title));
+//        } catch(InvalidTitleException exception ){
+//            return ResponseEntity.badRequest().body(exception.getMessage());
+//        }
+//    }
 }
 

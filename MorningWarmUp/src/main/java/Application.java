@@ -4,12 +4,62 @@ import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
+    int[] num = {0,1,2,3,4,5,6};
+        System.out.println(search(num, 5));
+        System.out.println(searchRecursively(num, 5, 0, num.length -1));
+    }
+
+    //Binary Search
+    //https://leetcode.com/problems/binary-search/
+    //[? ? ? ? ? ?]
+    //min index = 0
+    //max index = length - 1
+    public static int search(int[] nums, int target) {
+        if(nums == null || nums.length == 0) return -1;
+        int left = 0;
+        int right = nums.length -1;
+        int middle;
+
+        while(left <= right){
+            middle = (right + left) / 2;
+            if(nums[middle] == target){
+                return middle;
+            }
+            //search right
+            else if(nums[middle] < target){
+                left = middle + 1;
+            }
+            //search left
+            else {
+                right = middle - 1;
+            }
+        }
+        return -1;
+    }
+
+    //Binary Search (Recursive version)
+    //Can make a private method
+    //then inside the public method
+    //return searchRecursively(nums, target, 0, nums.length-1)
+    public static int searchRecursively(int[] nums, int target, int left, int right){
+        if(nums == null || nums.length == 0) return -1;
+        if(left > right) return -1;
+
+        int middle = (right + left) / 2;
+        if(nums[middle] == target){
+            return middle;
+        }
+        else if(nums[middle] < target){
+            return searchRecursively(nums, target, middle + 1, right);
+        }
+        else {
+            return searchRecursively(nums, target, left, middle -1);
+        }
 
     }
-    
 
 
-    //a perfect number is one where the sum of All factors adds up to 2X the number
+        //a perfect number is one where the sum of All factors adds up to 2X the number
     //6: 1+ 2 + 3 + 6
     //28: 1 + 2 + 4+ 7 + 14 + 28
     public static boolean isPerfect(int num) {
@@ -273,13 +323,12 @@ public class Application {
         return false;
     }
 
-    //    //return true if there is no truples in the array
+    //return true if there is no truples in the array
     public static boolean noTriples1(int[] nums) {
         for (int i = 0; i < nums.length - 2; i++) {
             if (nums[i + 1] == nums[i] && nums[i + 2] == nums[i])
                 return false;
         }
-
         return true;
     }
 
@@ -431,7 +480,6 @@ public class Application {
             System.out.println(i);
         }
     }
-
 
     //We'll say that a "mirror" section in an array is a group of contiguous elements
 // such that somewhere in the array, the same group appears in reverse order.

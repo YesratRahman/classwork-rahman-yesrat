@@ -37,21 +37,16 @@ public class LibraryService {
             throws InvalidPublicationYearException,
             InvalidAuthorsException,
             InvalidTitleException {
-        if(title == null || title.equals("")){
-            throw new InvalidTitleException("Tried to add Book by null title");
+        if(title == null || title.isBlank() || title.isEmpty()){
+            throw new InvalidTitleException("Tried to add Book by Invalid title");
         }
 
-        if(publicationYear == null){
-            throw new InvalidPublicationYearException("Tried to add Book by null publication year");
-
+        if(publicationYear == null || publicationYear < 1454){
+            throw new InvalidPublicationYearException("Tried to add Book by Invalid publication year");
         }
 
         if(authors == null){
             throw new InvalidAuthorsException("Tried to add Book by null author");
-        }
-
-        if(publicationYear == 0){
-            throw new InvalidPublicationYearException("Year have to be greater than zero");
         }
 
         int newYear = LocalDate.now().getYear();
@@ -64,8 +59,8 @@ public class LibraryService {
             throw new InvalidAuthorsException("Each book should have one author");
         }
         for(String str: authors){
-            if(str == null || str == ""){
-                throw new InvalidAuthorsException("Tried to add Book by null author");
+            if(str == null || str.isEmpty() || str.isBlank()){
+                throw new InvalidAuthorsException("Tried to add Book by Invalid author");
             }
         }
         int id = libraryDao.addBooks(title, authors, publicationYear);
@@ -78,30 +73,30 @@ public class LibraryService {
     }
 
     public List<Book> getBooksByTitle(String title) throws InvalidTitleException {
-        if(title == null){
-            throw new InvalidTitleException("You can not get a book by null title");
+        if(title == null || title.isEmpty() || title.isBlank()){
+            throw new InvalidTitleException("You can not get a book by Invalid title");
         }
         return libraryDao.getBooksByTitle(title);
     }
 
     public List<Book> getBooksByAuthor(String author) throws InvalidAuthorsException {
-        if(author == null){
-            throw new InvalidAuthorsException("You can not get a book by null author");
+        if(author == null || author.isBlank() || author.isEmpty()){
+            throw new InvalidAuthorsException("You can not get a book by Invalid author");
         }
        return libraryDao.getBooksByAuthors(author);
     }
 
     public List<Book> getBooksByYear(Integer year) throws InvalidPublicationYearException {
-        if(year == null){
-            throw new InvalidPublicationYearException("You can not get a book by null year");
+        if(year == null|| year < 1454){
+            throw new InvalidPublicationYearException("You can not get a book by Invalid publication year");
         }
         return libraryDao.getBooksByYear(year);
     }
 
 
     public Book updateBookByTitle(Integer id, String title) throws InvalidTitleException, InvalidBookIdException {
-        if(title == null || title == ""){
-            throw new InvalidTitleException("Title of the Book can not be null or empty");
+        if(title == null || title.isEmpty()|| title.isBlank()){
+            throw new InvalidTitleException("Title of the Book can not be an invalid entry");
         }
 
         Book newBook = getAllBookById(id);
@@ -116,11 +111,11 @@ public class LibraryService {
 
     public Book updateBookByAuthor(Integer id, List<String> authors) throws InvalidAuthorsException, InvalidBookIdException {
         if(authors == null || authors.size() == 0){
-            throw new InvalidAuthorsException("Book must have one author at least and can not be null");
+            throw new InvalidAuthorsException("Book must have one author at least or can not be null");
         }
         for(String newAuthor: authors){
-            if(newAuthor == null || newAuthor == ""){
-                throw new InvalidAuthorsException("Authors can not be null or empty.");
+            if(newAuthor == null || newAuthor.isEmpty() || newAuthor.isBlank()){
+                throw new InvalidAuthorsException("Authors can not be null or empty or blank.");
             }
         }
         Book newBook = getAllBookById(id);
@@ -136,11 +131,11 @@ public class LibraryService {
     }
 
     public Book updateBookByPublicationYear(Integer id, Integer publicationYear) throws InvalidPublicationYearException, InvalidBookIdException{
-        if(publicationYear == null){
-            throw new InvalidPublicationYearException("Publication year can not be null.");
+        if(publicationYear == null || publicationYear < 1454){
+            throw new InvalidPublicationYearException("Publication year can not be Invalid.");
 
         }
-        if(publicationYear == 0){
+        if(publicationYear < 0){
             throw new InvalidPublicationYearException("Year have to be greater than zero");
         }
 

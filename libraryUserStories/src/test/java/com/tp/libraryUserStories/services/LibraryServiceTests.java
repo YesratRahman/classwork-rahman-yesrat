@@ -72,11 +72,31 @@ class LibraryServiceTest {
         } catch (InvalidTitleException ex) {
         }
     }
-
+    @Test
+    public void testAddBooksBlankTitle() {
+        try {
+            Book book = toTest.addBooks(" ", Arrays.asList("author1", "author2"), 2004);
+            fail();
+        } catch (InvalidAuthorsException | InvalidPublicationYearException ex) {
+            fail();
+        } catch (InvalidTitleException ex) {
+        }
+    }
     @Test
     public void testAddBookEmptyAuthors() {
         try {
             Book book = toTest.addBooks("The Prince", Arrays.asList(), 2010);
+            fail();
+        } catch (InvalidTitleException | InvalidPublicationYearException ex) {
+            fail();
+        } catch (InvalidAuthorsException ex) {
+
+        }
+    }
+    @Test
+    public void testAddBookBlankAuthors() {
+        try {
+            Book book = toTest.addBooks("The Prince", Arrays.asList(" "), 2010);
             fail();
         } catch (InvalidTitleException | InvalidPublicationYearException ex) {
             fail();
@@ -141,7 +161,17 @@ class LibraryServiceTest {
 
         }
     }
+    @Test
+    public void testAddBookInvalidYear() {
+        try {
+            Book book = toTest.addBooks("The examples", Arrays.asList("author1", "author2"), 1453);
+            fail();
+        } catch (InvalidTitleException | InvalidAuthorsException ex) {
+            fail();
+        } catch (InvalidPublicationYearException ex) {
 
+        }
+    }
     @Test
     public void testGetAllBooksGoldenPath() {
         List<Book> copy = toTest.getAllBooks();
@@ -201,7 +231,16 @@ class LibraryServiceTest {
         }
     }
 
-
+    @Test
+    public void testUpdateBookByBlankTitle(){
+        try{
+            Book toBook = toTest.updateBookByTitle(1, " ");
+            fail();
+        }catch (InvalidBookIdException e){
+            fail();
+        }catch (InvalidTitleException e){
+        }
+    }
 
 
     @Test
@@ -216,7 +255,7 @@ class LibraryServiceTest {
     }
 
     @Test
-    public void testUpdateBookByListAuthorGoldenPath(){
+    public void testUpdateBookByOneEmptyListAuthor(){
         try{
             Book toBook = toTest.updateBookByAuthor(1, Arrays.asList("Author1", ""));
             fail();
@@ -227,9 +266,19 @@ class LibraryServiceTest {
         }
     }
 
-
     @Test
-    public void testUpdateBookByNullListAuthorGoldenPath(){
+    public void testUpdateBookByOneBlankListAuthor(){
+        try{
+            Book toBook = toTest.updateBookByAuthor(1, Arrays.asList("Author1", " "));
+            fail();
+        }catch(InvalidBookIdException ex){
+            fail();
+        }
+        catch (InvalidAuthorsException ex){
+        }
+    }
+    @Test
+    public void testUpdateBookByNullListAuthor(){
         try{
             Book toBook = toTest.updateBookByAuthor(1, Arrays.asList(null, "Author1"));
             fail();
@@ -255,6 +304,17 @@ class LibraryServiceTest {
     public void testUpdateBookByEmptyAuthor(){
         try{
             Book toBook = toTest.updateBookByAuthor(1, Arrays.asList());
+            fail();
+        }catch (InvalidBookIdException e){
+            fail();
+        }catch (InvalidAuthorsException e){
+        }
+    }
+
+    @Test
+    public void testUpdateBookByBlankAuthor(){
+        try{
+            Book toBook = toTest.updateBookByAuthor(1, Arrays.asList(" "));
             fail();
         }catch (InvalidBookIdException e){
             fail();
@@ -345,7 +405,6 @@ class LibraryServiceTest {
             toTest.deleteBooks(1);
             fail();
         } catch (InvalidBookIdException ex) {
-
         }
     }
 
@@ -356,6 +415,158 @@ class LibraryServiceTest {
         assertEquals(2005, book.getPublicationYear());
     }
 
+    public void testGetBookGoldenPath() throws InvalidTitleException, InvalidPublicationYearException, InvalidAuthorsException {
+        toTest.addBooks("title", Arrays.asList("author1"), 2015);
+        toTest.addBooks("title new", Arrays.asList("author", "new author"), 2010);
+
+        //Title
+        List<Book> book = toTest.getBooksByTitle("title");
+        assertEquals(2, book.size());
+
+        Book book1 = book.get(0);
+        assertEquals(2, book1.getBookId());
+        assertEquals("title", book1.getTitle());
+        assertEquals("author1", book1.getAuthors().get(0));
+        assertEquals(2015, book1.getPublicationYear());
+
+        Book book2 = book.get(1);
+        assertEquals(3, book2.getBookId());
+        assertEquals("title new", book2.getTitle());
+        assertEquals("author", book2.getAuthors().get(0));
+        assertEquals("new author", book2.getAuthors().get(1));
+        assertEquals(2010, book2.getPublicationYear());
+
+        //Title
+        book = toTest.getBooksByTitle("book");
+        assertEquals(0, book.size());
+
+        //Author
+        book = toTest.getBooksByAuthor("author4");
+        assertEquals(0, book.size());
+
+        book = toTest.getBooksByAuthor("author");
+        assertEquals(2, book.size());
+
+        Book book3 = book.get(0);
+        assertEquals(2, book3.getBookId());
+        assertEquals("title", book3.getTitle());
+        assertEquals("author1", book3.getAuthors().get(0));
+        assertEquals(2015, book3.getPublicationYear());
+
+        Book book4 = book.get(1);
+        assertEquals(3, book4.getBookId());
+        assertEquals("title new", book4.getTitle());
+        assertEquals("author", book4.getAuthors().get(0));
+        assertEquals("new author", book4.getAuthors().get(1));
+        assertEquals(2010, book4.getPublicationYear());
+
+        //Year
+        book = toTest.getBooksByYear(2020);
+        assertEquals(0, book.size());
+
+        book = toTest.getBooksByYear(2010);
+        assertEquals(1, book.size());
+
+        Book book5 = book.get(0);
+        assertEquals(2, book3.getBookId());
+        assertEquals("title", book3.getTitle());
+        assertEquals("author1", book3.getAuthors().get(0));
+        assertEquals(2015, book3.getPublicationYear());
+    }
+
+    @Test
+    public void testGetBookByNullTitle(){
+        try
+        {
+            toTest.getBooksByTitle(null);
+            fail();
+        } catch (InvalidTitleException e) {
+
+        }
+
+    }
+
+    @Test
+    public void testGetBookByNullAuthor(){
+        try
+        {
+            toTest.getBooksByAuthor(null);
+            fail();
+        } catch (InvalidAuthorsException e) {
+
+        }
+    }
+
+    @Test
+    public void testBookByNullYear(){
+        try
+        {
+            toTest.getBooksByYear(null);
+            fail();
+        } catch (InvalidPublicationYearException e) {
+
+        }
+
+    }
+
+
+
+
+
+    @Test
+    public void testGetBookByEmptyTitle(){
+        try
+        {
+            toTest.getBooksByTitle("");
+            fail();
+        } catch (InvalidTitleException e) {
+
+        }
+
+    }
+
+    @Test
+    public void testGetBookByBlankTitle(){
+        try
+        {
+            toTest.getBooksByTitle(" ");
+            fail();
+        } catch (InvalidTitleException e) {
+
+        }
+
+    }
+
+    @Test
+    public void testGetBookByBlankAuthor(){
+        try
+        {
+            toTest.getBooksByAuthor(" ");
+            fail();
+        } catch (InvalidAuthorsException e) {
+
+        }
+    }
+    @Test
+    public void testGetBookByEmptyAuthor(){
+        try
+        {
+            toTest.getBooksByAuthor("");
+            fail();
+        } catch (InvalidAuthorsException e) {
+
+        }
+    }
+
+    @Test
+    public void testBookByInvalidYear() {
+        try {
+            toTest.getBooksByYear(1453);
+            fail();
+        } catch (InvalidPublicationYearException e) {
+
+        }
+    }
 
 
 }

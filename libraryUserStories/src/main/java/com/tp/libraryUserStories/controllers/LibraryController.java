@@ -44,18 +44,34 @@ public class LibraryController {
     }
 
     @GetMapping("/book/title/{title}")
-    public List<Book> getBooksByTitle(@PathVariable String title) throws InvalidTitleException{
-        return service.getBooksByTitle(title);
+    public ResponseEntity getBooksByTitle(@PathVariable String title) throws InvalidTitleException {
+        Book toReturn = null;
+        try{
+            return ResponseEntity.ok(service.getBooksByTitle(title));
+        } catch(InvalidTitleException exception ){
+            return ResponseEntity.badRequest().body(exception.getMessage());
+        }
     }
 
+
     @GetMapping("/book/author/{author}")
-    public List<Book> getBooksByAuthor(@PathVariable String author) throws InvalidAuthorsException {
-        return service.getBooksByAuthor(author);
+    public ResponseEntity getBooksByAuthor(@PathVariable String author) throws InvalidAuthorsException {
+        Book toReturn = null;
+        try{
+            return ResponseEntity.ok(service.getBooksByAuthor(author));
+        } catch(InvalidAuthorsException exception ){
+            return ResponseEntity.badRequest().body(exception.getMessage());
+        }
     }
 
     @GetMapping("/book/year/{year}")
-    public List<Book> getBooksByYear(@PathVariable Integer year) throws InvalidPublicationYearException {
-        return service.getBooksByYear(year);
+    public ResponseEntity getBooksByYear(@PathVariable Integer year) throws InvalidPublicationYearException {
+        Book toReturn = null;
+        try{
+            return ResponseEntity.ok(service.getBooksByYear(year));
+        } catch(InvalidPublicationYearException exception ){
+            return ResponseEntity.badRequest().body(exception.getMessage());
+        }
     }
 
     @PutMapping("update/title/{bookId}")
@@ -102,14 +118,6 @@ public class LibraryController {
     }
 
 
-//    @GetMapping("/book/title/{title}")
-//    public ResponseEntity getBooksByTitle(@PathVariable String title) throws InvalidTitleException {
-//        Book toReturn = null;
-//        try{
-//            return ResponseEntity.ok(service.getBooksByTitle(title));
-//        } catch(InvalidTitleException exception ){
-//            return ResponseEntity.badRequest().body(exception.getMessage());
-//        }
-//    }
+
 }
 

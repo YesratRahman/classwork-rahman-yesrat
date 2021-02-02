@@ -45,8 +45,13 @@ public class LibraryService {
             throw new InvalidPublicationYearException("Tried to add Book by null publication year");
 
         }
+
         if(authors == null){
             throw new InvalidAuthorsException("Tried to add Book by null author");
+        }
+
+        if(publicationYear == 0){
+            throw new InvalidPublicationYearException("Year have to be greater than zero");
         }
 
         int newYear = LocalDate.now().getYear();
@@ -84,9 +89,7 @@ public class LibraryService {
         return libraryDao.getBooksByYear(year);
     }
 
-//    public Book updateBook(Integer id, Book newBook) throws InvalidPublicationYearException, InvalidAuthorsException, InvalidBookIdException, InvalidTitleException {
-//        return libraryDao.updateBook(id, newBook);
-//    }
+
 
     public Book updateBookByTitle(Integer id, String title) throws InvalidTitleException, InvalidBookIdException {
         if(title == null || title == ""){
@@ -129,6 +132,10 @@ public class LibraryService {
             throw new InvalidPublicationYearException("Publication year can not be null.");
 
         }
+        if(publicationYear == 0){
+            throw new InvalidPublicationYearException("Year have to be greater than zero");
+        }
+ 
         int newYear = LocalDate.now().getYear();
 
         if(publicationYear > newYear){

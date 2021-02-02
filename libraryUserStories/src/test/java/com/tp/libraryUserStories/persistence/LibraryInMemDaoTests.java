@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -29,42 +30,37 @@ public class LibraryInMemDaoTests {
         for (Book toRemove : allBooks) {
             toTest.deleteBooks(toRemove.getBookId());
         }
-        toTest.addBooks("The Example", Arrays.asList("Tom Taylor"), 2005);
+       toTest.addBooks("The Example", Arrays.asList("Tom Taylor"), 2005);
     }
 
     @Test
-    public void testAddBooksGoldenPath() {
-        try {
-            int newId = toTest.addBooks("The little Prince", Arrays.asList("Antoine"), 1943);
-            assertEquals(2, newId);
+    public void testAddBooksGoldenPath() throws InvalidTitleException, InvalidPublicationYearException, InvalidAuthorsException {
+
+
+        Book book = toTest.getAllBookById(1);
+
+            assertEquals("The Example", book.getTitle());
+            assertEquals(1, book.getAuthors().size());
+            assertEquals("Tom Taylor", book.getAuthors().get(0));
+            assertEquals(2005, book.getPublicationYear());
 
             int id = toTest.addBooks("book2", Arrays.asList("author1", "author2"), 2004);
-            assertEquals(3, id);
-            Book newBook = toTest.getAllBookById(3);
-            assertEquals(3, newBook.getBookId());
+            Book newBook = toTest.getAllBookById(2);
+
+            assertEquals(2, newBook.getBookId());
             assertEquals("book2", newBook.getTitle());
             assertEquals(2004, newBook.getPublicationYear());
-            List<String> authors = newBook.getAuthors();
             assertEquals(2, newBook.getAuthors().size());
             assertEquals("author1", newBook.getAuthors().get(0));
             assertEquals("author2", newBook.getAuthors().get(1));
 
-        } catch (InvalidTitleException | InvalidAuthorsException | InvalidPublicationYearException exception) {
-            fail();
-        }
-
     }
 
-    @Test
-    public void testGetBooksByTitleGoldenPath() {
-        try {
-            assertEquals(1, toTest.getBooksByTitle("The Example").size());
-            assertEquals(1, toTest.getBooksByTitle(" Example").size());
-            assertEquals(1, toTest.getBooksByTitle("Example").get(0).getBookId());
-        } catch (InvalidTitleException e) {
-            fail();
-        }
-    }
+//    @Test
+//    public void testNullBookObject() {
+//        //Book newBook = null;
+//    throw new UnsupportedOperationException();
+//    }
 
     @Test
     public void testAddBooksByNullTitle() {
@@ -72,17 +68,6 @@ public class LibraryInMemDaoTests {
             List<Book> book = toTest.getBooksByTitle(null);
             fail();
         } catch (InvalidTitleException e) {
-        }
-    }
-
-
-    @Test
-    public void testAddBooksByEmptyTitle() {
-        try {
-            List<Book> book = toTest.getBooksByTitle("");
-            fail();
-        } catch (InvalidTitleException e) {
-
         }
     }
 
@@ -98,16 +83,6 @@ public class LibraryInMemDaoTests {
 
 
     @Test
-    public void testAddBooksByEmptyAuthor() {
-        try {
-            List<Book> book = toTest.getBooksByAuthors("");
-            fail();
-        } catch (InvalidAuthorsException e) {
-
-        }
-    }
-
-    @Test
     public void testAddBookByNullYear() {
         try {
             int bookId = toTest.addBooks("title", Arrays.asList("author"), null);
@@ -120,17 +95,7 @@ public class LibraryInMemDaoTests {
     }
 
 
-    @Test
-    public void testAddBookByInvalidYear() {
-        try {
-            int bookId = toTest.addBooks("title1", Arrays.asList("author1"), 2022);
-            fail();
-        } catch (InvalidTitleException | InvalidAuthorsException e) {
-            fail();
-        } catch (InvalidPublicationYearException e) {
 
-        }
-    }
 
     @Test
     public void testGetAllBooksGoldenPath() {
@@ -140,7 +105,7 @@ public class LibraryInMemDaoTests {
     }
 
     @Test
-    public void testGetBookById() {
+    public void testGetBookByInvalidId() {
         Book book = toTest.getAllBookById(-1);
         assertEquals(null, book);
     }

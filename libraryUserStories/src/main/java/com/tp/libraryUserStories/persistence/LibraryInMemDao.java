@@ -42,7 +42,7 @@ public class LibraryInMemDao implements LibraryDao{
             InvalidAuthorsException,
             InvalidPublicationYearException
     {
-        if(title == null || title.equals("")){
+        if(title == null ){
             throw new InvalidTitleException("Tried to add Book by null title");
         }
 
@@ -54,22 +54,7 @@ public class LibraryInMemDao implements LibraryDao{
             throw new InvalidAuthorsException("Tried to add Book by null author");
         }
 
-        int newYear = LocalDate.now().getYear();
 
-        if(publicationYear > newYear){
-            throw new InvalidPublicationYearException("The year can not be more than recent year");
-        }
-
-        if(authors.size() == 0){
-            throw new InvalidAuthorsException("Each book should have one author");
-        }
-
-
-        for(String str: authors){
-            if(str == null){
-                throw new InvalidAuthorsException("Tried to add Book by null author");
-            }
-        }
         int id = 0;
 
         for( Book toCheck : allBooks ){
@@ -88,8 +73,8 @@ public class LibraryInMemDao implements LibraryDao{
 
     @Override
     public List<Book> getBooksByTitle(String title) throws InvalidTitleException {
-        if(title == null || title.equals("")){
-            throw new InvalidTitleException("Book can not have a null title or a empty String");
+        if(title == null){
+            throw new InvalidTitleException("Book can not have a null title");
         }
         List<Book> newBook = new ArrayList<>();
         for(Book toCopy : allBooks){
@@ -102,8 +87,8 @@ public class LibraryInMemDao implements LibraryDao{
 
     @Override
     public List<Book> getBooksByAuthors(String author) throws InvalidAuthorsException {
-        if(author == null || author ==""){
-            throw new InvalidAuthorsException("Author can not be null or empty");
+        if(author == null){
+            throw new InvalidAuthorsException("Author can not be null");
         }
         List<Book> newBook = new ArrayList<>();
         for(Book toCopy: allBooks){
@@ -123,11 +108,6 @@ public class LibraryInMemDao implements LibraryDao{
 
         if(year == null){
             throw new InvalidPublicationYearException("Year can not be null");
-        }
-        int newYear = LocalDate.now().getYear();
-
-        if(year > newYear){
-            throw new InvalidPublicationYearException("The year can not be more than the  recent year");
         }
 
         List<Book> newBook = new ArrayList<>();

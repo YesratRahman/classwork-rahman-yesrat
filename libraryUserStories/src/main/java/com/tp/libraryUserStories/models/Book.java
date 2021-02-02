@@ -27,6 +27,10 @@ public class Book {
         }
     }
 
+    public Book() {
+
+    }
+
 
     public Integer getBookId() {
         return bookId;

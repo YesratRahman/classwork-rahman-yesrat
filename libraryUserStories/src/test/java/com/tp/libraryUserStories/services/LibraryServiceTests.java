@@ -61,16 +61,20 @@ class LibraryServiceTest {
         } catch (InvalidAuthorsException | InvalidPublicationYearException ex) {
             fail();
         } catch (InvalidTitleException ex) {
-            try {
-                Book book = toTest.addBooks("", Arrays.asList("author1", "author2"), 2004);
-                fail();
-            } catch (InvalidAuthorsException | InvalidPublicationYearException ex2) {
-                fail();
-            } catch (InvalidTitleException ex2) {
-
-            }
         }
     }
+
+    @Test
+    public void testAddBooksEmptyTitle() {
+        try {
+            Book book = toTest.addBooks("", Arrays.asList("author1", "author2"), 2004);
+            fail();
+        } catch (InvalidAuthorsException | InvalidPublicationYearException ex) {
+            fail();
+        } catch (InvalidTitleException ex) {
+        }
+    }
+
     @Test
     public void testAddBookEmptyAuthors() {
         try {
@@ -102,14 +106,17 @@ class LibraryServiceTest {
         } catch (InvalidTitleException | InvalidPublicationYearException ex) {
             fail();
         } catch (InvalidAuthorsException ex) {
-            try {
-                Book book = toTest.addBooks("The Example", Arrays.asList("author1", "", "author2"), 2002);
-                fail();
-            } catch (InvalidTitleException | InvalidPublicationYearException ex2) {
-                fail();
-            } catch (InvalidAuthorsException ex2) {
+        }
+    }
 
-            }
+    @Test
+    public void testAddAuthorListWithOneEmptyAuthor() {
+        try {
+            Book book = toTest.addBooks("One title", Arrays.asList("two title", "", "author"), 2010);
+            fail();
+        } catch (InvalidTitleException | InvalidPublicationYearException ex) {
+            fail();
+        } catch (InvalidAuthorsException ex) {
         }
     }
 
@@ -219,16 +226,22 @@ class LibraryServiceTest {
             fail();
         }
         catch (InvalidAuthorsException ex){
-            try{
-                Book newBook = toTest.updateBookByAuthor(1, Arrays.asList(null, "Author1"));
-                fail();
-            }catch(InvalidBookIdException e){
-                fail();
-            }catch (InvalidAuthorsException e){
-            }
-
         }
     }
+
+
+    @Test
+    public void testUpdateBookByNullListAuthorGoldenPath(){
+        try{
+            Book toBook = toTest.updateBookByAuthor(1, Arrays.asList(null, "Author1"));
+            fail();
+        }catch(InvalidBookIdException ex){
+            fail();
+        }
+        catch (InvalidAuthorsException ex){
+        }
+    }
+
     @Test
     public void testUpdateBookByNullAuthor(){
         try{

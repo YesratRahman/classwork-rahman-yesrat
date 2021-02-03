@@ -2,20 +2,20 @@
 public class LinkedList {
 
     public static void main(String[] args) {
-        ListNode ln = new ListNode(1);
-        ln.next = new ListNode(2);
-        ln.next.next = new ListNode(3);
-        ln.next.next.next = new ListNode(4);
-        ln.next.next.next.next = new ListNode(5);
+        ListNode1 ln = new ListNode1(1);
+        ln.next = new ListNode1(2);
+        ln.next.next = new ListNode1(3);
+        ln.next.next.next = new ListNode1(4);
+        ln.next.next.next.next = new ListNode1(5);
 
       //  System.out.println(reverseList(ln.next));
 
     }
 
-    public static ListNode reverseList(ListNode head) {
-        ListNode previousNode = null;
+    public static ListNode1 reverseList(ListNode1 head) {
+        ListNode1 previousNode = null;
         while (head != null) {
-            ListNode temp = head.next;
+            ListNode1 temp = head.next;
             head.next = previousNode;
             previousNode = head;
             head = temp;
@@ -23,21 +23,21 @@ public class LinkedList {
         return previousNode;
     }
 
-    public static ListNode reverseList2(ListNode head) {
+    public static ListNode1 reverseList2(ListNode1 head) {
         if (head == null || head.next == null) {
             return head;
         }
-        ListNode previousNode = reverseList(head.next);
+        ListNode1 previousNode = reverseList(head.next);
         head.next.next = head;
         head.next = null;
         return previousNode;
     }
 
 }
-    class ListNode {
+    class ListNode1 {
         int val;
-        ListNode next;
-        ListNode() {}
-        ListNode(int val) { this.val = val; }
-        ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+        ListNode1 next;
+        ListNode1() {}
+        ListNode1(int val) { this.val = val; }
+        ListNode1(int val, ListNode1 next) { this.val = val; this.next = next; }
     }

@@ -4,16 +4,21 @@ import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
-    int[] num = {0,1,2,3,4,5,6};
-        System.out.println(search(num, 5));
-        System.out.println(searchRecursively(num, 5, 0, num.length -1));
+
     }
+
+
+
+
 
     //Binary Search
     //https://leetcode.com/problems/binary-search/
     //[? ? ? ? ? ?]
     //min index = 0
     //max index = length - 1
+//        int[] num = {0,1,2,3,4,5,6};
+//        System.out.println(search(num, 5));
+//        System.out.println(searchRecursively(num, 5, 0, num.length -1));
     public static int search(int[] nums, int target) {
         if(nums == null || nums.length == 0) return -1;
         int left = 0;

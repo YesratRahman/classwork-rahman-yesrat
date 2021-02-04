@@ -2,20 +2,63 @@
 public class LinkedList {
 
     public static void main(String[] args) {
-        ListNode1 ln = new ListNode1(1);
-        ln.next = new ListNode1(2);
-        ln.next.next = new ListNode1(3);
-        ln.next.next.next = new ListNode1(4);
-        ln.next.next.next.next = new ListNode1(5);
+        ListNode head = null;
+        ListNode node = new ListNode(1);
+        head = node;
+        node.next = new ListNode(2);
+        node = node.next;
+        node.next = new ListNode(3);
+        node = node.next;
+        node.next = new ListNode(4);
+        node = node.next;
 
-      //  System.out.println(reverseList(ln.next));
+
+        LinkedList main = new LinkedList();
+        head = main.swapPairs1(head);
+        while(head != null) {
+            System.out.print(head.val + " ");
+            head = head.next;
+        }
 
     }
 
-    public static ListNode1 reverseList(ListNode1 head) {
-        ListNode1 previousNode = null;
+    //https://leetcode.com/problems/swap-nodes-in-pairs/submissions/
+    public static ListNode swapPairs(ListNode head) {
+        if(head == null || head.next == null) return head;
+        ListNode node = head.next;
+        head.next = swapPairs(node.next);   //head.next.next
+        node.next = head;
+        return node;
+    }
+
+
+    //https://leetcode.com/problems/swap-nodes-in-pairs/submissions/
+    public static ListNode swapPairs1(ListNode head) {
+        if (head == null || head.next == null) return head;
+        ListNode currentNode = head;
+        ListNode newHeadNode = head.next;
+
+        while(currentNode!= null && currentNode.next != null){
+            ListNode tempNode = currentNode;
+            currentNode = currentNode.next;
+            tempNode.next = currentNode.next;
+            currentNode.next = tempNode;
+            currentNode = tempNode.next;
+
+
+            if(currentNode!= null && currentNode.next != null)
+                tempNode.next = currentNode.next;
+
+        }
+        return newHeadNode;
+    }
+
+
+
+    public static ListNode reverseList(ListNode head) {
+        ListNode previousNode = null;
         while (head != null) {
-            ListNode1 temp = head.next;
+            ListNode temp = head.next;
             head.next = previousNode;
             previousNode = head;
             head = temp;
@@ -23,21 +66,21 @@ public class LinkedList {
         return previousNode;
     }
 
-    public static ListNode1 reverseList2(ListNode1 head) {
+    public static ListNode reverseList2(ListNode head) {
         if (head == null || head.next == null) {
             return head;
         }
-        ListNode1 previousNode = reverseList(head.next);
+        ListNode previousNode = reverseList(head.next);
         head.next.next = head;
         head.next = null;
         return previousNode;
     }
 
 }
-    class ListNode1 {
+    class ListNode {
         int val;
-        ListNode1 next;
-        ListNode1() {}
-        ListNode1(int val) { this.val = val; }
-        ListNode1(int val, ListNode1 next) { this.val = val; this.next = next; }
+        ListNode next;
+        ListNode() {}
+        ListNode(int val) { this.val = val; }
+        ListNode(int val, ListNode next) { this.val = val; this.next = next; }
     }

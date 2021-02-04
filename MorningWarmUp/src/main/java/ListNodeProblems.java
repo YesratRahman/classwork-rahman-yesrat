@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.HashSet;
 
 public class ListNodeProblems {
 
@@ -51,12 +50,12 @@ public class ListNodeProblems {
 
 
 
- class ListNode {
-     int val;
-     ListNode next;
-
-     ListNode(int x) {
-         val = x;
-         next = null;
-     }
- }
+// class ListNode {
+//     int val;
+//     ListNode next;
+//
+//     ListNode(int x) {
+//         val = x;
+//         next = null;
+//     }
+// }

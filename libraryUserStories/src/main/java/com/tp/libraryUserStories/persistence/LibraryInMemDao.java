@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
+//@Component
 public class LibraryInMemDao implements LibraryDao{
 
     private List<Book> allBooks = new ArrayList<>();

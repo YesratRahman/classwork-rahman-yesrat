@@ -3,13 +3,218 @@
 import java.util.*;
 
 public class Application {
+    static Map<Integer, Integer> map = new HashMap<>();
     public static void main(String[] args) {
 
+
+    }
+
+    //https://leetcode.com/problems/valid-tic-tac-toe-state/
+    public static boolean validTicTacToe(String[] board) {
+
+        int[] rows = new int[3];
+        int[] columns = new int[3];
+        int horizontal = 0;
+        int vertical  = 0;
+        boolean player1Wins = false;
+        boolean player2Wins = false;
+        int  turns = 0 ;
+
+        for(int i = 0; i < 3; i++){
+            for(int j = 0; j < 3; j++){
+                if(board[i].charAt(j) == 'X'){
+                    turns++;
+                    rows[i]++;
+                    columns[j]++;
+                    if(i == j) vertical++;
+                    if (i + j == 2 ) horizontal++;
+                    if(rows[i] == 3 || columns[j] == 3 || vertical == 3 || horizontal ==3){
+                        player1Wins = true;
+                    }
+                }
+                else if(board[i].charAt(j) == 'O'){
+                    turns--;
+                    rows[i]--;
+                    columns[j]--;
+                    if(i == j) vertical--;
+                    if (i + j == 2) horizontal--;
+                    if(rows[i] == -3 || columns[j] == -3 || vertical == -3 || horizontal == -3){
+                        player2Wins = true;
+                    }
+                }
+            }
+        }
+
+        // if X wins turns should be 0, if O wins turns must be 1
+        //If no one wins, turns must be <= 1
+
+        if (turns == 0 && player1Wins || turns == 1 && player2Wins || turns < 0 || turns > 1) {
+            return false;
+        }
+        return true;
     }
 
 
 
+    //https://leetcode.com/problems/two-sum/submissions/
+    public static int[] twoSum(int[] nums, int target) {
+        int[] answer = new int[2];
 
+        for(int i = 0; i < nums.length; i++){
+            if(map.containsKey(nums[i])){
+                 answer[0] = map.get(nums[i]);
+                 answer[1] = i;
+                 break;
+            }
+            else {
+                map.put(target - nums[i], i);
+            }
+        }
+
+        return answer;
+    }
+
+    public static int minDays(int n) {
+        //eat one orange
+        // if n/2, eat n/2 oranges
+        // if n/3 , 2*(n/3)
+
+        int minDays = Integer.MAX_VALUE;
+        if (n <= 2) return n ;
+        if( n == 3) return 2;
+        if(!map.containsKey(n)) {
+            //map.put(n, Math.min(minDays(n/3)))
+            if (n % 3 == 0) {
+                minDays = minDays((n / 3)) + 1;
+            }
+            if (n % 2 == 0) {
+                int newMin = minDays(n / 2) + 1;
+                if (newMin < minDays) {
+                    minDays = newMin;
+                }
+            }
+
+            int newMin = minDays(n - 1) + 1;
+            if (newMin < minDays) {
+                minDays = newMin;
+            }
+            map.put(n, minDays);
+
+        }else {
+           minDays =  map.get(n);
+        }
+        return minDays;
+    }
+
+
+
+    //https://leetcode.com/problems/minimum-window-substring/
+    public static String minWindow(String s, String t) {
+        if(s.length() < t.length()) return "";
+
+        if(t.length() == 1){
+            int index = s.indexOf(t.charAt(0));
+            return index == -1 ?"" : s.substring(index, index+1);
+        }
+        int minLength = Integer.MAX_VALUE;
+        String minWindow ="";
+
+        for (int begin = 0; begin < s.length(); begin++) {
+            char current = s.charAt(begin);
+            if (current == t.charAt(0)) {
+                int count = 1;
+                int end = begin + 1;
+                while (end < s.length()) {
+                    if(count < t.length() && s.charAt(end) == t.charAt(count)) {
+                        count++;
+
+                    if(count == t.length()) {
+                        int currentLength = end - begin;
+                        if (currentLength < minLength) {
+                            minWindow = s.substring(begin, end + 1);
+                            minLength = currentLength;
+                        }
+                        break;
+                    }
+                    }
+                    end++;
+                }
+            }
+        }
+        return minWindow;
+    }
+
+
+
+    //My Version
+    // https://leetcode.com/problems/permutations/
+    //https://java2blog.com/permutations-array-java/
+
+//    Application newApp=new Application();
+//    int[] arr= {1, 2, 3};
+//    List<List<Integer>> permutation = newApp.permute(arr);
+//        for(List<Integer> permute :permutation)
+//    {
+//        System.out.println(permute);
+//    }
+    public static List<List<Integer>> permute(int[] nums) {
+    List<List<Integer>> listOfList = new ArrayList<>();
+    List<Integer> permute = new ArrayList<>();
+    helperPermute(listOfList, permute, nums);
+    return listOfList;
+    }
+
+    private static void helperPermute(List<List<Integer>> listOfList, List<Integer> permute, int[] numbs) {
+
+        if (permute.size() == numbs.length) {
+            listOfList.add(new ArrayList<>(permute));
+        } else {
+            for (int i = 0; i < numbs.length; i++) {
+                if (permute.contains(numbs[i])) continue; //checks if an element already in the list, if so skip
+                permute.add(numbs[i]);
+                helperPermute(listOfList, permute, numbs);
+                permute.remove(permute.size() - 1);
+            }
+        }
+    }
+
+//David'S VERSION 
+        public static List<List<Integer>> permute1(int[] nums) {
+            List<List<Integer>> listOfLists = new ArrayList<>();
+            List<Integer> available = new ArrayList<>();
+
+            for( int i = 0; i < nums.length; i++) available.add( nums[i] );
+
+            List<Integer> current = new ArrayList<>();
+            permute( listOfLists, available, current );
+            return listOfLists;
+        }
+
+        public static void permute(
+                List<List<Integer>> answers,
+                List<Integer> availableNums,
+                List<Integer> current ){
+
+            if( availableNums.size() == 0 ){
+                //we've used all the numbers for this permutation
+                //copy current and add it to our list of lists
+                List<Integer> copy = new ArrayList<>();
+                copy.addAll( current );
+
+                answers.add( copy );
+            } else {
+
+                for( int i = 0; i < availableNums.size(); i++ ){
+                    Integer toTry = availableNums.get(i);
+                    availableNums.remove( i );
+
+                    current.add( toTry );
+                    permute( answers, availableNums, current );
+                    current.remove( current.size() - 1  );
+                    availableNums.add( i, toTry);
+                }
+            }
+        }
 
     //Binary Search
     //https://leetcode.com/problems/binary-search/

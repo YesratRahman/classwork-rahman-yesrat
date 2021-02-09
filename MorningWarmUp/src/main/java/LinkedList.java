@@ -2,25 +2,21 @@
 public class LinkedList {
 
     public static void main(String[] args) {
-        ListNode head = null;
-        ListNode node = new ListNode(1);
-        head = node;
-        node.next = new ListNode(2);
-        node = node.next;
-        node.next = new ListNode(3);
-        node = node.next;
-        node.next = new ListNode(4);
-        node = node.next;
 
-
-        LinkedList main = new LinkedList();
-        head = main.swapPairs1(head);
-        while(head != null) {
-            System.out.print(head.val + " ");
-            head = head.next;
-        }
 
     }
+
+
+    //https://leetcode.com/problems/add-two-numbers/
+    public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+
+        ListNode sum = new ListNode();
+    
+        return sum;
+    }
+
+
+
 
     //https://leetcode.com/problems/swap-nodes-in-pairs/submissions/
     public static ListNode swapPairs(ListNode head) {
@@ -32,7 +28,26 @@ public class LinkedList {
     }
 
 
+
     //https://leetcode.com/problems/swap-nodes-in-pairs/submissions/
+
+//    ListNode head = null;
+//    ListNode node = new ListNode(1);
+//    head = node;
+//    node.next = new ListNode(2);
+//    node = node.next;
+//    node.next = new ListNode(3);
+//    node = node.next;
+//    node.next = new ListNode(4);
+//    node = node.next;
+//
+//
+//    LinkedList main = new LinkedList();
+//    head = main.swapPairs1(head);
+//        while(head != null) {
+//        System.out.print(head.val + " ");
+//        head = head.next;
+//    }
     public static ListNode swapPairs1(ListNode head) {
         if (head == null || head.next == null) return head;
         ListNode currentNode = head;

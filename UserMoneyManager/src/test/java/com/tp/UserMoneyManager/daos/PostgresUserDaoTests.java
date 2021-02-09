@@ -1,4 +1,4 @@
-package com.tp.UserMoneyManager.dao;
+package com.tp.UserMoneyManager.daos;
 
 public class PostgresUserDaoTests {
 }

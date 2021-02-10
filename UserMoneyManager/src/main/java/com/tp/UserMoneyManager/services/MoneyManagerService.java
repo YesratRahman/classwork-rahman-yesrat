@@ -17,6 +17,7 @@ public class MoneyManagerService {
     @Autowired
     UserDao userDao;
 
+
     public List<User> getAllUsers() {
         return userDao.getAllUsers();
     }

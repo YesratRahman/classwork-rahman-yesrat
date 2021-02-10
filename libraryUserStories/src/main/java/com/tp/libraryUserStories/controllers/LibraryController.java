@@ -19,7 +19,7 @@ public class LibraryController {
     LibraryService service;
 
     @GetMapping("/book")
-    public List<Book> getAllGames(){
+    public List<Book> getAllBooks(){
         return service.getAllBooks();
     }
 

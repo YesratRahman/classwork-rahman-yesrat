@@ -1,31 +1,30 @@
 package com.tp.UserMoneyManager.daos;
 
+import com.tp.UserMoneyManager.daos.mappers.IntegerMapper;
+import com.tp.UserMoneyManager.daos.mappers.UserMapper;
 import com.tp.UserMoneyManager.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
 @Component
+@Profile({"production", "daoTesting"})
 public class UserPostgresDao implements UserDao {
 
     @Autowired
-    JdbcTemplate template;
+    private JdbcTemplate template;
 
     @Override
     public User addUser(User toAdd) {
         Integer userId= template.queryForObject("INSERT INTO \"Users\" (\"userName\") \n" +
                         "VALUES (?) RETURNING \"userId\";",
-                new UserIdMapper(),
+                new IntegerMapper("userId"),
                 toAdd.getUserName()
         );
         toAdd.setUserId( userId );
-
         return toAdd;
-
     }
 
     @Override
@@ -46,8 +45,8 @@ public class UserPostgresDao implements UserDao {
     @Override
     public List<User> getUsersByUserName(String userName) {
         List<User> users = template.query(
-                "SELECT \"userId\", \"userName\" FROM \"Users\" WHERE \"userName\" = 'userName';",
-                new UserMapper());
+                "SELECT \"userId\", \"userName\" FROM \"Users\" WHERE \"userName\" = ?;",
+                new UserMapper(), userName);
 
         return users;
     }
@@ -69,21 +68,4 @@ public class UserPostgresDao implements UserDao {
     }
 
 
-    class UserMapper implements RowMapper<User>{
-        @Override
-        public User mapRow(ResultSet resultSet, int i) throws SQLException{
-            User mappedUser = new User();
-            mappedUser.setUserId(resultSet.getInt("userId"));
-            mappedUser.setUserName(resultSet.getString("userName"));
-            return mappedUser;
-        }
-    }
-
-    class UserIdMapper implements RowMapper<Integer>{
-
-        @Override
-        public Integer mapRow(ResultSet resultSet, int i) throws SQLException {
-            return resultSet.getInt("userId");
-        }
-    }
 }

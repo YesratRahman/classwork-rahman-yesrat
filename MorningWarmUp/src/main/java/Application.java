@@ -9,6 +9,52 @@ public class Application {
 
     }
 
+    //https://leetcode.com/problems/island-perimeter/
+    public static int islandPerimeter(int[][] grid) {
+        //go over the whole grid
+        //check if grid[i][j] == 1 count the island
+        //if the current grid is island, check the right and down cells
+        //island * 4 - (neighbors * 2)
+        //count the neighbors, only count if there exists any right or down ones
+        if(grid == null || grid.length == 0) return 0;
+        int island = 0;
+        int sideLand = 0;
+
+        for(int i = 0; i < grid.length; i++){
+            for(int j = 0; j < grid[0].length; j++){
+                if(grid[i][j] == 1) {island++;
+                    if(i < (grid.length - 1)  && grid[i+1][j] == 1) sideLand++;
+                    if(j < (grid[0].length - 1)  && grid[i][j+1] == 1) sideLand++;
+                }
+            }
+        }
+        island = (island * 4) - (sideLand * 2);
+        return island;
+    }
+
+    //Eliot's version
+    public static int islandPerimeter1(int[][] grid) {
+
+        int primCount = 0;
+        for(int i = 0; i < grid.length; i++){
+            for(int j = 0; j < grid[i].length; j++){
+                if(grid[i][j]==1){
+
+                    int primSides = 4;
+
+                    if(i-1>=0 && grid[i-1][j]==1)primSides--;
+                    if(j-1>=0 && grid[i][j-1]==1)primSides--;
+                    if(i+1 < grid.length && grid[i+1][j] == 1)primSides--;
+                    if(j+1 < grid[0].length && grid[i][j+1] == 1)primSides--;
+
+                    primCount += primSides;
+                }
+            }
+        }
+        return primCount;
+    }
+
+
     //https://leetcode.com/problems/valid-tic-tac-toe-state/
     public static boolean validTicTacToe(String[] board) {
 

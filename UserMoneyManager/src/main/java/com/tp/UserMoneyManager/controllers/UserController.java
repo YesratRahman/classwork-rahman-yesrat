@@ -1,11 +1,10 @@
 package com.tp.UserMoneyManager.controllers;
 
 import com.tp.UserMoneyManager.exceptions.InvalidUserIdException;
-import com.tp.UserMoneyManager.exceptions.InvalidUserNameException;
+import com.tp.UserMoneyManager.exceptions.InvalidUserNameException2;
+
 import com.tp.UserMoneyManager.models.User;
 import com.tp.UserMoneyManager.services.MoneyManagerService;
-import org.springframework.beans.factory.annotation.*;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -39,10 +38,10 @@ public class UserController {
     }
 
     @GetMapping("/user/userName/{userName}")
-    public ResponseEntity getUsersByUserName(@PathVariable String userName) throws InvalidUserNameException {
+    public ResponseEntity getUsersByUserName(@PathVariable String userName) throws InvalidUserNameException2 {
         try{
             return ResponseEntity.ok(service.getUsersByUserName(userName));
-        }catch(InvalidUserNameException e){
+        }catch(InvalidUserNameException2 e){
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }

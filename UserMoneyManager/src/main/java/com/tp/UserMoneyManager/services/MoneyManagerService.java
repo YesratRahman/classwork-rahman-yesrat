@@ -3,9 +3,10 @@ package com.tp.UserMoneyManager.services;
 import com.tp.UserMoneyManager.daos.ExpenseDao;
 import com.tp.UserMoneyManager.daos.IncomeDao;
 import com.tp.UserMoneyManager.daos.UserDao;
-import com.tp.UserMoneyManager.daos.UserPostgresDao;
+import com.tp.UserMoneyManager.exceptions.InvalidExpenseIdException;
 import com.tp.UserMoneyManager.exceptions.InvalidUserIdException;
-import com.tp.UserMoneyManager.exceptions.InvalidUserNameException;
+import com.tp.UserMoneyManager.exceptions.InvalidUserNameException2;
+import com.tp.UserMoneyManager.models.Expense;
 import com.tp.UserMoneyManager.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -16,6 +17,12 @@ import java.util.List;
 public class MoneyManagerService {
     @Autowired
     UserDao userDao;
+
+    @Autowired
+    ExpenseDao expenseDao;
+
+    @Autowired
+    IncomeDao incomeDao;
 
 
     public List<User> getAllUsers() {
@@ -38,9 +45,9 @@ public class MoneyManagerService {
 
     }
 
-    public List<User> getUsersByUserName(String userName) throws InvalidUserNameException {
+    public List<User> getUsersByUserName(String userName) throws InvalidUserNameException2 {
         if(userName == null || userName.isEmpty() || userName.isBlank()){
-            throw new InvalidUserNameException("UserName is invalid!");
+            throw new InvalidUserNameException2("UserName is invalid!");
         }
         return userDao.getUsersByUserName(userName);
     }
@@ -65,4 +72,16 @@ public class MoneyManagerService {
     }
 
 
+    public Expense addExpense(Expense toAdd) {
+        throw new UnsupportedOperationException();
+    }
+
+    public List<Expense> getAllExpenses() {
+    throw new UnsupportedOperationException();
+    }
+
+    public Expense getAllExpenseById(Integer expenseId) throws InvalidExpenseIdException {
+        throw new UnsupportedOperationException();
+
+    }
 }

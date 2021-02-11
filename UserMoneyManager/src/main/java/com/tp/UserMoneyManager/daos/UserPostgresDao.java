@@ -51,7 +51,20 @@ public class UserPostgresDao implements UserDao {
             throw new InvalidUserIdException("User id can not be null!");
         }
 
-         User getUser = template.queryForObject("SELECT \"userId\", \"userName\" FROM \"Users\" WHERE \"userId\"='" + userId + "'", new UserMapper());
+        boolean newId = false;
+        for(int i = 0; i < getAllUsers().size(); i++){
+            if(getAllUsers().get(i).getUserId() == userId){
+                newId = true;
+            }
+        }
+        User getUser;
+        if(newId) {
+             getUser = template.queryForObject("SELECT \"userId\", \"userName\" FROM \"Users\" WHERE \"userId\"='" + userId + "'", new UserMapper());
+        }
+        else {
+            throw new InvalidUserIdException("User id does not exist or invalid");
+        }
+
         return getUser;
     }
 
@@ -74,10 +87,20 @@ public class UserPostgresDao implements UserDao {
             throw new InvalidUserIdException("User id can not be null!");
         }
 
-        if(this.getAllUsersById(userId) == null){
-            throw new InvalidUserIdException("User id can not be Invalid");
+        boolean newId = false;
+        for(int i = 0; i < getAllUsers().size(); i++){
+            if(getAllUsers().get(i).getUserId() == userId){
+                newId = true;
+            }
         }
-        int delete = template.update("DELETE FROM \"Users\" WHERE \"userId\" = ?;", userId);
+
+        int delete;
+        if (newId) {
+            delete = template.update("DELETE FROM \"Users\" WHERE \"userId\" = ?;", userId);
+        }
+        else {
+            throw new InvalidUserIdException("User with this id does not exist or was deleted");
+        }
         return delete;
     }
 

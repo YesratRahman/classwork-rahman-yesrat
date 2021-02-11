@@ -28,8 +28,6 @@ public class PostgresUserDaoTests {
     @Autowired
     JdbcTemplate template;
 
-    public PostgresUserDaoTests() throws InvalidUserIdException, NullUserException {
-    }
 
     @BeforeEach
     public void setUp(){
@@ -67,12 +65,12 @@ public class PostgresUserDaoTests {
         assertThrows(InvalidUserIdException.class, ()->toTest.getAllUsersById(null));
     }
 
-//    @Test
-//    public void getAllUserByInvalidId() throws InvalidUserIdException {
-//
-//        assertThrows(InvalidUserIdException.class, ()->toTest.getAllUsersById(-1));
-//
-//    }
+    @Test
+    public void getAllUserByInvalidId() {
+
+        assertThrows(InvalidUserIdException.class, ()->toTest.getAllUsersById(-1));
+
+    }
 
 
     @Test
@@ -167,9 +165,9 @@ public class PostgresUserDaoTests {
         assertThrows(InvalidUserIdException.class, ()->toTest.deleteUser(null));
     }
 
-//    @Test
-//    public void deleteUserInvalidId(){
-//
-//        assertThrows(InvalidUserIdException.class, ()->toTest.deleteUser(-1));
-//    }
+    @Test
+    public void deleteUserInvalidId(){
+
+        assertThrows(InvalidUserIdException.class, ()->toTest.deleteUser(-1));
+    }
 }

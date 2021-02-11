@@ -1,20 +1,17 @@
 package com.tp.UserMoneyManager.daos;
 
+import com.tp.UserMoneyManager.exceptions.InvalidUserNameException;
 import com.tp.UserMoneyManager.models.User;
-import org.checkerframework.checker.units.qual.A;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.jdbc.JdbcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
@@ -38,7 +35,7 @@ public class PostgresUserDaoTests {
     }
 
     @Test
-    public void addUserGoldenPathTest(){
+    public void addUserGoldenPathTest() throws InvalidUserNameException {
         User user = new User();
         user.setUserName("Raha");
 

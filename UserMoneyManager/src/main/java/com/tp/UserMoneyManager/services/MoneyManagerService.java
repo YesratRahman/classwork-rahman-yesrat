@@ -1,12 +1,8 @@
 package com.tp.UserMoneyManager.services;
 
-import com.tp.UserMoneyManager.daos.ExpenseDao;
-import com.tp.UserMoneyManager.daos.IncomeDao;
 import com.tp.UserMoneyManager.daos.UserDao;
-import com.tp.UserMoneyManager.exceptions.InvalidExpenseIdException;
 import com.tp.UserMoneyManager.exceptions.InvalidUserIdException;
-import com.tp.UserMoneyManager.exceptions.InvalidUserNameException2;
-import com.tp.UserMoneyManager.models.Expense;
+import com.tp.UserMoneyManager.exceptions.InvalidUserNameException;
 import com.tp.UserMoneyManager.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -18,18 +14,11 @@ public class MoneyManagerService {
     @Autowired
     UserDao userDao;
 
-    @Autowired
-    ExpenseDao expenseDao;
-
-    @Autowired
-    IncomeDao incomeDao;
-
-
     public List<User> getAllUsers() {
         return userDao.getAllUsers();
     }
 
-    public User addUser(User toAdd){
+    public User addUser(User toAdd) throws InvalidUserNameException {
 
         if(toAdd == null){
             throw new IllegalArgumentException("User can not be null!");
@@ -45,9 +34,9 @@ public class MoneyManagerService {
 
     }
 
-    public List<User> getUsersByUserName(String userName) throws InvalidUserNameException2 {
+    public List<User> getUsersByUserName(String userName) throws InvalidUserNameException {
         if(userName == null || userName.isEmpty() || userName.isBlank()){
-            throw new InvalidUserNameException2("UserName is invalid!");
+            throw new InvalidUserNameException("UserName is invalid!");
         }
         return userDao.getUsersByUserName(userName);
     }
@@ -72,16 +61,7 @@ public class MoneyManagerService {
     }
 
 
-    public Expense addExpense(Expense toAdd) {
-        throw new UnsupportedOperationException();
-    }
 
-    public List<Expense> getAllExpenses() {
-    throw new UnsupportedOperationException();
-    }
 
-    public Expense getAllExpenseById(Integer expenseId) throws InvalidExpenseIdException {
-        throw new UnsupportedOperationException();
 
-    }
 }

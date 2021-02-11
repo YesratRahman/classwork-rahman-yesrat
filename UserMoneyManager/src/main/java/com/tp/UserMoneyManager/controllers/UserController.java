@@ -1,7 +1,7 @@
 package com.tp.UserMoneyManager.controllers;
 
 import com.tp.UserMoneyManager.exceptions.InvalidUserIdException;
-import com.tp.UserMoneyManager.exceptions.InvalidUserNameException2;
+import com.tp.UserMoneyManager.exceptions.InvalidUserNameException;
 
 import com.tp.UserMoneyManager.models.User;
 import com.tp.UserMoneyManager.services.MoneyManagerService;
@@ -18,7 +18,7 @@ public class UserController {
     MoneyManagerService service;
 
     @PostMapping("/user")
-    public ResponseEntity addUser(@RequestBody User toAdd){
+    public ResponseEntity addUser(@RequestBody User toAdd) throws InvalidUserNameException {
         User completed = service.addUser(toAdd);
         return ResponseEntity.ok(completed);
     }
@@ -38,16 +38,16 @@ public class UserController {
     }
 
     @GetMapping("/user/userName/{userName}")
-    public ResponseEntity getUsersByUserName(@PathVariable String userName) throws InvalidUserNameException2 {
+    public ResponseEntity getUsersByUserName(@PathVariable String userName) throws InvalidUserNameException {
         try{
             return ResponseEntity.ok(service.getUsersByUserName(userName));
-        }catch(InvalidUserNameException2 e){
+        }catch(InvalidUserNameException e){
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 
     @PutMapping("/update/{userId}")
-    public ResponseEntity updateUser(@RequestBody Integer userId, User user){
+    public ResponseEntity updateUser(@PathVariable Integer userId, @RequestBody User user){
         try {
             return ResponseEntity.ok(service.updateUser(userId, user));
         } catch (InvalidUserIdException e) {

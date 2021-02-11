@@ -156,6 +156,7 @@ public class PostgresUserDaoTests {
     public void deleteUserGoldenPathTest(){
         try{
             toTest.deleteUser(1);
+            assertEquals(0, toTest.getAllUsers().size());
         }catch (InvalidUserIdException e){
             fail();
         }

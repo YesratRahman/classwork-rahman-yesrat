@@ -18,7 +18,7 @@ public class IncomeController {
     IncomeService service;
 
     @PostMapping("/income")
-    public ResponseEntity addExpense(@RequestBody Income toAdd){
+    public ResponseEntity addIncome(@RequestBody Income toAdd){
         Income completed = service.addIncome(toAdd);
         return ResponseEntity.ok(completed);
     }
@@ -58,7 +58,7 @@ public class IncomeController {
     }
 
     @PutMapping("/update/{incomeId}")
-    public ResponseEntity updateUser(@PathVariable Integer incomeId, @RequestBody Income income){
+    public ResponseEntity updateIncome(@PathVariable Integer incomeId, @RequestBody Income income){
         try {
             return ResponseEntity.ok(service.updateIncome(incomeId, income));
         } catch (InvalidIncomeIdException e) {

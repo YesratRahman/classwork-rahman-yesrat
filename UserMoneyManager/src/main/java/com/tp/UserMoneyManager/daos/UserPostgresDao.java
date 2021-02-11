@@ -4,6 +4,7 @@ import com.tp.UserMoneyManager.daos.mappers.IntegerMapper;
 import com.tp.UserMoneyManager.daos.mappers.UserMapper;
 import com.tp.UserMoneyManager.exceptions.InvalidUserIdException;
 import com.tp.UserMoneyManager.exceptions.InvalidUserNameException;
+import com.tp.UserMoneyManager.exceptions.NullUserException;
 import com.tp.UserMoneyManager.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
@@ -19,9 +20,9 @@ public class UserPostgresDao implements UserDao {
     private JdbcTemplate template;
 
     @Override
-    public User addUser(User toAdd) throws InvalidUserNameException {
+    public User addUser(User toAdd) throws NullUserException, InvalidUserNameException {
         if(toAdd == null ){
-            throw new IllegalArgumentException("User can not be null!");
+            throw new NullUserException("User can not be null!");
         }
         if(toAdd.getUserName() == null || toAdd.getUserName().isEmpty() || toAdd.getUserName().isBlank()){
             throw new InvalidUserNameException("User name can not be Invalid");
@@ -49,6 +50,7 @@ public class UserPostgresDao implements UserDao {
         if(userId == null){
             throw new InvalidUserIdException("User id can not be null!");
         }
+
          User getUser = template.queryForObject("SELECT \"userId\", \"userName\" FROM \"Users\" WHERE \"userId\"='" + userId + "'", new UserMapper());
         return getUser;
     }
@@ -71,14 +73,24 @@ public class UserPostgresDao implements UserDao {
         if(userId == null){
             throw new InvalidUserIdException("User id can not be null!");
         }
+
+        if(this.getAllUsersById(userId) == null){
+            throw new InvalidUserIdException("User id can not be Invalid");
+        }
         int delete = template.update("DELETE FROM \"Users\" WHERE \"userId\" = ?;", userId);
         return delete;
     }
 
     @Override
-    public int updateUser(Integer userId, User user) throws InvalidUserIdException {
+    public int updateUser(Integer userId, User user) throws InvalidUserIdException, NullUserException, InvalidUserNameException {
         if(userId == null){
             throw new InvalidUserIdException("User id can not be null!");
+        }
+        if(user == null){
+            throw new NullUserException("User can not be null!");
+        }
+        if(user.getUserName() == null || user.getUserName().isEmpty() || user.getUserName().isBlank()){
+            throw new InvalidUserNameException("User name can not be invalid!");
         }
         int userUpdate = template.update("UPDATE \"Users\" " +
                 "SET \"userName\" =?\n" +

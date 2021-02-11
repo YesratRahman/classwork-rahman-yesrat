@@ -3,6 +3,7 @@ package com.tp.UserMoneyManager.controllers;
 import com.tp.UserMoneyManager.exceptions.InvalidUserIdException;
 import com.tp.UserMoneyManager.exceptions.InvalidUserNameException;
 
+import com.tp.UserMoneyManager.exceptions.NullUserException;
 import com.tp.UserMoneyManager.models.User;
 import com.tp.UserMoneyManager.services.MoneyManagerService;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +19,7 @@ public class UserController {
     MoneyManagerService service;
 
     @PostMapping("/user")
-    public ResponseEntity addUser(@RequestBody User toAdd) throws InvalidUserNameException {
+    public ResponseEntity addUser(@RequestBody User toAdd) throws InvalidUserNameException, NullUserException {
         User completed = service.addUser(toAdd);
         return ResponseEntity.ok(completed);
     }
@@ -50,7 +51,7 @@ public class UserController {
     public ResponseEntity updateUser(@PathVariable Integer userId, @RequestBody User user){
         try {
             return ResponseEntity.ok(service.updateUser(userId, user));
-        } catch (InvalidUserIdException e) {
+        } catch (InvalidUserIdException | NullUserException | InvalidUserNameException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }

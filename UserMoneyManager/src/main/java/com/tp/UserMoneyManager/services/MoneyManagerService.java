@@ -3,6 +3,7 @@ package com.tp.UserMoneyManager.services;
 import com.tp.UserMoneyManager.daos.UserDao;
 import com.tp.UserMoneyManager.exceptions.InvalidUserIdException;
 import com.tp.UserMoneyManager.exceptions.InvalidUserNameException;
+import com.tp.UserMoneyManager.exceptions.NullUserException;
 import com.tp.UserMoneyManager.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -18,10 +19,10 @@ public class MoneyManagerService {
         return userDao.getAllUsers();
     }
 
-    public User addUser(User toAdd) throws InvalidUserNameException {
+    public User addUser(User toAdd) throws InvalidUserNameException, NullUserException {
 
         if(toAdd == null){
-            throw new IllegalArgumentException("User can not be null!");
+            throw new NullUserException("User can not be null!");
         }
         return userDao.addUser(toAdd);
     }
@@ -42,7 +43,7 @@ public class MoneyManagerService {
     }
 
 
-    public int updateUser(Integer userId, User user) throws InvalidUserIdException {
+    public int updateUser(Integer userId, User user) throws InvalidUserIdException, NullUserException, InvalidUserNameException {
         if(userId == null){
             throw new InvalidUserIdException("User Id can not be null!");
         }

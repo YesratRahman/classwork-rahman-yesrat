@@ -17,37 +17,34 @@ public class IncomeService {
     IncomeDao incomeDao;
 
     public Income addIncome(Income toAdd) {
-        throw new UnsupportedOperationException();
 
+       return incomeDao.addIncome(toAdd);
     }
 
     public List<Income> getAllIncomes() {
-        throw new UnsupportedOperationException();
 
+        return incomeDao.getAllIncomes();
     }
 
     public Income getAllIncomeById(Integer incomeId) throws InvalidIncomeIdException {
-        throw new UnsupportedOperationException();
 
+        return incomeDao.getAllIncomeById();
     }
 
     public List<Income> getIncomeByAmount(Double incomeAmount) throws InvalidIncomeException {
-        throw new UnsupportedOperationException();
-
+        return incomeDao.getIncomeByAmount();
     }
 
     public List<Income> getIncomeByDate(Date earnedDate) throws InvalidIncomeException {
-        throw new UnsupportedOperationException();
-
+        return incomeDao.getIncomeByDate();
     }
 
     public int updateIncome(Integer incomeId, Income income) throws InvalidIncomeIdException {
-        throw new UnsupportedOperationException();
-
+        return incomeDao.updateIncome();
     }
 
     public int deleteIncome(Integer incomeId) throws InvalidIncomeIdException{
-        throw new UnsupportedOperationException();
+        return incomeDao.deleteIncome();
 
     }
 }

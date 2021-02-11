@@ -11,40 +11,37 @@ import java.util.Date;
 import java.util.List;
 
 @Component
-public class ExpenseService {
+public class ExpenseService  {
     @Autowired
     ExpenseDao expenseDao;
 
     public Expense addExpense(Expense toAdd) {
-        throw new UnsupportedOperationException();
+    return expenseDao.addExpense();
     }
 
     public List<Expense> getAllExpenses() {
-        throw new UnsupportedOperationException();
-    }
+        return expenseDao.getAllExpenses();     }
 
     public Expense getAllExpenseById(Integer expenseId) throws InvalidExpenseIdException {
-        throw new UnsupportedOperationException();
-
+        return expenseDao.getAllExpenseById();
     }
 
     public List<Expense> getExpenseByAmount(Double expenseAmount) throws InvalidExpenseException {
-        throw new UnsupportedOperationException();
-
+        return expenseDao.getExpenseByAmount();
     }
 
     public List<Expense> getExpenseByDate(Date spentDate) throws InvalidExpenseException {
-        throw new UnsupportedOperationException();
+        return expenseDao.getExpenseByDate();
 
     }
 
     public int updateExpense(Integer expenseId, Expense expense) throws InvalidExpenseIdException {
-        throw new UnsupportedOperationException();
+        return expenseDao.updateExpense();
 
     }
 
     public int deleteExpense(Integer expenseId) throws InvalidExpenseIdException{
-        throw new UnsupportedOperationException();
-
+        return expenseDao.deleteExpense();
     }
+
 }

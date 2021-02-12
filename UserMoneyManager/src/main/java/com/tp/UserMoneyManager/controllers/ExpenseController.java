@@ -59,7 +59,7 @@ public class ExpenseController {
     public ResponseEntity updateExpense(@PathVariable Integer expenseId, @RequestBody Expense expense){
         try {
             return ResponseEntity.ok(service.updateExpense(expenseId, expense));
-        } catch (InvalidExpenseIdException | InvalidExpenseException e) {
+        } catch (InvalidExpenseIdException | InvalidExpenseException | InvalidUserIdException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }

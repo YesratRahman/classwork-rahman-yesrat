@@ -19,7 +19,7 @@ public interface ExpenseDao {
 
     List<Expense> getExpenseByDate(LocalDate date) throws InvalidExpenseException;
 
-    int updateExpense(Integer expenseId, Expense expense);
+    int updateExpense(Integer expenseId, Expense expense) throws InvalidExpenseIdException, InvalidExpenseException, InvalidUserIdException;
 
     int deleteExpense();
 }

@@ -39,7 +39,7 @@ public class UserController {
     }
 
     @GetMapping("/user/userName/{userName}")
-    public ResponseEntity getUsersByUserName(@PathVariable String userName) throws InvalidUserNameException {
+    public ResponseEntity getUsersByUserName(@PathVariable String userName)  {
         try{
             return ResponseEntity.ok(service.getUsersByUserName(userName));
         }catch(InvalidUserNameException e){

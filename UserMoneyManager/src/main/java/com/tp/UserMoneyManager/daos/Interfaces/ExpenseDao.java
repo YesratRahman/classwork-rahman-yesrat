@@ -1,4 +1,4 @@
-package com.tp.UserMoneyManager.daos;
+package com.tp.UserMoneyManager.daos.Interfaces;
 
 import com.tp.UserMoneyManager.exceptions.InvalidExpenseException;
 import com.tp.UserMoneyManager.exceptions.InvalidExpenseIdException;
@@ -19,7 +19,7 @@ public interface ExpenseDao {
 
     List<Expense> getExpenseByDate(LocalDate date) throws InvalidExpenseException;
 
-    int updateExpense();
+    int updateExpense(Integer expenseId, Expense expense);
 
     int deleteExpense();
 }

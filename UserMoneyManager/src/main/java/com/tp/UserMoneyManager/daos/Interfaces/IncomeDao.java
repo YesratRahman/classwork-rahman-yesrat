@@ -1,4 +1,4 @@
-package com.tp.UserMoneyManager.daos;
+package com.tp.UserMoneyManager.daos.Interfaces;
 
 
 import com.tp.UserMoneyManager.models.Income;

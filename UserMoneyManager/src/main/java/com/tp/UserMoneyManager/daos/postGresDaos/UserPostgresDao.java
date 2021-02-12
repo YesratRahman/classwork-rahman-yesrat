@@ -1,5 +1,6 @@
-package com.tp.UserMoneyManager.daos;
+package com.tp.UserMoneyManager.daos.postGresDaos;
 
+import com.tp.UserMoneyManager.daos.Interfaces.UserDao;
 import com.tp.UserMoneyManager.daos.mappers.IntegerMapper;
 import com.tp.UserMoneyManager.daos.mappers.UserMapper;
 import com.tp.UserMoneyManager.exceptions.InvalidUserIdException;
@@ -23,9 +24,6 @@ public class UserPostgresDao implements UserDao {
     public User addUser(User toAdd) throws NullUserException, InvalidUserNameException {
         if(toAdd == null ){
             throw new NullUserException("User can not be null!");
-        }
-        if(toAdd.getUserName() == null || toAdd.getUserName().isEmpty() || toAdd.getUserName().isBlank()){
-            throw new InvalidUserNameException("User name can not be Invalid");
         }
 
         Integer userId= template.queryForObject("INSERT INTO \"Users\" (\"userName\") \n" +
@@ -67,8 +65,8 @@ public class UserPostgresDao implements UserDao {
 
     @Override
     public List<User> getUsersByUserName(String userName) throws InvalidUserNameException {
-        if(userName == null || userName.isEmpty() || userName.isBlank()){
-            throw new InvalidUserNameException("User name can not be Invalid");
+        if(userName == null){
+            throw new InvalidUserNameException("User name can not be null");
         }
         List<User> users = template.query(
                 "SELECT \"userId\", \"userName\" FROM \"Users\" WHERE \"userName\" = ?;",
@@ -96,16 +94,14 @@ public class UserPostgresDao implements UserDao {
     }
 
     @Override
-    public int updateUser(Integer userId, User user) throws InvalidUserIdException, NullUserException, InvalidUserNameException {
+    public int updateUser(Integer userId, User user) throws InvalidUserIdException, NullUserException {
         if(userId == null){
             throw new InvalidUserIdException("User id can not be null!");
         }
         if(user == null){
             throw new NullUserException("User can not be null!");
         }
-        if(user.getUserName() == null || user.getUserName().isEmpty() || user.getUserName().isBlank()){
-            throw new InvalidUserNameException("User name can not be invalid!");
-        }
+
         int userUpdate = template.update("UPDATE \"Users\" " +
                 "SET \"userName\" =?\n" +
                 "WHERE \"userId\" = ?;",

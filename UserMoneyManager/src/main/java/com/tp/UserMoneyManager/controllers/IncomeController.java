@@ -3,10 +3,11 @@ package com.tp.UserMoneyManager.controllers;
 import com.tp.UserMoneyManager.exceptions.InvalidIncomeException;
 import com.tp.UserMoneyManager.exceptions.InvalidIncomeIdException;
 import com.tp.UserMoneyManager.models.Income;
-import com.tp.UserMoneyManager.services.IncomeService;
+import com.tp.UserMoneyManager.services.MoneyManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.Date;
 import java.util.List;
 
@@ -15,7 +16,7 @@ import java.util.List;
 public class IncomeController {
 
     @Autowired
-    IncomeService service;
+    MoneyManagerService service;
 
     @PostMapping("/income")
     public ResponseEntity addIncome(@RequestBody Income toAdd){

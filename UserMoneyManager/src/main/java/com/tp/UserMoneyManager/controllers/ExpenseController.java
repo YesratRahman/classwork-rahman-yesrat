@@ -4,8 +4,9 @@ import com.tp.UserMoneyManager.exceptions.InvalidExpenseException;
 import com.tp.UserMoneyManager.exceptions.InvalidExpenseIdException;
 import com.tp.UserMoneyManager.exceptions.InvalidUserIdException;
 import com.tp.UserMoneyManager.models.Expense;
-import com.tp.UserMoneyManager.services.ExpenseService;
+import com.tp.UserMoneyManager.services.MoneyManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +18,7 @@ import java.util.List;
 @RequestMapping("/api")
 public class ExpenseController {
     @Autowired
-    ExpenseService service;
+    MoneyManagerService service;
 
     @PostMapping("/expense")
     public ResponseEntity addExpense(@RequestBody Expense toAdd) {
@@ -46,7 +47,7 @@ public class ExpenseController {
     }
 
     @GetMapping("/expense/date/{spentDate}")
-    public ResponseEntity getExpenseByDate(@PathVariable LocalDate spentDate) {
+    public ResponseEntity getExpenseByDate(@DateTimeFormat(pattern = "yyyy-MM-dd") @PathVariable LocalDate spentDate){
         try{
             return ResponseEntity.ok(service.getExpenseByDate(spentDate));
         }catch(InvalidExpenseException e){

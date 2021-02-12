@@ -1,5 +1,6 @@
-package com.tp.UserMoneyManager.daos;
+package com.tp.UserMoneyManager.daos.postGresDaos;
 
+import com.tp.UserMoneyManager.daos.Interfaces.ExpenseDao;
 import com.tp.UserMoneyManager.daos.mappers.ExpenseMapper;
 import com.tp.UserMoneyManager.daos.mappers.IntegerMapper;
 import com.tp.UserMoneyManager.exceptions.InvalidExpenseException;
@@ -27,28 +28,6 @@ public class ExpensePostgresDao implements ExpenseDao {
         if(toAdd == null){
             throw new InvalidExpenseException("Expense can not be null");
         }
-        if(toAdd.getExpenseAmount() == null){
-            throw new InvalidExpenseException("Expense amount can not be null!");
-        }
-
-
-        if(toAdd.getSpentDate() == null){
-            throw new InvalidExpenseException("Spent date can not be null");
-        }
-
-        int currentDate = LocalDate.now().getYear();
-        if(toAdd.getSpentDate().getYear() > currentDate) {
-            throw new InvalidExpenseException("Date can not be a future date");
-        }
-
-        if(toAdd.getDescription() == null || toAdd.getDescription().isBlank() || toAdd.getDescription().isEmpty())
-        {
-            throw new InvalidExpenseException("Expense description can not be null, empty or blank");
-        }
-        if(toAdd.getUserId() == null){
-            throw new InvalidUserIdException("User id can not be null!");
-        }
-
 
         List<Integer> expenseId;
         int userCount = template.queryForObject("select count(*) from \"Users\" Where \"userId\" = '" + toAdd.getUserId() + "'", new IntegerMapper("count"));
@@ -108,22 +87,30 @@ public class ExpensePostgresDao implements ExpenseDao {
 
 
     @Override
-    public List<Expense> getExpenseByDate(LocalDate date) throws InvalidExpenseException{
+    public List<Expense> getExpenseByDate(LocalDate date) throws InvalidExpenseException {
 
         if(date == null){
             throw new InvalidExpenseException("Spent date can not be null");
         }
 
-        int currentDate = LocalDate.now().getYear();
-        if(date.getYear() > currentDate) {
-            throw new InvalidExpenseException("Date can not be a future date");
-        }
+        int dateCount = template.queryForObject("select count(*) from \"Expenses\" Where \"spentDate\" = '" + date + "'", new IntegerMapper("count"));
 
-        return null;
+        List<Expense> expenses;
+        if(dateCount == 1) {
+            expenses = template.query(
+                    "select \"expenseId\", \"expenseAmount\", \"description\", \"spentDate\" , \"userId\"" +
+                            "from \"Expenses\" " +
+                            "where \"spentDate\" = ?;\n",
+                    new ExpenseMapper(), date);
+        }
+            else{
+                throw new InvalidExpenseException("No expense is found for this date");
+            }
+        return expenses;
     }
 
     @Override
-    public int updateExpense() {
+    public int updateExpense(Integer expenseId, Expense expense) {
         return 0;
     }
 

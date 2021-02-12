@@ -1,5 +1,6 @@
-package com.tp.UserMoneyManager.daos;
+package com.tp.UserMoneyManager.daos.postGresDaos;
 
+import com.tp.UserMoneyManager.daos.Interfaces.IncomeDao;
 import com.tp.UserMoneyManager.models.Income;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;

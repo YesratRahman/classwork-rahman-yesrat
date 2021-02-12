@@ -55,7 +55,7 @@ public class ExpenseController {
         }
     }
 
-    @PutMapping("/update/{expenseId}")
+    @PutMapping("/expense/update/{expenseId}")
     public ResponseEntity updateExpense(@PathVariable Integer expenseId, @RequestBody Expense expense){
         try {
             return ResponseEntity.ok(service.updateExpense(expenseId, expense));
@@ -64,7 +64,7 @@ public class ExpenseController {
         }
     }
 
-    @DeleteMapping("/delete/{expenseId}")
+    @DeleteMapping("/expense/delete/{expenseId}")
     public String deleteExpense(@PathVariable Integer expenseId){
         try{
             service.deleteExpense(expenseId);

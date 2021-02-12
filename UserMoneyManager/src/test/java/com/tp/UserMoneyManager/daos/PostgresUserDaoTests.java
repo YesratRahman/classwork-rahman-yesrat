@@ -31,7 +31,7 @@ public class PostgresUserDaoTests {
 
     @BeforeEach
     public void setUp(){
-        template.update("TRUNCATE \"IncomeReports\", \"ExpenseReports\", \"Reports\", \"Expenses\", \"Incomes\", \"Jobs\", \"Users\" RESTART IDENTITY; \n");
+        template.update("TRUNCATE \"IncomeReports\", \"ExpenseReports\", \"Reports\", \"Expenses\", \"Incomes\", \"Users\" RESTART IDENTITY; \n");
         template.update("INSERT INTO \"Users\" (\"userName\") VALUES ('Yesrat')");
 
     }

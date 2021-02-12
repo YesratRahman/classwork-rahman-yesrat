@@ -1,6 +1,8 @@
 import org.w3c.dom.Node;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 public class NodeRelatedProblem {
@@ -16,7 +18,54 @@ public class NodeRelatedProblem {
         System.out.println(countNodes(root));
     }
 
-    //https://leetcode.com/problems/count-complete-tree-nodes/
+    class Node {
+        public int val;
+        public List<Node> children;
+
+        public Node() {}
+
+        public Node(int _val) {
+            val = _val;
+        }
+
+        public Node(int _val, List<Node> _children) {
+            val = _val;
+            children = _children;
+        }
+    }
+
+    //https://leetcode.com/problems/maximum-depth-of-n-ary-tree/
+    public static int maxDepth(Node root) {
+        int depth = 0;
+        if (root == null) return 0;
+        for (Node childNode: root.children) {
+                depth = Math.max(depth, maxDepth(childNode)); //depth get the highest of all the child subtree
+        }
+        return depth + 1; //return the depth based on the root of current root
+
+    }
+
+    //Eliot's version
+    public static int maxDepth2(Node root) {
+        if(root == null)return 0;
+    List<Integer> maxDepths = new ArrayList<>();
+    maxDepthHelper(root, maxDepths, 0);
+    return maxDepths.stream().max(Integer::compare).get();
+    }
+    public static void maxDepthHelper(Node root, List<Integer> maxDepths, int depth){
+        depth++;
+        if(root.children.size() == 0){
+            maxDepths.add(depth);
+        }
+        else {
+            for(Node node : root.children){
+                maxDepthHelper(node, maxDepths, depth);
+            }
+        }
+    }
+
+
+        //https://leetcode.com/problems/count-complete-tree-nodes/
     //Recursive
     public static int countNodes(TreeNode root) {
         int count = 1 ; //already have the root, then go to the left and right side
@@ -119,4 +168,6 @@ class TreeNode {
         this.left = left;
         this.right = right;
     }
+
 }
+

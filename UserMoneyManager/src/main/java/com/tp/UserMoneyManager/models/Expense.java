@@ -8,14 +8,12 @@ public class Expense {
     String description;
     Date spentDate;
     Integer userId;
-    Integer jobId;
 
     public Expense(){
 
     }
     public Expense(Integer expenseId, Integer jobId, Integer userId, Double expenseAmount, String description, Date spentDate){
         this.expenseId = expenseId;
-        this.jobId = jobId;
         this.userId = userId;
         this.expenseAmount = expenseAmount;
         this.description = description;
@@ -63,11 +61,4 @@ public class Expense {
         this.userId = userId;
     }
 
-    public Integer getJobId() {
-        return jobId;
-    }
-
-    public void setJobId(Integer jobId) {
-        this.jobId = jobId;
-    }
 }

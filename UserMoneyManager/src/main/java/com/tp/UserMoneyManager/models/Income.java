@@ -13,11 +13,19 @@ public class Income {
 
     }
 
-    public Income(Integer incomeId, Integer jobId, Integer userId, Double incomeAmount, String description, Date earnedDate) {
+    public Income(Integer incomeId, Integer userId, Double incomeAmount, String description, Date earnedDate) {
         this.incomeId = incomeId;
         this.userId = userId;
         this.incomeAmount = incomeAmount;
         this.description = description;
+        this.earnedDate = earnedDate;
+    }
+
+    public Date getEarnedDate() {
+        return earnedDate;
+    }
+
+    public void setEarnedDate(Date earnedDate) {
         this.earnedDate = earnedDate;
     }
 
@@ -53,12 +61,6 @@ public class Income {
         this.description = description;
     }
 
-    public Date getDate() {
-        return earnedDate;
-    }
 
-    public void setDate(Date date) {
-        this.earnedDate = date;
-    }
 
 }

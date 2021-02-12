@@ -51,17 +51,13 @@ public class UserPostgresDao implements UserDao {
             throw new InvalidUserIdException("User id can not be null!");
         }
 
-        boolean newId = false;
-        for(int i = 0; i < getAllUsers().size(); i++){
-            if(getAllUsers().get(i).getUserId() == userId){
-                newId = true;
-            }
-        }
         User getUser;
-        if(newId) {
-             getUser = template.queryForObject("SELECT \"userId\", \"userName\" FROM \"Users\" WHERE \"userId\"='" + userId + "'", new UserMapper());
-        }
-        else {
+       int userCount = template.queryForObject("select count(*) from \"Users\" Where \"userId\" = '" + userId + "'", new IntegerMapper("count"));
+       if(userCount == 1 ) {
+           getUser = template.queryForObject("SELECT \"userId\", \"userName\" FROM \"Users\" WHERE \"userId\"='" + userId + "'", new UserMapper());
+       }
+       else {
+
             throw new InvalidUserIdException("User id does not exist or invalid");
         }
 
@@ -87,15 +83,10 @@ public class UserPostgresDao implements UserDao {
             throw new InvalidUserIdException("User id can not be null!");
         }
 
-        boolean newId = false;
-        for(int i = 0; i < getAllUsers().size(); i++){
-            if(getAllUsers().get(i).getUserId() == userId){
-                newId = true;
-            }
-        }
-
         int delete;
-        if (newId) {
+        int userCount = template.queryForObject("select count(*) from \"Users\" Where \"userId\" = '" + userId + "'", new IntegerMapper("count"));
+
+        if (userCount == 1) {
             delete = template.update("DELETE FROM \"Users\" WHERE \"userId\" = ?;", userId);
         }
         else {

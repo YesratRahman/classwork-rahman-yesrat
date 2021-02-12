@@ -2,13 +2,15 @@ package com.tp.UserMoneyManager.controllers;
 
 import com.tp.UserMoneyManager.exceptions.InvalidExpenseException;
 import com.tp.UserMoneyManager.exceptions.InvalidExpenseIdException;
+import com.tp.UserMoneyManager.exceptions.InvalidUserIdException;
 import com.tp.UserMoneyManager.models.Expense;
 import com.tp.UserMoneyManager.services.ExpenseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -18,9 +20,15 @@ public class ExpenseController {
     ExpenseService service;
 
     @PostMapping("/expense")
-    public ResponseEntity addExpense(@RequestBody Expense toAdd){
-        Expense completed = service.addExpense(toAdd);
-        return ResponseEntity.ok(completed);
+    public ResponseEntity addExpense(@RequestBody Expense toAdd) {
+        Expense toReturn = null;
+        try{
+            toReturn = service.addExpense(toAdd);
+        }catch(InvalidExpenseException|  InvalidExpenseIdException|  InvalidUserIdException e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+        return ResponseEntity.ok(toReturn);
+
     }
 
     @GetMapping("/expenses")
@@ -37,17 +45,8 @@ public class ExpenseController {
         }
     }
 
-    @GetMapping("/expense/amount/{expenseAmount}")
-    public ResponseEntity getExpenseByAmount(@PathVariable Double expenseAmount) {
-        try{
-            return ResponseEntity.ok(service.getExpenseByAmount(expenseAmount));
-        }catch(InvalidExpenseException e){
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
-    }
-
     @GetMapping("/expense/date/{spentDate}")
-    public ResponseEntity getExpenseByDate(@PathVariable Date spentDate) {
+    public ResponseEntity getExpenseByDate(@PathVariable LocalDate spentDate) {
         try{
             return ResponseEntity.ok(service.getExpenseByDate(spentDate));
         }catch(InvalidExpenseException e){
@@ -59,7 +58,7 @@ public class ExpenseController {
     public ResponseEntity updateExpense(@PathVariable Integer expenseId, @RequestBody Expense expense){
         try {
             return ResponseEntity.ok(service.updateExpense(expenseId, expense));
-        } catch (InvalidExpenseIdException e) {
+        } catch (InvalidExpenseIdException | InvalidExpenseException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
@@ -73,4 +72,14 @@ public class ExpenseController {
             return e.getMessage();
         }
     }
+
+    //    @GetMapping("/expense/amount/{expenseAmount}")
+//    public ResponseEntity getExpenseByAmount(@PathVariable Double expenseAmount) {
+//        try{
+//            return ResponseEntity.ok(service.getExpenseByAmount(expenseAmount));
+//        }catch(InvalidExpenseException e){
+//            return ResponseEntity.badRequest().body(e.getMessage());
+//        }
+//    }
+
 }

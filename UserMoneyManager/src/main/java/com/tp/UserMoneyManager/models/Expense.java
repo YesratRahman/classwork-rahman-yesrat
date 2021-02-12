@@ -1,24 +1,23 @@
 package com.tp.UserMoneyManager.models;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Expense {
     Integer expenseId;
     Double expenseAmount;
     String description;
-    Date spentDate;
+    LocalDate spentDate;
     Integer userId;
 
     public Expense(){
 
     }
-    public Expense(Integer expenseId, Integer jobId, Integer userId, Double expenseAmount, String description, Date spentDate){
+    public Expense(Integer expenseId, Integer userId, Double expenseAmount, String description, LocalDate spentDate){
         this.expenseId = expenseId;
         this.userId = userId;
         this.expenseAmount = expenseAmount;
         this.description = description;
         this.spentDate = spentDate;
-
     }
 
     public Integer getExpenseId() {
@@ -45,11 +44,11 @@ public class Expense {
         this.description = description;
     }
 
-    public Date getSpentDate() {
+    public LocalDate getSpentDate() {
         return spentDate;
     }
 
-    public void setSpentDate(Date spentDate) {
+    public void setSpentDate(LocalDate spentDate) {
         this.spentDate = spentDate;
     }
 

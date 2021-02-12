@@ -10,9 +10,11 @@ public class ExpenseMapper implements RowMapper<Expense> {
     @Override
     public Expense mapRow(ResultSet resultSet, int i) throws SQLException {
         Expense mappedExpense = new Expense();
+        mappedExpense.setExpenseId(resultSet.getInt("expenseId"));
+        mappedExpense.setExpenseAmount(resultSet.getDouble("expenseAmount"));
+        mappedExpense.setSpentDate(resultSet.getDate("spentDate").toLocalDate());
+        mappedExpense.setDescription(resultSet.getString("description"));
         mappedExpense.setUserId(resultSet.getInt("userId"));
-       // mappedUser.setUserName(resultSet.getString("userName"));
-
         return mappedExpense;
     }
 }

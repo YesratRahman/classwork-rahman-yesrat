@@ -152,8 +152,11 @@ public class ExpensePostgresDao implements ExpenseDao {
         }
 
     @Override
-    public int getExpenseReport(Expense expense) throws InvalidExpenseIdException {
+    public int getExpenseReport(Expense expense) throws InvalidUserIdException, InvalidExpenseException {
 
+        if(expense == null){
+            throw new InvalidExpenseException("Expense object can not be null!");
+        }
         int userCount = template.queryForObject("select count(*) from \"Users\" Where \"userId\" = '" + expense.getUserId() + "'", new IntegerMapper("count"));
 
         int getTotalExpense;
@@ -161,7 +164,7 @@ public class ExpensePostgresDao implements ExpenseDao {
             getTotalExpense = template.queryForObject(
                     "SELECT sum(\"expenseAmount\") as \"totalExpense\" FROM \"Expenses\" WHERE \"userId\" = '" + expense.getUserId() +"'",  new IntegerMapper("totalExpense"));
         } else {
-            throw new InvalidExpenseIdException("Expense id does not exist");
+            throw new InvalidUserIdException("The user you are trying to get the total expense, does not exist.");
         }
         return getTotalExpense;
     }

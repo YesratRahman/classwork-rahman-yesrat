@@ -77,7 +77,7 @@ public class ExpenseController {
         try {
             return ResponseEntity.ok(service.getExpenseReport(expense));
         }
-        catch (InvalidExpenseIdException e){
+        catch (InvalidUserIdException | InvalidExpenseException e){
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }

@@ -22,4 +22,6 @@ public interface IncomeDao {
     int updateIncome(Integer incomeId, Income income) throws InvalidIncomeIdException, InvalidIncomeException, InvalidUserIdException;
 
     int deleteIncome(Integer incomeId) throws InvalidIncomeIdException;
+    int getIncomeReport(Income income) throws InvalidIncomeException, InvalidUserIdException;
+
 }

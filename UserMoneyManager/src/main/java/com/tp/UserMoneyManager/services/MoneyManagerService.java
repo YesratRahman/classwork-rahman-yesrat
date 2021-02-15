@@ -268,12 +268,18 @@ public class MoneyManagerService {
 
     }
 
-    public Income getIncomeReport() throws InvalidIncomeException{
-        throw new UnsupportedOperationException();
+
+    public int getExpenseReport(Expense expense) throws InvalidUserIdException, InvalidExpenseException {
+        if(expense == null){
+            throw new InvalidExpenseException("Expense object can not be null!");
+        }
+        return expenseDao.getExpenseReport(expense);
     }
 
-    public int getExpenseReport(Expense expenseId) throws InvalidExpenseIdException{
-
-        return expenseDao.getExpenseReport(expenseId);
+    public int getIncomeReport(Income income) throws InvalidUserIdException, InvalidIncomeException {
+        if(income == null){
+            throw new InvalidIncomeException("Income object can not be null!");
+        }
+        return incomeDao.getIncomeReport(income);
     }
 }

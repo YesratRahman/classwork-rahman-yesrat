@@ -80,11 +80,11 @@ public class IncomeController {
     }
 
     @GetMapping("income/report")
-    public ResponseEntity getIncomeReport(){
+    public ResponseEntity getIncomeReport(@RequestBody Income income){
         try {
-            return ResponseEntity.ok(service.getIncomeReport());
+            return ResponseEntity.ok(service.getIncomeReport(income));
         }
-        catch (InvalidIncomeException e){
+        catch (InvalidUserIdException | InvalidIncomeException e){
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }

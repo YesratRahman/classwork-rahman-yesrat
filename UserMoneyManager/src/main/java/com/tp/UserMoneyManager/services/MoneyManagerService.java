@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 @Component
@@ -166,7 +165,7 @@ public class MoneyManagerService {
         if(expenseId == null){
             throw new InvalidExpenseIdException("Expense Id can not be null");
         }
-        return expenseDao.deleteExpense();
+        return expenseDao.deleteExpense(expenseId);
     }
 
     //    public List<Expense> getExpenseByAmount(Double expenseAmount) throws InvalidExpenseException {
@@ -176,7 +175,33 @@ public class MoneyManagerService {
     //        return expenseDao.getExpenseByAmount();
     //    }
 
-    public Income addIncome(Income toAdd) {
+    public Income addIncome(Income toAdd) throws InvalidIncomeException, InvalidUserIdException {
+        if(toAdd == null){
+            throw new InvalidIncomeException("Income can not be null!");
+        }
+
+        if(toAdd.getIncomeAmount() == null){
+            throw new InvalidIncomeException("Income amount can not be null!");
+        }
+
+
+        if(toAdd.getEarnedDate() == null){
+            throw new InvalidIncomeException("Earned date can not be null");
+        }
+
+        int currentDate = LocalDate.now().getYear();
+        if(toAdd.getEarnedDate().getYear() > currentDate) {
+            throw new InvalidIncomeException("Date can not be a future date");
+        }
+
+        if(toAdd.getDescription() == null || toAdd.getDescription().isBlank() || toAdd.getDescription().isEmpty())
+        {
+            throw new InvalidIncomeException("Income description can not be null, empty or blank");
+        }
+        if(toAdd.getUserId() == null){
+            throw new InvalidUserIdException("User id can not be null!");
+        }
+
 
         return incomeDao.addIncome(toAdd);
     }
@@ -187,19 +212,52 @@ public class MoneyManagerService {
     }
 
     public Income getAllIncomeById(Integer incomeId) throws InvalidIncomeIdException {
-
+        if(incomeId == null){
+            throw new InvalidIncomeIdException("Income Id can not be null!");
+        }
         return incomeDao.getAllIncomeById();
     }
 
-    public List<Income> getIncomeByAmount(Double incomeAmount) throws InvalidIncomeException {
-        return incomeDao.getIncomeByAmount();
-    }
+//    public List<Income> getIncomeByAmount(Double incomeAmount) throws InvalidIncomeException {
+//        return incomeDao.getIncomeByAmount();
+//    }
 
-    public List<Income> getIncomeByDate(Date earnedDate) throws InvalidIncomeException {
+    public List<Income> getIncomeByDate(LocalDate earnedDate) throws InvalidIncomeException {
+        if(earnedDate == null){
+            throw new InvalidIncomeException("Date can not be null");
+        }
+
+        int currentDate = LocalDate.now().getYear();
+        if(earnedDate.getYear() > currentDate) {
+            throw new InvalidIncomeException("Date can not be a future date");
+        }
+
         return incomeDao.getIncomeByDate();
     }
 
-    public int updateIncome(Integer incomeId, Income income) throws InvalidIncomeIdException {
+    public int updateIncome(Integer incomeId, Income income) throws InvalidIncomeIdException, InvalidIncomeException {
+        if(incomeId == null){
+            throw new InvalidIncomeIdException("Income Id can not be null");
+        }
+        if(income == null){
+            throw new InvalidIncomeException("Income object can not be null!");
+        }
+        if(income.getIncomeAmount() == null){
+            throw new InvalidIncomeException("Income amount can not be null.");
+        }
+        if(income.getEarnedDate() == null){
+            throw new InvalidIncomeException("Date can not be null.");
+        }
+        if(income.getDescription() == null || income.getDescription().isEmpty()||income.getDescription().isBlank()){
+            throw new InvalidIncomeException("Income description can not be null.");
+        }
+
+        int currentDate = LocalDate.now().getYear();
+        if(income.getEarnedDate().getYear() > currentDate) {
+            throw new InvalidIncomeException("Date can not be a future date");
+        }
+
+
         return incomeDao.updateIncome();
     }
 

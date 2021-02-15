@@ -21,5 +21,5 @@ public interface ExpenseDao {
 
     int updateExpense(Integer expenseId, Expense expense) throws InvalidExpenseIdException, InvalidExpenseException, InvalidUserIdException;
 
-    int deleteExpense();
+    int deleteExpense(Integer expenseId) throws InvalidExpenseIdException;
 }

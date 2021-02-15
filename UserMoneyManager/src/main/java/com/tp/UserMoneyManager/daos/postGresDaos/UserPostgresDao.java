@@ -75,23 +75,6 @@ public class UserPostgresDao implements UserDao {
         return users;
     }
 
-    @Override
-    public int deleteUser(Integer userId) throws InvalidUserIdException {
-        if(userId == null){
-            throw new InvalidUserIdException("User id can not be null!");
-        }
-
-        int delete;
-        int userCount = template.queryForObject("select count(*) from \"Users\" Where \"userId\" = '" + userId + "'", new IntegerMapper("count"));
-
-        if (userCount == 1) {
-            delete = template.update("DELETE FROM \"Users\" WHERE \"userId\" = ?;", userId);
-        }
-        else {
-            throw new InvalidUserIdException("User with this id does not exist or was deleted");
-        }
-        return delete;
-    }
 
     @Override
     public int updateUser(Integer userId, User user) throws InvalidUserIdException, NullUserException {
@@ -109,5 +92,22 @@ public class UserPostgresDao implements UserDao {
             return userUpdate;
     }
 
+    @Override
+    public int deleteUser(Integer userId) throws InvalidUserIdException {
+        if(userId == null){
+            throw new InvalidUserIdException("User id can not be null!");
+        }
+
+        int delete;
+        int userCount = template.queryForObject("select count(*) from \"Users\" Where \"userId\" = '" + userId + "'", new IntegerMapper("count"));
+
+        if (userCount == 1) {
+            delete = template.update("DELETE FROM \"Users\" WHERE \"userId\" = ?;", userId);
+        }
+        else {
+            throw new InvalidUserIdException("User with this id does not exist or was deleted");
+        }
+        return delete;
+    }
 
 }

@@ -116,29 +116,52 @@ public class ExpensePostgresDao implements ExpenseDao {
         }
 
         int updatedExpense;
-//        int userCount = template.queryForObject("select count(*) from \"Expenses\" Where \"userId\" = '" + expense.getUserId() + "'", new IntegerMapper("count"));
-//
-//        if (userCount == 1) {
-            updatedExpense = template.update("Update \"Expenses\" " +
-                            "Set \"expenseAmount\"= '" + expense.getExpenseAmount() + "', \"spentDate\"= '" + expense.getSpentDate() + "', \"description\"= '" + expense.getDescription() + "' " +
-                            "Where \"expenseId\" = '" + expenseId + "'\n");
-//        }
-//        else {
-//            throw new InvalidUserIdException("The user whose expense tried to be updated, doesn't exist.");
-//        }
+        int userCount = template.queryForObject("select count(*) from \"Expenses\" Where \"userId\" = '" + expense.getUserId() + "'", new IntegerMapper("count"));
 
-//        updatedExpense = template.update(
-//                "Update \"Expenses\" Set \"expenseAmount\"=?, \"spentDate\"='2021-01-02', \"description\"='Gift' Where \"expenseId\" = 1\n")
-        return updatedExpense;
-    }
+//            updatedExpense = template.update("Update \"Expenses\" " +
+//                            "Set \"expenseAmount\"= '" + expense.getExpenseAmount() + "', \"spentDate\"= '" + expense.getSpentDate() + "', \"description\"= '" + expense.getDescription() + "' " +
+//                            "Where \"expenseId\" = '" + expenseId + "'\n");
+
+        if (userCount == 1) {
+            updatedExpense = template.update(
+                    "Update \"Expenses\" " +
+                            "Set \"expenseAmount\"=?," +
+                            " \"spentDate\"=?, " +
+                            "\"description\"=? " +
+                            "Where \"expenseId\" =?; \n",
+                    expense.getExpenseAmount(), expense.getSpentDate(), expense.getDescription(), expenseId);
+        } else {
+            throw new InvalidUserIdException("The user whose expense tried to be updated, doesn't exist.");
+       }
+            return updatedExpense;
+        }
 
         @Override
-        public int deleteExpense () {
-            return 0;
+        public int deleteExpense (Integer expenseId) throws InvalidExpenseIdException {
+            if(expenseId == null){
+                throw new InvalidExpenseIdException("Expense id can not be null!");
+            }
+
+            int delete;
+            int expenseCount = template.queryForObject(
+                    "select count(*) from \"Expenses\" Where \"expenseId\" = '" + expenseId + "'", new IntegerMapper("count"));
+
+            if (expenseCount == 1) {
+                delete = template.update("DELETE FROM \"Expenses\" WHERE \"expenseId\" = ?;", expenseId);
+            }
+            else {
+                throw new InvalidExpenseIdException("Expense with this id does not exist or was deleted");
+            }
+            return delete;
         }
+}
+
+
+
+
 
         //    @Override
         //    public List<Expense> getExpenseByAmount() {
         //        return null;
         //    }
-    }
+

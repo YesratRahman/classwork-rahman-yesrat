@@ -1,19 +1,19 @@
 package com.tp.UserMoneyManager.models;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Income {
     Integer incomeId;
     Integer userId;
     Double incomeAmount;
     String description;
-    Date earnedDate;
+    LocalDate earnedDate;
 
     public Income(){
 
     }
 
-    public Income(Integer incomeId, Integer userId, Double incomeAmount, String description, Date earnedDate) {
+    public Income(Integer incomeId, Integer userId, Double incomeAmount, String description, LocalDate earnedDate) {
         this.incomeId = incomeId;
         this.userId = userId;
         this.incomeAmount = incomeAmount;
@@ -21,11 +21,11 @@ public class Income {
         this.earnedDate = earnedDate;
     }
 
-    public Date getEarnedDate() {
+    public LocalDate getEarnedDate() {
         return earnedDate;
     }
 
-    public void setEarnedDate(Date earnedDate) {
+    public void setEarnedDate(LocalDate earnedDate) {
         this.earnedDate = earnedDate;
     }
 

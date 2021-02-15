@@ -1,21 +1,25 @@
 package com.tp.UserMoneyManager.daos.Interfaces;
 
 
+import com.tp.UserMoneyManager.exceptions.InvalidIncomeException;
+import com.tp.UserMoneyManager.exceptions.InvalidIncomeIdException;
+import com.tp.UserMoneyManager.exceptions.InvalidUserIdException;
 import com.tp.UserMoneyManager.models.Income;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface IncomeDao {
 
-    Income addIncome(Income toAdd);
+    Income addIncome(Income toAdd) throws InvalidIncomeException, InvalidIncomeIdException, InvalidUserIdException;
     List<Income> getAllIncomes();
-    Income getAllIncomeById();
+    Income getAllIncomeById(Integer incomeId) throws InvalidIncomeIdException;
 
-    List<Income> getIncomeByAmount();
+    //List<Income> getIncomeByAmount();
 
-    List<Income> getIncomeByDate();
+    List<Income> getIncomeByDate(LocalDate date) throws InvalidIncomeException;
 
-    int updateIncome();
+    int updateIncome(Integer incomeId, Income income) throws InvalidIncomeIdException, InvalidIncomeException, InvalidUserIdException;
 
-    int deleteIncome();
+    int deleteIncome(Integer incomeId) throws InvalidIncomeIdException;
 }

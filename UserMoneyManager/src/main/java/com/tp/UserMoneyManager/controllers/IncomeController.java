@@ -6,6 +6,7 @@ import com.tp.UserMoneyManager.exceptions.InvalidUserIdException;
 import com.tp.UserMoneyManager.models.Income;
 import com.tp.UserMoneyManager.services.MoneyManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +21,7 @@ public class IncomeController {
     MoneyManagerService service;
 
     @PostMapping("/income")
-    public ResponseEntity addIncome(@RequestBody Income toAdd) throws InvalidUserIdException, InvalidIncomeException {
+    public ResponseEntity addIncome(@RequestBody Income toAdd) throws InvalidUserIdException, InvalidIncomeException, InvalidIncomeIdException {
         Income completed = service.addIncome(toAdd);
         return ResponseEntity.ok(completed);
     }
@@ -51,30 +52,40 @@ public class IncomeController {
 //    }
 
     @GetMapping("/income/date/{earnedDate}")
-    public ResponseEntity getIncomeByDate(@PathVariable LocalDate earnedDate) {
-        try{
+    public ResponseEntity getIncomeByDate(@DateTimeFormat(pattern = "yyyy-MM-dd") @PathVariable LocalDate earnedDate) {
+            try{
             return ResponseEntity.ok(service.getIncomeByDate(earnedDate));
         }catch(InvalidIncomeException e){
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 
-    @PutMapping("/update/{incomeId}")
+    @PutMapping("/update/income/{incomeId}")
     public ResponseEntity updateIncome(@PathVariable Integer incomeId, @RequestBody Income income){
         try {
             return ResponseEntity.ok(service.updateIncome(incomeId, income));
-        } catch (InvalidIncomeIdException | InvalidIncomeException e) {
+        } catch (InvalidIncomeIdException | InvalidIncomeException | InvalidUserIdException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 
-    @DeleteMapping("/delete/{incomeId}")
+    @DeleteMapping("/delete/income/{incomeId}")
     public String deleteIncome(@PathVariable Integer incomeId){
         try{
             service.deleteIncome(incomeId);
             return "Income with id " + incomeId + " successfully deleted.";
         }catch (InvalidIncomeIdException e){
             return e.getMessage();
+        }
+    }
+
+    @GetMapping("income/report")
+    public ResponseEntity getIncomeReport(){
+        try {
+            return ResponseEntity.ok(service.getIncomeReport());
+        }
+        catch (InvalidIncomeException e){
+            return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 

@@ -1,8 +1,6 @@
 package com.tp.UserMoneyManager.controllers;
 
-import com.tp.UserMoneyManager.exceptions.InvalidExpenseException;
-import com.tp.UserMoneyManager.exceptions.InvalidExpenseIdException;
-import com.tp.UserMoneyManager.exceptions.InvalidUserIdException;
+import com.tp.UserMoneyManager.exceptions.*;
 import com.tp.UserMoneyManager.models.Expense;
 import com.tp.UserMoneyManager.services.MoneyManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,7 +53,7 @@ public class ExpenseController {
         }
     }
 
-    @PutMapping("/expense/update/{expenseId}")
+    @PutMapping("/update/expense/{expenseId}")
     public ResponseEntity updateExpense(@PathVariable Integer expenseId, @RequestBody Expense expense){
         try {
             return ResponseEntity.ok(service.updateExpense(expenseId, expense));
@@ -64,7 +62,7 @@ public class ExpenseController {
         }
     }
 
-    @DeleteMapping("/expense/delete/{expenseId}")
+    @DeleteMapping("/delete/expense/{expenseId}")
     public String deleteExpense(@PathVariable Integer expenseId){
         try{
             service.deleteExpense(expenseId);
@@ -73,6 +71,17 @@ public class ExpenseController {
             return e.getMessage();
         }
     }
+
+    @GetMapping("expense/report")
+    public ResponseEntity getExpenseReport(@RequestBody Expense expense){
+        try {
+            return ResponseEntity.ok(service.getExpenseReport(expense));
+        }
+        catch (InvalidExpenseIdException e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
 
     //    @GetMapping("/expense/amount/{expenseAmount}")
 //    public ResponseEntity getExpenseByAmount(@PathVariable Double expenseAmount) {

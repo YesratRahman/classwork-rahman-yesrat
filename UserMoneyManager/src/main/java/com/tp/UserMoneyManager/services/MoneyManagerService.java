@@ -175,7 +175,7 @@ public class MoneyManagerService {
     //        return expenseDao.getExpenseByAmount();
     //    }
 
-    public Income addIncome(Income toAdd) throws InvalidIncomeException, InvalidUserIdException {
+    public Income addIncome(Income toAdd) throws InvalidIncomeException, InvalidUserIdException, InvalidIncomeIdException {
         if(toAdd == null){
             throw new InvalidIncomeException("Income can not be null!");
         }
@@ -215,7 +215,7 @@ public class MoneyManagerService {
         if(incomeId == null){
             throw new InvalidIncomeIdException("Income Id can not be null!");
         }
-        return incomeDao.getAllIncomeById();
+        return incomeDao.getAllIncomeById(incomeId);
     }
 
 //    public List<Income> getIncomeByAmount(Double incomeAmount) throws InvalidIncomeException {
@@ -232,10 +232,10 @@ public class MoneyManagerService {
             throw new InvalidIncomeException("Date can not be a future date");
         }
 
-        return incomeDao.getIncomeByDate();
+        return incomeDao.getIncomeByDate(earnedDate);
     }
 
-    public int updateIncome(Integer incomeId, Income income) throws InvalidIncomeIdException, InvalidIncomeException {
+    public int updateIncome(Integer incomeId, Income income) throws InvalidIncomeIdException, InvalidIncomeException, InvalidUserIdException {
         if(incomeId == null){
             throw new InvalidIncomeIdException("Income Id can not be null");
         }
@@ -257,13 +257,23 @@ public class MoneyManagerService {
             throw new InvalidIncomeException("Date can not be a future date");
         }
 
-
-        return incomeDao.updateIncome();
+        return incomeDao.updateIncome(incomeId, income);
     }
 
     public int deleteIncome(Integer incomeId) throws InvalidIncomeIdException{
-        return incomeDao.deleteIncome();
+        if(incomeId == null){
+            throw new InvalidIncomeIdException("Income Id can not be null");
+        }
+        return incomeDao.deleteIncome(incomeId);
 
     }
 
+    public Income getIncomeReport() throws InvalidIncomeException{
+        throw new UnsupportedOperationException();
+    }
+
+    public int getExpenseReport(Expense expenseId) throws InvalidExpenseIdException{
+
+        return expenseDao.getExpenseReport(expenseId);
+    }
 }

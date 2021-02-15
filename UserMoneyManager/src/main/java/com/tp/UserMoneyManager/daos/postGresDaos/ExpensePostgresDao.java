@@ -116,11 +116,7 @@ public class ExpensePostgresDao implements ExpenseDao {
         }
 
         int updatedExpense;
-        int userCount = template.queryForObject("select count(*) from \"Expenses\" Where \"userId\" = '" + expense.getUserId() + "'", new IntegerMapper("count"));
-
-//            updatedExpense = template.update("Update \"Expenses\" " +
-//                            "Set \"expenseAmount\"= '" + expense.getExpenseAmount() + "', \"spentDate\"= '" + expense.getSpentDate() + "', \"description\"= '" + expense.getDescription() + "' " +
-//                            "Where \"expenseId\" = '" + expenseId + "'\n");
+        int userCount = template.queryForObject("select count(*) from \"Users\" Where \"userId\" = '" + expense.getUserId() + "'", new IntegerMapper("count"));
 
         if (userCount == 1) {
             updatedExpense = template.update(
@@ -154,6 +150,21 @@ public class ExpensePostgresDao implements ExpenseDao {
             }
             return delete;
         }
+
+    @Override
+    public int getExpenseReport(Expense expense) throws InvalidExpenseIdException {
+
+        int userCount = template.queryForObject("select count(*) from \"Users\" Where \"userId\" = '" + expense.getUserId() + "'", new IntegerMapper("count"));
+
+        int getTotalExpense;
+        if (userCount == 1) {
+            getTotalExpense = template.queryForObject(
+                    "SELECT sum(\"expenseAmount\") as \"totalExpense\" FROM \"Expenses\" WHERE \"userId\" = '" + expense.getUserId() +"'",  new IntegerMapper("totalExpense"));
+        } else {
+            throw new InvalidExpenseIdException("Expense id does not exist");
+        }
+        return getTotalExpense;
+    }
 }
 
 

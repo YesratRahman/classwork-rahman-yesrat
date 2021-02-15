@@ -15,7 +15,9 @@ public class NodeRelatedProblem {
         root.left.right = new TreeNode(7);
         root.right.right = new TreeNode(18);
        // System.out.println(rangeSumBST(root, 7, 15));
-        System.out.println(countNodes(root));
+       // System.out.println(countNodes(root));
+
+
     }
 
     class Node {
@@ -33,6 +35,8 @@ public class NodeRelatedProblem {
             children = _children;
         }
     }
+
+
 
     //https://leetcode.com/problems/maximum-depth-of-n-ary-tree/
     public static int maxDepth(Node root) {

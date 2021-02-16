@@ -282,4 +282,23 @@ public class MoneyManagerService {
         }
         return incomeDao.getIncomeReport(income);
     }
+
+    public int getReport(Integer userId, User user) throws NullUserException, InvalidUserIdException {
+
+        if(user == null){
+            throw new NullUserException("user object can not be null!");
+        }
+        if(userId == null){
+            throw new InvalidUserIdException("User Id can not be null");
+        }
+//        if(user.getAssociatedExpense().getUserId() == null){
+//            throw new InvalidUserIdException("User id can not be null");
+//        }
+//
+//        if(user.getAssociatedIncome().getUserId() == null){
+//            throw new InvalidUserIdException("User id can not be null");
+//
+//        }
+        return userDao.getReport(userId, user);
+    }
 }

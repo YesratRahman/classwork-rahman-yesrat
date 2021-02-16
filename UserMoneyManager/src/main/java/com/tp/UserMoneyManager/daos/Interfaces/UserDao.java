@@ -15,4 +15,6 @@ public interface UserDao {
     List<User> getUsersByUserName(String userName) throws InvalidUserNameException;
     int updateUser(Integer userId, User user) throws InvalidUserIdException, NullUserException, InvalidUserNameException;
     int deleteUser(Integer userId) throws InvalidUserIdException;
+
+    int getReport(Integer userId, User user) throws NullUserException, InvalidUserIdException;
 }

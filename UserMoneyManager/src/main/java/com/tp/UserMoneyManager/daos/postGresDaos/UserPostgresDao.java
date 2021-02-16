@@ -110,4 +110,30 @@ public class UserPostgresDao implements UserDao {
         return delete;
     }
 
+    @Override
+    public int getReport(Integer userId, User user) throws NullUserException, InvalidUserIdException {
+        if(user == null){
+            throw new NullUserException("user object can not be null!");
+        }
+        if(userId == null){
+            throw new InvalidUserIdException("User Id can not be null");
+        }
+        Integer savings;
+        int userCount = template.queryForObject("select count(*) from \"Users\" Where \"userId\" = '" + userId + "'", new IntegerMapper("count"));
+        if(userCount == 1 ) {
+            savings = template.queryForObject("SELECT COALESCE(sum(\"incomeAmount\"), 0) - (SELECT COALESCE(SUM(\"expenseAmount\"), 0) " +
+                    "FROM \"Expenses\" WHERE \"userId\" = ?) AS total" +
+                    "FROM \"Incomes\" WHERE \"userId\" = ?; \n",
+                    new IntegerMapper("total"),
+                    userId,
+                    userId);
+
+        }
+        else {
+            throw new InvalidUserIdException("User with this id does not exist.");
+        }
+        return savings;
+    }
+
+
 }

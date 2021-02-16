@@ -6,9 +6,82 @@ public class Application {
     static Map<Integer, Integer> map = new HashMap<>();
     public static void main(String[] args) {
 
+        System.out.println(calculate(" 30 / 10 "));
+      //  System.out.println(advCalculate("(3   +   (3 + 3))"));
+      //  System.out.println(advCalculate("((3 + 3) * (2 + 1))"));
+
+
+
+
+        List<String> combinations = letterCasePermutation("1a3c");
+            System.out.println(combinations);
 
     }
 
+    //https://leetcode.com/problems/letter-case-permutation/submissions/
+    public static List<String> letterCasePermutation(String S) {
+        List<String> permute = new ArrayList<>();
+        char[] str = S.toCharArray();
+        permuteHelper(str, permute, 0);
+        return permute;
+    }
+
+    private static void permuteHelper(char[] charArray, List<String> permute, int index) {
+        if(index == charArray.length) {
+            String newStr = new String(charArray);
+            permute.add(newStr);
+            return;
+        }
+        char character = charArray[index];
+        if (Character.isLetter(character)) {
+            charArray[index] = Character.toLowerCase(character);
+            permuteHelper(charArray, permute, index + 1);
+            charArray[index] = Character.toUpperCase(character);
+        }
+        permuteHelper(charArray, permute, index + 1);
+
+    }
+
+
+    public static int advCalculate(String expression){
+//        String trimmedExpression = expression.replace(" ", "");
+//        trimmedExpression = trimmedExpression.substring(1, trimmedExpression.length() - 1);
+//        int firstIndexOfParenthesis = trimmedExpression.indexOf(")");
+//        int indexOfOpeningParenthesis = Integer.MIN_VALUE;
+//        for(int i = indexOfOpeningParenthesis; i >=0; i-- ){
+//            if(trimmedExpression.charAt(i) == '('){
+//                indexOfOpeningParenthesis = i;
+//                break;
+//            }
+//        }
+//        int calculation = calculate(trimmedExpression.substring(indexOfOpeningParenthesis + 1, firstIndexOfParenthesis));
+//        String s = trimmedExpression.substring(0, indexOfOpeningParenthesis) + calculation + trimmedExpression.substring();
+        return 0;
+    }
+    public static int calculate(String expression){
+        String trimmedExpression = expression.replace(" ", "");
+        String[] numbers = trimmedExpression.split("[+\\-\\*\\/]");
+        String operand = trimmedExpression.substring(numbers[0].length(), numbers[0].length() + 1);
+        Integer num1 = Integer.valueOf(numbers[0]);
+        Integer num2 = Integer.valueOf(numbers[1]);
+        int answer = Integer.MIN_VALUE;
+        switch (operand){
+            case "+":
+                answer = num1 + num2;
+                break;
+            case "-":
+                answer = num1 - num2;
+                break;
+            case "*":
+                answer = num1 * num2;
+                break;
+            case "/":
+                answer = num1 / num2;
+                break;
+        }
+        return answer;
+
+    }
     //https://leetcode.com/problems/island-perimeter/
     public static int islandPerimeter(int[][] grid) {
         //go over the whole grid

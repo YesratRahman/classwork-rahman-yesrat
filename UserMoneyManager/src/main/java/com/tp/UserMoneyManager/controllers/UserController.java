@@ -66,4 +66,13 @@ public class UserController {
         }
     }
 
+    @GetMapping("/user/transactionReport/{userId}")
+    public ResponseEntity getReport(@PathVariable Integer userId,  User user){
+        try{
+            return ResponseEntity.ok(service.getReport(userId, user));
+        }catch (NullUserException | InvalidUserIdException e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
 }

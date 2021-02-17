@@ -5,20 +5,11 @@ import java.util.*;
 public class Application {
     static Map<Integer, Integer> map = new HashMap<>();
     public static void main(String[] args) {
-
-        System.out.println(calculate(" 30 / 10 "));
-      //  System.out.println(advCalculate("(3   +   (3 + 3))"));
-      //  System.out.println(advCalculate("((3 + 3) * (2 + 1))"));
-
-
-
-
-        List<String> combinations = letterCasePermutation("1a3c");
-            System.out.println(combinations);
-
     }
 
     //https://leetcode.com/problems/letter-case-permutation/submissions/
+//    List<String> combinations = letterCasePermutation("1a3c");
+//    System.out.println(combinations);
     public static List<String> letterCasePermutation(String S) {
         List<String> permute = new ArrayList<>();
         char[] str = S.toCharArray();
@@ -43,21 +34,32 @@ public class Application {
     }
 
 
-    public static int advCalculate(String expression){
-//        String trimmedExpression = expression.replace(" ", "");
-//        trimmedExpression = trimmedExpression.substring(1, trimmedExpression.length() - 1);
-//        int firstIndexOfParenthesis = trimmedExpression.indexOf(")");
-//        int indexOfOpeningParenthesis = Integer.MIN_VALUE;
-//        for(int i = indexOfOpeningParenthesis; i >=0; i-- ){
-//            if(trimmedExpression.charAt(i) == '('){
-//                indexOfOpeningParenthesis = i;
-//                break;
-//            }
-//        }
-//        int calculation = calculate(trimmedExpression.substring(indexOfOpeningParenthesis + 1, firstIndexOfParenthesis));
-//        String s = trimmedExpression.substring(0, indexOfOpeningParenthesis) + calculation + trimmedExpression.substring();
-        return 0;
+//        System.out.println(advCalculate("(3   +   (3 + 3))"));
+//        System.out.println(advCalculate("((3+ 3) / 2)"));
+//        System.out.println(advCalculate("((3 + 3) * (2 + 1))"));
+    public static int advCalculate(String expression) {
+        String trimmedExpression = expression.replace(" ", "");
+        trimmedExpression = trimmedExpression.substring(1, trimmedExpression.length() - 1);
+        int firstIndexOfClosingParenthesis = Integer.MAX_VALUE;
+        while(firstIndexOfClosingParenthesis > 0) {
+            firstIndexOfClosingParenthesis = trimmedExpression.indexOf(")");
+            if(firstIndexOfClosingParenthesis == -1) {
+                return calculate(trimmedExpression);
+            }
+            int indexOfOpeningParenthesis = Integer.MIN_VALUE;
+            for (int i = firstIndexOfClosingParenthesis; i >= 0; i--) {
+                if (trimmedExpression.charAt(i) == '(') {
+                    indexOfOpeningParenthesis = i;
+                    break;
+                }
+            }
+            int calc = calculate(trimmedExpression.substring(indexOfOpeningParenthesis + 1, firstIndexOfClosingParenthesis));
+            trimmedExpression = trimmedExpression.substring(0, indexOfOpeningParenthesis) + calc + trimmedExpression.substring(firstIndexOfClosingParenthesis + 1);
+        }
+        return Integer.MIN_VALUE;
     }
+
+    //        System.out.println(calculate(" 30 / 10 "));
     public static int calculate(String expression){
         String trimmedExpression = expression.replace(" ", "");
         String[] numbers = trimmedExpression.split("[+\\-\\*\\/]");

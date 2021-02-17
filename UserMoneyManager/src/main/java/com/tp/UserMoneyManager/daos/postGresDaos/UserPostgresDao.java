@@ -122,7 +122,7 @@ public class UserPostgresDao implements UserDao {
         int userCount = template.queryForObject("select count(*) from \"Users\" Where \"userId\" = '" + userId + "'", new IntegerMapper("count"));
         if(userCount == 1 ) {
             savings = template.queryForObject("SELECT COALESCE(sum(\"incomeAmount\"), 0) - (SELECT COALESCE(SUM(\"expenseAmount\"), 0) " +
-                    "FROM \"Expenses\" WHERE \"userId\" = ?) AS total" +
+                    "FROM \"Expenses\" WHERE \"userId\" = ?)" +
                     "FROM \"Incomes\" WHERE \"userId\" = ?; \n",
                     new IntegerMapper("total"),
                     userId,

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<!-- lang="en" tells search engines and browsers what language this page is written in -->
+<html lang="en">
+    <!-- defines information ABOUT the page (aka the "metadata") -->
+    <head>
+        <!-- choose the character encoding -->
+        <meta charset="UTF-8" >
+
+        <!-- specify that we want to adjust the width of the viewport to use the whole of the device width -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>My First Site!</title>
+    </head>
+    <body>
+
+        <header>
+
+        </header>
+        <main>
+
+            <button id="button1" onclick="buttonIsClicked(1);">Button 1</button>
+            <button id="button2" onclick="buttonIsClicked(2);">Button 2</button>
+
+            <button onclick="toggleAllElements();">Click to Show Everything</button>
+
+            <div id="toggletext" style="display: none;">
+
+            <h1>This is an H1 tag</h1>
+            <h2>This is an H2 tag</h2>
+            <h3>This is an H3 tag</h3>
+            <h4>This is an H4 tag</h4>
+            <h5>This is an H5 tag</h5>
+            <h6>This is an H6 tag</h6>
+
+            <div style="width: 50%; margin-left: auto; margin-right:auto;">
+                <hr style="width: 50%;"/>
+            </div>
+
+            <!-- "unordered" list (shows dots for each element by default)-->
+            <ul>
+                <!-- list item tags are used in lists for each item -->
+                <li>
+                    this is the first item
+                </li>
+                <li>this is the second item</li>
+                <li>this is the third item</li>
+            </ul>
+
+
+            <!-- "ordered" list (shows numbers for each element)-->
+            <ol>
+                <li>
+                    this is the first item
+                </li>
+                <li>this is the second item</li>
+                <li>this is the third item</li>
+            </ol>
+
+            <!-- anchor tag puts links on the page 
+                    we use the href attribute to decide where to go
+            -->
+            <a href="http://google.com">Click here to go to google!</a>
+
+            <br/>
+
+            <!-- image tag
+                    we use the src attribute to tell it where to load the image from
+            -->
+            <a href="http://google.com" style="display: block; margin: 50px;">
+                <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
+                    alt="The main Google logo"
+                >
+            </a>
+
+            <!-- select element used to create dropdowns
+                choices are represented with the option tag
+                when we choose options, we are selecting their VALUE
+                        NOT their text
+            -->
+            <select>
+                <option value="1">Chihuahua</option>
+                <option value="2" selected>Terrier</option>
+                <option value="3">German Shepherd</option>
+            </select>
+
+            <br/>
+
+            <!-- input tag used to handle all sorts of input 
+                    type attribute is used to control what sort of
+                    "input" we want to add to the page
+                    value attribute represents the currently typed in text
+            -->
+            <input type="text" value="this is my default input text"><br>
+            <input type="text" placeholder="this is the text the user sees before they type"><br>
+
+            <input type="date" ><br>
+
+            <input type="datetime-local"><br>
+
+            <input type="email"><br>
+
+            <input type="file"><br>
+
+            <input type="password"><br>
+
+            <input type="hidden">
+
+            <input type="number" min="0" max="100" >
+
+            <!-- checkboxes are created this way
+                    the checked attribute will start it off as marked (no need to assign anything)
+            -->
+            <input type="checkbox" value="1" checked >
+
+            <br>
+
+
+            <!-- radio button (used for choosing one of many options)-->
+            <span>Chihuahua: </span><input id="option1" value="1" name="dogType" type="radio" ><br>
+            <span>Terrier: </span><input id="option2" value="2" name="dogType" type="radio" ><br>
+            <span>German Shepherd: </span><input id="option3" value="3" name="dogType" type="radio" ><br>
+
+            <input type="color"><br>
+
+            <input type="button" value="click me!" onclick="alert('you clicked the button');"></br>
+
+            <button onclick="alert('you clicked the other button');">For this tag the button text goes here</button><br>
+
+            <button style="width: 100px; height: 100px; background: url('https://cdn.pixabay.com/photo/2012/04/12/20/12/x-30465_1280.png'); background-size: cover; "></button>
+            <button style="width: 100px; height: 100px; background: url('https://assets.ltkcontent.com/images/20093/3747.LetterO_0066f46bde.jpg'); background-size: cover; "></button>
+
+            </button>
+
+            <textarea></textarea>
+
+
+            <!-- two main layout options for tags block-level or inline -->
+
+            <!-- block level elements 
+                    take the full width by default 
+                    will always create a new line
+                -->
+
+
+            This text comes before the paragraph.<p>Paragraph tags are blocks.</p>This text comes after the paragraph.
+
+
+            <!-- inline elements
+                    stay in the current line
+                    cannot contain block elements
+            -->
+            This text comes before the span. <span>Span tags are inline.</span>This text comes after the span.
+    
+    
+            <!-- break tag creates a forced linebreak -->
+            <br/>
+    
+            <!-- inline styles (not the best practice...) 
+                    set an attribute of the tag called style
+                    we'll be setting style properties that later
+                    we'd want to move to a separate style sheet
+    
+                    we can use the display style to change block level layout to inline and vice versa
+            -->
+    
+            this is the text before the inline styled paragraph 
+            <p style="display: inline;">This paragraph tag has been made inline. </p>
+            this is the text after the inline styled paragraph
+    
+    
+            <br/>
+    
+            this is the text before the block styled span
+            <span style="display: block" >This span tag has been made block.</span>
+            this is the text after the block styled span
+    
+    
+            <br/>
+            <p style="margin: 0px;">This paragraph has no margins.</p>
+            <p style="margin: 10px 0 0 10px;">The paragraph has margins on the left and top</p>
+        </div>
+        </main>
+        <footer>
+
+        </footer>
+
+        <script type="text/javascript" src="home.js" ></script>
+
+       
+
+    </body>
+</html>

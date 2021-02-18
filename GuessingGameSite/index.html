@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guessing Game</title>
+</head>
+<body>
+    
+        <h2 style="text-align: center;">GUESSING GAME</h2>
+        
+       <div style="width:500px; margin:0 auto;"> 
+       <div id="box1"  style="width: 100px; height: 100px; border: 7px solid #0e0e0f;  display: inline-block; text-align: center"></div>
+       <div id="box2"  style="width: 100px; height: 100px; border: 7px solid #0e0e0f;  display: inline-block; text-align: center"></div>
+       <div id="box3"  style="width: 100px; height: 100px; border: 7px solid #0e0e0f;  display: inline-block; text-align: center"></div>
+       <div id="box4"  style="width: 100px; height: 100px; border: 7px solid #0e0e0f;  display: inline-block; text-align: center"></div>
+        </div>
+       <br> 
+   
+       <div style="width:400px; margin:0 auto;">
+       <input id="guessNum" type="number" style="width: 100px"  display="inline-block" min="1023" max="9876">
+       <input type="button" style="width: 100px" display="inline-block" value="Guess" onclick="checkGame();">
+       <input type="button" style="width: 100px" display="inline-block" value ="Reset" onclick="reset();"> 
+        </div> 
+    
+    <script type="text/javascript" src="guessingGame.js" ></script>
+</body>
+
+</html>

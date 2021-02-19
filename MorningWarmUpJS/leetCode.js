@@ -1,4 +1,52 @@
 
+
+  //Definition for a binary tree node.
+
+  function TreeNode(val, left, right) {
+      this.val = (val===undefined ? 0 : val)
+      this.left = (left===undefined ? null : left)
+      this.right = (right===undefined ? null : right)
+ }
+ 
+/**
+ * @param {TreeNode} root1
+ * @param {TreeNode} root2
+ * @return {TreeNode}
+ */
+var mergeTrees = function(root1, root2) {
+    // If any of the nodes is null then use the other node as the merged node
+  if (root1 == null) return root2;
+  if (root2 == null) return root1;
+
+// Add the values of the current node for each step if they are not null
+let newRoot = new TreeNode(root1.val + root2.val);
+ 
+//Check the child nodes next from left to right 
+newRoot.left = mergeTrees(root1.left, root2.left);
+newRoot.right = mergeTrees(root1.right, root2.right);
+
+return newRoot;
+};
+
+var mergeTrees = function(root1, root2) {
+    if(root1 == null && root2 == null)
+       return null;
+     
+     if(root2 == null)
+       return new TreeNode(root1.val, mergeTrees(root1.left, null), mergeTrees(root1.right, null)); 
+     
+       if(root1 == null)
+         return new TreeNode(root2.val, mergeTrees(root2.left, null), mergeTrees(root2.right,null));
+ 
+         let left = mergeTrees(root1.left, root2.left);
+         let right = mergeTrees(root1.right, root2.right); 
+         let answer = new TreeNode(root1.val + root2.val, left, right);
+         return answer; 
+       
+     
+ };
+
+
 //https://leetcode.com/problems/intersection-of-two-arrays/submissions/
 
 var intersection = function(nums1, nums2) {
@@ -130,7 +178,66 @@ var intersection = function(nums1, nums2) {
     console.log(pe4())
     
     
+    //attempt 1:
+//generate a random number (between 1023-9876)
+//if it's got an repeated digits, throw it out
+//and try again
+
+const guessingGameGen = function(){
+    //Math.random() will give us a random number
+    //between 0 and 0.9999999...
+  
+    let allUnique = false;
+  
+    let attempt = NaN;
+    let num = NaN;
+  
+    while( !allUnique ) {
+  
+      attempt = Math.trunc(Math.random() * (9877 - 1023) + 1023);
+  
+      const digits = [];
+  
+      num = attempt;
+      while( attempt > 0 ){
+        let digit = attempt % 10;
+        attempt = Math.trunc(attempt / 10);
+        digits.push( digit );
+      }
+  
+      const betterDigits = new Set( digits );
+  
+      allUnique = betterDigits.size === 4;
+    }
+  
+    return num;
     
+  }
+  
+  const betterGGGen = function(){
+  
+    const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  
+    let answer = digits.splice( Math.trunc(Math.random() * (digits.length - 1) + 1 ), 1)[0];
+  
+    for( let i = 1; i < 4; i++ ){
+  
+      let randomIndex = Math.trunc(Math.random() * digits.length);
+  
+      let digit = digits.splice(randomIndex,1)[0];
+      answer *= 10;
+      answer += digit;
+  
+      //digits.splice(  )
+  
+  
+    }
+  
+    return answer;
+  
+  }
+  
+  
     
     
     

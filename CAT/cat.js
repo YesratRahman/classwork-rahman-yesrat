@@ -73,6 +73,12 @@ function getBreed(selectedBreed) {
                             showBreed.innerHTML = "";
                             let name = document.createElement("h3");
                             name.textContent = data[0].name;
+                            let image = document.createElement("div");
+                            image.innerHTML = '<img src="' + infoOfUrl[0].url + '">';
+                            image.className = "image-resize";
+                            image.width = "280px"; 
+                            image.margin = "auto"; 
+                            image.height = "260px"; 
                             
                             showBreed.appendChild(name);
                             
@@ -83,3 +89,9 @@ function getBreed(selectedBreed) {
 }
     });
 
+
+
+document.getElementById("submit").addEventListener('click', function (event) {
+    let selectedBreed = $('#breed').find(":selected").text();
+    getBreed(selectedBreed);
+});

@@ -1,13 +1,28 @@
-:root {
-    --primary: #e2ded8; 
-    --secondary: #dbd2c1;
-    --tertiary: #a59985;
-    --light: #ebe5dc;
- }
 
 #navigation {
     font-size: 20px;
     font-family: 'Berkshire Swash';
-    background-color: var(--primary);
+    background-color: #e2ded8;
+}
+
+
+body {
+    background-color:#e2ded8;
+}
+
+
+.possibleCats {
+    background-color: #dbd2c1;
+    width: 60%;
+    height: inherit;
+    margin: 0 auto;
+    border: 5px solid #e2ded8;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    
 }
 

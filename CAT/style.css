@@ -1,0 +1,13 @@
+:root {
+    --primary: #e2ded8; 
+    --secondary: #dbd2c1;
+    --tertiary: #a59985;
+    --light: #ebe5dc;
+ }
+
+#navigation {
+    font-size: 20px;
+    font-family: 'Berkshire Swash';
+    background-color: var(--primary);
+}
+

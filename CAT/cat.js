@@ -19,13 +19,10 @@ function getPictures(){
 
 }
 
-let myKey = "2280658c27df8c0709b6a8c33e204b72";
-
 
 let currentBreeds = "";
-
 function getBreeds() {
-    let breedUrl = "https://api.thecatapi.com/v1/breeds?attach_breed=0&api_key=" + myKey;
+    let breedUrl = "https://api.thecatapi.com/v1/breeds?attach_breed=0&2280658c27df8c0709b6a8c33e204b72";
     fetch(breedUrl).then(function (response) {
         if (response.ok) {
             response.json().then(function (data) {
@@ -60,13 +57,15 @@ let saveGeneratedBreads = function (breedSelected) {
 function getBreed(selectedBreed) {
 
 
-    let breedUrl = "https://api.thecatapi.com/v1/breeds/search?q=" + selectedBreed + "&api_key=" + myKey;
+    let breedUrl = "https://api.thecatapi.com/v1/breeds/search?api_key=2280658c27df8c0709b6a8c33e204b72&q=" + selectedBreed;
 
     fetch(breedUrl).then(function (response) {
         if (response.ok) {
             response.json().then(function (data) {
-                fetch("https://api.thecatapi.com/v1/images/search?breed_id=" + data[0].id + "&limit=1&size=thumb&api_key=" + myKey).then(function (response) {
-                    if (response.ok) {
+                fetch("https://api.thecatapi.com/v1/images/search?limit=1&size=thumb&api_key=2280658c27df8c0709b6a8c33e204b72&breed_id=" + data[0].id)
+                .then(function (response) {
+                   
+                if (response.ok) {
                         response.json().then(function (infoOfUrl) {
 
                             let showBreed = document.getElementById("display")
@@ -75,19 +74,36 @@ function getBreed(selectedBreed) {
                             name.textContent = data[0].name;
                             let image = document.createElement("div");
                             image.innerHTML = '<img src="' + infoOfUrl[0].url + '">';
-                            image.className = "image-resize";
-                            image.width = "280px"; 
-                            image.margin = "auto"; 
-                            image.height = "260px"; 
-                            
+                            let description = document.createElement("p");
+                            description.className = "description";
+                            description.textContent = data[0].description;
+                            let moreInformation = document.createElement("div");
+                            moreInformation.innerHTML = "<a href='" + data[0].wikipedia_url + "' target='_blank'> Wikipedia </a> <br/>";
                             showBreed.appendChild(name);
-                            
+                            showBreed.appendChild(image);
+                            showBreed.appendChild(description);
+                            showBreed.appendChild(moreInformation);
                         })
                     }
             })
         });
 }
     });
+
+
+saveGeneratedBreads(selectedBreed);
+}
+
+function loadRecentBreeds() { 
+    recentBreeds = JSON.parse(localStorage.getItem("recentBreeds"));
+    if (!recentBreeds) {
+        recentBreeds = {
+            breeds: []
+        };
+    }
+
+};
+loadRecentBreeds();
 
 
 

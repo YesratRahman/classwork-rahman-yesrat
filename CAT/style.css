@@ -1,8 +1,11 @@
 
 #navigation {
     font-size: 20px;
-    font-family: 'Berkshire Swash';
-    background-color: #e2ded8;
+    font-family: 'Comic Sans MS';
+    height: 100px;
+    background-color: #b3936363;
+    border: 5px solid #be9661bb;
+
 }
 
 
@@ -16,7 +19,7 @@ body {
     width: 60%;
     height: inherit;
     margin: 0 auto;
-    border: 5px solid #e2ded8;
+    border: 5px solid #be9661bb;
     border-radius: 10px;
     text-align: center;
     display: flex;
@@ -26,3 +29,42 @@ body {
     
 }
 
+p {
+    font-family: 'Georgia', serif;
+    font-size: 22px;
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+    padding-bottom: 30px;
+}
+
+.submit {
+    background-color: #dbd2c1;
+    color: black;
+}
+
+.randomCat {
+    background-color: #dbd2c1;
+    width: 60%;
+    margin: 0 auto 80px auto;
+    border: 5px solid #be9661bb;
+    border-radius: 10px;
+    padding: 40px 10px 20px 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.randomCat input {
+    margin: 0 0 0px 0;
+    width: 100%;
+}
+
+
+footer {
+    background-color: #cabeb0;
+    border: 5px solid #be9661bb;
+
+    height: 100px;
+    text-align: justify;
+} 

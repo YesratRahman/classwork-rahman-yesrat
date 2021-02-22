@@ -5,7 +5,7 @@ const getWeather = function() {
 
     $.get(
 
-        `http://api.openweathermap.org/data/2.5/weather?zip=${zipcode},US&appid=2280658c27df8c0709b6a8c33e204b72&units=imperial`,
+        `http://api.openweathermap.org/data/2.5/weather?zip=${zipcode},US&units=imperial`,
         function( data, textStatus, jqXHR ) {
 
             $("#reportHeader").text(`Weather Report for ${data.name}` );

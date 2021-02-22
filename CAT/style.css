@@ -68,3 +68,25 @@ footer {
     height: 100px;
     text-align: justify;
 } 
+
+.infoSize { 
+    font-family: 'Verdana';
+  } 
+  .moreInfo { 
+    font-size: 20px;
+  }  
+
+  /* .weightSize {
+    margin-left:-20%;
+    margin-right:-10%;
+
+    font-family: 'Comic Sans MS';
+    position: relative;
+    padding-left: 15px;
+    padding-right: 15px;
+    float: left;
+    width: 40%;
+
+
+
+  } */

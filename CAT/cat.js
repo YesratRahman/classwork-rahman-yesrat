@@ -1,23 +1,4 @@
 
-let generate_btn = document.querySelector(".generate_button"); 
-generate_btn.addEventListener("click", getPictures); 
-function getPictures(){
-    let catImgDiv = document.querySelector(".catsImages")
-    catImgDiv.innerHTML = ''   //clears the html after generating image
-    fetch('https://api.thecatapi.com/v1/images/search')
-    .then(response => response.json())
-    .then((data) => {
-       let catsImageUrl = data[0].url
-       let catImageElement = document.createElement("img")
-       catImageElement.setAttribute('src', `${catsImageUrl}`)
-       catImageElement.classList.add("imageResize")
-       let catImgDiv = document.querySelector(".catsImages")
-       catImgDiv.append(catImageElement)
-    })
-    .catch(err=> console.log(err))
-
-}
-
 //gets all breeds by name 
 function getBreeds() {
     let breedUrl = "https://api.thecatapi.com/v1/breeds?attach_breed=0";
@@ -93,6 +74,7 @@ function getBreed(selectedBreed) {
                             
                             let image = document.createElement("div");
                             image.innerHTML = '<img src="' + infoOfUrl[0].url + '">';
+                            
 
                             let origin = document.createElement("h3");
                             origin.textContent = "Origin: " + data[0].origin;
@@ -156,6 +138,25 @@ document.getElementById("submit").addEventListener('click', function (event) {
 });
 
 
+
+let generate_btn = document.querySelector(".generate_button"); 
+generate_btn.addEventListener("click", getPictures); 
+function getPictures(){
+    let catImgDiv = document.querySelector(".catsImages")
+    catImgDiv.innerHTML = ''   //clears the html after generating image
+    fetch('https://api.thecatapi.com/v1/images/search')
+    .then(response => response.json())
+    .then((data) => {
+       let catsImageUrl = data[0].url
+       let catImageElement = document.createElement("img")
+       catImageElement.setAttribute('src', `${catsImageUrl}`)
+       catImageElement.classList.add("imageResize")
+       let catImgDiv = document.querySelector(".catsImages")
+       catImgDiv.append(catImageElement)
+    })
+    .catch(err=> console.log(err))
+
+}
 
 
 

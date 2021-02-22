@@ -238,9 +238,34 @@ const guessingGameGen = function(){
   }
   
   
+  //https://leetcode.com/problems/minimum-area-rectangle/  
     
+  var minAreaRect = function(points) {
+
+    let minimumArea = Number.MAX_SAFE_INTEGER
+      
+      const str = []
+      for (const point of points) {
+        str.push(point.join(','))
+      }
+      for (let i = 0; i < points.length; i++) {
+        for (let j = i + 1; j < points.length; j++) {
+          const leftTop = points[i]
+          const rightBottom = points[j]
+          if (leftTop[0] !== rightBottom[0] && leftTop[1] !== rightBottom[1]) {
+            const rightTop = rightBottom[0] + ',' + leftTop[1]
+            const leftBottom = leftTop[0] + ',' + rightBottom[1]
+            if (str.includes(rightTop) && str.includes(leftBottom)) {
+              let area = Math.abs(leftTop[1] - rightBottom[1]) * Math.abs(leftTop[0] - rightBottom[0])
+              minimumArea = area < minimumArea ? area : minimumArea
+            }
+          }
+        }
+      }
+      return minimumArea === Number.MAX_SAFE_INTEGER ? 0 : minimumArea
     
-    
+    };
+    console.log(minAreaRect([[1,1],[1,3],[3,1],[3,3],[2,2]]);
     
     
     

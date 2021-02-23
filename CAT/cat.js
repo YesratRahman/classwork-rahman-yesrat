@@ -20,6 +20,19 @@ function getBreeds() {
 getBreeds();
 
 
+//Checks if there is any memory in local, gets that array and pushes into it.
+//else create a blank array of breeds and add it to the recent breed memory
+function loadRecentBreeds() { 
+    recentBreeds = JSON.parse(localStorage.getItem("recentBreeds"));
+    if (!recentBreeds) {
+        recentBreeds = {
+            breeds: []
+        };
+    }
+
+};
+loadRecentBreeds();
+
 let saveGeneratedBreads = function (breedSelected) { 
     //checks if the recenct breed name matches the selected breed name 
     let findBreeds = recentBreeds.breeds.some(breed => breed.name === breedSelected); 
@@ -33,18 +46,11 @@ let saveGeneratedBreads = function (breedSelected) {
     //stringify converts a JavaScript object or value to a JSON string
 };
 
-//Checks if there is any memory in local, gets that array and pushes into it.
-//else create a blank array of breeds and add it to the recent breed memory
-function loadRecentBreeds() { 
-    recentBreeds = JSON.parse(localStorage.getItem("recentBreeds"));
-    if (!recentBreeds) {
-        recentBreeds = {
-            breeds: []
-        };
-    }
 
-};
-loadRecentBreeds();
+document.getElementById("submit").addEventListener('click', function (event) {
+    let selectedBreed = $('#breed').find(":selected").text(); //Gets texts from the selected dropdown menu 
+    getBreed(selectedBreed); //then calls the getBreed() method
+});
 
 function getBreed(selectedBreed) {
     let breedUrl = "https://api.thecatapi.com/v1/breeds/search?q=" + selectedBreed;
@@ -128,16 +134,6 @@ function getBreed(selectedBreed) {
     });
 saveGeneratedBreads(selectedBreed);
 }
-
-
-
-
-document.getElementById("submit").addEventListener('click', function (event) {
-    let selectedBreed = $('#breed').find(":selected").text(); //Gets texts from the selected dropdown menu 
-    getBreed(selectedBreed); //then calls the getBreed() method
-});
-
-
 
 let generate_btn = document.querySelector(".generate_button"); 
 generate_btn.addEventListener("click", getPictures); 

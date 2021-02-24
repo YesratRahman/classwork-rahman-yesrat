@@ -19,19 +19,6 @@ var singleNumber = function(nums) {
     }
 };
 
-var singleNumber1 = function(nums) {
-    map={}; 
-    for(i = 0; i< nums.length; i++){
-        if(map[nums[i]]){
-            delete map[nums[i]]; 
-        }
-        else {
-            map[nums[i]] =1; 
-        }
-    }
-    return parseInt(Object.keys(map)[0]); 
-};
-
 
 //converting the set it to an array with Array.from() and getting the [0] element
 var singleNumber2 = function(nums) {
@@ -47,7 +34,24 @@ var singleNumber2 = function(nums) {
     return Array.from(map)[0];
   };
 
+  var singleNumber1 = function(nums) {
+    map={}; 
+    for(i = 0; i< nums.length; i++){
+        if(map[nums[i]]){
+            delete map[nums[i]]; 
+        }
+        else {
+            map[nums[i]] =1; 
+        }
+    }
+    return parseInt(Object.keys(map)[0]); 
+};
+
+  var singleNumber3 = function(nums) {
+  return nums.reduce((a,b) => a ^ b); 
+  } ; 
+
+
   console.log(singleNumber([4,1,2,1,2]))
   console.log(singleNumber1([4,1,2,1,2]))
   console.log(singleNumber2([4,1,2,1,2]))
-

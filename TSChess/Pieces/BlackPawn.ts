@@ -1,23 +1,17 @@
 import { Board } from "../Board";
 import { Move } from "../Move";
-import { Piece, PieceType } from "./Piece";
+import { Position } from "../Position";
+import { ChessPiece } from "./ChessPiece";
+import { PieceType } from "./Piece";
 
-export class BlackPawn implements Piece {
+export class BlackPawn extends ChessPiece {
+    constructor(){
+        super( PieceType.Pawn, false);
+    }
 
-    kind : PieceType = PieceType.Pawn;
-
-    isWhite : boolean = false;
-
-
-    generateMoves: (moveOn: Board, row: number, col: number) => Move[] = 
-         (moveOn: Board, row: number, col: number)  => {
-
-            let blackPawnMoves : Move[]  = [];
-
-            
-
-
-            return null;
-         }
-
+    generateMoves: (moveOn: Board, loc: Position) => Move[] = 
+    (moveOn: Board, loc: Position)  => {
+    
+        return [];
+    }
 }

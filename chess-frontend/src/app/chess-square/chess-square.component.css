@@ -1,0 +1,17 @@
+.square{
+    width: 12.5%; 
+    height: 100%;
+    display: inline-block; 
+}
+
+img{
+    width: 100%; 
+}
+
+.lightSquare{
+    background-color: rgb(190, 224, 166);
+}
+
+.darkSquare{
+    background-color: rgba(14, 173, 99, 0.616);
+}

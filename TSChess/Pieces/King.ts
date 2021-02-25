@@ -54,7 +54,7 @@ export class King extends ChessPiece {
         }
 
     static isOnBoard( loc : Position ) : boolean {
-        return loc.col >= 0 && loc.col < 8 && loc.row >= 0 && loc.row < 8 && (loc.col == 0 || loc.row < 8) && (loc.col < 8 || loc.row == 0)  ;
+        return loc.col >= 0 && loc.col < 8 && loc.row >= 0 && loc.row < 8;
     }
     
 }

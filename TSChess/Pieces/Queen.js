@@ -21,10 +21,45 @@ var Queen = /** @class */ (function (_super) {
     function Queen(isWhite) {
         var _this = _super.call(this, Piece_1.PieceType.Queen, isWhite) || this;
         _this.generateMoves = function (moveOn, loc) {
-            return [];
+            var queenMoves = [];
+            var queenDirections = [];
+            //Horizontally 
+            queenDirections.push({ row: 0, col: 1 });
+            queenDirections.push({ row: 1, col: 0 });
+            //Vertically
+            queenDirections.push({ row: 0, col: -1 });
+            queenDirections.push({ row: -1, col: 0 });
+            //Diagonally
+            queenDirections.push({ row: 1, col: 1 });
+            queenDirections.push({ row: 1, col: -1 });
+            queenDirections.push({ row: -1, col: 1 });
+            queenDirections.push({ row: -1, col: -1 });
+            for (var _i = 0, queenDirections_1 = queenDirections; _i < queenDirections_1.length; _i++) {
+                var direction = queenDirections_1[_i];
+                var directionMoves = Queen.slidePiece(moveOn, loc, direction, _this.isWhite);
+                queenMoves.push.apply(queenMoves, directionMoves);
+            }
+            return queenMoves;
         };
         return _this;
     }
+    Queen.isOnBoard = function (loc) {
+        return loc.col >= 0 && loc.col < 8 && loc.row >= 0 && loc.row < 8;
+    };
+    Queen.slidePiece = function (moveOn, loc, dir, isWhite) {
+        var allMoves = [];
+        var currentLoc = { row: loc.row + dir.row, col: loc.col + dir.col };
+        while (Queen.isOnBoard(currentLoc) && moveOn.pieceAt(currentLoc) === null) {
+            allMoves.push({ from: loc, to: currentLoc });
+            currentLoc = { row: currentLoc.row + dir.row, col: currentLoc.col + dir.col };
+        }
+        if (Queen.isOnBoard(currentLoc)) {
+            if (moveOn.pieceAt(currentLoc).isWhite != isWhite) {
+                allMoves.push({ from: loc, to: currentLoc });
+            }
+        }
+        return allMoves;
+    };
     return Queen;
 }(ChessPiece_1.ChessPiece));
 exports.Queen = Queen;

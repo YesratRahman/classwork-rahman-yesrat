@@ -13,7 +13,52 @@ export class Knight extends ChessPiece {
     generateMoves: (moveOn: Board, loc: Position) => Move[] = 
     (moveOn: Board, loc: Position)  => {
     
-        return [];
+        let knightMoves : Move[]  = [];
+
+            let knightDirections : Position[] = [];
+
+
+            knightDirections.push( {row : 2, col: 1} );
+            knightDirections.push( {row : 1, col: 2} );
+            knightDirections.push( {row : 2, col: -1} );
+            knightDirections.push( {row : 1, col: -2} );
+            knightDirections.push( {row : -1, col: -2} );
+            knightDirections.push( {row : -2, col: -1} );
+            knightDirections.push( {row : -2, col: 1} );
+            knightDirections.push( {row : -1, col: 2} );
+
+ 
+            for( let direction of knightDirections ){
+                let directionMoves : Move[] = Knight.slidePiece( moveOn, loc, direction, this.isWhite );
+                knightMoves.push( ...directionMoves );
+            }
+
+            return knightMoves;
+         };
+
+    static slidePiece: (moveOn : Board, loc : Position, dir : Position, isWhite : boolean ) =>  Move[] = 
+        ( moveOn : Board, loc : Position, dir : Position, isWhite: boolean ) : Move[] => {
+
+            let allMoves : Move[] = [];
+
+            let currentLoc : Position = { row : loc.row + dir.row, col : loc.col + dir.col };
+
+            while( Knight.isOnBoard( currentLoc ) && moveOn.pieceAt(currentLoc) === null ){
+                allMoves.push( { from: loc, to: currentLoc  });
+                currentLoc = { row: currentLoc.row + dir.row, col : currentLoc.col + dir.col };
+            }
+
+            if( Knight.isOnBoard( currentLoc )){
+                if( moveOn.pieceAt(currentLoc).isWhite != isWhite  ){
+                    allMoves.push( {from: loc, to: currentLoc});
+                }
+            }
+
+            return allMoves;
+        }
+
+    static isOnBoard( loc : Position ) : boolean {
+        return loc.col >= 0 && loc.col < 8 && loc.row >= 0 && loc.row < 8;
     }
-    
+
 }

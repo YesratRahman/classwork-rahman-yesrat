@@ -7,4 +7,5 @@ export interface Move{
     to : Position;
     //end piece (for promotions)
     promoteTo?: PieceType;
+    enpassLoc? : Position
 }

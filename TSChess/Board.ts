@@ -21,7 +21,7 @@ export interface Board{
     // bQueenSideCastle: boolean;
 
     // fiftyMoveCount : number;
-    // enPassantCaptureLoc : Position;
+    enPassantCaptureLoc : Position;
 
     makeMove : (this: Board, toMake : Move) => Board;
     pieceAt : ( loc: Position ) => Piece;
@@ -37,16 +37,16 @@ class ChessBoard implements Board{
 
     allSquares : Piece[][];
 
-    //  rnbqkbnr        7
-    //  pppppppp        6
-    //  ........        5
-    //  ........        4
-    //  ........        3
-    //  ........        2
-    //  PPPPPPPP        1
-    //  RNBQkBNR        0
+    // rnbqkbnr 7
+    // pppppppp 6
+    // ........ 5
+    // ........ 4
+    // ........ 3
+    // ........ 2
+    // PPPPPPPP 1
+    // RNBQKBNR 0
 
-    //  01234567
+    // 01234567
 
     pieceAt( loc : Position ) : Piece{
 
@@ -62,16 +62,19 @@ class ChessBoard implements Board{
         for( let row = 0; row < 8; row++ ){
             this.allSquares[row] = [];
             for( let col = 0; col < 8; col++ ){
-                // if( row === 6 ){
-                //     this.allSquares[row][col] = {kind: PieceType.Pawn, isWhite: false};
-                // }
-                // if( row === 1 ){
-                //     this.allSquares[row][col] = {kind: PieceType.Pawn, isWhite: true};
-                // }
+                if( row === 6 ){
+                    // this.allSquares[row][col] = {kind: PieceType.Pawn, isWhite: false};
+                this.allSquares[row][col] = new BlackPawn( );
+                }
+                if( row === 1 ){
+                  //  this.allSquares[row][col] = {kind: PieceType.Pawn, isWhite: true};
+                    this.allSquares[row][col] = new WhitePawn( );
+                    
+                }
 
-                // if( row === 1 || row === 6 ){
-                //     this.allSquares[row][col] =  row === 1 ? new WhitePawn() : new BlackPawn();
-                // }
+                if( row === 1 || row === 6 ){
+                    this.allSquares[row][col] =  row === 1 ? new WhitePawn() : new BlackPawn();
+                }
 
                 if( (row === 0 || row === 7) && (col === 0 || col === 7 )){
                     this.allSquares[row][col] = new Rook( row === 0 );
@@ -81,9 +84,9 @@ class ChessBoard implements Board{
                     this.allSquares[row][col] = new Knight( row === 0 );
                 }
 
-                // if( (row === 0 || row === 7) && (col === 2 || col === 5 )){
-                //     this.allSquares[row][col] = new Bishop(row === 0);
-                // }
+                if( (row === 0 || row === 7) && (col === 2 || col === 5 )){
+                    this.allSquares[row][col] = new Bishop(row === 0);
+                }
 
                 if( col === 3 && (row === 0 || row === 7) ){
                     this.allSquares[row][col] = new Queen( row === 0  );
@@ -125,6 +128,12 @@ class ChessBoard implements Board{
 
         let oldPiece : Piece = nextBoard.allSquares[toMake.from.row][toMake.from.col];
 
+        if(oldPiece.kind=PieceType.Pawn){
+            this.enPassantCaptureLoc=({row:toMake.from.row +1, col:toMake.from.col});
+        }
+        else{
+            this.enPassantCaptureLoc=({row:toMake.from.row -1, col:toMake.from.col});
+        }
         nextBoard.allSquares[toMake.from.row][toMake.from.col] = null;
         nextBoard.allSquares[toMake.to.row][toMake.to.col] = oldPiece;
 

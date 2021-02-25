@@ -37,7 +37,7 @@ var King = /** @class */ (function (_super) {
         return _this;
     }
     King.isOnBoard = function (loc) {
-        return loc.col >= 0 && loc.col < 8 && loc.row >= 0 && loc.row < 8 && (loc.col == 0 || loc.row < 8) && (loc.col < 8 || loc.row == 0);
+        return loc.col >= 0 && loc.col < 8 && loc.row >= 0 && loc.row < 8;
     };
     King.slidePiece = function (moveOn, loc, dir, isWhite) {
         var allMoves = [];

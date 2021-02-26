@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { Location } from '../../Location';
+import { Location } from '../../game/Location';
 
 @Component({
   selector: 'app-square',

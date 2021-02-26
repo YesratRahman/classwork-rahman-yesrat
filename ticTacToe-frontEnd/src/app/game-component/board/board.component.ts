@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Game, TicTacToeGame } from '../../Game';
-import { Location } from '../../Location';
+import { Game, TicTacToeGame } from '../../game/Game';
+import { Location } from '../../game/Location';
 
 @Component({
   selector: 'app-board',

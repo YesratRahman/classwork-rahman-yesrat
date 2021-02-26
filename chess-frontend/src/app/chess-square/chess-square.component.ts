@@ -5,6 +5,7 @@ import { Piece, PieceType } from '../chess/Pieces/Piece';
 import {Output, EventEmitter} from '@angular/core';
 import { Position } from '../chess/Position';
 
+
 @Component({
   selector: 'app-chess-square',
   templateUrl: './chess-square.component.html',

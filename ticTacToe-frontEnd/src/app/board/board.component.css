@@ -1,0 +1,28 @@
+.board{
+    height: 100vmin;
+    width: 100vmin;
+    margin-left: auto;
+    margin-right: auto;
+}
+.row{
+    height: 30%;
+}
+.text{
+    width: 300px;
+    text-align: center;
+}
+.gameStatus{
+    display: inline-block;
+    text-align: center;
+    padding-right: 10px;
+    margin-left: auto;
+    font: 25px; 
+}
+.reset{
+    display: inline-block;
+    margin-right: auto;
+}
+body{
+    display: inline-block;
+    align-content: center;
+}

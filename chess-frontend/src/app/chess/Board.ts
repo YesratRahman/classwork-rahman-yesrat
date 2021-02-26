@@ -10,11 +10,11 @@ import { Rook } from "./Pieces/Rook";
 import { WhitePawn } from "./Pieces/WhitePawn";
 import { Position } from "./Position"
 
-export interface Board{
+export interface Board {
 
-    allSquares : Piece[][];
+    allSquares: Piece[][];
 
-    // isWhiteTurn : boolean;
+    isWhiteTurn: boolean;
     // wKingSideCastle : boolean;
     // wQueenSideCastle: boolean;
     // bKingSideCastle : boolean;
@@ -23,19 +23,20 @@ export interface Board{
     // fiftyMoveCount : number;
     // enPassantCaptureLoc : Position;
 
-    makeMove : (this: Board, toMake : Move) => Board;
-    pieceAt : ( loc: Position ) => Piece;
+    makeMove: (this: Board, toMake: Move) => Board;
+    pieceAt: (loc: Position) => Piece;
     generateMoves: () => Move[];
 }
 
 
-export class ChessBoard implements Board{
+export class ChessBoard implements Board {
 
     //TODO: capture this in the copy constructor at some point...
     // fiftyMoveCount : number;
     // enPassantCaptureLoc : Position;
 
-    allSquares : Piece[][];
+    allSquares: Piece[][];
+    isWhiteTurn: boolean = true;
 
     //  rnbqkbnr        7
     //  pppppppp        6
@@ -48,93 +49,98 @@ export class ChessBoard implements Board{
 
     //  01234567
 
-    pieceAt( loc : Position ) : Piece{
+    pieceAt(loc: Position): Piece {
 
         return this.allSquares[loc.row][loc.col];
     }
 
 
-    constructor( copyFrom?: ChessBoard ){
-        if( copyFrom ){
-            this.buildFrom( copyFrom );
+    constructor(copyFrom?: ChessBoard) {
+        if (copyFrom) {
+            this.buildFrom(copyFrom);
         }
-        this.allSquares = [];
-        for( let row = 0; row < 8; row++ ){
-            this.allSquares[row] = [];
-            for( let col = 0; col < 8; col++ ){
-                
+        else {
 
-                if( row === 1 || row === 6 ){
-                    this.allSquares[row][col] =  row === 1 ? new WhitePawn() : new BlackPawn();
+
+            this.allSquares = [];
+            for (let row = 0; row < 8; row++) {
+                this.allSquares[row] = [];
+                for (let col = 0; col < 8; col++) {
+
+
+                    // if( row === 1 || row === 6 ){
+                    //     this.allSquares[row][col] =  row === 1 ? new WhitePawn() : new BlackPawn();
+                    // }
+
+                    if ((row === 0 || row === 7) && (col === 0 || col === 7)) {
+                        this.allSquares[row][col] = new Rook(row === 0);
+                    }
+
+                    if ((row === 0 || row === 7) && (col === 1 || col === 6)) {
+                        this.allSquares[row][col] = new Knight(row === 0);
+                    }
+
+                    if ((row === 0 || row === 7) && (col === 2 || col === 5)) {
+                        this.allSquares[row][col] = new Bishop(row === 0);
+                    }
+
+                    if (col === 3 && (row === 0 || row === 7)) {
+                        this.allSquares[row][col] = new Queen(row === 0);
+                    }
+
+                    if (col === 4 && (row === 0 || row === 7)) {
+                        this.allSquares[row][col] = new King(row === 0);
+                    }
+
+                    if (!this.allSquares[row][col]) {
+
+                        this.allSquares[row][col] = null;
+                    }
+
                 }
-
-                if( (row === 0 || row === 7) && (col === 0 || col === 7 )){
-                    this.allSquares[row][col] = new Rook( row === 0 );
-                }
-
-                if( (row === 0 || row === 7) && (col === 1 || col === 6 )){
-                    this.allSquares[row][col] = new Knight( row === 0 );
-                }
-
-                if( (row === 0 || row === 7) && (col === 2 || col === 5 )){
-                    this.allSquares[row][col] = new Bishop(row === 0);
-                }
-
-                if( col === 3 && (row === 0 || row === 7) ){
-                    this.allSquares[row][col] = new Queen( row === 0  );
-                }
-
-                if( col === 4 && (row === 0 || row === 7) ){
-                    this.allSquares[row][col] = new King( row === 0 );
-                }
-
-                if( !this.allSquares[row][col] ){
-
-                    this.allSquares[row][col] = null;
-                }
-
             }
         }
     }
 
-    buildFrom( toCopy : Board ) {
+    buildFrom(toCopy: Board) {
 
         // [a, b, c]
         // [[a, b, c]]
-        
+
         this.allSquares = [];
-        for( let i = 0; i < toCopy.allSquares.length; i++ ){
-            this.allSquares.push( [...toCopy.allSquares[i]] );
+        for (let i = 0; i < toCopy.allSquares.length; i++) {
+            this.allSquares.push([...toCopy.allSquares[i]]);
         }
     }
 
 
-    makeMove: ( toMake : Move) => Board = toMake => {
+    makeMove: (toMake: Move) => Board = toMake => {
 
         //TODO: enpassant stuff
         //TODO: 50 move rule stuff
 
-        let nextBoard : ChessBoard = new ChessBoard(this);
+        let nextBoard: ChessBoard = new ChessBoard(this);
 
 
-        let oldPiece : Piece = nextBoard.allSquares[toMake.from.row][toMake.from.col];
+        let oldPiece: Piece = nextBoard.allSquares[toMake.from.row][toMake.from.col];
 
         nextBoard.allSquares[toMake.from.row][toMake.from.col] = null;
         nextBoard.allSquares[toMake.to.row][toMake.to.col] = oldPiece;
+        nextBoard.isWhiteTurn = !this.isWhiteTurn;
 
 
 
         return nextBoard;
     }
 
-    generateMoves() : Move[] {
+    generateMoves(): Move[] {
 
-        let allMoves : Move[] = [];
+        let allMoves: Move[] = [];
 
-        for( let row = 0; row < 8; row++ ){
-            for( let col = 0; col < 8; col++ ){
-                if( this.allSquares[row][col] ){
-                    allMoves.push( ...this.allSquares[row][col].generateMoves(this, { row, col })  )
+        for (let row = 0; row < 8; row++) {
+            for (let col = 0; col < 8; col++) {
+                if (this.allSquares[row][col]) {
+                    allMoves.push(...this.allSquares[row][col].generateMoves(this, { row, col }))
                 }
             }
         }

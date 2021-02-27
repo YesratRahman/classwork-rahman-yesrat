@@ -1,7 +1,7 @@
 <div style="background-image: url('https://www.pngfind.com/pngs/m/85-859083_grid-transparent-backgrounds-grid-pastel-background-png-png.png');"> 
 <h2 style="text-align: center;"> Wecome to Tic-Tac-Toe Game</h2> 
 <div class="board">
-    <div class="row" *ngFor="let row of game.pieces; index as r">
+    <div class="row" *ngFor="let row of game.boardPieces; index as r">
         <app-square *ngFor="let s of row; index as c" 
         [piece]="s" 
         [row]="r" 

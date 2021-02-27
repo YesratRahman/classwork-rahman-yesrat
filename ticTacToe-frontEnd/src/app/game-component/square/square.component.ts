@@ -25,7 +25,7 @@ export class SquareComponent implements OnInit {
       this.imageSrc += "O.png";
     }
     else {
-      this.imageSrc += "Emp.png";
+      this.imageSrc = " ";
     }
   }
 

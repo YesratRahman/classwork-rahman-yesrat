@@ -1,7 +1,7 @@
-import { Location } from "./Location";
+import { Location } from './Location';
 
 export interface Game {
-    pieces: number[][];
+    boardPieces: number[][];
     gameStatus: number;
     isOTurn: boolean;
     makeMove: (pos: Location) => void;
@@ -10,23 +10,23 @@ export interface Game {
 }
 
 export class TicTacToeGame implements Game {
-    pieces: number[][];
+    boardPieces: number[][];
     gameStatus: number = -2;
     isOTurn: boolean = true;
 
     constructor() {
-        this.pieces = [];
+        this.boardPieces = [];
         for (let row= 0;row< 3;row++) {
-            this.pieces[row] = [];
+            this.boardPieces[row] = [];
             for (let col= 0;col< 3; col++) {
-                this.pieces[row][col] = 0;
+                this.boardPieces[row][col] = 0;
             }
         }
     }
 
     makeMove(pos: Location): void {
-        if (this.pieces[pos.row][pos.col] === 0 && this.gameStatus === -2) {
-            this.pieces[pos.row][pos.col] = this.isOTurn ? 1 : -1;
+        if (this.gameStatus === -2 && this.boardPieces[pos.row][pos.col] === 0) {
+            this.boardPieces[pos.row][pos.col] = this.isOTurn ? 1 : -1;
             this.gameStatus = this.gameOver();
             this.isOTurn = !this.isOTurn;
         }
@@ -34,7 +34,7 @@ export class TicTacToeGame implements Game {
     validFullBoard(): boolean {
         for (let row= 0;row < 3;row++) {
             for (let  col= 0;col< 3; col++) {
-                if (this.pieces[row][col] === 0) {
+                if (this.boardPieces[row][col] === 0) {
                     return false;
                 }
             }
@@ -43,11 +43,20 @@ export class TicTacToeGame implements Game {
     }
 
 
+//    let statusChange : boolean = false; 
+    //    if(!statusChange){
 
+       
+    //     for (let row= 0;row< 3;row++) {
+    //         let rowSum = this.boardPieces[row][0] + this.boardPieces[row][1] + this.boardPieces[row][2];
+    //          if (rowSum * rowSum === 9) {
+    //             statusChange = true; 
+    //         }
+    //     }
     checkingRows(): boolean {
         for (let row= 0;row< 3;row++) {
-            let rowSum = this.pieces[row][0] + this.pieces[row][1] + this.pieces[row][2];
-            if (Math.pow(rowSum, 2) === 9) {
+            let rowSum = this.boardPieces[row][0] + this.boardPieces[row][1] + this.boardPieces[row][2];
+            if (rowSum * rowSum === 9) {
                 return true;
             }
         }
@@ -56,21 +65,22 @@ export class TicTacToeGame implements Game {
 
     checkingColums(): boolean {
         for (let row= 0;row< 3;row++) {
-            let colSum = this.pieces[0][row] + this.pieces[1][row] + this.pieces[2][row];
-            if (Math.pow(colSum, 2) === 9) {
+            let colSum = this.boardPieces[0][row] + this.boardPieces[1][row] + this.boardPieces[2][row];
+            if (colSum * colSum === 9) {
                 return true;
             }
         }
         return false;
     }
 
+    //  int d1Sum = board[0] + board[4] + board[8];
+    // int d2Sum = board[6] + board[4] + board[2];
+    // if( d1Sum * d1Sum == 9 || d2Sum * d2Sum == 9 ) status = 1;
+
     checkingDiagonally(): boolean {
-        let d1Sum = this.pieces[0][0] + this.pieces[1][1] + this.pieces[2][2];
-        if (Math.pow(d1Sum, 2) === 9) {
-            return true;
-        }
-        let d2Sum = this.pieces[0][2] + this.pieces[1][1] + this.pieces[2][0];
-        if (Math.pow(d2Sum, 2) === 9) {
+        let d1Sum = this.boardPieces[0][0] + this.boardPieces[1][1] + this.boardPieces[2][2];
+        let d2Sum = this.boardPieces[0][2] + this.boardPieces[1][1] + this.boardPieces[2][0];
+        if (d1Sum * d1Sum === 9 || d2Sum * d2Sum === 9) {
             return true;
         }
         return false;

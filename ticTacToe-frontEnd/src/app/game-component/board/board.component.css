@@ -4,14 +4,12 @@
     margin-left: auto;
     margin-right: auto;
 }
+body{
+    display: inline-block;
+    align-content: center;
+}
 .row{
     height: 30%;
-}
-.text{
-    width: 300px;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
 }
 .gameStatus{
     display: inline-block;
@@ -24,7 +22,11 @@
     display: inline-block;
     margin-right: auto;
 }
-body{
-    display: inline-block;
-    align-content: center;
+
+.text{
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    
 }

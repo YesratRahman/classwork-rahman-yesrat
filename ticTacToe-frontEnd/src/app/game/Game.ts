@@ -9,7 +9,7 @@ export interface Game {
 
 }
 
-export class TicTacToeGame implements Game {
+export class TTTGame implements Game {
     boardPieces: number[][];
     gameStatus: number = -2;
     isOTurn: boolean = true;

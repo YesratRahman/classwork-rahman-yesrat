@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Game, TicTacToeGame } from '../../game/Game';
+import { Game, TTTGame } from '../../game/Game';
 import { Location } from '../../game/Location';
 
 @Component({
@@ -8,7 +8,7 @@ import { Location } from '../../game/Location';
   styleUrls: ['./board.component.css']
 })
 export class BoardComponent implements OnInit {
-  game: Game = new TicTacToeGame();
+  game: Game = new TTTGame();
   status: string = "Welcome to the New Game";
 
   constructor() { }
@@ -32,7 +32,7 @@ export class BoardComponent implements OnInit {
   }
 
   reset(): void {
-    this.game = new TicTacToeGame();
+    this.game = new TTTGame();
     this.status = "Welcome to the New Game";
   }
 

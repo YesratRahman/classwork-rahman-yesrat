@@ -9,7 +9,10 @@ import { Location } from '../../game/Location';
 })
 export class BoardComponent implements OnInit {
   game: Game = new TTTGame();
-  status: string = "Welcome to the New Game";
+  winsX : number; 
+  winsO : number; 
+  draws : number; 
+  status: string = " ";
 
   constructor() { }
 
@@ -21,19 +24,21 @@ export class BoardComponent implements OnInit {
     switch (this.game.gameStatus) {
       case 1:
         this.status = "Congrats, Player O wins!";
+        this.winsX++; 
         break;
       case -1:
         this.status = "Congrats, Player X wins!";
+        this.winsO++; 
         break;
       case 0:
         this.status = "A Draw!";
+        this.draws++; 
         break;
     }
   }
 
   reset(): void {
     this.game = new TTTGame();
-    this.status = "Welcome to the New Game";
   }
 
 }

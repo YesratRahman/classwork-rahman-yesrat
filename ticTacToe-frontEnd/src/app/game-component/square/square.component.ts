@@ -18,15 +18,17 @@ export class SquareComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    if (this.piece === -1) {
-      this.imageSrc += "X.png";
-    }
-    else if (this.piece === 1) {
-      this.imageSrc += "O.png";
-    }
-    else {
+    if(this.piece === 0){
       this.imageSrc = " ";
     }
+    else {
+    if (this.piece === -1) {
+      this.imageSrc += "playerX.png";
+    }
+    if (this.piece === 1) {
+      this.imageSrc += "playerO.png";
+    }
+  } 
   }
 
   squareClicked(): void {

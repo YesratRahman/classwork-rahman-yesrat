@@ -6,7 +6,6 @@ export interface Game {
     isOTurn: boolean;
     makeMove: (pos: Location) => void;
     gameOver: () => number;
-
 }
 
 export class TTTGame implements Game {
@@ -66,7 +65,7 @@ export class TTTGame implements Game {
     }
    
     gameOver(): number {
-        if (this.checkWin() ) {
+        if (this.checkWin()) {
             return this.isOTurn ? 1 : -1;
         } else {
             if (this.validFullBoard()) {

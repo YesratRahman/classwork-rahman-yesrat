@@ -9,9 +9,9 @@ import { Location } from '../../game/Location';
 })
 export class BoardComponent implements OnInit {
   game: Game = new TTTGame();
-  winsX : number; 
-  winsO : number; 
-  draws : number; 
+  winsO : number = 0; 
+  winsX : number = 0; 
+  draws : number = 0; 
   status: string = " ";
 
   constructor() { }
@@ -24,11 +24,11 @@ export class BoardComponent implements OnInit {
     switch (this.game.gameStatus) {
       case 1:
         this.status = "Congrats, Player O wins!";
-        this.winsX++; 
+        this.winsO++; 
         break;
       case -1:
         this.status = "Congrats, Player X wins!";
-        this.winsO++; 
+        this.winsX++; 
         break;
       case 0:
         this.status = "A Draw!";

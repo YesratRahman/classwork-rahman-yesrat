@@ -1,20 +1,22 @@
-<div style="background-image: url('https://www.pngfind.com/pngs/m/85-859083_grid-transparent-backgrounds-grid-pastel-background-png-png.png');"> 
-<h2 style="text-align: center;"> Wecome to Tic-Tac-Toe Game</h2> 
-<div class="board">
-    <div class="row" *ngFor="let row of game.boardPieces; index as r">
-        <app-square *ngFor="let s of row; index as c" 
-        [piece]="s" 
-        [row]="r" 
-        [col]="c" 
-        (squareClickedEvent)="onSquareClicked($event)">
-        </app-square>
+<div
+    style="background-image: url('https://www.pngfind.com/pngs/m/85-859083_grid-transparent-backgrounds-grid-pastel-background-png-png.png');">
+    <h2 style="text-align: center;"> Wecome to Tic-Tac-Toe Game</h2>
+    <div class="board">
+        <div class="row" *ngFor="let row of game.boardPieces; index as r">
+            <app-square *ngFor="let s of row; index as c" [piece]="s" [row]="r" [col]="c"
+                (squareClickedEvent)="onSquareClicked($event)">
+            </app-square>
+        </div>
+        <br />
+        <div class="text">
+            <div class="gameStatus" [innerHTML]="status"></div>
+            <button class="reset" (click)="reset()">Reset Game</button>
+        </div>
     </div>
-    <br/>
-    <div class="text">
-        
-        <div class="gameStatus" [innerHTML]="status"></div>
-        <button class="reset" (click)="reset()">Reset Game</button>
+    <div class="showGameResult">
+        <h2>Result</h2> 
+        <h3 [innerHTML]="'Player O Wins : ' + winsO + ' times'"> </h3>
+        <h3 [innerHTML]="'Player X Wins : ' + winsX + ' times'"> </h3>
+        <h3 [innerHTML]="'There are : ' + draws + ' draws'"> </h3> 
     </div>
 </div>
-</div>
-

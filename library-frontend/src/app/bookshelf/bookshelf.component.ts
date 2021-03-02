@@ -12,7 +12,6 @@ export class BookshelfComponent implements OnInit {
   books : Book[];
 
   constructor(private libService : LibraryService) { 
-    //this.books = [{id: 1, title: "TEST", authors: ["testAuthor"], year: 2021}];
   }
 
   ngOnInit(): void {

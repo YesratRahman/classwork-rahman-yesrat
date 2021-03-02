@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RequestMapping("/api")
 @RestController
+@CrossOrigin(origins="http://localhost:4200")
 public class LibraryController {
     @Autowired
     LibraryService service;

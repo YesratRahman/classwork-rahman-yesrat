@@ -13,6 +13,10 @@ public class LibraryInMemDao implements LibraryDao{
 
     private List<Book> allBooks = new ArrayList<>();
 
+    public LibraryInMemDao(){
+        Book b = new Book(1, "title1", new ArrayList<>(), 2021);
+        this.allBooks.add(b);
+    }
     @Override
     public List<Book> getAllBooks() {
         List<Book> copyList = new ArrayList<>();

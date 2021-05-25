@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/SudokuSolver/SudokuSolver/SudokuSolver.csproj",
-      "projectName": "SudokuSolver",
-      "projectPath": "/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/SudokuSolver/SudokuSolver/SudokuSolver.csproj",
+      "projectUniqueName": "/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/BigRational/BigRational/BigRational.csproj",
+      "projectName": "BigRational",
+      "projectPath": "/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/BigRational/BigRational/BigRational.csproj",
       "packagesPath": "/Users/yesratrahman/.nuget/packages/",
-      "outputPath": "/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/SudokuSolver/SudokuSolver/obj/",
+      "outputPath": "/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/BigRational/BigRational/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/yesratrahman/.config/NuGet/NuGet.Config"

@@ -1,0 +1,12 @@
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/DayTime/DayTime/bin/Debug/netcoreapp3.1/DayTime.deps.json
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/DayTime/DayTime/bin/Debug/netcoreapp3.1/DayTime.runtimeconfig.json
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/DayTime/DayTime/bin/Debug/netcoreapp3.1/DayTime.runtimeconfig.dev.json
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/DayTime/DayTime/bin/Debug/netcoreapp3.1/DayTime.dll
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/DayTime/DayTime/bin/Debug/netcoreapp3.1/DayTime.pdb
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/DayTime/DayTime/obj/Debug/netcoreapp3.1/DayTime.csprojAssemblyReference.cache
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/DayTime/DayTime/obj/Debug/netcoreapp3.1/DayTime.AssemblyInfoInputs.cache
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/DayTime/DayTime/obj/Debug/netcoreapp3.1/DayTime.AssemblyInfo.cs
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/DayTime/DayTime/obj/Debug/netcoreapp3.1/DayTime.csproj.CoreCompileInputs.cache
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/DayTime/DayTime/obj/Debug/netcoreapp3.1/DayTime.dll
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/DayTime/DayTime/obj/Debug/netcoreapp3.1/DayTime.pdb
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/DayTime/DayTime/obj/Debug/netcoreapp3.1/DayTime.genruntimeconfig.cache

@@ -1,10 +1,6 @@
 ﻿<Properties StartupConfiguration="{720D60C3-C4CC-4FE2-A1B4-000AD1CF7DB0}|Default">
   <MonoDevelop.Ide.ItemProperties.BigRational PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench>
-    <Files>
-      <File FileName="BigRational/Program.cs" Line="19" Column="58" />
-      <File FileName="BigRational/BigRational.cs" Line="12" Column="26" />
-    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">

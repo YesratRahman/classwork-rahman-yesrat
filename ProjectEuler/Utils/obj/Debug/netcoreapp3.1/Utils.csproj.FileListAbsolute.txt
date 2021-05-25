@@ -1,0 +1,9 @@
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/ProjectEuler/Utils/bin/Debug/netcoreapp3.1/Utils.deps.json
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/ProjectEuler/Utils/bin/Debug/netcoreapp3.1/Utils.dll
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/ProjectEuler/Utils/bin/Debug/netcoreapp3.1/Utils.pdb
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/ProjectEuler/Utils/obj/Debug/netcoreapp3.1/Utils.csprojAssemblyReference.cache
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/ProjectEuler/Utils/obj/Debug/netcoreapp3.1/Utils.AssemblyInfoInputs.cache
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/ProjectEuler/Utils/obj/Debug/netcoreapp3.1/Utils.AssemblyInfo.cs
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/ProjectEuler/Utils/obj/Debug/netcoreapp3.1/Utils.csproj.CoreCompileInputs.cache
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/ProjectEuler/Utils/obj/Debug/netcoreapp3.1/Utils.dll
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/ProjectEuler/Utils/obj/Debug/netcoreapp3.1/Utils.pdb

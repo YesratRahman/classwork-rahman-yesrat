@@ -18,6 +18,7 @@ namespace DayTime
             if(userEnteredDay == DayOfWeek.Friday)
             {
                 userDate = userDate.AddDays(7);
+            
 
             }
             else if(userEnteredDay == DayOfWeek.Saturday)
@@ -52,7 +53,7 @@ namespace DayTime
             }
 
 
-            Console.WriteLine(userDate); 
+            Console.WriteLine("The next Friday is : " + userDate); 
 
         }
 

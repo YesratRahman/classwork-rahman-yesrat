@@ -80,7 +80,30 @@ namespace Utils
             return false;
         }
 
+        public static int SumOfSquares(int maxNumber)
+        {
+            int sumOfSquares = 0;
 
+            for (int i = 1; i <= maxNumber; i++)
+            {
+                sumOfSquares += (i * i);
+            }
+
+            return sumOfSquares;
+        }
+
+        
+        public static int SquareOfSums(int maxNumber)
+        {
+            int squareOfSums = 0;
+
+            for (int i = 1; i <= maxNumber; i++)
+            {
+                squareOfSums += i;
+            }
+
+            return squareOfSums * squareOfSums;
+        }
 
     }
 }

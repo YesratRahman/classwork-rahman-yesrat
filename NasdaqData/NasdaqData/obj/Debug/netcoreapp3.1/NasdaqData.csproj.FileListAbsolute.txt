@@ -1,0 +1,11 @@
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/NasdaqData/NasdaqData/bin/Debug/netcoreapp3.1/NasdaqData.deps.json
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/NasdaqData/NasdaqData/bin/Debug/netcoreapp3.1/NasdaqData.runtimeconfig.json
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/NasdaqData/NasdaqData/bin/Debug/netcoreapp3.1/NasdaqData.runtimeconfig.dev.json
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/NasdaqData/NasdaqData/bin/Debug/netcoreapp3.1/NasdaqData.dll
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/NasdaqData/NasdaqData/bin/Debug/netcoreapp3.1/NasdaqData.pdb
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/NasdaqData/NasdaqData/obj/Debug/netcoreapp3.1/NasdaqData.AssemblyInfoInputs.cache
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/NasdaqData/NasdaqData/obj/Debug/netcoreapp3.1/NasdaqData.AssemblyInfo.cs
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/NasdaqData/NasdaqData/obj/Debug/netcoreapp3.1/NasdaqData.csproj.CoreCompileInputs.cache
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/NasdaqData/NasdaqData/obj/Debug/netcoreapp3.1/NasdaqData.dll
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/NasdaqData/NasdaqData/obj/Debug/netcoreapp3.1/NasdaqData.pdb
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/NasdaqData/NasdaqData/obj/Debug/netcoreapp3.1/NasdaqData.genruntimeconfig.cache

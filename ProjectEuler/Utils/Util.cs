@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Numerics;
 
 namespace Utils
@@ -20,20 +21,59 @@ namespace Utils
 
             //Handle 2 special case
 
-            if(number % 2 == 0)
+            if (number % 2 == 0)
             {
-                return number == 2; 
+                return number == 2;
             }
 
-            for(BigInteger i = 3; i <= squareRoot; i += 2)
+            for (BigInteger i = 3; i <= squareRoot; i += 2)
             {
-                if(number % i == 0)
+                if (number % i == 0)
                 {
                     prime = false;
-                    break; 
+                    break;
                 }
             }
             return prime;
+
+        }
+
+        public static bool IsPrime(int number)
+        {
+            bool prime = true;
+            int squareRoot = GetSquareRoot(number);
+            if (number % 2 == 0)
+            {
+                return number == 2;
+            }
+
+            for (int i = 3; i <= squareRoot; i += 2)
+            {
+                if (number % i == 0)
+                {
+                    prime = false;
+                    break;
+                }
+            }
+            return prime;
+
+        }
+
+        public static bool IsPrime(List<int> Primes ,int number)
+        {
+            
+            foreach (int prime in Primes)
+            {
+                if(GetSquareRoot(number) < prime)
+                {
+                    break; 
+                }
+                if(number % prime == 0)
+                {
+                    return false; 
+                }
+            }
+            return true;
 
         }
 
@@ -41,15 +81,30 @@ namespace Utils
         {
             BigInteger squareRoot = 0;
 
-            for(BigInteger i = 1; i < num; i++)
+            for (BigInteger i = 1; i < num; i++)
             {
-                if((i*i) > num)
+                if ((i * i) > num)
                 {
                     squareRoot = i - 1;
-                    break; 
+                    break;
                 }
             }
-            return squareRoot; 
+            return squareRoot;
+        }
+
+        public static int GetSquareRoot(int num)
+        {
+            int squareRoot = 0;
+
+            for (int i = 1; i < num; i++)
+            {
+                if ((i * i) > num)
+                {
+                    squareRoot = i - 1;
+                    break;
+                }
+            }
+            return squareRoot;
         }
 
         public static bool IsPalindrome(int num)
@@ -57,10 +112,6 @@ namespace Utils
 
             int temp = num;
             int sum = 0;
-
-
-
-
             while (num > 0)
             {
                 int rem = num % 10;
@@ -68,15 +119,10 @@ namespace Utils
                 sum = sum * 10 + rem;
             }
 
-
-
             if (sum == temp)
             {
                 return true;
             }
-
-
-
             return false;
         }
 
@@ -92,7 +138,7 @@ namespace Utils
             return sumOfSquares;
         }
 
-        
+
         public static int SquareOfSums(int maxNumber)
         {
             int squareOfSums = 0;
@@ -103,6 +149,25 @@ namespace Utils
             }
 
             return squareOfSums * squareOfSums;
+        }
+
+        public static List<long> GetFactors(long number)
+        {
+            List<long> factors = new List<long>();
+
+            for(long i = 1; i* i <= number; i+=1)
+            {
+                if(number % i == 0)
+                {
+                    factors.Add(i);
+                    if(i * i != number)
+                    {
+                        factors.Add(number / i); 
+                    }
+                }
+            }
+
+            return factors; 
         }
 
     }

@@ -1,0 +1,12 @@
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/GroupByExercise/GroupByExercise/bin/Debug/netcoreapp3.1/GroupByExercise.deps.json
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/GroupByExercise/GroupByExercise/bin/Debug/netcoreapp3.1/GroupByExercise.runtimeconfig.json
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/GroupByExercise/GroupByExercise/bin/Debug/netcoreapp3.1/GroupByExercise.runtimeconfig.dev.json
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/GroupByExercise/GroupByExercise/bin/Debug/netcoreapp3.1/GroupByExercise.dll
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/GroupByExercise/GroupByExercise/bin/Debug/netcoreapp3.1/GroupByExercise.pdb
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/GroupByExercise/GroupByExercise/obj/Debug/netcoreapp3.1/GroupByExercise.csprojAssemblyReference.cache
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/GroupByExercise/GroupByExercise/obj/Debug/netcoreapp3.1/GroupByExercise.AssemblyInfoInputs.cache
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/GroupByExercise/GroupByExercise/obj/Debug/netcoreapp3.1/GroupByExercise.AssemblyInfo.cs
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/GroupByExercise/GroupByExercise/obj/Debug/netcoreapp3.1/GroupByExercise.csproj.CoreCompileInputs.cache
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/GroupByExercise/GroupByExercise/obj/Debug/netcoreapp3.1/GroupByExercise.dll
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/GroupByExercise/GroupByExercise/obj/Debug/netcoreapp3.1/GroupByExercise.pdb
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/GroupByExercise/GroupByExercise/obj/Debug/netcoreapp3.1/GroupByExercise.genruntimeconfig.cache

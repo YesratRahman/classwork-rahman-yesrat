@@ -1,9 +1,20 @@
 ﻿<Properties StartupConfiguration="{61E7835A-98A2-4631-8ABD-C85665DB5F36}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="NasdaqData/Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="NasdaqData/DailyQuote.cs">
     <Files>
       <File FileName="NasdaqData/Program.cs" Line="128" Column="1" />
       <File FileName="NasdaqData/DailyQuote.cs" Line="50" Column="1" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="NasdaqData" expanded="True">
+            <Node name="NasdaqData" expanded="True">
+              <Node name="DailyQuote.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.NasdaqData PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

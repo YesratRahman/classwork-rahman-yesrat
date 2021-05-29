@@ -1,0 +1,11 @@
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/223RoomEscape/223RoomEscape/bin/Debug/netcoreapp3.1/223RoomEscape.deps.json
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/223RoomEscape/223RoomEscape/bin/Debug/netcoreapp3.1/223RoomEscape.runtimeconfig.json
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/223RoomEscape/223RoomEscape/bin/Debug/netcoreapp3.1/223RoomEscape.runtimeconfig.dev.json
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/223RoomEscape/223RoomEscape/bin/Debug/netcoreapp3.1/223RoomEscape.dll
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/223RoomEscape/223RoomEscape/bin/Debug/netcoreapp3.1/223RoomEscape.pdb
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/223RoomEscape/223RoomEscape/obj/Debug/netcoreapp3.1/223RoomEscape.AssemblyInfoInputs.cache
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/223RoomEscape/223RoomEscape/obj/Debug/netcoreapp3.1/223RoomEscape.AssemblyInfo.cs
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/223RoomEscape/223RoomEscape/obj/Debug/netcoreapp3.1/223RoomEscape.csproj.CoreCompileInputs.cache
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/223RoomEscape/223RoomEscape/obj/Debug/netcoreapp3.1/223RoomEscape.dll
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/223RoomEscape/223RoomEscape/obj/Debug/netcoreapp3.1/223RoomEscape.pdb
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/223RoomEscape/223RoomEscape/obj/Debug/netcoreapp3.1/223RoomEscape.genruntimeconfig.cache

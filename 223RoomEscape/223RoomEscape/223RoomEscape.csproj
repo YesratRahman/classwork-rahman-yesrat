@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>_223RoomEscape</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
+    <Folder Include="Classes\" />
+    <Folder Include="Classes\Fighter\" />
+    <Folder Include="Classes\Armor\" />
+    <Folder Include="Classes\Weapon\" />
+  </ItemGroup>
+</Project>

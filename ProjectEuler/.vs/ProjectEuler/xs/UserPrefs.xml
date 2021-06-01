@@ -1,17 +1,20 @@
-﻿<Properties StartupConfiguration="{183B4D70-3C40-4D5F-9B8C-88154024B3DD}|Default">
+﻿<Properties StartupConfiguration="{F114360C-FC17-4905-8405-1D7353A65502}|Default">
   <MonoDevelop.Ide.ItemProperties.Problem10 PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.ItemProperties.Problem18 FirstBuild="True" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.ItemProperties.Problem6 PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.ItemProperties.Problem12 PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.ItemProperties.Problem5 PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Problem8/Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Problem18/Program.cs">
     <Files>
-      <File FileName="Problem8/Program.cs" Line="9" Column="12" />
+      <File FileName="Problem18/Program.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="ProjectEuler" expanded="True">
-            <Node name="Problem8" expanded="True" selected="True" />
+            <Node name="Problem18" expanded="True">
+              <Node name="Program.cs" selected="True" />
+            </Node>
           </Node>
         </State>
       </Pad>

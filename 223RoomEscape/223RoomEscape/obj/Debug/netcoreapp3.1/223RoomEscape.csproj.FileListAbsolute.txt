@@ -9,3 +9,4 @@
 /Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/223RoomEscape/223RoomEscape/obj/Debug/netcoreapp3.1/223RoomEscape.dll
 /Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/223RoomEscape/223RoomEscape/obj/Debug/netcoreapp3.1/223RoomEscape.pdb
 /Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/223RoomEscape/223RoomEscape/obj/Debug/netcoreapp3.1/223RoomEscape.genruntimeconfig.cache
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/223RoomEscape/223RoomEscape/obj/Debug/netcoreapp3.1/223RoomEscape.csprojAssemblyReference.cache

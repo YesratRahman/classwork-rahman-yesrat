@@ -65,7 +65,7 @@ namespace Problem18
                     {
                         maxSum = outerList[lastRow][i];
                     }
-                    //maxSum = 
+                    
                 }
                 Console.WriteLine(maxSum); 
             }

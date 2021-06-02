@@ -40,7 +40,7 @@ namespace _223RoomEscape
     class Program
     {
         static Random rand = new Random();
-        //static char[,] gameBoard = new char[15, 15];
+        static char[,] board = new char[15, 15];
 
         static char player = 'X';
         static char enemy = 'O';
@@ -49,16 +49,16 @@ namespace _223RoomEscape
         static void Main(string[] args)
         {
 
-            int rooms = 1;
+            int rooms = 0;
             int numberOfEnemies = rooms + 1;
 
-            //Fighter player = SetUpPlayer();
+            //Fighter player1 = SetUpPlayer();
             //PrintBoard(gameBoard);
             int points = 0;
 
             //while (player.Health > 0)
             //{
-            //    Fighter enemy = SetUpEnemy();
+            Fighter enemy1 = SetUpEnemy();
 
             //    Console.WriteLine("Watch out! An enemy " + enemy.Name + " appears!");
 
@@ -73,12 +73,12 @@ namespace _223RoomEscape
                 Fighter fighter = SetUpPlayer();
                 //while (player.Health > 0)
                 //{
-                char[,] gameBoard = ShowBoard();
-                GenerateRandomEnemies(gameBoard, enemy, numberOfEnemies);
+                char[,] gameBoard = ShowBoard(board, player,emptySpace);
+                GenerateRandomEnemies(gameBoard,numberOfEnemies);
 
-                PrintBoard(gameBoard);
-                GeneratePlayerMoves(gameBoard, player, emptySpace);
-
+                PrintBoard(gameBoard,rooms);
+                GeneratePlayerMoves(gameBoard, player, rooms, emptySpace);
+                //points = Battle(fighter, enemy1, points);
                 if (gameOver)
                 {
                     Console.WriteLine("Player Won the Game");
@@ -93,7 +93,7 @@ namespace _223RoomEscape
 
             }
 
-
+            //
         }
 
 
@@ -194,8 +194,9 @@ namespace _223RoomEscape
 
             return newFighter;
         }
-        private static void GeneratePlayerMoves(char[,] gameBoard, char player, char emptySpace)
+        private static void GeneratePlayerMoves(char[,] gameBoard, char player,int numberOfRooms, char emptySpace)
         {
+           
             if (gameBoard[14, 14] != player)
             {
                 Console.WriteLine("Enter a directional key to make a move ==>> ");
@@ -212,13 +213,16 @@ namespace _223RoomEscape
                                 {
                                     gameBoard[row, col + 1] = player;
                                     gameBoard[row, col] = emptySpace;
-                                    PrintBoard(gameBoard);
-                                    GeneratePlayerMoves(gameBoard, player, emptySpace);
+                                    PrintBoard(gameBoard,numberOfRooms);
+                                    GeneratePlayerMoves(gameBoard, player, numberOfRooms, emptySpace);
+                                    //Battle(player, enemy, points);
+
+                                    //if there is an enemy 
                                 }
                                 else
                                 {
                                     Console.WriteLine("Sorry, you can not move right from here.");
-                                    GeneratePlayerMoves(gameBoard, player, emptySpace);
+                                    GeneratePlayerMoves(gameBoard, player, numberOfRooms, emptySpace);
                                 }
 
                             }
@@ -228,13 +232,13 @@ namespace _223RoomEscape
                                 {
                                     gameBoard[row, col - 1] = player;
                                     gameBoard[row, col] = emptySpace;
-                                    PrintBoard(gameBoard);
-                                    GeneratePlayerMoves(gameBoard, player, emptySpace);
+                                    PrintBoard(gameBoard, numberOfRooms);
+                                    GeneratePlayerMoves(gameBoard, player, numberOfRooms, emptySpace);
                                 }
                                 else
                                 {
                                     Console.WriteLine("Sorry, you can not move left from here.");
-                                    GeneratePlayerMoves(gameBoard, player, emptySpace);
+                                    GeneratePlayerMoves(gameBoard, player, numberOfRooms, emptySpace);
                                 }
                             }
                             else if (consoleKey.Key == ConsoleKey.UpArrow)
@@ -243,13 +247,13 @@ namespace _223RoomEscape
                                 {
                                     gameBoard[row - 1, col] = player;
                                     gameBoard[row, col] = emptySpace;
-                                    PrintBoard(gameBoard);
-                                    GeneratePlayerMoves(gameBoard, player, emptySpace);
+                                    PrintBoard(gameBoard, numberOfRooms);
+                                    GeneratePlayerMoves(gameBoard, player, numberOfRooms, emptySpace);
                                 }
                                 else
                                 {
                                     Console.WriteLine("Sorry, you can not move up from here.");
-                                    GeneratePlayerMoves(gameBoard, player, emptySpace);
+                                    GeneratePlayerMoves(gameBoard, player, numberOfRooms, emptySpace);
                                 }
                             }
                             else if (consoleKey.Key == ConsoleKey.DownArrow)
@@ -258,13 +262,13 @@ namespace _223RoomEscape
                                 {
                                     gameBoard[row + 1, col] = player;
                                     gameBoard[row, col] = emptySpace;
-                                    PrintBoard(gameBoard);
-                                    GeneratePlayerMoves(gameBoard, player, emptySpace);
+                                    PrintBoard(gameBoard, numberOfRooms);
+                                    GeneratePlayerMoves(gameBoard, player, numberOfRooms,  emptySpace);
                                 }
                                 else
                                 {
                                     Console.WriteLine("Sorry, you can not move down from here.");
-                                    GeneratePlayerMoves(gameBoard, player, emptySpace);
+                                    GeneratePlayerMoves(gameBoard, player, numberOfRooms, emptySpace);
                                 }
                             }
                             else
@@ -279,9 +283,22 @@ namespace _223RoomEscape
             }
             else
             {
+                Console.Clear();
+                Console.WriteLine("You are inside battle field!");
 
-                Console.WriteLine("You are inside the battle field");
+                numberOfRooms++;
+                //Console.WriteLine("You are inside of room number: " + numberOfRooms);
 
+
+                if (numberOfRooms < 223)
+                {
+                    char[,] newRoom = ShowBoard(gameBoard, player, emptySpace);
+                    GenerateRandomEnemies(newRoom, numberOfRooms + 1);
+                    PrintBoard(gameBoard, numberOfRooms);
+                    GeneratePlayerMoves(gameBoard, player, numberOfRooms, emptySpace);
+                    //Battle()
+
+                }
             }
         }
 
@@ -310,9 +327,11 @@ namespace _223RoomEscape
 
 
 
-        private static void PrintBoard(char[,] board)
+        private static void PrintBoard(char[,] board, int numberOfRooms)
         {
-            Console.WriteLine();
+            //Console.WriteLine();
+            Console.Clear();
+            Console.WriteLine("You are inside of room number: " + numberOfRooms);
 
             for (int i = 0; i < board.GetLength(0); i++)
             {
@@ -325,10 +344,10 @@ namespace _223RoomEscape
             }
         }
 
-        private static char[,] ShowBoard()
+        private static char[,] ShowBoard(char[,] gameBoard, char player, char emptySpace)
         {
 
-            char[,] gameBoard = new char[15, 15];
+            //char[,] gameBoard = new char[15, 15];
             for (int row = 0; row < 15; row++)
             {
                 for (int col = 0; col < 15; col++)
@@ -353,7 +372,7 @@ namespace _223RoomEscape
             return gameBoard;
         }
 
-        private static void GenerateRandomEnemies(char[,] board, char enemy, int num)
+        private static void GenerateRandomEnemies(char[,] board, int num)
         {
             int position = 0;
             while (position != num)

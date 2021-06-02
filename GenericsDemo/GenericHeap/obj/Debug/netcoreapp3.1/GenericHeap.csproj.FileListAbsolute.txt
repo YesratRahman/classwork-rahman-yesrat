@@ -1,0 +1,9 @@
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/GenericsDemo/GenericHeap/bin/Debug/netcoreapp3.1/GenericHeap.deps.json
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/GenericsDemo/GenericHeap/bin/Debug/netcoreapp3.1/GenericHeap.dll
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/GenericsDemo/GenericHeap/bin/Debug/netcoreapp3.1/GenericHeap.pdb
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/GenericsDemo/GenericHeap/obj/Debug/netcoreapp3.1/GenericHeap.csprojAssemblyReference.cache
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/GenericsDemo/GenericHeap/obj/Debug/netcoreapp3.1/GenericHeap.AssemblyInfoInputs.cache
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/GenericsDemo/GenericHeap/obj/Debug/netcoreapp3.1/GenericHeap.AssemblyInfo.cs
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/GenericsDemo/GenericHeap/obj/Debug/netcoreapp3.1/GenericHeap.csproj.CoreCompileInputs.cache
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/GenericsDemo/GenericHeap/obj/Debug/netcoreapp3.1/GenericHeap.dll
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/GenericsDemo/GenericHeap/obj/Debug/netcoreapp3.1/GenericHeap.pdb

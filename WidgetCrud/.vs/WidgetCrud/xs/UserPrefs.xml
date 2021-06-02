@@ -1,17 +1,17 @@
 ﻿<Properties StartupConfiguration="{1D19C657-0FCD-4F40-AD63-881CD0461DCA}|Default">
   <MonoDevelop.Ide.ItemProperties.WidgetCrud PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="WidgetCrud/InMemWidgetDao.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="WidgetCrud/Program.cs">
     <Files>
-      <File FileName="WidgetCrud/Program.cs" Line="1" Column="1" />
-      <File FileName="WidgetCrud/Widget.cs" Line="1" Column="1" />
-      <File FileName="WidgetCrud/InMemWidgetDao.cs" Line="16" Column="1" />
+      <File FileName="WidgetCrud/Program.cs" Line="120" Column="1" />
+      <File FileName="WidgetCrud/Widget.cs" />
+      <File FileName="WidgetCrud/InMemWidgetDao.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="WidgetCrud" expanded="True">
             <Node name="WidgetCrud" expanded="True">
-              <Node name="InMemWidgetDao.cs" selected="True" />
+              <Node name="Program.cs" selected="True" />
             </Node>
           </Node>
         </State>

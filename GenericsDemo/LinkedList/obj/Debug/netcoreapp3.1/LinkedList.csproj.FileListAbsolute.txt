@@ -1,0 +1,9 @@
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/GenericsDemo/LinkedList/bin/Debug/netcoreapp3.1/LinkedList.deps.json
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/GenericsDemo/LinkedList/bin/Debug/netcoreapp3.1/LinkedList.dll
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/GenericsDemo/LinkedList/bin/Debug/netcoreapp3.1/LinkedList.pdb
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/GenericsDemo/LinkedList/obj/Debug/netcoreapp3.1/LinkedList.AssemblyInfoInputs.cache
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/GenericsDemo/LinkedList/obj/Debug/netcoreapp3.1/LinkedList.AssemblyInfo.cs
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/GenericsDemo/LinkedList/obj/Debug/netcoreapp3.1/LinkedList.csproj.CoreCompileInputs.cache
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/GenericsDemo/LinkedList/obj/Debug/netcoreapp3.1/LinkedList.dll
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/GenericsDemo/LinkedList/obj/Debug/netcoreapp3.1/LinkedList.pdb
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/GenericsDemo/LinkedList/obj/Debug/netcoreapp3.1/LinkedList.csprojAssemblyReference.cache

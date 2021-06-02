@@ -1,0 +1,17 @@
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/GenericsDemo/GenericsDemo/bin/Debug/netcoreapp3.1/GenericsDemo.deps.json
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/GenericsDemo/GenericsDemo/bin/Debug/netcoreapp3.1/GenericsDemo.runtimeconfig.json
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/GenericsDemo/GenericsDemo/bin/Debug/netcoreapp3.1/GenericsDemo.runtimeconfig.dev.json
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/GenericsDemo/GenericsDemo/bin/Debug/netcoreapp3.1/GenericsDemo.dll
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/GenericsDemo/GenericsDemo/bin/Debug/netcoreapp3.1/GenericsDemo.pdb
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/GenericsDemo/GenericsDemo/bin/Debug/netcoreapp3.1/GenericHeap.dll
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/GenericsDemo/GenericsDemo/bin/Debug/netcoreapp3.1/LinkedList.dll
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/GenericsDemo/GenericsDemo/bin/Debug/netcoreapp3.1/LinkedList.pdb
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/GenericsDemo/GenericsDemo/bin/Debug/netcoreapp3.1/GenericHeap.pdb
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/GenericsDemo/GenericsDemo/obj/Debug/netcoreapp3.1/GenericsDemo.csprojAssemblyReference.cache
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/GenericsDemo/GenericsDemo/obj/Debug/netcoreapp3.1/GenericsDemo.AssemblyInfoInputs.cache
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/GenericsDemo/GenericsDemo/obj/Debug/netcoreapp3.1/GenericsDemo.AssemblyInfo.cs
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/GenericsDemo/GenericsDemo/obj/Debug/netcoreapp3.1/GenericsDemo.csproj.CoreCompileInputs.cache
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/GenericsDemo/GenericsDemo/obj/Debug/netcoreapp3.1/GenericsDemo.csproj.CopyComplete
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/GenericsDemo/GenericsDemo/obj/Debug/netcoreapp3.1/GenericsDemo.dll
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/GenericsDemo/GenericsDemo/obj/Debug/netcoreapp3.1/GenericsDemo.pdb
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/GenericsDemo/GenericsDemo/obj/Debug/netcoreapp3.1/GenericsDemo.genruntimeconfig.cache

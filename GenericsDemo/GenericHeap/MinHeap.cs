@@ -21,7 +21,8 @@ namespace GenericHeap
     // RightChildIndex( int parentIndex ) => parentIndex * 2 + 2;
     // ParentIndex( int childIndex ) => (childIndex - 1) / 2;
 
-
+    // 2 0
+    //
     //https://en.wikipedia.org/wiki/Binary_heap
     public class MinHeap<T> where T : IComparable<T>
     { 
@@ -36,41 +37,144 @@ namespace GenericHeap
 
         List<T> _allElements = new List<T>();
 
-        public void Add( T toAdd)
+      
+        public void Add(T toAdd)
         {
             _allElements.Add(toAdd);
-            SiftUp();
+            SiftUp(_allElements.Count - 1);
         }
-
+        public bool checkHeap()
+        {
+            if (_allElements.Count < 2) return true;
+            for (int i = 0; i <= (_allElements.Count - 2) / 2; i++)
+            {
+                int leftChildIndex = i * 2 + 1;
+                int rightChildIndex = i * 2 + 2;
+                T leftChild = _allElements[leftChildIndex];
+                if (_allElements[i].CompareTo(leftChild) > 0)
+                {
+                    return false;
+                }
+                if (rightChildIndex < _allElements.Count)
+                {
+                    T rightChild = _allElements[rightChildIndex];
+                    if (_allElements[i].CompareTo(rightChild) > 0)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
         public void Remove(T toRemove)
         {
-            int index = _allElements.IndexOf(toRemove);
-            int lastIndex = _allElements.Count - 1;
-            _allElements[index] = _allElements[lastIndex];
-            _allElements.RemoveAt(lastIndex);
-            SiftUp(); 
+            //we're looking for a CompareTo() == 0
+            for (int i = 0; i < _allElements.Count; i++)
+            {
+                if (toRemove.CompareTo(_allElements[i]) == 0)
+                {
+                    _allElements.RemoveAt(i);
+                }
+                Heapify();
+            }
+
+
         }
 
+        public T Peek()
+        {
+            if (_allElements.Count > 0) return _allElements[0];
+            return default(T);
+        }
+
+        public T Pop()
+        {
+            T toReturn = default(T);
+            if (_allElements.Count > 0) toReturn = _allElements[0];
+
+            //todo: actually remove the top node
+            //swap with the last element
+            //remove the last element
+            //heapify()
+            
+            _allElements[0] = _allElements[_allElements.Count - 1];
+            _allElements.RemoveAt(_allElements.Count - 1);
+            Heapify();
+
+            return toReturn;
+        }
+
+        private void SiftUp(int val)
+        {
+            int parentIndex;
+            
+            if (val != 0)
+            {
+                parentIndex = (val - 1) / 2;
+                if (val > 0 && _allElements[val].CompareTo(_allElements[parentIndex]) == -1)
+                {
+                    Swap(parentIndex, val); 
+                    SiftUp(parentIndex);
+                }
+            }
+        }
+
+
+        private void Heapify()
+        {
+            int parentIndex = 0;
+            while (parentIndex < _allElements.Count)
+            {
+                int min = parentIndex;
+                int leftChildIndex = 2 * parentIndex + 1;
+                int rightChildIndex = 2 * parentIndex + 2;
+
+                if (leftChildIndex < _allElements.Count && _allElements[leftChildIndex].CompareTo(_allElements[min]) == -1)
+                {
+                    min = leftChildIndex;
+                }
+
+                if (rightChildIndex < _allElements.Count && _allElements[rightChildIndex].CompareTo(_allElements[min]) == -1)
+                {
+                    min = rightChildIndex;
+                } 
+
+                if (min == parentIndex) break;
+
+                else
+                {
+                   
+                    Swap(parentIndex, min);
+                    parentIndex = min;
+                }
+            }
+        }
+
+        private void Swap(int first, int second)
+        {
+            T temp = _allElements[first];
+            _allElements[first] = _allElements[second];
+            _allElements[second] = temp;
+        }
 
         public T RemoveMin()
         {
-            //we're looking for a CompareTo() == 0
             T value = _allElements[0];
             _allElements[0] = _allElements[_allElements.Count - 1];
             _allElements.RemoveAt(_allElements.Count - 1);
 
-            int parentIndex  = 0;
-            
+            int parentIndex = 0;
 
-            while(parentIndex < _allElements.Count)
+
+            while (parentIndex < _allElements.Count)
             {
                 int min = parentIndex;
                 int leftChildIndex = parentIndex * 2 + 1;
                 int rightChildIndex = parentIndex * 2 + 2;
-               
+
                 if (leftChildIndex < _allElements.Count && _allElements[leftChildIndex].CompareTo(_allElements[min]) == -1)
                 {
-                    min = leftChildIndex; 
+                    min = leftChildIndex;
                 }
 
                 if (rightChildIndex < _allElements.Count && _allElements[rightChildIndex].CompareTo(_allElements[min]) == -1)
@@ -88,54 +192,9 @@ namespace GenericHeap
 
             return value;
 
-            
+
         }
 
-        public T Peek()
-        {
-            if (_allElements.Count > 0) return _allElements[0];
-            return default(T);
-        }
-
-        public T Pop()
-        {
-            T toReturn = default(T);
-            if (_allElements.Count > 0)
-            {
-
-                toReturn = _allElements[0];
-                Remove(toReturn); 
-            } 
-
-            //todo: actually remove the top node
-            //swap with the last element
-            //remove the last element
-            //heapify()
-
-            return toReturn;
-        }
-
-        private void SiftUp()
-        {
-            for(int i = _allElements.Count -1; i > 0; i--)
-            {
-                int parentIndex = (i + 1) / 2 - 1;
-
-                parentIndex = parentIndex >= 0 ? parentIndex : 0;
-                if (_allElements[parentIndex].CompareTo(_allElements[i]) > 1)
-                {
-                    Swap(parentIndex, i); 
-                }
-
-            }
-        }
-
-
-        private void Swap(int first, int second)
-        {
-            T temp = _allElements[first];
-            _allElements[first] = _allElements[second];
-            _allElements[second] = temp;
-        }
     }
 }
+

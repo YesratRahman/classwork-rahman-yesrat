@@ -38,16 +38,24 @@ namespace GenericsDemo
             heapList.Add(19);
             heapList.Add(36);
 
-            Console.WriteLine(heapList.Peek());
-            heapList.Remove(20);
-            heapList.Remove(36);
-            heapList.RemoveMin();
-            heapList.Add(15);
+            //Console.WriteLine(heapList.Peek());
+            //heapList.Remove(20);
+            //heapList.Remove(36);
+            //heapList.RemoveMin();
+            //heapList.Add(15);
 
-            heapList.Add(16);
-            heapList.Add(50);
-            heapList.Add(12);
-            heapList.Pop(); 
+            //heapList.Add(16);
+            //heapList.Add(50);
+            //heapList.Add(12);
+            //heapList.Pop();
+            Console.WriteLine(heapList.Pop());
+            Console.WriteLine(heapList.checkHeap());
+            Console.WriteLine(heapList.Pop());
+            Console.WriteLine(heapList.checkHeap());
+            Console.WriteLine(heapList.Pop());
+            Console.WriteLine(heapList.checkHeap());
+
+
         }
     }
 }

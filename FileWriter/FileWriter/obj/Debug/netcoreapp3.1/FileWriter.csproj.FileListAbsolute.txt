@@ -1,0 +1,12 @@
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/FileWriter/FileWriter/obj/Debug/netcoreapp3.1/FileWriter.csprojAssemblyReference.cache
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/FileWriter/FileWriter/obj/Debug/netcoreapp3.1/FileWriter.AssemblyInfoInputs.cache
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/FileWriter/FileWriter/obj/Debug/netcoreapp3.1/FileWriter.AssemblyInfo.cs
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/FileWriter/FileWriter/obj/Debug/netcoreapp3.1/FileWriter.csproj.CoreCompileInputs.cache
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/FileWriter/FileWriter/bin/Debug/netcoreapp3.1/FileWriter.deps.json
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/FileWriter/FileWriter/bin/Debug/netcoreapp3.1/FileWriter.runtimeconfig.json
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/FileWriter/FileWriter/bin/Debug/netcoreapp3.1/FileWriter.runtimeconfig.dev.json
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/FileWriter/FileWriter/bin/Debug/netcoreapp3.1/FileWriter.dll
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/FileWriter/FileWriter/bin/Debug/netcoreapp3.1/FileWriter.pdb
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/FileWriter/FileWriter/obj/Debug/netcoreapp3.1/FileWriter.dll
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/FileWriter/FileWriter/obj/Debug/netcoreapp3.1/FileWriter.pdb
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/FileWriter/FileWriter/obj/Debug/netcoreapp3.1/FileWriter.genruntimeconfig.cache

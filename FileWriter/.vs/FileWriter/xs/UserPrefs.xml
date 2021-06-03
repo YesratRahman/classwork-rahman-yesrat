@@ -1,13 +1,16 @@
 ﻿<Properties StartupConfiguration="{99C227AA-14A7-467A-BA04-8A2605DD350D}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="FileWriter/Program.cs">
     <Files>
-      <File FileName="FileWriter/Program.cs" Line="34" Column="1" />
+      <File FileName="FileWriter/Program.cs" Line="58" Column="20" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="FileWriter" expanded="True">
             <Node name="FileWriter" expanded="True">
+              <Node name="Dependencies" expanded="True">
+                <Node name="FrameworkReferences" expanded="True" />
+              </Node>
               <Node name="Program.cs" selected="True" />
             </Node>
           </Node>
@@ -17,7 +20,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.FileWriter FirstBuild="True" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.ItemProperties.FileWriter PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

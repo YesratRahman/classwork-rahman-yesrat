@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using _223RoomEscape.Classes.Fighter;
 
 
@@ -16,13 +17,13 @@ using _223RoomEscape.Classes.Fighter;
      * there is already an enemy will cause the player to instead attack.
      * 
      * 
-     * After the player has either moved or attacked (assuming they haven't made it to the goal), 
-     * every enemy will each move one square towards the player.  If they are directly next to a player,
+     * After the player has either GeneratePlayerMoved or attacked (assuming they haven't made it to the goal), 
+     * every enemy will each GeneratePlayerMove one square towards the player.  If they are directly next to a player,
      * they will attack the player instead.  If they are blocked by one of their allies and cannot make
-     * an attack or move towards an attacking position, they will instead attack the enemy in their way!
+     * an attack or GeneratePlayerMove towards an attacking position, they will instead attack the enemy in their way!
      * 
      * 
-     * When any enemy dies, they should be removed from the board.  When the player reaches the escape square at the 
+     * When any enemy dies, they should be reGeneratePlayerMoved from the board.  When the player reaches the escape square at the 
      * opposite, they will load into the next room which will have one more enemy.  This process repeats until the 
      * player dies or they defeat the last room in which all 223 available squares (every square other than the player 
      * and the exit) will be filled enemies!
@@ -36,94 +37,260 @@ using _223RoomEscape.Classes.Fighter;
      */
 namespace _223RoomEscape
 {
-
     class Program
     {
-        static Random rand = new Random();
-        static char[,] board = new char[15, 15];
-
+        static Random random = new Random();
+        static List<Fighter> numberOfEnemies = new List<Fighter>();
         static char player = 'X';
         static char enemy = 'O';
         static char emptySpace = '_';
-
         static void Main(string[] args)
         {
-
-            int rooms = 0;
-            int numberOfEnemies = rooms + 1;
-
-            //Fighter player1 = SetUpPlayer();
-            //PrintBoard(gameBoard);
-            int points = 0;
-
-            //while (player.Health > 0)
-            //{
-            Fighter enemy1 = SetUpEnemy();
-
-            //    Console.WriteLine("Watch out! An enemy " + enemy.Name + " appears!");
-
-            //    points = Battle(player, enemy, points);
-
-            //}
-
-            //GameOverScreen(player, points);
-            bool gameOver = false;
-            while (!gameOver)
+            Fighter fighter = SetUpPlayer();
+            int numberOfRooms = 1;
+            bool gameStatus = false;
+            char[,] gameBoard = new char[15, 15];
+            while (gameStatus == false || numberOfRooms != 15)
             {
-                Fighter fighter = SetUpPlayer();
-                //while (player.Health > 0)
-                //{
-                char[,] gameBoard = ShowBoard(board, player,emptySpace);
-                GenerateRandomEnemies(gameBoard,numberOfEnemies);
-
-                PrintBoard(gameBoard,rooms);
-                GeneratePlayerMoves(gameBoard, player, rooms, emptySpace);
-                //points = Battle(fighter, enemy1, points);
-                if (gameOver)
+                GenerateGameBoard(gameBoard, numberOfRooms, player, emptySpace);
+                bool gameComplete = false;
+                while (!gameComplete)
                 {
-                    Console.WriteLine("Player Won the Game");
-                    GameOverScreen(fighter, points);
-                }
-                else
-                {
-                    Console.WriteLine("Player Won the Game");
-                    GameOverScreen(fighter, points);
-                }
-                //}
+                    ShowGameBoard(gameBoard, numberOfRooms);
+                    Console.WriteLine("Press the directional key where you would like to GeneratePlayerMove next.");
+                    ConsoleKeyInfo keyInfo = Console.ReadKey();
+                    switch (keyInfo.Key)
+                    {
+                        case ConsoleKey.RightArrow:
+                        case ConsoleKey.UpArrow:
+                        case ConsoleKey.LeftArrow:
+                        case ConsoleKey.DownArrow:
+                            gameStatus = GeneratePlayerMove(fighter, gameBoard, keyInfo.Key);
+                            break;
+                        default:
+                            Console.WriteLine("Entered key is not A status Key");
+                            break;
+                    }
 
+                    if (gameBoard[14, 14] == player)
+                    {
+                        Console.WriteLine("You completed room " + numberOfRooms);
+                        fighter.Row = 0;
+                        fighter.Col = 0;
+                        gameComplete = true;
+                        numberOfRooms++;
+                        break;
+                    }
+
+                    //gameStatus = GenerateEnemyMove(fighter, gameBoard);
+
+                    if (gameStatus)
+                    {
+                        break;
+                    }
+                }
+               
             }
+           
 
-            //
+        }
+
+        private static void GenerateGameBoard(char[,] room, int numberOfRooms, char player, char emptySpace)
+        {
+            numberOfEnemies.Clear();
+
+            for (int i = 0; i < 15; i++)
+            {
+                for (int j = 0; j < 15; j++)
+                {
+                    if (i == 0 && j == 0)
+                    {
+                        room[i, j] = player;
+                    }
+                    else if (i == 14 && j == 14)
+                    {
+                        room[i, j] = 'E';
+                    }
+                    else
+                    {
+                        room[i, j] = emptySpace;
+                    }
+                }
+            }
+            PlaceEnemies(numberOfRooms, room);
+
         }
 
 
-        private static int Battle(Fighter player, Fighter enemy, int points)
+        private static void PlaceEnemies(int roomNum, char[,] room)
         {
-            Fighter attacker = player;
-            Fighter defender = enemy;
-            Random rand = new Random();
-
-            while (player.Health > 0 && enemy.Health > 0)
+            for (int i = 0; i < roomNum + 1; i++)
             {
+                bool placed = false;
+
+                while (!placed)
+                {
+                    int spawnRow = random.Next(0, 14);
+                    int spawnCol = random.Next(0, 14);
+
+                    Fighter enemyFi = SetUpEnemy();
+                    numberOfEnemies.Add(enemyFi);
+
+                    if (room[spawnRow, spawnCol] == emptySpace)
+                    {
+                        room[spawnRow, spawnCol] = enemy;
+                        enemyFi.Col = spawnCol;
+                        enemyFi.Row = spawnRow;
+                        placed = true;
+                    }
+                }
+            }
+        }
+
+
+        private static bool GeneratePlayerMove(Fighter fighter, char[,] room, ConsoleKey consoleKey)
+        {
+
+            bool status = true;
+            bool gameComplete = false;
+
+            if ((fighter.Row != 14 && consoleKey == ConsoleKey.DownArrow && room[fighter.Row + 1, fighter.Col] != emptySpace)
+                || (fighter.Row != 0 && consoleKey == ConsoleKey.UpArrow && room[fighter.Row - 1, fighter.Col] != emptySpace)
+                || (fighter.Col != 0 && consoleKey == ConsoleKey.LeftArrow && room[fighter.Row, fighter.Col - 1] != emptySpace)
+                || (fighter.Col != 14 && consoleKey == ConsoleKey.RightArrow && room[fighter.Row, fighter.Col + 1] != emptySpace))
+            {
+
+                gameComplete = Battle(fighter, consoleKey, room);
+            }
+
+            if (gameComplete)
+            {
+                return gameComplete;
+            }
+
+            if ((fighter.Row == 0 && consoleKey == ConsoleKey.UpArrow) || (fighter.Row == 14 && consoleKey == ConsoleKey.DownArrow))
+            {
+                status = false;
+            }
+
+            if ((fighter.Col == 0 && consoleKey == ConsoleKey.LeftArrow) || (fighter.Col == 14 && consoleKey == ConsoleKey.RightArrow))
+            {
+                status = false;
+            }
+
+            if (status)
+            {
+                if (consoleKey == ConsoleKey.UpArrow)
+                {
+                    room[fighter.Row - 1, fighter.Col] = player;
+                    room[fighter.Row, fighter.Col] = emptySpace;
+                    fighter.Row -= 1;
+                }
+                else if (consoleKey == ConsoleKey.LeftArrow)
+                {
+                    room[fighter.Row, fighter.Col - 1] = player;
+                    room[fighter.Row, fighter.Col] = emptySpace;
+                    fighter.Col -= 1;
+                }
+
+                else if (consoleKey == ConsoleKey.DownArrow)
+                {
+                    room[fighter.Row + 1, fighter.Col] = player;
+                    room[fighter.Row, fighter.Col] = emptySpace;
+                    fighter.Row += 1;
+                }
+                else if (consoleKey == ConsoleKey.RightArrow)
+                {
+                    room[fighter.Row, fighter.Col + 1] = player;
+                    room[fighter.Row, fighter.Col] = emptySpace;
+                    fighter.Col += 1;
+                }
+
+                else
+                {
+                    Console.WriteLine("Sky is falling");
+                }
+
+            }
+            else
+            {
+                Console.WriteLine("You cannot GeneratePlayerMove there!");
+            }
+
+            return gameComplete;
+        }
+
+       
+        private static void ShowGameBoard(char[,] board, int roomNum)
+        {
+            Console.WriteLine();
+            Console.WriteLine("You are inside room: " + roomNum);
+            Console.WriteLine();
+            for (int row = 0; row < 15; row++)
+            {
+                for (int col = 0; col < 15; col++)
+                {
+                    Console.Write(board[row, col] + " ");
+                }
+                Console.WriteLine();
+            }
+        }
+
+        private static bool Battle(Fighter fighter, ConsoleKey consoleKey, char[,] room)
+        {
+            Fighter attacker = fighter;
+            int enemyCol = 0, enemyRow = 0;
+
+            if (consoleKey == ConsoleKey.UpArrow)
+            {
+                enemyCol = fighter.Col;
+                enemyRow = fighter.Row - 1;
+            }
+            if (consoleKey == ConsoleKey.LeftArrow)
+            {
+                enemyCol = fighter.Col - 1;
+                enemyRow = fighter.Row;
+            }
+            if (consoleKey == ConsoleKey.DownArrow)
+            {
+                enemyCol = fighter.Col;
+                enemyRow = fighter.Row + 1;
+            }
+            if (consoleKey == ConsoleKey.RightArrow)
+            {
+                enemyCol = fighter.Col + 1;
+                enemyRow = fighter.Row;
+            }
+
+            Fighter enemyFi = SetEnemy(enemyRow, enemyCol);
+            Fighter defender = enemyFi;
+            bool gameComplete = false;
+
+            while (fighter.Health > 0 && enemyFi.Health > 0)
+            {
+                Console.WriteLine(attacker.Name + " attacks " + defender.Name + " with a " + attacker.Weapon.Name + "!");
+
                 if (attacker.Weapon.Name == "Crossbow")
                 {
-                    if (rand.Next(0, 2) == 0)
+                    if (random.Next(0, 2) == 0)
                     {
+                        Console.WriteLine("The crossbow actually hit!");
                         attacker.Weapon.Damage = 20;
                     }
                     else
                     {
+                        Console.WriteLine("The crossbow missed!");
                         attacker.Weapon.Damage = 0;
                     }
                 }
 
                 attacker.Attack(defender);
 
-                if (defender.Name == player.Name && player.Health <= 6 && player.Potion > 0)
+                if (defender.Name == fighter.Name && fighter.Health <= 6 && fighter.Potion > 0)
                 {
                     Console.WriteLine("You healed 4 hp with a potion!");
-                    player.Health += 4;
-                    player.Potion--;
+                    fighter.Health += 4;
+                    fighter.Potion--;
                 }
 
                 if (attacker.Name == "Troll")
@@ -136,18 +303,23 @@ namespace _223RoomEscape
                 attacker = defender;
                 defender = temp;
 
-                Console.WriteLine("Current Health: " + player.Health);
-                Console.WriteLine("Enemy Health: " + enemy.Health);
+                Console.WriteLine("Current Health: " + fighter.Health);
+                Console.WriteLine("Enemy Health: " + enemyFi.Health);
             }
 
-            if (enemy.Health <= 0)
+            if (enemyFi.Health <= 0)
             {
-                Console.WriteLine("You have defeated the " + enemy.Name);
+                room[enemyFi.Row, enemyFi.Col] = emptySpace;
+                Console.WriteLine("You have defeated the " + enemyFi.Name);
                 Console.WriteLine("---------------------");
-                points++;
             }
 
-            return points;
+            if (fighter.Health <= 0)
+            {
+                gameComplete = true;
+            }
+
+            return gameComplete;
         }
 
         private static Fighter SetUpPlayer()
@@ -192,122 +364,16 @@ namespace _223RoomEscape
                     break;
             }
 
+            newFighter.Row = 0;
+            newFighter.Col = 0;
+
             return newFighter;
         }
-        private static void GeneratePlayerMoves(char[,] gameBoard, char player,int numberOfRooms, char emptySpace)
-        {
-           
-            if (gameBoard[14, 14] != player)
-            {
-                Console.WriteLine("Enter a directional key to make a move ==>> ");
-                ConsoleKeyInfo consoleKey = Console.ReadKey();
-                for (int row = 0; row < 15; row++)
-                {
-                    for (int col = 0; col < 15; col++)
-                    {
-                        if (gameBoard[row, col] == player)
-                        {
-                            if (consoleKey.Key == ConsoleKey.RightArrow)
-                            {
-                                if (col < 14)
-                                {
-                                    gameBoard[row, col + 1] = player;
-                                    gameBoard[row, col] = emptySpace;
-                                    PrintBoard(gameBoard,numberOfRooms);
-                                    GeneratePlayerMoves(gameBoard, player, numberOfRooms, emptySpace);
-                                    //Battle(player, enemy, points);
-
-                                    //if there is an enemy 
-                                }
-                                else
-                                {
-                                    Console.WriteLine("Sorry, you can not move right from here.");
-                                    GeneratePlayerMoves(gameBoard, player, numberOfRooms, emptySpace);
-                                }
-
-                            }
-                            else if (consoleKey.Key == ConsoleKey.LeftArrow)
-                            {
-                                if (col > 0)
-                                {
-                                    gameBoard[row, col - 1] = player;
-                                    gameBoard[row, col] = emptySpace;
-                                    PrintBoard(gameBoard, numberOfRooms);
-                                    GeneratePlayerMoves(gameBoard, player, numberOfRooms, emptySpace);
-                                }
-                                else
-                                {
-                                    Console.WriteLine("Sorry, you can not move left from here.");
-                                    GeneratePlayerMoves(gameBoard, player, numberOfRooms, emptySpace);
-                                }
-                            }
-                            else if (consoleKey.Key == ConsoleKey.UpArrow)
-                            {
-                                if (row > 0)
-                                {
-                                    gameBoard[row - 1, col] = player;
-                                    gameBoard[row, col] = emptySpace;
-                                    PrintBoard(gameBoard, numberOfRooms);
-                                    GeneratePlayerMoves(gameBoard, player, numberOfRooms, emptySpace);
-                                }
-                                else
-                                {
-                                    Console.WriteLine("Sorry, you can not move up from here.");
-                                    GeneratePlayerMoves(gameBoard, player, numberOfRooms, emptySpace);
-                                }
-                            }
-                            else if (consoleKey.Key == ConsoleKey.DownArrow)
-                            {
-                                if (row < 14)
-                                {
-                                    gameBoard[row + 1, col] = player;
-                                    gameBoard[row, col] = emptySpace;
-                                    PrintBoard(gameBoard, numberOfRooms);
-                                    GeneratePlayerMoves(gameBoard, player, numberOfRooms,  emptySpace);
-                                }
-                                else
-                                {
-                                    Console.WriteLine("Sorry, you can not move down from here.");
-                                    GeneratePlayerMoves(gameBoard, player, numberOfRooms, emptySpace);
-                                }
-                            }
-                            else
-                            {
-                                Console.WriteLine("Invalid move");
-                            }
-
-                        }
-
-                    }
-                }
-            }
-            else
-            {
-                Console.Clear();
-                Console.WriteLine("You are inside battle field!");
-
-                numberOfRooms++;
-                //Console.WriteLine("You are inside of room number: " + numberOfRooms);
-
-
-                if (numberOfRooms < 223)
-                {
-                    char[,] newRoom = ShowBoard(gameBoard, player, emptySpace);
-                    GenerateRandomEnemies(newRoom, numberOfRooms + 1);
-                    PrintBoard(gameBoard, numberOfRooms);
-                    GeneratePlayerMoves(gameBoard, player, numberOfRooms, emptySpace);
-                    //Battle()
-
-                }
-            }
-        }
-
 
         private static Fighter SetUpEnemy()
         {
-            Random rand = new Random();
 
-            int random = rand.Next(1, 4);
+            int random = Program.random.Next(1, 4);
 
             if (random == 1)
             {
@@ -324,69 +390,16 @@ namespace _223RoomEscape
 
             return new Brute();
         }
-
-
-
-        private static void PrintBoard(char[,] board, int numberOfRooms)
+        private static Fighter SetEnemy(int row, int col)
         {
-            //Console.WriteLine();
-            Console.Clear();
-            Console.WriteLine("You are inside of room number: " + numberOfRooms);
-
-            for (int i = 0; i < board.GetLength(0); i++)
+            foreach (Fighter enemy in numberOfEnemies)
             {
-                for (int j = 0; j < board.GetLength(1); j++)
+                if (enemy.Row == row && enemy.Col == col)
                 {
-                    Console.Write(board[i, j] + " ");
-                    if (j == 14)
-                        Console.WriteLine();
+                    return enemy;
                 }
             }
-        }
-
-        private static char[,] ShowBoard(char[,] gameBoard, char player, char emptySpace)
-        {
-
-            //char[,] gameBoard = new char[15, 15];
-            for (int row = 0; row < 15; row++)
-            {
-                for (int col = 0; col < 15; col++)
-                {
-                    if (row == 0 && col == 0)
-                    {
-                        gameBoard[row, col] = player;
-                    }
-                    else if (row == 14 && col == 14)
-                    {
-                        gameBoard[row, col] = 'E';
-                    }
-                    else
-                    {
-                        gameBoard[row, col] = emptySpace;
-                    }
-
-                }
-
-
-            }
-            return gameBoard;
-        }
-
-        private static void GenerateRandomEnemies(char[,] board, int num)
-        {
-            int position = 0;
-            while (position != num)
-            {
-                int row = rand.Next(0, 14);
-                int col = rand.Next(0, 14);
-                if (row == 0 && col == 0)
-                {
-                    row = rand.Next(0, 14);
-                    col = rand.Next(0, 14);
-                }
-                board[row, col] = enemy;
-                position++;
-            }
+            return null;
         }
 
         private static void GameOverScreen(Fighter player, int points)
@@ -405,5 +418,6 @@ namespace _223RoomEscape
                 Console.WriteLine("Congratulations, " + player.Name + ", you defeated " + points + " enemies.");
             }
         }
+
     }
 }

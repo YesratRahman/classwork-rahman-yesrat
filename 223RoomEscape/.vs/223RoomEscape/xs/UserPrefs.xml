@@ -2,7 +2,8 @@
   <MonoDevelop.Ide.ItemProperties.223RoomEscape PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="223RoomEscape/Program.cs">
     <Files>
-      <File FileName="223RoomEscape/Program.cs" Line="153" Column="39" />
+      <File FileName="223RoomEscape/Program.cs" Line="156" Column="44" />
+      <File FileName="223RoomEscape/Classes/Fighter/Fighter.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -25,7 +26,9 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/223RoomEscape/223RoomEscape/Program.cs" relfile="223RoomEscape/Program.cs" line="72" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>

@@ -29,6 +29,9 @@ namespace _223RoomEscape.Classes.Fighter
         public int Health { get; set; }
 
         public string Name { get; set; }
+        public int Row { get; internal set; }
+        public int Col { get; internal set; }
+        
 
         public abstract void Attack(IFighter toAttack);
 

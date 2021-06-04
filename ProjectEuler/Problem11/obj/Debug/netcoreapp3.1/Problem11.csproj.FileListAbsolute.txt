@@ -1,0 +1,12 @@
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/ProjectEuler/Problem11/bin/Debug/netcoreapp3.1/Problem11.deps.json
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/ProjectEuler/Problem11/bin/Debug/netcoreapp3.1/Problem11.runtimeconfig.json
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/ProjectEuler/Problem11/bin/Debug/netcoreapp3.1/Problem11.runtimeconfig.dev.json
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/ProjectEuler/Problem11/bin/Debug/netcoreapp3.1/Problem11.dll
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/ProjectEuler/Problem11/bin/Debug/netcoreapp3.1/Problem11.pdb
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/ProjectEuler/Problem11/obj/Debug/netcoreapp3.1/Problem11.csprojAssemblyReference.cache
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/ProjectEuler/Problem11/obj/Debug/netcoreapp3.1/Problem11.AssemblyInfoInputs.cache
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/ProjectEuler/Problem11/obj/Debug/netcoreapp3.1/Problem11.AssemblyInfo.cs
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/ProjectEuler/Problem11/obj/Debug/netcoreapp3.1/Problem11.csproj.CoreCompileInputs.cache
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/ProjectEuler/Problem11/obj/Debug/netcoreapp3.1/Problem11.dll
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/ProjectEuler/Problem11/obj/Debug/netcoreapp3.1/Problem11.pdb
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/ProjectEuler/Problem11/obj/Debug/netcoreapp3.1/Problem11.genruntimeconfig.cache

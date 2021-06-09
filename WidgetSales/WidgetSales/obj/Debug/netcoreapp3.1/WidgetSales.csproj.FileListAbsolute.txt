@@ -1,0 +1,12 @@
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/WidgetSales/WidgetSales/bin/Debug/netcoreapp3.1/WidgetSales.deps.json
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/WidgetSales/WidgetSales/bin/Debug/netcoreapp3.1/WidgetSales.runtimeconfig.json
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/WidgetSales/WidgetSales/bin/Debug/netcoreapp3.1/WidgetSales.runtimeconfig.dev.json
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/WidgetSales/WidgetSales/bin/Debug/netcoreapp3.1/WidgetSales.dll
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/WidgetSales/WidgetSales/bin/Debug/netcoreapp3.1/WidgetSales.pdb
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/WidgetSales/WidgetSales/obj/Debug/netcoreapp3.1/WidgetSales.csprojAssemblyReference.cache
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/WidgetSales/WidgetSales/obj/Debug/netcoreapp3.1/WidgetSales.AssemblyInfoInputs.cache
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/WidgetSales/WidgetSales/obj/Debug/netcoreapp3.1/WidgetSales.AssemblyInfo.cs
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/WidgetSales/WidgetSales/obj/Debug/netcoreapp3.1/WidgetSales.csproj.CoreCompileInputs.cache
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/WidgetSales/WidgetSales/obj/Debug/netcoreapp3.1/WidgetSales.dll
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/WidgetSales/WidgetSales/obj/Debug/netcoreapp3.1/WidgetSales.pdb
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/WidgetSales/WidgetSales/obj/Debug/netcoreapp3.1/WidgetSales.genruntimeconfig.cache

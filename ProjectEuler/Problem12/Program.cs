@@ -26,13 +26,15 @@ namespace Problem12
 
             //What is the value of the first triangle number to have over five hundred divisors?
 
-            long curr = 1;
-            long i = 2;
-            while(Util.GetFactors(curr).Count < 500 ){
-                curr += i;
-                i++;
+
+            int curr = 1;
+            int iterate = 2;
+            while (Util.GetFactors(curr).Count < 500)
+            {
+                curr += iterate; 
+                iterate++;
             }
             Console.WriteLine(curr);
         }
     }
-}
+} 

@@ -151,11 +151,11 @@ namespace Utils
             return squareOfSums * squareOfSums;
         }
 
-        public static List<long> GetFactors(long number)
+        public static List<int> GetFactors(int number)
         {
-            List<long> factors = new List<long>();
+            List<int> factors = new List<int>();
 
-            for(long i = 1; i* i <= number; i+=1)
+            for(int i = 1; i* i <= number; i+=1)
             {
                 if(number % i == 0)
                 {
@@ -166,7 +166,6 @@ namespace Utils
                     }
                 }
             }
-
             return factors; 
         }
 

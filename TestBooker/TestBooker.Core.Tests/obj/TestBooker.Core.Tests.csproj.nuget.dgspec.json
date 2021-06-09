@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/yesratrahman/Desktop/223RoomEscape/223RoomEscape/223RoomEscape.csproj": {}
+    "/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/TestBooker/TestBooker.Core.Tests/TestBooker.Core.Tests.csproj": {}
   },
   "projects": {
-    "/Users/yesratrahman/Desktop/223RoomEscape/223RoomEscape/223RoomEscape.csproj": {
+    "/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/TestBooker/TestBooker.Core.Tests/TestBooker.Core.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/yesratrahman/Desktop/223RoomEscape/223RoomEscape/223RoomEscape.csproj",
-        "projectName": "223RoomEscape",
-        "projectPath": "/Users/yesratrahman/Desktop/223RoomEscape/223RoomEscape/223RoomEscape.csproj",
+        "projectUniqueName": "/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/TestBooker/TestBooker.Core.Tests/TestBooker.Core.Tests.csproj",
+        "projectName": "TestBooker.Core.Tests",
+        "projectPath": "/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/TestBooker/TestBooker.Core.Tests/TestBooker.Core.Tests.csproj",
         "packagesPath": "/Users/yesratrahman/.nuget/packages/",
-        "outputPath": "/Users/yesratrahman/Desktop/223RoomEscape/223RoomEscape/obj/",
+        "outputPath": "/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/TestBooker/TestBooker.Core.Tests/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/yesratrahman/.config/NuGet/NuGet.Config"
@@ -37,6 +37,24 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[16.5.0, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[1.2.0, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.4.0, )"
+            },
+            "xunit.runner.visualstudio": {
+              "target": "Package",
+              "version": "[2.4.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

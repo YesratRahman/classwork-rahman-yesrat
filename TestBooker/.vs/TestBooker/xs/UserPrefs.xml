@@ -1,0 +1,27 @@
+﻿<Properties StartupConfiguration="{B7D4BC8D-CF53-4E1B-B19D-FCB1692A0591}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="TestBooker.Core.Tests/Processor/DeskBookingRequestProcessorTests.cs">
+    <Files>
+      <File FileName="TestBooker.Core.Tests/Processor/DeskBookingRequestProcessorTests.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="TestBooker" expanded="True">
+            <Node name="TestBooker.Core.Tests" expanded="True">
+              <Node name="Processor" expanded="True">
+                <Node name="DeskBookingRequestProcessorTests.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.TestBooker.Core.Tests FirstBuild="True" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

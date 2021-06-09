@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using _223RoomEscape.Classes.Fighter;
-
-
 /**
      * 
      * Players will have to try to fight their way from the upper left corner (0,0) to the lower right corner (14,14).  
@@ -17,13 +15,13 @@ using _223RoomEscape.Classes.Fighter;
      * there is already an enemy will cause the player to instead attack.
      * 
      * 
-     * After the player has either GeneratePlayerMoved or attacked (assuming they haven't made it to the goal), 
-     * every enemy will each GeneratePlayerMove one square towards the player.  If they are directly next to a player,
+     * After the player has either moved or attacked (assuming they haven't made it to the goal), 
+     * every enemy will each move one square towards the player.  If they are directly next to a player,
      * they will attack the player instead.  If they are blocked by one of their allies and cannot make
-     * an attack or GeneratePlayerMove towards an attacking position, they will instead attack the enemy in their way!
+     * an attack or move towards an attacking position, they will instead attack the enemy in their way!
      * 
      * 
-     * When any enemy dies, they should be reGeneratePlayerMoved from the board.  When the player reaches the escape square at the 
+     * When any enemy dies, they should be removed from the board.  When the player reaches the escape square at the 
      * opposite, they will load into the next room which will have one more enemy.  This process repeats until the 
      * player dies or they defeat the last room in which all 223 available squares (every square other than the player 
      * and the exit) will be filled enemies!
@@ -44,20 +42,23 @@ namespace _223RoomEscape
         static char player = 'X';
         static char enemy = 'O';
         static char emptySpace = '_';
+        static char exit = 'E';
         static void Main(string[] args)
         {
             Fighter fighter = SetUpPlayer();
             int numberOfRooms = 1;
             bool gameStatus = false;
+
             char[,] gameBoard = new char[15, 15];
+
             while (gameStatus == false || numberOfRooms != 15)
             {
-                GenerateGameBoard(gameBoard, numberOfRooms, player, emptySpace);
+                GenerateGameBoard(gameBoard, numberOfRooms);
                 bool gameComplete = false;
                 while (!gameComplete)
                 {
                     ShowGameBoard(gameBoard, numberOfRooms);
-                    Console.WriteLine("Press the directional key where you would like to GeneratePlayerMove next.");
+                    Console.WriteLine("Press any directional key to move ");
                     ConsoleKeyInfo keyInfo = Console.ReadKey();
                     switch (keyInfo.Key)
                     {
@@ -68,11 +69,11 @@ namespace _223RoomEscape
                             gameStatus = GeneratePlayerMove(fighter, gameBoard, keyInfo.Key);
                             break;
                         default:
-                            Console.WriteLine("Entered key is not A status Key");
+                            Console.WriteLine("Not a Valid Key");
                             break;
                     }
 
-                    if (gameBoard[14, 14] == player)
+                    if (fighter.Row == 14 && fighter.Col == 14)
                     {
                         Console.WriteLine("You completed room " + numberOfRooms);
                         fighter.Row = 0;
@@ -82,245 +83,28 @@ namespace _223RoomEscape
                         break;
                     }
 
-                    //gameStatus = GenerateEnemyMove(fighter, gameBoard);
-
-                    if (gameStatus)
+                    GenerateEnemyMoves(fighter, gameBoard);
+                    if (fighter.Health <= 0)
                     {
                         break;
                     }
                 }
-               
-            }
-           
-
-        }
-
-        private static void GenerateGameBoard(char[,] room, int numberOfRooms, char player, char emptySpace)
-        {
-            numberOfEnemies.Clear();
-
-            for (int i = 0; i < 15; i++)
-            {
-                for (int j = 0; j < 15; j++)
+                if (fighter.Health <= 0)
                 {
-                    if (i == 0 && j == 0)
-                    {
-                        room[i, j] = player;
-                    }
-                    else if (i == 14 && j == 14)
-                    {
-                        room[i, j] = 'E';
-                    }
-                    else
-                    {
-                        room[i, j] = emptySpace;
-                    }
+                    break;
                 }
-            }
-            PlaceEnemies(numberOfRooms, room);
-
-        }
-
-
-        private static void PlaceEnemies(int roomNum, char[,] room)
-        {
-            for (int i = 0; i < roomNum + 1; i++)
-            {
-                bool placed = false;
-
-                while (!placed)
-                {
-                    int spawnRow = random.Next(0, 14);
-                    int spawnCol = random.Next(0, 14);
-
-                    Fighter enemyFi = SetUpEnemy();
-                    numberOfEnemies.Add(enemyFi);
-
-                    if (room[spawnRow, spawnCol] == emptySpace)
-                    {
-                        room[spawnRow, spawnCol] = enemy;
-                        enemyFi.Col = spawnCol;
-                        enemyFi.Row = spawnRow;
-                        placed = true;
-                    }
-                }
-            }
-        }
-
-
-        private static bool GeneratePlayerMove(Fighter fighter, char[,] room, ConsoleKey consoleKey)
-        {
-
-            bool status = true;
-            bool gameComplete = false;
-
-            if ((fighter.Row != 14 && consoleKey == ConsoleKey.DownArrow && room[fighter.Row + 1, fighter.Col] != emptySpace)
-                || (fighter.Row != 0 && consoleKey == ConsoleKey.UpArrow && room[fighter.Row - 1, fighter.Col] != emptySpace)
-                || (fighter.Col != 0 && consoleKey == ConsoleKey.LeftArrow && room[fighter.Row, fighter.Col - 1] != emptySpace)
-                || (fighter.Col != 14 && consoleKey == ConsoleKey.RightArrow && room[fighter.Row, fighter.Col + 1] != emptySpace))
-            {
-
-                gameComplete = Battle(fighter, consoleKey, room);
-            }
-
-            if (gameComplete)
-            {
-                return gameComplete;
-            }
-
-            if ((fighter.Row == 0 && consoleKey == ConsoleKey.UpArrow) || (fighter.Row == 14 && consoleKey == ConsoleKey.DownArrow))
-            {
-                status = false;
-            }
-
-            if ((fighter.Col == 0 && consoleKey == ConsoleKey.LeftArrow) || (fighter.Col == 14 && consoleKey == ConsoleKey.RightArrow))
-            {
-                status = false;
-            }
-
-            if (status)
-            {
-                if (consoleKey == ConsoleKey.UpArrow)
-                {
-                    room[fighter.Row - 1, fighter.Col] = player;
-                    room[fighter.Row, fighter.Col] = emptySpace;
-                    fighter.Row -= 1;
-                }
-                else if (consoleKey == ConsoleKey.LeftArrow)
-                {
-                    room[fighter.Row, fighter.Col - 1] = player;
-                    room[fighter.Row, fighter.Col] = emptySpace;
-                    fighter.Col -= 1;
-                }
-
-                else if (consoleKey == ConsoleKey.DownArrow)
-                {
-                    room[fighter.Row + 1, fighter.Col] = player;
-                    room[fighter.Row, fighter.Col] = emptySpace;
-                    fighter.Row += 1;
-                }
-                else if (consoleKey == ConsoleKey.RightArrow)
-                {
-                    room[fighter.Row, fighter.Col + 1] = player;
-                    room[fighter.Row, fighter.Col] = emptySpace;
-                    fighter.Col += 1;
-                }
-
-                else
-                {
-                    Console.WriteLine("Sky is falling");
-                }
-
-            }
-            else
-            {
-                Console.WriteLine("You cannot GeneratePlayerMove there!");
-            }
-
-            return gameComplete;
-        }
-
-       
-        private static void ShowGameBoard(char[,] board, int roomNum)
-        {
-            Console.WriteLine();
-            Console.WriteLine("You are inside room: " + roomNum);
-            Console.WriteLine();
-            for (int row = 0; row < 15; row++)
-            {
-                for (int col = 0; col < 15; col++)
-                {
-                    Console.Write(board[row, col] + " ");
-                }
-                Console.WriteLine();
-            }
-        }
-
-        private static bool Battle(Fighter fighter, ConsoleKey consoleKey, char[,] room)
-        {
-            Fighter attacker = fighter;
-            int enemyCol = 0, enemyRow = 0;
-
-            if (consoleKey == ConsoleKey.UpArrow)
-            {
-                enemyCol = fighter.Col;
-                enemyRow = fighter.Row - 1;
-            }
-            if (consoleKey == ConsoleKey.LeftArrow)
-            {
-                enemyCol = fighter.Col - 1;
-                enemyRow = fighter.Row;
-            }
-            if (consoleKey == ConsoleKey.DownArrow)
-            {
-                enemyCol = fighter.Col;
-                enemyRow = fighter.Row + 1;
-            }
-            if (consoleKey == ConsoleKey.RightArrow)
-            {
-                enemyCol = fighter.Col + 1;
-                enemyRow = fighter.Row;
-            }
-
-            Fighter enemyFi = SetEnemy(enemyRow, enemyCol);
-            Fighter defender = enemyFi;
-            bool gameComplete = false;
-
-            while (fighter.Health > 0 && enemyFi.Health > 0)
-            {
-                Console.WriteLine(attacker.Name + " attacks " + defender.Name + " with a " + attacker.Weapon.Name + "!");
-
-                if (attacker.Weapon.Name == "Crossbow")
-                {
-                    if (random.Next(0, 2) == 0)
-                    {
-                        Console.WriteLine("The crossbow actually hit!");
-                        attacker.Weapon.Damage = 20;
-                    }
-                    else
-                    {
-                        Console.WriteLine("The crossbow missed!");
-                        attacker.Weapon.Damage = 0;
-                    }
-                }
-
-                attacker.Attack(defender);
-
-                if (defender.Name == fighter.Name && fighter.Health <= 6 && fighter.Potion > 0)
-                {
-                    Console.WriteLine("You healed 4 hp with a potion!");
-                    fighter.Health += 4;
-                    fighter.Potion--;
-                }
-
-                if (attacker.Name == "Troll")
-                {
-                    Console.WriteLine("The dang troll regenerated 1 hp!");
-                    attacker.Health += 1;
-                }
-
-                Fighter temp = attacker;
-                attacker = defender;
-                defender = temp;
-
-                Console.WriteLine("Current Health: " + fighter.Health);
-                Console.WriteLine("Enemy Health: " + enemyFi.Health);
-            }
-
-            if (enemyFi.Health <= 0)
-            {
-                room[enemyFi.Row, enemyFi.Col] = emptySpace;
-                Console.WriteLine("You have defeated the " + enemyFi.Name);
-                Console.WriteLine("---------------------");
             }
 
             if (fighter.Health <= 0)
             {
-                gameComplete = true;
+                Console.WriteLine("You have been defeated by the enemy. ");
             }
-
-            return gameComplete;
+            else
+            {
+                Console.WriteLine("You have won the Battle. ");
+            }
         }
+
 
         private static Fighter SetUpPlayer()
         {
@@ -363,12 +147,341 @@ namespace _223RoomEscape
                     newFighter = new Troll(name, 10, weapon, armor, potion);
                     break;
             }
-
             newFighter.Row = 0;
             newFighter.Col = 0;
 
             return newFighter;
         }
+        private static bool GeneratePlayerMove(Fighter fighter, char[,] room, ConsoleKey consoleKey)
+        {
+            bool status = true;
+            bool gameComplete = false;
+            if ((fighter.Row != 14 && consoleKey == ConsoleKey.DownArrow
+                && room[fighter.Row + 1, fighter.Col] != emptySpace)
+                || (fighter.Row != 0 && consoleKey == ConsoleKey.UpArrow
+                && room[fighter.Row - 1, fighter.Col] != emptySpace)
+                || (fighter.Col != 0 && consoleKey == ConsoleKey.LeftArrow
+                && room[fighter.Row, fighter.Col - 1] != emptySpace)
+                || (fighter.Col != 14 && consoleKey == ConsoleKey.RightArrow
+                && room[fighter.Row, fighter.Col + 1] != emptySpace))
+            {
+                gameComplete = Battle(fighter, consoleKey, room);
+                status = gameComplete;
+            }
+
+            if (fighter.Health <= 0)
+            {
+                return true;
+            }
+
+            if ((fighter.Row == 0 && consoleKey == ConsoleKey.UpArrow)
+                || (fighter.Row == 14 && consoleKey == ConsoleKey.DownArrow))
+            {
+                status = false;
+            }
+
+            if ((fighter.Col == 0 && consoleKey == ConsoleKey.LeftArrow)
+                || (fighter.Col == 14 && consoleKey == ConsoleKey.RightArrow))
+            {
+                status = false;
+            }
+
+            if (status)
+            {
+                if (consoleKey == ConsoleKey.UpArrow)
+                {
+                    room[fighter.Row - 1, fighter.Col] = player;
+                    room[fighter.Row, fighter.Col] = emptySpace;
+                    fighter.Row -= 1;
+                }
+                else if (consoleKey == ConsoleKey.DownArrow)
+                {
+                    room[fighter.Row + 1, fighter.Col] = player;
+                    room[fighter.Row, fighter.Col] = emptySpace;
+                    fighter.Row += 1;
+                }
+                else if (consoleKey == ConsoleKey.LeftArrow)
+                {
+                    room[fighter.Row, fighter.Col - 1] = player;
+                    room[fighter.Row, fighter.Col] = emptySpace;
+                    fighter.Col -= 1;
+                }
+                else if (consoleKey == ConsoleKey.RightArrow)
+                {
+                    room[fighter.Row, fighter.Col + 1] = player;
+                    room[fighter.Row, fighter.Col] = emptySpace;
+                    fighter.Col += 1;
+                }
+
+                else
+                {
+                    Console.WriteLine("Sky is falling");
+                }
+
+            }
+            else
+            {
+                Console.WriteLine("You cannot move there!");
+            }
+
+            return fighter.Health >= 0;
+        }
+
+        private static bool GenerateEnemyMoves(Fighter fighter, char[,] room)
+        {
+            bool gameComplete = false;
+            foreach (Fighter enemyFi in numberOfEnemies)
+            {
+                if (enemyFi.Health > 0)
+                {
+                    int colDiff = enemyFi.Col - fighter.Col;
+                    int rowDiff = enemyFi.Row - fighter.Row;
+
+                    if (Math.Abs(colDiff) > Math.Abs(rowDiff))
+                    {
+                        if (colDiff < 0)
+                        {
+                            if (room[enemyFi.Row, enemyFi.Col + 1] == player)
+                            {
+                                gameComplete = GenerateEnemyBattle(enemyFi, fighter, room);
+                            }
+
+                            if (enemyFi.Health > 0)
+                            {
+                                room[enemyFi.Row, enemyFi.Col + 1] = enemy;
+                                room[enemyFi.Row, enemyFi.Col] = emptySpace;
+                                enemyFi.Col += 1;
+                            }
+                        }
+                        else if (colDiff > 0)
+                        {
+                            if (room[enemyFi.Row, enemyFi.Col - 1] == player)
+                            {
+                                gameComplete = GenerateEnemyBattle(enemyFi, fighter, room);
+                            }
+
+                            if (enemyFi.Health > 0)
+                            {
+                                room[enemyFi.Row, enemyFi.Col - 1] = enemy;
+                                room[enemyFi.Row, enemyFi.Col] = emptySpace;
+                                enemyFi.Col -= 1;
+                            }
+                        }
+                    }
+                    else if (Math.Abs(rowDiff) > Math.Abs(colDiff))
+                    {
+
+                        if (rowDiff < 0)
+                        {
+                            if (room[enemyFi.Row + 1, enemyFi.Col] == player)
+                            {
+                                gameComplete = GenerateEnemyBattle(enemyFi, fighter, room);
+                            }
+
+                            if (enemyFi.Health > 0)
+                            {
+                                room[enemyFi.Row + 1, enemyFi.Col] = enemy;
+                                room[enemyFi.Row, enemyFi.Col] = emptySpace;
+                                enemyFi.Row += 1;
+                            }
+                        }
+                        else if (rowDiff > 0)
+                        {
+                            if (room[enemyFi.Row - 1, enemyFi.Col] == player)
+                            {
+                                gameComplete = GenerateEnemyBattle(enemyFi, fighter, room);
+                            }
+
+                            if (enemyFi.Health > 0)
+                            {
+                                room[enemyFi.Row - 1, enemyFi.Col] = enemy;
+                                room[enemyFi.Row, enemyFi.Col] = emptySpace;
+                                enemyFi.Row -= 1;
+                            }
+                        }
+                    }
+                }
+            }
+
+            return gameComplete;
+        }
+
+        private static void ShowGameBoard(char[,] board, int roomNum)
+        {
+            Console.WriteLine();
+            Console.WriteLine("You are inside room: " + roomNum);
+            Console.WriteLine();
+            for (int row = 0; row < 15; row++)
+            {
+                for (int col = 0; col < 15; col++)
+                {
+                    Console.Write(board[row, col] + " ");
+                }
+                Console.WriteLine();
+            }
+        }
+
+        private static void GenerateGameBoard(char[,] room, int numberOfRooms)
+        {
+            numberOfEnemies.Clear();
+
+            for (int i = 0; i < 15; i++)
+            {
+                for (int j = 0; j < 15; j++)
+                {
+                    if (i == 0 && j == 0)
+                    {
+                        room[i, j] = player;
+                    }
+                    //else if (i == 14 && j == 14)
+                    //{
+                    //    room[i, j] = exit;
+                    //}
+                    else
+                    {
+                        room[i, j] = emptySpace;
+                    }
+                }
+            }
+            PlaceEnemies(numberOfRooms, room);
+
+        }
+
+
+        private static void PlaceEnemies(int roomNum, char[,] room)
+        {
+            for (int i = 0; i < roomNum + 1; i++)
+            {
+                bool placed = false;
+
+                while (!placed)
+                {
+                    int sRow = random.Next(0, 14);
+                    int sCol = random.Next(0, 14);
+
+                    Fighter enemyFi = SetUpEnemy();
+                    numberOfEnemies.Add(enemyFi);
+
+                    if (room[sRow, sCol] == emptySpace)
+                    {
+                        room[sRow, sCol] = enemy;
+                        enemyFi.Col = sCol;
+                        enemyFi.Row = sRow;
+                        placed = true;
+                    }
+                }
+            }
+        }
+
+
+        private static bool GenerateEnemyBattle(Fighter enemy, Fighter player, char[,] room)
+        {
+            Fighter attacker = player;
+            Fighter defender = enemy;
+            bool gameComplete = false;
+
+            while (player.Health > 0 && enemy.Health > 0)
+            {
+                Console.WriteLine(attacker.Name + " attacked " + defender.Name + " with a " + attacker.Weapon.Name);
+
+                if (attacker.Weapon.Name == "Crossbow")
+                {
+                    if (random.Next(0, 2) == 0)
+                    {
+                        Console.WriteLine("The crossbow actually hit!");
+                        attacker.Weapon.Damage = 20;
+                    }
+                    else
+                    {
+                        Console.WriteLine("The crossbow missed!");
+                        attacker.Weapon.Damage = 0;
+                    }
+                }
+
+                attacker.Attack(defender);
+
+                if (defender.Name == player.Name && player.Health <= 6 && player.Potion > 0)
+                {
+                    Console.WriteLine("You healed 4 hp with a potion!");
+                    player.Health += 4;
+                    player.Potion--;
+                }
+
+                if (attacker.Name == "Troll")
+                {
+                    Console.WriteLine("The dang troll regenerated 1 hp!");
+                    attacker.Health += 1;
+                }
+
+                Fighter temp = attacker;
+                attacker = defender;
+                defender = temp;
+
+                Console.WriteLine("Current Health: " + player.Health);
+                Console.WriteLine("Enemy Health: " + enemy.Health);
+            }
+
+            if (enemy.Health <= 0)
+            {
+                room[enemy.Row, enemy.Col] = emptySpace;
+                Console.WriteLine("You have defeated the " + enemy.Name);
+                Console.WriteLine("---------------------");
+            }
+
+            if (player.Health <= 0)
+            {
+                gameComplete = true;
+            }
+
+            return gameComplete;
+        }
+
+        private static bool Battle(Fighter fighter, ConsoleKey consoleKey, char[,] room)
+        {
+
+            int enemyCol = 0, enemyRow = 0;
+
+            if (consoleKey == ConsoleKey.UpArrow)
+            {
+                enemyCol = fighter.Col;
+                enemyRow = fighter.Row - 1;
+            }
+            if (consoleKey == ConsoleKey.LeftArrow)
+            {
+                enemyCol = fighter.Col - 1;
+                enemyRow = fighter.Row;
+            }
+            if (consoleKey == ConsoleKey.DownArrow)
+            {
+                enemyCol = fighter.Col;
+                enemyRow = fighter.Row + 1;
+            }
+            if (consoleKey == ConsoleKey.RightArrow)
+            {
+                enemyCol = fighter.Col + 1;
+                enemyRow = fighter.Row;
+            }
+
+            Fighter enemy = SetEnemy(enemyRow, enemyCol);
+
+            Console.WriteLine(fighter.Name + " attacks " + enemy.Name + " with a " + fighter.Weapon.Name + "!");
+
+            fighter.Attack(enemy);
+
+            Console.WriteLine("Current Health: " + fighter.Health);
+            Console.WriteLine("Enemy Health: " + enemy.Health);
+
+            if (enemy.Health <= 0)
+            {
+                room[enemy.Row, enemy.Col] = emptySpace;
+                Console.WriteLine("You have defeated the " + enemy.Name);
+                Console.WriteLine("---------------------");
+            }
+
+            return enemy.Health <= 0;
+        }
+
+
 
         private static Fighter SetUpEnemy()
         {

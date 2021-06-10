@@ -1,5 +1,6 @@
 ﻿using System;
 using VendingMachine.Controller;
+using VendingMachine.Daos;
 using VendingMachine.Services;
 
 namespace VendingMachine
@@ -11,7 +12,7 @@ namespace VendingMachine
 
 
             VendingMachineController machineController = new VendingMachineController
-                (new VendingMachineService(new VendingMachineDao)); 
+                (new VendingMachineService(new VendingMachineFileDao())); 
         }
     }
 }

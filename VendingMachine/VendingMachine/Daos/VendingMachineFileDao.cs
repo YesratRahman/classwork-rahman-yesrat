@@ -1,8 +1,7 @@
 ﻿using System;
 namespace VendingMachine.Daos
-
 {
-    public class VendingMachineFileDao
+    public class VendingMachineFileDao : IVendingMachineFileDao
     {
         public VendingMachineFileDao()
         {

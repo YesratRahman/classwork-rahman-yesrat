@@ -1,10 +1,7 @@
 ﻿using System;
 namespace VendingMachine.Services
 {
-    public class IVendingMachineService
+    public interface IVendingMachineService
     {
-        public IVendingMachineService()
-        {
-        }
     }
 }

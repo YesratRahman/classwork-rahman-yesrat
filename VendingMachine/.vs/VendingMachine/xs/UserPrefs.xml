@@ -6,17 +6,14 @@
         <State name="__root__">
           <Node name="VendingMachine" expanded="True">
             <Node name="VendingMachine" expanded="True">
-              <Node name="Exceptions" expanded="True">
-                <Node name="ItemOutOfStockException.cs" selected="True" />
-              </Node>
+              <Node name="Daos" expanded="True" />
+              <Node name="Exceptions" expanded="True" />
+              <Node name="Models" expanded="True" />
+              <Node name="Services" expanded="True" />
+              <Node name="Program.cs" selected="True" />
             </Node>
             <Node name="VendingMachineTests" expanded="True" />
           </Node>
-        </State>
-      </Pad>
-      <Pad Id="MonoDevelop.UnitTesting.TestPad">
-        <State name="__root__">
-          <Node name="VendingMachine" expanded="True" selected="True" />
         </State>
       </Pad>
     </Pads>

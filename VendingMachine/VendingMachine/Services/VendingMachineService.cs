@@ -1,13 +1,16 @@
 ﻿using System;
-namespace VendingMachine.Services
+using VendingMachine.Daos;
 
+namespace VendingMachine.Services
 {
-    public class VendingMachineService: IVendingMachineService
+    public class VendingMachineService : IVendingMachineFileDao
     {
-        private readonly IVendingMachineService _vendingMachineDao; 
-        public VendingMachineService(IVendingMachineService vendingMachineDao)
+        private readonly IVendingMachineFileDao _vendingMachineFileDao;
+        public VendingMachineService(VendingMachineFileDao vendingMachineFileDao)
         {
-            _vendingMachineDao = vendingMachineDao; 
+            _vendingMachineFileDao = vendingMachineFileDao; 
         }
+
+       
     }
 }

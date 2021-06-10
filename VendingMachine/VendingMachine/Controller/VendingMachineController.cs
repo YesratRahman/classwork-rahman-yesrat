@@ -1,26 +1,10 @@
 ﻿using System;
-using VendingMachine.Services;
-
 namespace VendingMachine.Controller
 {
     public class VendingMachineController
     {
-        VendingMachineService _service;
-        
-
-        public VendingMachineController(VendingMachineService service)
+        public VendingMachineController(Services.VendingMachineService vendingMachineService)
         {
-            _service = service;
-
-        }
-        public void Run()
-        {
-            bool done = false;
-            while (!done)
-            {
-                
-
-            }
         }
     }
 }

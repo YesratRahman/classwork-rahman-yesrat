@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace VendingMachine.Models
 {
-    public class VendingMachine
+    public class VendingMachine: IVendingMachine
     {
         public List<Candy> Candies { get; set; }
 

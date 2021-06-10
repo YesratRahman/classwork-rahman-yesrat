@@ -113,21 +113,21 @@ namespace WidgetSalesTests
             
         }
 
-        [TestCase(null)]
-        public void RemoveWidgetByNullName(string name)
-        {
-            WidgetInventory toAdd = new WidgetInventory
-            {
-                Name = name,
-                Category = "building supplies",
-                StockCount = 1
-            };
+        //[TestCase(null)]
+        //public void RemoveWidgetByNullName(string name)
+        //{
+        //    WidgetInventory toAdd = new WidgetInventory
+        //    {
+        //        Name = name,
+        //        Category = "building supplies",
+        //        StockCount = 1
+        //    };
 
-            _toTest.Add(toAdd);
-            Assert.Throws<ArgumentNullException>(() => _toTest.RemoveWidgetByName(name));
+        //    _toTest.Add(toAdd);
+        //    Assert.Throws<ArgumentNullException>(() => _toTest.RemoveWidgetByName(name));
             
 
-        }
+        //}
 
     }
 }

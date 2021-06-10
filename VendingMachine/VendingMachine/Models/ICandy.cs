@@ -1,0 +1,10 @@
+﻿using System;
+namespace VendingMachine.Models
+{
+    public interface ICandy
+    {
+        public string Name { get; }
+        public int Quantity { get; set; }
+        public decimal Price { get; }
+    }
+}

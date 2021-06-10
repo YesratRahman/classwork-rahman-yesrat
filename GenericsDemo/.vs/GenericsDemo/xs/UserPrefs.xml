@@ -3,7 +3,7 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="LinkedListTests/UnitTest1.cs">
     <Files>
       <File FileName="LinkedList/DavidLinkedList.cs" Line="61" Column="69" />
-      <File FileName="LinkedListTests/UnitTest1.cs" Line="82" Column="9" />
+      <File FileName="LinkedListTests/UnitTest1.cs" Line="92" Column="36" />
       <File FileName="LinkedList/ItemNotFoundException.cs" />
     </Files>
     <Pads>

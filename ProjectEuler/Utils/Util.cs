@@ -40,6 +40,7 @@ namespace Utils
 
         public static bool IsPrime(int number)
         {
+            if (number < 2) return false; 
             bool prime = true;
             int squareRoot = GetSquareRoot(number);
             if (number % 2 == 0)

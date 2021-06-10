@@ -11,7 +11,7 @@ namespace WidgetSales
 
         internal int MainMenu()
         {
-            int choice = -1;
+            int choice = -1; 
             bool valid = false;
             while( !valid)
             {
@@ -24,7 +24,7 @@ namespace WidgetSales
                 Console.WriteLine("6. Add widget sale");
                 Console.WriteLine("7. Exit");
                 Console.WriteLine("-----------------------------------");
-
+                
                 valid = int.TryParse(Console.ReadLine(), out choice);
                 if (valid) valid = choice > 0 && choice < 8;
             }

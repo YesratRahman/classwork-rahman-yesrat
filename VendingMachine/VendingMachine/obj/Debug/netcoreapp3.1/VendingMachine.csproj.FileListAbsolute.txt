@@ -1,0 +1,12 @@
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/VendingMachine/VendingMachine/bin/Debug/netcoreapp3.1/VendingMachine.deps.json
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/VendingMachine/VendingMachine/bin/Debug/netcoreapp3.1/VendingMachine.runtimeconfig.json
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/VendingMachine/VendingMachine/bin/Debug/netcoreapp3.1/VendingMachine.runtimeconfig.dev.json
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/VendingMachine/VendingMachine/bin/Debug/netcoreapp3.1/VendingMachine.dll
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/VendingMachine/VendingMachine/bin/Debug/netcoreapp3.1/VendingMachine.pdb
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/VendingMachine/VendingMachine/obj/Debug/netcoreapp3.1/VendingMachine.csprojAssemblyReference.cache
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/VendingMachine/VendingMachine/obj/Debug/netcoreapp3.1/VendingMachine.AssemblyInfoInputs.cache
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/VendingMachine/VendingMachine/obj/Debug/netcoreapp3.1/VendingMachine.AssemblyInfo.cs
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/VendingMachine/VendingMachine/obj/Debug/netcoreapp3.1/VendingMachine.csproj.CoreCompileInputs.cache
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/VendingMachine/VendingMachine/obj/Debug/netcoreapp3.1/VendingMachine.dll
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/VendingMachine/VendingMachine/obj/Debug/netcoreapp3.1/VendingMachine.pdb
+/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/VendingMachine/VendingMachine/obj/Debug/netcoreapp3.1/VendingMachine.genruntimeconfig.cache

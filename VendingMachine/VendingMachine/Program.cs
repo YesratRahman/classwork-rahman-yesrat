@@ -9,12 +9,11 @@ namespace VendingMachine
     {
         static void Main(string[] args)
         {
-
-
             VendingMachineController machineController = new VendingMachineController
-                (new VendingMachineService(new VendingMachineFileDao())); 
+                (new VendingMachineService(new VendingMachineFileDao()));
+            machineController.Run();
         }
 
-        machineController.Run(); 
+       
     }
 }

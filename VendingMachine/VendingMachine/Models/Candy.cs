@@ -1,7 +1,7 @@
 ﻿using System;
 namespace VendingMachine.Models
 {
-    public class Candy
+    public class Candy: ICandy
     {
 
         public string Name { get; }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace VendingMachine.Models
 {
     
-        public interface IVendingMachine
+        public interface IVendingMachineC
         {
             public List<Candy> Candies { get; set; }
         }

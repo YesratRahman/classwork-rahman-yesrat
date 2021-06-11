@@ -7,9 +7,9 @@ namespace VendingMachine.Controller
     {
         private IVendingMachineService _service;
 
-        public VendingMachineController(IVendingMachineService vendingMachineService)
+        public VendingMachineController(IVendingMachineService machineService)
         {
-            vendingMachineService = _service; 
+             _service = machineService; 
         }
 
         public void Run()
@@ -17,7 +17,21 @@ namespace VendingMachine.Controller
             bool completed = false;
             while (!completed)
             {
-                _service.ShowCandies(); 
+                Console.WriteLine("-----------------------------");
+                Console.WriteLine("Welcome to Vending Machine");
+                string inputedMoney;
+                decimal money;
+
+                System.Console.Write("Please input the money allocated for candy: ");
+                inputedMoney = System.Console.ReadLine();
+                money = decimal.Parse(inputedMoney);
+
+                int choice = _service.ShowCandies();
+                    //purchase candy
+                    //give change back 
+                
+
+                break; 
             }
         }
     }

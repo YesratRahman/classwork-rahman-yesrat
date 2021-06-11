@@ -1,0 +1,56 @@
+1. Create Table: 
+
+	create table table_name(); 
+	ex: create table Users(email varchar (50)); 
+
+2. Drop Table: 
+
+	drop table table_name; 
+	ex: drop table Users; 
+
+3. Primary Key: 
+	
+	create table Users(Id integer primary key)	
+
+4. Guranteed Unique Id (GUID)
+	
+	create table Users(Id uniqueidentifier primary key);	
+
+5. Auto incrementing primary key 
+	
+	create table Users(
+		Id integer primary key identity (1, 1),
+		email varchar(50)
+	); 	
+
+6. Primary key with GUID - takes a lot of space 
+		
+	create table Users(
+		Id uniqueidentifier primary key default newid(),
+		email varchar(50)
+	); 
+
+	refresh or rerun 
+
+7. Primary key as string  - not a good idea since its changeable by the user 
+	
+	create table Users(
+		email varchar(50) primary key not null
+		); 
+
+8. Many to many relation
+		
+	create table Users(
+		Id integer primary key identity(1,1),
+		email varchar(50) not null
+		); 
+
+	create table Users_Roles(
+		UserId integer, 
+		RoleId integer
+		);
+	create table Roles(
+		Id integer primary key identity(1,1), 
+		Name varchar(50)
+		); 			
+

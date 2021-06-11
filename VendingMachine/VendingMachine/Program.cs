@@ -15,6 +15,6 @@ namespace VendingMachine
                 (new VendingMachineService(new VendingMachineFileDao())); 
         }
 
-        machineController.run(); 
+        machineController.Run(); 
     }
 }

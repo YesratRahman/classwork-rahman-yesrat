@@ -1,19 +1,22 @@
 ﻿<Properties StartupConfiguration="{3CCAFFA9-191C-4E4C-A6C6-955C5B099C9A}|Default">
   <MonoDevelop.Ide.ItemProperties.VendingMachine PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="VendingMachine/Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="VendingMachine/Controller/VendingMachineController.cs">
     <Files>
       <File FileName="VendingMachine/Services/VendingMachineService.cs" Line="1" Column="1" />
       <File FileName="VendingMachine/Exceptions/ItemOutOfStockException.cs" Line="1" Column="1" />
-      <File FileName="VendingMachine/Program.cs" Line="18" Column="18" />
+      <File FileName="VendingMachine/Program.cs" Line="18" Column="28" />
+      <File FileName="VendingMachine/Controller/VendingMachineController.cs" Line="6" Column="17" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="VendingMachine" expanded="True">
             <Node name="VendingMachine" expanded="True">
+              <Node name="Controller" expanded="True">
+                <Node name="VendingMachineController.cs" selected="True" />
+              </Node>
               <Node name="Exceptions" expanded="True" />
               <Node name="Services" expanded="True" />
-              <Node name="Program.cs" selected="True" />
             </Node>
             <Node name="VendingMachineTests" expanded="True" />
           </Node>

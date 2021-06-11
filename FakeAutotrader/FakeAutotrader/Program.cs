@@ -11,7 +11,7 @@ namespace FakeAutotrader
     {
         static readonly HttpClient _client = new HttpClient();
         static readonly Mutex _mutexLock = new Mutex();
-        static readonly Dictionary<string, List<decimal>> _stockPrices = new Dictionary<string, List<decimal>>();
+        static readonly Dictionary<string, List<double>> _stockPrices = new Dictionary<string, List<double>>();
         static void Main(string[] args)
         {
             //Fake Autotrader
@@ -32,7 +32,7 @@ namespace FakeAutotrader
             bool completed = false;
             List<Task> tasks = new List<Task>();
 
-            Console.WriteLine("Enter one or more stocks you want to keep track of. Hit return button twice after completed.");
+            Console.WriteLine("Enter one or more stocks you want to keep track of: ");
             while (!completed)
             {
                 string symbol = Console.ReadLine().ToUpper();
@@ -45,8 +45,7 @@ namespace FakeAutotrader
             foreach (string stock in stocks)
             {
                 tasks.Add(Task.Factory.StartNew(
-                    () => GetStockPrices(stock)).Unwrap()
-                    );
+                    () => GetStockPrices(stock)).Unwrap());
             }
 
             Task.WaitAll(tasks.ToArray());
@@ -64,9 +63,9 @@ namespace FakeAutotrader
                 string messageBody = await res.Content.ReadAsStringAsync();
                 Match match = Regex.Match(messageBody, @"(?<={""c"":)[^,]+");
 
-                decimal price = decimal.Parse(match.ToString());
+                double price = double.Parse(match.ToString());
 
-                Console.WriteLine(DateTime.Now + " " + stock + " : " + "$" + price);
+                Console.WriteLine(stock + " Price: " + "$" + price + " " + DateTime.Now);
 
                 _mutexLock.WaitOne();
 
@@ -74,12 +73,24 @@ namespace FakeAutotrader
                 {
                     if (_stockPrices.GetValueOrDefault(stock).Count > 2)
                     {
-                        decimal median = GetMedStockPrice(_stockPrices.GetValueOrDefault(stock));
-                        if (price > median)
+
+                        double medianPrice;
+                        List<double> prices = _stockPrices.GetValueOrDefault(stock);
+                        prices.Sort();
+                        if (prices.Count % 2 == 0)
+                        {
+                            medianPrice = (prices[(prices.Count / 2) - 1] + prices[prices.Count / 2]) / 2;
+                        }
+                        else
+                        {
+                            medianPrice = prices[prices.Count / 2];
+                        }
+
+                        if (price > medianPrice)
                         {
                             Console.WriteLine("Sell " + stock + " for " + " price");
                         }
-                        else if (price < median)
+                        else if (price < medianPrice)
                         {
                             Console.WriteLine("Buy " + stock + " for " + " price");
                         }
@@ -88,7 +99,7 @@ namespace FakeAutotrader
                 }
                 else
                 {
-                    _stockPrices.Add(stock, new List<decimal> { price });
+                    _stockPrices.Add(stock, new List<double> { price });
                 }
                 _mutexLock.ReleaseMutex();
 
@@ -96,17 +107,6 @@ namespace FakeAutotrader
             }
 
         }
-        static decimal GetMedStockPrice(List<decimal> prices)
-        {
-            prices.Sort();
-            if (prices.Count % 2 == 0)
-            {
-                return (prices[(prices.Count / 2) - 1] + prices[prices.Count / 2]) / 2;
-            }
-            else
-            {
-                return prices[prices.Count / 2];
-            }
-        }
+
     }
-}
+}  

@@ -14,5 +14,7 @@ namespace VendingMachine
             VendingMachineController machineController = new VendingMachineController
                 (new VendingMachineService(new VendingMachineFileDao())); 
         }
+
+        //machineController.run(); 
     }
 }

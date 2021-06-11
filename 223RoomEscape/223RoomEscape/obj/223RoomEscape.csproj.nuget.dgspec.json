@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/yesratrahman/Desktop/223RoomEscape/223RoomEscape/223RoomEscape.csproj": {}
+    "/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/223RoomEscape/223RoomEscape/223RoomEscape.csproj": {}
   },
   "projects": {
-    "/Users/yesratrahman/Desktop/223RoomEscape/223RoomEscape/223RoomEscape.csproj": {
+    "/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/223RoomEscape/223RoomEscape/223RoomEscape.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/yesratrahman/Desktop/223RoomEscape/223RoomEscape/223RoomEscape.csproj",
+        "projectUniqueName": "/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/223RoomEscape/223RoomEscape/223RoomEscape.csproj",
         "projectName": "223RoomEscape",
-        "projectPath": "/Users/yesratrahman/Desktop/223RoomEscape/223RoomEscape/223RoomEscape.csproj",
+        "projectPath": "/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/223RoomEscape/223RoomEscape/223RoomEscape.csproj",
         "packagesPath": "/Users/yesratrahman/.nuget/packages/",
-        "outputPath": "/Users/yesratrahman/Desktop/223RoomEscape/223RoomEscape/obj/",
+        "outputPath": "/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/223RoomEscape/223RoomEscape/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/yesratrahman/.config/NuGet/NuGet.Config"

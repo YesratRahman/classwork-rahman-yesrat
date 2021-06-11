@@ -51,7 +51,7 @@ namespace _223RoomEscape
 
             char[,] gameBoard = new char[15, 15];
 
-            while (gameStatus == false || numberOfRooms != 15)
+            while (gameStatus == false || numberOfRooms != 223)
             {
                 GenerateGameBoard(gameBoard, numberOfRooms);
                 bool gameComplete = false;
@@ -384,12 +384,12 @@ namespace _223RoomEscape
             {
                 Console.WriteLine(attacker.Name + " attacked " + defender.Name + " with a " + attacker.Weapon.Name);
 
-                if (attacker.Weapon.Name == "Crossbow")
+                if (attacker.Weapon.Name == "Sword")
                 {
                     if (random.Next(0, 2) == 0)
                     {
-                        Console.WriteLine("The crossbow actually hit!");
-                        attacker.Weapon.Damage = 20;
+                        Console.WriteLine("Sword was used by " + attacker.Name);
+                        attacker.Weapon.Damage = 2;
                     }
                     else
                     {
@@ -402,17 +402,12 @@ namespace _223RoomEscape
 
                 if (defender.Name == player.Name && player.Health <= 6 && player.Potion > 0)
                 {
-                    Console.WriteLine("You healed 4 hp with a potion!");
-                    player.Health += 4;
+                    Console.WriteLine("You healed 6 hp with a potion!");
+                    player.Health += 6;
                     player.Potion--;
                 }
 
-                if (attacker.Name == "Troll")
-                {
-                    Console.WriteLine("The dang troll regenerated 1 hp!");
-                    attacker.Health += 1;
-                }
-
+                
                 Fighter temp = attacker;
                 attacker = defender;
                 defender = temp;

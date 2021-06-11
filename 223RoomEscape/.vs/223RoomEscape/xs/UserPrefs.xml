@@ -1,9 +1,6 @@
 ﻿<Properties StartupConfiguration="{C1E0B90B-0FEE-4FFD-BE71-AFB5B6BB5217}|Default">
   <MonoDevelop.Ide.ItemProperties.223RoomEscape PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="223RoomEscape/Program.cs">
-    <Files>
-      <File FileName="223RoomEscape/Program.cs" Line="85" Column="60" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">

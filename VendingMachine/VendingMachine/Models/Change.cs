@@ -21,5 +21,12 @@ namespace VendingMachine.Models
             Nickel = nickel;
             Penny = penny; 
         }
+
+        public override string ToString()
+        {
+            Console.WriteLine("Your changes are: ");
+            return ("Dollar " + Dollar + "\n"+ "Quarter " + Quarter + "\n" + "Dime " + Dime + "\n" +
+                "Nickel " + Nickel + "\n" + "Penny " + Penny); 
+        }
     }
 }

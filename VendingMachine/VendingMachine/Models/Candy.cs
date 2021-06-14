@@ -27,5 +27,12 @@ namespace VendingMachine.Models
             Price = that.Price;
             
         }
+        public override string ToString()
+        {
+            //Necco Wafers Candy,8,2.00
+
+            return (Name + "," + Quantity + "," + Price) ;
+
+        }
     }
 }

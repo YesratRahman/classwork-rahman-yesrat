@@ -4,13 +4,9 @@ using VendingMachine.Models;
 
 namespace VendingMachine.Daos
 {
-   
-
-    public interface IVendingMachineFileDao
+    public interface IVendingMachineDao
     {
-        public string ReadFile { get; set; }
-
-        void RemoveCandy(string name);
+        void UpdateCandy(string name);
         public List<Candy> GetAllCandies(); 
 
     }

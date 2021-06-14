@@ -6,7 +6,7 @@ namespace VendingMachineDaoTests
 {
     public class Tests
     {
-        private IVendingMachineFileDao _fileDao;
+        private IVendingMachineDao _fileDao;
         private static string _testFile = "../../../../VendingMachine/Test.txt";
 
         private static string _seedFile = "../../../../VendingMachine/Seed.txt";

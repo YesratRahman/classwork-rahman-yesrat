@@ -8,44 +8,39 @@ namespace VendingMachine.Services
 {
     public class VendingMachineService : IVendingMachineService
     {
-        private readonly IVendingMachineFileDao _vendingMachineFileDao;
+        private readonly IVendingMachineDao _vendingMachineFileDao;
 
-        public VendingMachineService(IVendingMachineFileDao fileDao)
+        public VendingMachineService(IVendingMachineDao fileDao)
         {
             _vendingMachineFileDao = fileDao;
         }
-
-
-
-
-        public List<Candy> GetCandies()
+        public List<Candy> GetAllCandies()
         {
             return _vendingMachineFileDao.GetAllCandies();
         }
-
-
-        public int ShowCandies()
+        public int ShowCandies(List<Candy> candies)
         {
 
             int choice = -1;
             bool chosen = false;
-            List<Candy> candies = _vendingMachineFileDao.GetAllCandies();
 
-            Console.WriteLine("Choose a number to buy candies:\n");
-            while (!chosen)
+            foreach (Candy candy in candies)
             {
-                foreach (Candy candy in _vendingMachineFileDao.GetAllCandies()) 
-                {
-                    int choiceIndex = _vendingMachineFileDao.GetAllCandies().IndexOf(candy);
-                    Console.WriteLine(choiceIndex + ": " + candy.Quantity + " " + candy.Name + " (" + "$" + candy.Price + " each)");
-                    Console.WriteLine();
-                }
-                chosen = int.TryParse(Console.ReadLine(), out choice);
-                if (chosen) chosen = choice > 0 && choice < candies.Count;
+                int choiceIndex = candies.IndexOf(candy) + 1;
+                Console.WriteLine(choiceIndex + ": " + candy.Quantity + " " + candy.Name + " (" + "$" + candy.Price + " each)");
+                Console.WriteLine();
             }
 
-            return choice;
+            while (!chosen) {
+                if(choice < 1 || choice > candies.Count)
+                {
+                    Console.WriteLine("Enter a number between 1 to " + candies.Count + " to buy the candy: \n");
 
+                    chosen = int.TryParse(Console.ReadLine(), out choice);
+                }
+
+            }
+            return choice;
 
         }
 
@@ -60,9 +55,7 @@ namespace VendingMachine.Services
             }
             return money;
         }
-        
 
-        
         public Change GiveChanges(decimal costProduct, decimal moneyGiven)
         {
             decimal change = moneyGiven - costProduct;
@@ -81,26 +74,28 @@ namespace VendingMachine.Services
 
             int pennies = (int)(change / Money.Penny);
 
-            return new Change( dollars, quarters, dimes, nickels, pennies );
+            return new Change(dollars, quarters, dimes, nickels, pennies);
         }
 
-        
+
 
 
         public void BuyCandies(Candy candy, decimal money)
         {
-            if(money < candy.Price)
+            if (money < candy.Price)
             {
-                throw new InsufficientExecutionStackException("Can not buy " + candy.Name + " with " + "$" + money);
+                throw new InsufficientFundsException("Can not buy " + candy.Name + " with " + "$" + money);
             }
-            if(candy.Quantity <= 0)
+            if (candy.Quantity <= 0)
             {
-                throw new ItemOutOfStockException(candy.Name + " is out of stock" ); 
+                throw new ItemOutOfStockException(candy.Name + " is out of stock");
             }
-            _vendingMachineFileDao.RemoveCandy(candy.Name); 
+            _vendingMachineFileDao.UpdateCandy(candy.Name);
 
+
+            Change change = GiveChanges(candy.Price, money);
+
+            Console.WriteLine(change.ToString());
         }
-
-        
     }
 } 

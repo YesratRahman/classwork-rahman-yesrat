@@ -1,27 +1,18 @@
 ﻿<Properties StartupConfiguration="{03CFE032-9794-4FC3-9C9A-687975021D2E}|Default">
   <MonoDevelop.Ide.ItemProperties.VendingMachine PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="VendingMachine/Models/Change.cs">
-    <Files>
-      <File FileName="VendingMachine/Services/VendingMachineService.cs" Line="66" Column="33" />
-      <File FileName="VendingMachine/Models/Money.cs" Line="12" Column="8" />
-      <File FileName="VendingMachine/Services/IVendingMachineService.cs" Line="14" Column="76" />
-      <File FileName="VendingMachine/Program.cs" Line="1" Column="1" />
-      <File FileName="VendingMachine/Controller/VendingMachineController.cs" Line="31" Column="1" />
-      <File FileName="VendingMachine/Models/Candy.cs" Line="9" Column="38" />
-      <File FileName="VendingMachine/Models/Change.cs" Line="11" Column="22" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="VendingMachine" expanded="True">
             <Node name="VendingMachine" expanded="True">
               <Node name="Dependencies" expanded="True" />
-              <Node name="Controller" expanded="True" />
+              <Node name="Controller" expanded="True">
+                <Node name="VendingMachineController.cs" selected="True" />
+              </Node>
               <Node name="Daos" expanded="True" />
               <Node name="Exceptions" expanded="True" />
-              <Node name="Models" expanded="True">
-                <Node name="Change.cs" selected="True" />
-              </Node>
+              <Node name="Models" expanded="True" />
               <Node name="Services" expanded="True" />
             </Node>
             <Node name="VendingMachineTests" expanded="True" />
@@ -39,10 +30,7 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.ItemProperties.VendingMachineTests PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/VendingMachine/VendingMachine/Controller/VendingMachineController.cs" relfile="VendingMachine/Controller/VendingMachineController.cs" line="31" column="1" />
-      <Breakpoint file="/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/VendingMachine/VendingMachine/Controller/VendingMachineController.cs" relfile="VendingMachine/Controller/VendingMachineController.cs" line="24" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>

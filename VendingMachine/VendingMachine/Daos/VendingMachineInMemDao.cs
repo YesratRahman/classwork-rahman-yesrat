@@ -5,7 +5,7 @@ using VendingMachine.Models;
 
 namespace VendingMachine.Daos
 {
-    public class VendingMachineInMemDao
+    public class VendingMachineInMemDao : IVendingMachineDao
     {
         private List<Candy> _candies = new List<Candy>(); 
         public VendingMachineInMemDao()
@@ -17,8 +17,7 @@ namespace VendingMachine.Daos
             _candies.Add(new Candy("Laffy Taffy", 12, 1.50m));
             _candies.Add(new Candy("Dubble Bubble Gum", 10, 3.00m)); 
         }
-
-        public List<Candy> GetCandies()
+        public List<Candy> GetAllCandies()
         {
             return _candies.Select(candy => new Candy(candy)).ToList();
         }
@@ -30,6 +29,11 @@ namespace VendingMachine.Daos
             if (candy == null) throw new ArgumentException("Not found with this id");
 
             return candy;
+        }
+
+        public void UpdateCandy(string name)
+        {
+            throw new NotImplementedException();
         }
     }
 }

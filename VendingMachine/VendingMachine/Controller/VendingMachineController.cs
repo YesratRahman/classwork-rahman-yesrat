@@ -1,4 +1,6 @@
 ﻿using System;
+using VendingMachine.Exceptions;
+using VendingMachine.Models;
 using VendingMachine.Services;
 
 namespace VendingMachine.Controller
@@ -9,7 +11,7 @@ namespace VendingMachine.Controller
 
         public VendingMachineController(IVendingMachineService machineService)
         {
-             _service = machineService; 
+            _service = machineService;
         }
 
         public void Run()
@@ -20,22 +22,25 @@ namespace VendingMachine.Controller
                 Console.WriteLine("-----------------------------");
                 Console.WriteLine("Welcome to Vending Machine");
                 decimal money = _service.GetUserMoney();
-
-                while(money > 0.0m)
+                while (money > 0.0m)
                 {
-                    //int choice = _service.ShowCandies() - 1;
-                    //buy the candy
-                    //_service.BuyCandies(_service.GetCandies()[choice], money) ;
+                    int choice = _service.ShowCandies(_service.GetAllCandies()) - 1;
+                    try
+                    {
+                        Console.WriteLine("You have chosen to buy " + _service.GetAllCandies()[choice].Name);
+                        _service.BuyCandies(_service.GetAllCandies()[choice], money);
+                        money = 0;
 
-                    //give change back 
-                    _service.GiveChanges(10m, money);
-                    
+                    }
+                    catch (InsufficientFundsException ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                    catch (ItemOutOfStockException e)
+                    {
+                        Console.WriteLine(e.Message);
+                    }
                 }
-
-               
-
-
-                break; 
             }
         }
     }

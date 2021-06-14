@@ -6,11 +6,9 @@ using VendingMachine.Models;
 
 namespace VendingMachine.Daos
 {
-    public class VendingMachineFileDao : IVendingMachineFileDao
+    public class VendingMachineFileDao : IVendingMachineDao
     {
         public string ReadFile { get; set; }
-
-
 
         public VendingMachineFileDao() : this("../../../../VendingMachine/Candies.txt")
         {
@@ -21,9 +19,7 @@ namespace VendingMachine.Daos
             ReadFile = filePath;
         }
 
-        
-
-        public void RemoveCandy(string name)
+        public void UpdateCandy(string name)
         {
             var candies = GetAllCandies()
                 .Select(candy => candy.Name == name ?
@@ -44,10 +40,8 @@ namespace VendingMachine.Daos
 
         public List<Candy> GetAllCandies()
         {
-
             List<Candy> candies = new List<Candy>();
-
-            using (StreamReader reader = new StreamReader("../../../Candies.txt"))
+            using (StreamReader reader = new StreamReader(ReadFile))
             {
                 string line = null;
                 while ((line = reader.ReadLine()) != null)
@@ -62,7 +56,5 @@ namespace VendingMachine.Daos
                 return candies;
             }
         }
-
-        
     }
 }

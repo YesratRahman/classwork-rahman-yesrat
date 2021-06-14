@@ -1,4 +1,4 @@
-Necco Wafers Candy,4,2.00
+Necco Wafers Candy,3,2.00
 Nerds Candy,11,1.50
 Milky Way Candy Bar,18,1.25
 Hershey's Kisses,10,2.00

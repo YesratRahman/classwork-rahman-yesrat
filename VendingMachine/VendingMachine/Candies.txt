@@ -1,9 +1,9 @@
-Necco Wafers Candy, 20, 2.00
-Nerds Candy, 15, 1.50
-Milky Way Candy Bar, 18, 1.25
-Hershey's Kisses, 10, 2.00
-Laffy Taffy, 12, 1.50 
-Dubble Bubble Gum, 10, 3.00
-Twizzlers Licorice Candy, 14, 4.00
-Reese's Peanut Butter Cups, 16, 2.50 
-M&M's Candy, 10, 1.00 
+VendingMachine.Models.Candy
+VendingMachine.Models.Candy
+VendingMachine.Models.Candy
+VendingMachine.Models.Candy
+VendingMachine.Models.Candy
+VendingMachine.Models.Candy
+VendingMachine.Models.Candy
+VendingMachine.Models.Candy
+VendingMachine.Models.Candy

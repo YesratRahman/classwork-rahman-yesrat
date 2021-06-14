@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using VendingMachine.Models;
 
 namespace VendingMachine.Daos
@@ -7,9 +8,10 @@ namespace VendingMachine.Daos
 
     public interface IVendingMachineFileDao
     {
-        public VendingMachineC VendingMachine { get; }
         public string ReadFile { get; set; }
 
-        public VendingMachineC GetVendingMachineFile(); 
+        void RemoveCandy(string name);
+        public List<Candy> GetAllCandies(); 
+
     }
 }

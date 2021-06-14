@@ -19,17 +19,21 @@ namespace VendingMachine.Controller
             {
                 Console.WriteLine("-----------------------------");
                 Console.WriteLine("Welcome to Vending Machine");
-                string inputedMoney;
-                decimal money;
+                decimal money = _service.GetUserMoney();
 
-                System.Console.Write("Please input the money allocated for candy: ");
-                inputedMoney = System.Console.ReadLine();
-                money = decimal.Parse(inputedMoney);
+                while(money > 0.0m)
+                {
+                    //int choice = _service.ShowCandies() - 1;
+                    //buy the candy
+                    //_service.BuyCandies(_service.GetCandies()[choice], money) ;
 
-                int choice = _service.ShowCandies();
-                    //purchase candy
                     //give change back 
-                
+                    _service.GiveChanges(10m, money);
+                    
+                }
+
+               
+
 
                 break; 
             }

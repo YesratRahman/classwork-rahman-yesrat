@@ -7,8 +7,11 @@ namespace VendingMachine.Services
     public interface IVendingMachineService
     {
         public int ShowCandies();
-        public List<Candy> GetCandies();
-        void ChooseCandies();
         void BuyCandies(Candy candy, decimal money);
+        public decimal GetUserMoney();
+        public List<Candy> GetCandies();
+        public Change GiveChanges(decimal costProduct, decimal moneyGiven);
+
+
     }
 }

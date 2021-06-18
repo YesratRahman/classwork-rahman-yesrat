@@ -1,25 +1,25 @@
 ﻿<Properties StartupConfiguration="{2B4439B0-C01B-4114-9C5D-5E99C3F972C0}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="MovieCollection/Views/MovieCollection/Index.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MovieCollection/Controllers/MovieCollectionController.cs">
     <Files>
-      <File FileName="MovieCollection/Views/MovieCollection/AddMovieView.cshtml" Line="11" Column="1" />
-      <File FileName="MovieCollection/Controllers/MovieCollectionController.cs" Line="44" Column="31" />
+      <File FileName="MovieCollection/Views/MovieCollection/AddMovieView.cshtml" Line="22" Column="1" />
+      <File FileName="MovieCollection/Controllers/MovieCollectionController.cs" Line="49" Column="9" />
       <File FileName="MovieCollection/Services/MovieService.cs" Line="38" Column="44" />
       <File FileName="MovieCollection/Views/MovieCollection/EditMovieView.cshtml" Line="22" Column="1" />
-      <File FileName="MovieCollection/Views/MovieCollection/Index.cshtml" Line="9" Column="4" />
+      <File FileName="MovieCollection/Views/MovieCollection/Index.cshtml" Line="13" Column="40" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="MovieCollection" expanded="True">
             <Node name="MovieCollection" expanded="True">
-              <Node name="Controllers" expanded="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="MovieCollectionController.cs" selected="True" />
+              </Node>
               <Node name="Models" expanded="True" />
               <Node name="Properties" expanded="True" />
               <Node name="Services" expanded="True" />
               <Node name="Views" expanded="True">
-                <Node name="MovieCollection" expanded="True">
-                  <Node name="Index.cshtml" selected="True" />
-                </Node>
+                <Node name="MovieCollection" expanded="True" />
               </Node>
             </Node>
           </Node>

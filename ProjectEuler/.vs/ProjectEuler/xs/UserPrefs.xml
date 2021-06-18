@@ -1,18 +1,22 @@
-﻿<Properties StartupConfiguration="{10DC0917-7CED-4B5C-A985-5DDE97FFE498}|Default">
+﻿<Properties StartupConfiguration="{2C1C511B-FC2A-4067-83A0-51E177BDC70A}|Default">
   <MonoDevelop.Ide.ItemProperties.Problem10 PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.ItemProperties.Problem18 PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.ItemProperties.Problem6 PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.ItemProperties.Problem12 PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.ItemProperties.Problem5 PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Problem15/Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Problem24/Program.cs">
     <Files>
-      <File FileName="Problem15/Program.cs" Line="30" Column="34" />
+      <File FileName="Problem24/Program.cs" Line="44" Column="10" />
+      <File FileName="Utils/Util.cs" Line="173" Column="15" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="ProjectEuler" expanded="True">
-            <Node name="Problem15" selected="True" />
+            <Node name="Problem24" expanded="True">
+              <Node name="Program.cs" selected="True" />
+            </Node>
+            <Node name="Utils" expanded="True" />
           </Node>
         </State>
       </Pad>
@@ -22,6 +26,7 @@
   <MonoDevelop.Ide.ItemProperties.Problem20 PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.ItemProperties.Problem9 PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.ItemProperties.Problem7 PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.ItemProperties.Problem24 PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.ItemProperties.Problem19 PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.Problem15 PreferredExecutionTarget="MonoDevelop.Default" />

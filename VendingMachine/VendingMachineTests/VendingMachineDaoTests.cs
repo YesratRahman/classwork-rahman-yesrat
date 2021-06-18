@@ -36,6 +36,31 @@ namespace VendingMachineDaoTests
             Assert.AreEqual(candy.Quantity, toTest[0].Quantity);
             Assert.AreEqual(candy.Price, toTest[0].Price);
 
+            candy = new Candy("Nerds Candy",11,1.50m);
+            Assert.AreEqual(candy.Name, toTest[1].Name);
+            Assert.AreEqual(candy.Quantity, toTest[1].Quantity);
+            Assert.AreEqual(candy.Price, toTest[1].Price);
+
+            candy = new Candy("Milky Way Candy Bar",18,1.25m);
+            Assert.AreEqual(candy.Name, toTest[2].Name);
+            Assert.AreEqual(candy.Quantity, toTest[2].Quantity);
+            Assert.AreEqual(candy.Price, toTest[2].Price);
+
+            candy = new Candy("Hershey's Kisses",10,2.00m);
+            Assert.AreEqual(candy.Name, toTest[3].Name);
+            Assert.AreEqual(candy.Quantity, toTest[3].Quantity);
+            Assert.AreEqual(candy.Price, toTest[3].Price);
         }
+
+        //[TestCase("Necco Wafers Candy", 4, 2)]
+        //[TestCase("Nerds Candy", 11, 1.50)]
+        //[TestCase("Milky Way Candy Bar", 18, 1.25)]
+        //[TestCase("Hershey's Kisses", 10, 2.00)]
+        
+        //public void RemoveCandyUpdatesVendingMachine(string candyName, int index, int expectedQty)
+        //{
+        //    _machineDao.UpdateCandy(candyName);
+        //    Assert.AreEqual(expectedQty, _machineDao.GetAllCandies()[index].Quantity);
+        //}
     }
 }

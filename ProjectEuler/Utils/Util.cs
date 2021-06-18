@@ -40,7 +40,7 @@ namespace Utils
 
         public static bool IsPrime(int number)
         {
-            if (number < 2) return false; 
+            if (number < 2) return false;
             bool prime = true;
             int squareRoot = GetSquareRoot(number);
             if (number % 2 == 0)
@@ -60,18 +60,18 @@ namespace Utils
 
         }
 
-        public static bool IsPrime(List<int> Primes ,int number)
+        public static bool IsPrime(List<int> Primes, int number)
         {
-            
+
             foreach (int prime in Primes)
             {
-                if(GetSquareRoot(number) < prime)
+                if (GetSquareRoot(number) < prime)
                 {
-                    break; 
+                    break;
                 }
-                if(number % prime == 0)
+                if (number % prime == 0)
                 {
-                    return false; 
+                    return false;
                 }
             }
             return true;
@@ -156,19 +156,51 @@ namespace Utils
         {
             List<int> factors = new List<int>();
 
-            for(int i = 1; i* i <= number; i+=1)
+            for (int i = 1; i * i <= number; i += 1)
             {
-                if(number % i == 0)
+                if (number % i == 0)
                 {
                     factors.Add(i);
-                    if(i * i != number)
+                    if (i * i != number)
                     {
-                        factors.Add(number / i); 
+                        factors.Add(number / i);
                     }
                 }
             }
-            return factors; 
+            return factors;
+        }
+
+        public static void GeneratePermutations(List<string> allPermutations, string currNum, List<string> availableNums)
+        {
+            //currNum = 0
+            //currNum = 01
+            //currNum = 012
+            //currNum = 0123
+            if (availableNums.Count == 0)
+            {
+                allPermutations.Add(currNum);
+            }
+            else
+            {
+                for (int i = 0; i < availableNums.Count; i++)
+                {
+                    string addString = availableNums[i];
+
+                    availableNums.RemoveAt(i);
+
+                    GeneratePermutations(allPermutations, currNum + addString, availableNums);
+
+                    availableNums.Insert(i, addString);
+                }
+            }
+
+        }
+
+
+
+
+    }
         }
 
     }
-}
+}  

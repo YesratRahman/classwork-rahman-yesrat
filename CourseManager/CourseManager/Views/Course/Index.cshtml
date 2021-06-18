@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Course>
+@{
+}
+
+<a href="~/Teacher/Index"> Teachers </a>
+<br/>
+<a href="~/Student/Index">Students </a>
+
+<table>
+
+    @foreach( Course c in Model)
+    {
+        <tr>
+            <td>@Html.ActionLink(c.Name, "Details", new { id=c.Id})</td>
+            <td>@c.ClassTeacher.Name</td>
+            <td>@Html.ActionLink("Edit", "Edit", new { id = c.Id })</td>
+            <td>Delete</td>
+        </tr>
+    }
+
+
+</table>

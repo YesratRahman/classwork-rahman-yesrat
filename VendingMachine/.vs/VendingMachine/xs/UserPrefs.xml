@@ -1,14 +1,6 @@
 ﻿<Properties StartupConfiguration="{03CFE032-9794-4FC3-9C9A-687975021D2E}|Default">
   <MonoDevelop.Ide.ItemProperties.VendingMachine PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="VendingMachineTests/VendingMachineDaoTests.cs">
-    <Files>
-      <File FileName="VendingMachineTests/VendingMachineDaoTests.cs" Line="64" Column="12" />
-      <File FileName="VendingMachineTests/VendingMachineServiceTests.cs" Line="1" Column="1" />
-      <File FileName="VendingMachine/Daos/VendingMachineInMemDao.cs" Line="12" Column="10" />
-      <File FileName="VendingMachine/Seed.txt" Line="5" Column="1" />
-      <File FileName="VendingMachine/Models/Candy.cs" Line="25" Column="30" />
-      <File FileName="VendingMachine/Test.txt" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
@@ -22,16 +14,14 @@
               <Node name="Services" expanded="True" />
             </Node>
             <Node name="VendingMachineTests" expanded="True">
-              <Node name="VendingMachineDaoTests.cs" selected="True" />
+              <Node name="VendingMachineServiceTests.cs" selected="True" />
             </Node>
           </Node>
         </State>
       </Pad>
       <Pad Id="MonoDevelop.UnitTesting.TestPad">
         <State name="__root__">
-          <Node name="VendingMachine" expanded="True" selected="True">
-            <Node name="VendingMachineTests" expanded="True" />
-          </Node>
+          <Node name="VendingMachine" expanded="True" selected="True" />
         </State>
       </Pad>
     </Pads>

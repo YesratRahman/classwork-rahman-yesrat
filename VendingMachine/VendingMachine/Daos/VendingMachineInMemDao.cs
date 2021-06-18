@@ -8,9 +8,14 @@ namespace VendingMachine.Daos
     public class VendingMachineInMemDao : IVendingMachineDao
     {
         private List<Candy> _candies = new List<Candy>(); 
+     
         public VendingMachineInMemDao()
         {
-            
+            _candies.Add(new Candy("Necco Wafers Candy", 4, 2.00m));
+            _candies.Add(new Candy("Nerds Candy", 11, 1.50m));
+            _candies.Add(new Candy("Milky Way Candy Bar", 18, 1.25m));
+            _candies.Add(new Candy("Hershey's Kisses", 10, 2.00m));
+           
         }
         public List<Candy> GetAllCandies()
         {

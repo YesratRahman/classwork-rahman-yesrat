@@ -1,21 +1,18 @@
-﻿<Properties StartupConfiguration="{2C1C511B-FC2A-4067-83A0-51E177BDC70A}|Default">
+﻿<Properties StartupConfiguration="{C368F30A-8FFE-41AD-9185-D539E570ADC0}|Default">
   <MonoDevelop.Ide.ItemProperties.Problem10 PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.ItemProperties.Problem18 PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.ItemProperties.Problem6 PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.ItemProperties.Problem12 PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.ItemProperties.Problem5 PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Problem24/Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Problem43/Program.cs">
     <Files>
-      <File FileName="Problem24/Program.cs" Line="44" Column="10" />
-      <File FileName="Utils/Util.cs" Line="173" Column="15" />
+      <File FileName="Problem43/Program.cs" Line="29" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="ProjectEuler" expanded="True">
-            <Node name="Problem24" expanded="True">
-              <Node name="Program.cs" selected="True" />
-            </Node>
+            <Node name="Problem43" expanded="True" selected="True" />
             <Node name="Utils" expanded="True" />
           </Node>
         </State>
@@ -33,6 +30,7 @@
   <MonoDevelop.Ide.ItemProperties.Problem8 PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.ItemProperties.Problem16 PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.ItemProperties.Problem43 FirstBuild="True" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.ItemProperties.Problem27 PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.ItemProperties.Problem4 PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

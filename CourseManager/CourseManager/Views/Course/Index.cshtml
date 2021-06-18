@@ -2,19 +2,20 @@
 @{
 }
 
-<a href="~/Teacher/Index"> Teachers </a>
-<br/>
-<a href="~/Student/Index">Students </a>
+<a href="~/Teacher/Index">Teachers</a>
+<br />
+<a href="~/Student/Index">Students</a>
 
+<br/> 
 <table>
 
-    @foreach( Course c in Model)
+    @foreach (Course c in Model)
     {
         <tr>
-            <td>@Html.ActionLink(c.Name, "Details", new { id=c.Id})</td>
+            <td>@Html.ActionLink(c.Name, "Details", new { id = c.Id })</td>
             <td>@c.ClassTeacher.Name</td>
             <td>@Html.ActionLink("Edit", "Edit", new { id = c.Id })</td>
-            <td>Delete</td>
+            <td>@Html.ActionLink("Delete", "Delete", new { id = c.Id })</td>
         </tr>
     }
 

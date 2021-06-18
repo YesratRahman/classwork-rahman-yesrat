@@ -72,8 +72,7 @@ namespace CourseManager.Repos
 
         public void Delete(int id)
         {
-           _allCourses=  _allCourses.Where(c => c.Id != id).ToList(); 
-
+            _allCourses = _allCourses.Where(c => c.Id != id).ToList();
         }
     }
 }

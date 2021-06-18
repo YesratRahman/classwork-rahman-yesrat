@@ -86,10 +86,32 @@ namespace CourseManager.Services
             return _studentRepo.GetById(id);
         }
 
-        
         public void DeleteCourse(int id)
         {
-            _courseRepo.Delete(id); 
+            _courseRepo.Delete(id);
+
+            List<Course> allCourses = _courseRepo.GetAll();
+            List<Student> allStudents = _studentRepo.GetAll();
+            List<Teacher> allTeachers = _teacherRepo.GetAll();
+
+            foreach (Student anyStudent in allStudents)
+            {
+                anyStudent.Courses.RemoveAll(c => c.Id == id);
+            }
+            foreach (var anyTeacher in allTeachers)
+            {
+                anyTeacher.Courses.RemoveAll(c => c.Id == id);
+            }
+        }
+
+        public void DeleteStudent(int id)
+        {
+            _studentRepo.Delete(id);
+        }
+
+        public void DeleteTeacher(int id)
+        {
+            _teacherRepo.Delete(id);
         }
     }
 }

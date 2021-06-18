@@ -1,25 +1,15 @@
 ﻿using System;
-using System.Runtime.Serialization;
-
 namespace CourseManager.Exceptions
 {
-    [Serializable]
-    internal class StudentNotFoundException : Exception
+    public class StudentNotFoundException : Exception
     {
-        public StudentNotFoundException()
-        {
-        }
-
         public StudentNotFoundException(string message) : base(message)
         {
         }
 
-        public StudentNotFoundException(string message, Exception innerException) : base(message, innerException)
+        public StudentNotFoundException(string message, Exception inner) : base(message, inner)
         {
-        }
 
-        protected StudentNotFoundException(SerializationInfo info, StreamingContext context) : base(info, context)
-        {
         }
     }
 }

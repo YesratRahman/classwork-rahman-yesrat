@@ -2,14 +2,11 @@
 @{
 }
 
-<h1>@Model.Name</h1>
+<h2>@Model.Name</h2>
 <br />
 <hr />
-
-@foreach (var course in Model.Courses)
+@foreach (var t in Model.Courses)
 {
-    <a> Course Name </a>
-    <h3>@course.Name</h3>
+    <h3>@t.Name</h3>
     <br />
 }
-

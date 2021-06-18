@@ -15,7 +15,7 @@ namespace CourseManager.Models
         {
             this.Id = that.Id;
             this.Name = that.Name;
-            this.Courses = this.Courses;
+            this.Courses = that.Courses;
         }
     }
 }

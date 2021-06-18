@@ -6,34 +6,62 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CourseManager.Controllers
 {
-    public class TeacherController : Controller 
+    public class TeacherController : Controller
     {
-        TeacherService _service = new TeacherService();
-
-        //Get all teachers
+        CourseService _service = new CourseService();
 
         public IActionResult Index()
         {
-           var teacher = _service.GetAll();
-            return View(teacher); 
+            var teachers = _service.GetAllTeachers();
+
+            return View(teachers);
         }
 
-        //Get details of a teacher
         public IActionResult Details(int? id)
         {
             if (id != null)
             {
                 try
                 {
-                    Teacher toDisplay = _service.GetById(id.Value);
+                    Teacher toDisplay = _service.GetTeacherById(id.Value);
                     return View(toDisplay);
-
                 }
                 catch (TeacherNotFoundException ex)
                 {
                     return NotFound(ex.Message);
                 }
             }
+            return BadRequest();
+        }
+
+        [HttpGet]
+        public IActionResult Delete(Teacher teacher)
+        {
+            if (teacher.Id != null)
+            {
+                try
+                {
+                    Teacher toDelete = _service.GetTeacherById(teacher.Id.Value);
+                    return View(toDelete);
+                }
+                catch (CourseNotFoundException ex)
+                {
+                    return NotFound(ex.Message);
+                }
+            }
+
+            return BadRequest();
+        }
+
+        [HttpPost]
+        public IActionResult Delete(int? id)
+        {
+            if (id != null)
+            {
+                _service.DeleteTeacher(id.Value);
+                return RedirectToAction("Index");
+            }
+
             return BadRequest();
         }
 

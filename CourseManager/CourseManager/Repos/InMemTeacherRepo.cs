@@ -47,5 +47,10 @@ namespace CourseManager.Repos
         {
             return _allTeachers.SingleOrDefault(t => t.Id == id);
         }
+
+        public void Delete(int id)
+        {
+            _allTeachers = _allTeachers.Where(t => t.Id != id).ToList();
+        }
     }
 }

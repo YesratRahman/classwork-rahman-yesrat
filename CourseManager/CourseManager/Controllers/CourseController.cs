@@ -24,7 +24,7 @@ namespace CourseManager.Controllers
             return View(courses);
         }
 
-        public IActionResult Details(int? id)
+        public IActionResult Details( int? id )
         {
             if (id != null)
             {
@@ -34,7 +34,7 @@ namespace CourseManager.Controllers
                     return View(toDisplay);
 
                 }
-                catch (CourseNotFoundException ex)
+                catch ( CourseNotFoundException ex)
                 {
                     return NotFound(ex.Message);
                 }
@@ -43,7 +43,7 @@ namespace CourseManager.Controllers
         }
 
         [HttpGet]
-        public IActionResult Edit(int? id)
+        public IActionResult Edit( int? id)
         {
             if (id != null)
             {
@@ -53,8 +53,7 @@ namespace CourseManager.Controllers
                     List<Teacher> allTeachers = _service.GetAllTeachers();
                     List<Student> allStudents = _service.GetAllStudents();
 
-                    EditCourseViewModel vm = new EditCourseViewModel
-                    {
+                    EditCourseViewModel vm = new EditCourseViewModel {
                         ToEdit = toDisplay,
                         AllStudents = allStudents,
                         AllTeachers = allTeachers
@@ -72,7 +71,7 @@ namespace CourseManager.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(EditCourseViewModel vm)
+        public IActionResult Edit( EditCourseViewModel vm)
         {
             //the incoming course model and attached teacher models will be
             //incomplete
@@ -101,21 +100,36 @@ namespace CourseManager.Controllers
             return BadRequest();
         }
 
-        //course delete confirmation page
-        //two options - go ahead to delete or redirect to previous page
-        [HttpDelete]
-        public IActionResult Delete(int? id)
+        [HttpGet]
+        public IActionResult Delete(Course course)
         {
-            if (id != null)
+            if (course.Id != null)
             {
-                _service.DeleteCourse(id.Value);
-
+                try
+                {
+                    Course toDelete = _service.GetById(course.Id.Value);
+                    return View(toDelete);
+                }
+                catch(CourseNotFoundException ex)
+                {
+                    return NotFound(ex.Message);
+                }
             }
-            return BadRequest();
 
+            return BadRequest();
         }
 
-        
+        [HttpPost]
+        public IActionResult Delete(int? id)
+        {
+            if(id != null)
+            {
+                _service.DeleteCourse(id.Value);
+                return RedirectToAction("Index");
+            }
+
+            return BadRequest();
+        }
 
     }
-} 
+}

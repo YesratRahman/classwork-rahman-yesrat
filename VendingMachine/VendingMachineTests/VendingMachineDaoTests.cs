@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using NUnit.Framework;
@@ -56,11 +57,13 @@ namespace VendingMachineDaoTests
         //[TestCase("Nerds Candy", 11, 1.50)]
         //[TestCase("Milky Way Candy Bar", 18, 1.25)]
         //[TestCase("Hershey's Kisses", 10, 2.00)]
-        
+
         //public void RemoveCandyUpdatesVendingMachine(string candyName, int index, int expectedQty)
         //{
         //    _machineDao.UpdateCandy(candyName);
         //    Assert.AreEqual(expectedQty, _machineDao.GetAllCandies()[index].Quantity);
         //}
+
+        
     }
 }

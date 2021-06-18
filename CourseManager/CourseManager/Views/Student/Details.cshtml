@@ -1,15 +1,12 @@
-﻿@model Student 
+﻿@model Student
 @{
 }
 
-<h1>@Model.Name</h1>
+<h2>@Model.Name</h2>
 <br />
 <hr />
-
-@foreach (var course in Model.Courses)
+@foreach (var c in Model.Courses)
 {
-    <a> Enrolled In:  </a>
-    <h3>@course.Name</h3>
+    <h3>@c.Name</h3>
     <br />
 }
-

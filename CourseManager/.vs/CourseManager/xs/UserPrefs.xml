@@ -1,27 +1,5 @@
 ﻿<Properties StartupConfiguration="{4AFA37BF-B06B-4F23-9097-D630A930BD6D}|Default">
-  <MonoDevelop.Ide.Workbench>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="CourseManager" expanded="True">
-            <Node name="CourseManager" expanded="True">
-              <Node name="Controllers" expanded="True" />
-              <Node name="Models" expanded="True">
-                <Node name="EditCourseViewModel.cs" selected="True" />
-              </Node>
-              <Node name="Repos" expanded="True" />
-              <Node name="Services" expanded="True" />
-              <Node name="Views" expanded="True">
-                <Node name="Course" expanded="True" />
-                <Node name="Student" expanded="True" />
-                <Node name="Teacher" expanded="True" />
-              </Node>
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.ItemProperties.CourseManager PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

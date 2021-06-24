@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace CourseManager.Repos
 {
-    public class InMemCourseRepo
+    public class InMemCourseRepo : ICourseRepo
     {
         static List<Course> _allCourses = new List<Course>
         {
@@ -51,7 +51,7 @@ namespace CourseManager.Repos
             }
         };
 
-        internal void Edit(Course toEdit)
+        public void Edit(Course toEdit)
         {
             _allCourses = _allCourses.Select(
                 c => c.Id == toEdit.Id ?

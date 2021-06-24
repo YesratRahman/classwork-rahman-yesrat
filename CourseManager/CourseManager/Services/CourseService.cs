@@ -9,9 +9,9 @@ namespace CourseManager.Services
 {
     public class CourseService
     {
-        InMemCourseRepo _courseRepo = new InMemCourseRepo();
-        InMemTeacherRepo _teacherRepo = new InMemTeacherRepo();
-        InMemStudentRepo _studentRepo = new InMemStudentRepo();
+        ICourseRepo _courseRepo = new DbCourseRepo();
+        ITeacherRepo _teacherRepo = new DbTeacherRepo();
+        IStudentRepo _studentRepo = new DbStudentRepo();
 
         public List<Course> GetAll()
         {

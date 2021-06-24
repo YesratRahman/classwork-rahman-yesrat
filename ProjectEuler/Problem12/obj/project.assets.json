@@ -27,32 +27,34 @@
     ]
   },
   "packageFolders": {
-    "/Users/yesratrahman/.nuget/packages/": {}
+    "C:\\Users\\YRahman\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/ProjectEuler/Problem12/Problem12.csproj",
+      "projectUniqueName": "C:\\Users\\YRahman\\Desktop\\Talent Path\\classwork-rahman-yesrat\\ProjectEuler\\Problem12\\Problem12.csproj",
       "projectName": "Problem12",
-      "projectPath": "/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/ProjectEuler/Problem12/Problem12.csproj",
-      "packagesPath": "/Users/yesratrahman/.nuget/packages/",
-      "outputPath": "/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/ProjectEuler/Problem12/obj/",
+      "projectPath": "C:\\Users\\YRahman\\Desktop\\Talent Path\\classwork-rahman-yesrat\\ProjectEuler\\Problem12\\Problem12.csproj",
+      "packagesPath": "C:\\Users\\YRahman\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\YRahman\\Desktop\\Talent Path\\classwork-rahman-yesrat\\ProjectEuler\\Problem12\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/yesratrahman/.config/NuGet/NuGet.Config"
+        "C:\\Users\\YRahman\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/ProjectEuler/Utils/Utils.csproj": {
-              "projectPath": "/Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/ProjectEuler/Utils/Utils.csproj"
+            "C:\\Users\\YRahman\\Desktop\\Talent Path\\classwork-rahman-yesrat\\ProjectEuler\\Utils\\Utils.csproj": {
+              "projectPath": "C:\\Users\\YRahman\\Desktop\\Talent Path\\classwork-rahman-yesrat\\ProjectEuler\\Utils\\Utils.csproj"
             }
           }
         }
@@ -81,7 +83,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.203/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
       }
     }
   }

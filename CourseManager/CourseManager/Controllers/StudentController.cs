@@ -6,63 +6,66 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CourseManager.Controllers
 {
+    [ApiController]
+    [Route("/api/student")]
     public class StudentController : Controller
     {
 
-        CourseService _service = new CourseService();
-        public IActionResult Index()
-        {
-            var students = _service.GetAllStudents();
 
-            return View(students);
-        }
-        public IActionResult Details(int? id)
-        {
-            if (id != null)
-            {
-                try
-                {
-                    Student toDisplay = _service.GetStudentById(id.Value);
-                    return View(toDisplay);
-                }
-                catch (StudentNotFoundException ex)
-                {
-                    return NotFound(ex.Message);
-                }
-            }
-            return BadRequest();
-        }
+        //CourseService _service = new CourseService();
+        //public IActionResult Index()
+        //{
+        //    var students = _service.GetAllStudents();
 
-        [HttpGet]
-        public IActionResult Delete(Student student)
-        {
-            if (student.Id != null)
-            {
-                try
-                {
-                    Student toDelete = _service.GetStudentById(student.Id.Value);
-                    return View(toDelete);
-                }
-                catch (CourseNotFoundException ex)
-                {
-                    return NotFound(ex.Message);
-                }
-            }
+        //    return View(students);
+        //}
+        //public IActionResult Details(int? id)
+        //{
+        //    if (id != null)
+        //    {
+        //        try
+        //        {
+        //            Student toDisplay = _service.GetStudentById(id.Value);
+        //            return View(toDisplay);
+        //        }
+        //        catch (StudentNotFoundException ex)
+        //        {
+        //            return NotFound(ex.Message);
+        //        }
+        //    }
+        //    return BadRequest();
+        //}
 
-            return BadRequest();
-        }
+        //[HttpGet]
+        //public IActionResult Delete(Student student)
+        //{
+        //    if (student.Id != null)
+        //    {
+        //        try
+        //        {
+        //            Student toDelete = _service.GetStudentById(student.Id.Value);
+        //            return View(toDelete);
+        //        }
+        //        catch (CourseNotFoundException ex)
+        //        {
+        //            return NotFound(ex.Message);
+        //        }
+        //    }
 
-        [HttpPost]
-        public IActionResult Delete(int? id)
-        {
-            if (id != null)
-            {
-                _service.DeleteStudent(id.Value);
-                return RedirectToAction("Index");
-            }
+        //    return BadRequest();
+        //}
 
-            return BadRequest();
-        }
+        //[HttpPost]
+        //public IActionResult Delete(int? id)
+        //{
+        //    if (id != null)
+        //    {
+        //        _service.DeleteStudent(id.Value);
+        //        return RedirectToAction("Index");
+        //    }
+
+        //    return BadRequest();
+        //}
 
     }
 }

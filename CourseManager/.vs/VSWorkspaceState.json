@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\CourseManager"
+    "\\CourseManager",
+    "\\CourseManager\\Repos",
+    "\\CourseManager\\Services"
   ],
+  "SelectedNode": "\\CourseManager\\Services\\CourseService.cs",
   "PreviewInSolutionExplorer": false
 }

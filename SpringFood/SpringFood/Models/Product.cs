@@ -7,7 +7,6 @@ namespace SpringFood.Models
     [Table("Products")]
     public class Product
     {
-        [Column("Id")]
         public int Id { get; set; }
         [Required]
         [MaxLength(50)]
@@ -17,11 +16,13 @@ namespace SpringFood.Models
         [Required]
         public int Quantity { get; set; }
         [Required]
-        [MaxLength(500)]
         public string Image { get; set; }
         [Required]
-        [MaxLength(50)]
-        public string Category { get; set; }
+        [MaxLength(200)]
+        public string Description { get; set; }
+
+        public Category Category{ get; set; }
+        public Brand Brand { get; set; }
         
         public Product()
         {

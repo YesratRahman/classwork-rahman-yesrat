@@ -7,10 +7,12 @@ namespace SpringFood.Services
 {
     public class SpringFoodService
     {
-        ProductRepo _product; 
+        ProductRepo _product;
+        UserRepo _user;
         public SpringFoodService(SpringFoodDbContext context)
         {
-            _product = new ProductRepo(context); 
+            _product = new ProductRepo(context);
+            _user = new UserRepo(context); 
         }
         public int AddProduct(Product product)
         {
@@ -43,5 +45,27 @@ namespace SpringFood.Services
         {
             _product.EditProduct(product); 
         }
+        public int AddUser(User toAdd)
+        {
+            return _user.AddUser(toAdd); 
+        }
+
+        public List<User> GetAllUsers()
+        {
+            return _user.GetAllUsers(); 
+        }
+        public void EdtUser(User toEdit)
+        {
+            _user.EditUser(toEdit); 
+        }
+        public User GetUserById(int id)
+        {
+             return _user.GetUsertById(id); 
+        }
+        public void DeleteUser(int id)
+        {
+            _user.DeleteUser(id);
+        }
+
     }
 }

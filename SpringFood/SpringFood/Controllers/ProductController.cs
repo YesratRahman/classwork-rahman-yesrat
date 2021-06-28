@@ -6,6 +6,7 @@ namespace SpringFood.Controllers
 {
 
     [ApiController]
+    [Route("/api")]
     public class ProductController: ControllerBase 
     {
 
@@ -14,7 +15,7 @@ namespace SpringFood.Controllers
         {
             _service = new SpringFoodService(context); 
         }
-        [HttpPost("/addProduct")]
+        [HttpPost("addProduct")]
         public IActionResult AddProduct(Product product)
         {
             _service.AddProduct(product);
@@ -22,37 +23,37 @@ namespace SpringFood.Controllers
 
         }
 
-        [HttpGet("/product/{id}")]
+        [HttpGet("product/{id}")]
         public IActionResult GetProductById(int id)
         {
-            _service.GetProductById(id);
-            return this.Accepted(); 
+            Product product = _service.GetProductById(id);
+            return this.Accepted(product); 
 
         }
-        [HttpGet("/product/{name}")]
+        [HttpGet("product/name/{name}")]
         public IActionResult GetProductByName(string name)
         {
-            _service.GetProductByName(name);
-            return this.Accepted();
+            Product product = _service.GetProductByName(name); 
+            return this.Accepted(product);
 
         }
 
-        [HttpGet("/products")]
+        [HttpGet("products")]
         public IActionResult GetAllProducts()
         {
-            _service.GetAllProducts();
-            return this.Accepted(); 
+           
+            return this.Accepted( _service.GetAllProducts()); 
         }
 
-        [HttpPut("/product")]
+        [HttpPut("product")]
 
         public IActionResult EditProduct(Product product)
         {
             _service.EditProduct(product);
-           return this.Accepted(); 
+           return this.Accepted(product); 
         }
 
-        [HttpDelete("/product/{id}")]
+        [HttpDelete("product/{id}")]
         public IActionResult DeleteProduct(int id)
         {
             _service.DeleteProduct(id);

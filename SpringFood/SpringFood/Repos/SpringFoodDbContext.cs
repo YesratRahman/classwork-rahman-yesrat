@@ -10,6 +10,7 @@ namespace SpringFood
     public class SpringFoodDbContext: DbContext
     {
         public DbSet<Product> Products { get; set; }
+        public DbSet<User> Users { get; set; }
         public SpringFoodDbContext(DbContextOptions<SpringFoodDbContext> options) : base(options)
         {
 

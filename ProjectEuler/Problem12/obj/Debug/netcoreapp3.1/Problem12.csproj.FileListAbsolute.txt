@@ -13,3 +13,19 @@
 /Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/ProjectEuler/Problem12/obj/Debug/netcoreapp3.1/Problem12.dll
 /Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/ProjectEuler/Problem12/obj/Debug/netcoreapp3.1/Problem12.pdb
 /Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/ProjectEuler/Problem12/obj/Debug/netcoreapp3.1/Problem12.genruntimeconfig.cache
+C:\Users\YRahman\OneDrive - Genuent\Desktop\Talent Path\classwork-rahman-yesrat\ProjectEuler\Problem12\bin\Debug\netcoreapp3.1\Problem12.exe
+C:\Users\YRahman\OneDrive - Genuent\Desktop\Talent Path\classwork-rahman-yesrat\ProjectEuler\Problem12\bin\Debug\netcoreapp3.1\Problem12.deps.json
+C:\Users\YRahman\OneDrive - Genuent\Desktop\Talent Path\classwork-rahman-yesrat\ProjectEuler\Problem12\bin\Debug\netcoreapp3.1\Problem12.runtimeconfig.json
+C:\Users\YRahman\OneDrive - Genuent\Desktop\Talent Path\classwork-rahman-yesrat\ProjectEuler\Problem12\bin\Debug\netcoreapp3.1\Problem12.runtimeconfig.dev.json
+C:\Users\YRahman\OneDrive - Genuent\Desktop\Talent Path\classwork-rahman-yesrat\ProjectEuler\Problem12\bin\Debug\netcoreapp3.1\Problem12.dll
+C:\Users\YRahman\OneDrive - Genuent\Desktop\Talent Path\classwork-rahman-yesrat\ProjectEuler\Problem12\bin\Debug\netcoreapp3.1\Problem12.pdb
+C:\Users\YRahman\OneDrive - Genuent\Desktop\Talent Path\classwork-rahman-yesrat\ProjectEuler\Problem12\bin\Debug\netcoreapp3.1\Utils.dll
+C:\Users\YRahman\OneDrive - Genuent\Desktop\Talent Path\classwork-rahman-yesrat\ProjectEuler\Problem12\bin\Debug\netcoreapp3.1\Utils.pdb
+C:\Users\YRahman\OneDrive - Genuent\Desktop\Talent Path\classwork-rahman-yesrat\ProjectEuler\Problem12\obj\Debug\netcoreapp3.1\Problem12.csproj.AssemblyReference.cache
+C:\Users\YRahman\OneDrive - Genuent\Desktop\Talent Path\classwork-rahman-yesrat\ProjectEuler\Problem12\obj\Debug\netcoreapp3.1\Problem12.AssemblyInfoInputs.cache
+C:\Users\YRahman\OneDrive - Genuent\Desktop\Talent Path\classwork-rahman-yesrat\ProjectEuler\Problem12\obj\Debug\netcoreapp3.1\Problem12.AssemblyInfo.cs
+C:\Users\YRahman\OneDrive - Genuent\Desktop\Talent Path\classwork-rahman-yesrat\ProjectEuler\Problem12\obj\Debug\netcoreapp3.1\Problem12.csproj.CoreCompileInputs.cache
+C:\Users\YRahman\OneDrive - Genuent\Desktop\Talent Path\classwork-rahman-yesrat\ProjectEuler\Problem12\obj\Debug\netcoreapp3.1\Problem12.csproj.CopyComplete
+C:\Users\YRahman\OneDrive - Genuent\Desktop\Talent Path\classwork-rahman-yesrat\ProjectEuler\Problem12\obj\Debug\netcoreapp3.1\Problem12.dll
+C:\Users\YRahman\OneDrive - Genuent\Desktop\Talent Path\classwork-rahman-yesrat\ProjectEuler\Problem12\obj\Debug\netcoreapp3.1\Problem12.pdb
+C:\Users\YRahman\OneDrive - Genuent\Desktop\Talent Path\classwork-rahman-yesrat\ProjectEuler\Problem12\obj\Debug\netcoreapp3.1\Problem12.genruntimeconfig.cache

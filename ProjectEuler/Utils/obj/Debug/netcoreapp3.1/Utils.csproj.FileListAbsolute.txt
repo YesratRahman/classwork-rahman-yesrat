@@ -7,9 +7,11 @@
 /Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/ProjectEuler/Utils/obj/Debug/netcoreapp3.1/Utils.csproj.CoreCompileInputs.cache
 /Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/ProjectEuler/Utils/obj/Debug/netcoreapp3.1/Utils.dll
 /Users/yesratrahman/Desktop/TalentPath/classwork-rahman-yesrat/ProjectEuler/Utils/obj/Debug/netcoreapp3.1/Utils.pdb
-C:\Users\YRahman\OneDrive - Genuent\Desktop\Talent Path\classwork-rahman-yesrat\ProjectEuler\Utils\obj\Debug\netcoreapp3.1\Utils.csproj.AssemblyReference.cache
 C:\Users\YRahman\OneDrive - Genuent\Desktop\Talent Path\classwork-rahman-yesrat\ProjectEuler\Utils\obj\Debug\netcoreapp3.1\Utils.AssemblyInfoInputs.cache
 C:\Users\YRahman\OneDrive - Genuent\Desktop\Talent Path\classwork-rahman-yesrat\ProjectEuler\Utils\obj\Debug\netcoreapp3.1\Utils.AssemblyInfo.cs
 C:\Users\YRahman\OneDrive - Genuent\Desktop\Talent Path\classwork-rahman-yesrat\ProjectEuler\Utils\obj\Debug\netcoreapp3.1\Utils.csproj.CoreCompileInputs.cache
 C:\Users\YRahman\OneDrive - Genuent\Desktop\Talent Path\classwork-rahman-yesrat\ProjectEuler\Utils\obj\Debug\netcoreapp3.1\Utils.dll
 C:\Users\YRahman\OneDrive - Genuent\Desktop\Talent Path\classwork-rahman-yesrat\ProjectEuler\Utils\obj\Debug\netcoreapp3.1\Utils.pdb
+C:\Users\YRahman\OneDrive - Genuent\Desktop\Talent Path\classwork-rahman-yesrat\ProjectEuler\Utils\bin\Debug\netcoreapp3.1\Utils.deps.json
+C:\Users\YRahman\OneDrive - Genuent\Desktop\Talent Path\classwork-rahman-yesrat\ProjectEuler\Utils\bin\Debug\netcoreapp3.1\Utils.dll
+C:\Users\YRahman\OneDrive - Genuent\Desktop\Talent Path\classwork-rahman-yesrat\ProjectEuler\Utils\bin\Debug\netcoreapp3.1\Utils.pdb

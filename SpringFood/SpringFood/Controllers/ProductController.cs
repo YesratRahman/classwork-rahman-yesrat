@@ -59,5 +59,7 @@ namespace SpringFood.Controllers
             _service.DeleteProduct(id);
            return this.Accepted(); 
         }
+
+        
     }
 }

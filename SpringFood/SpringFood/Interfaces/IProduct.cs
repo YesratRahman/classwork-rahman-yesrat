@@ -11,6 +11,6 @@ namespace SpringFood.Interfaces
         Product GetProductByName(string name);
         List<Product> GetAllProducts();
         void EditProduct(Product product);
-        void DeleteProduct(int id); 
+        void DeleteProduct(int id);
     }
 }

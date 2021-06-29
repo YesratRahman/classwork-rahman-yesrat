@@ -9,10 +9,12 @@ namespace SpringFood.Services
     {
         ProductRepo _product;
         UserRepo _user;
+        CategoryRepo _category; 
         public SpringFoodService(SpringFoodDbContext context)
         {
             _product = new ProductRepo(context);
-            _user = new UserRepo(context); 
+            _user = new UserRepo(context);
+            _category = new CategoryRepo(context); 
         }
         public int AddProduct(Product product)
         {
@@ -67,5 +69,15 @@ namespace SpringFood.Services
             _user.DeleteUser(id);
         }
 
+        public int AddCategory(Category toAdd)
+        {
+           return _category.AddCategory(toAdd);
+        }
+
+        public List<Category> GetAllCategories()
+        {
+            return _category.GetAllCategories();
+        }
+        
     }
 }

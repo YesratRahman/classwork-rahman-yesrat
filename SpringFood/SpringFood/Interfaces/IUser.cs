@@ -13,5 +13,6 @@ namespace SpringFood.Interfaces
         List<User> GetAllUsers();
         void EditUser(User toEdit);
         void DeleteUser(int id);
+
     }
 }

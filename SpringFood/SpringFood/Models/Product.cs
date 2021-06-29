@@ -22,7 +22,6 @@ namespace SpringFood.Models
         public string Description { get; set; }
 
         public Category Category{ get; set; }
-        public Brand Brand { get; set; }
         
         public Product()
         {

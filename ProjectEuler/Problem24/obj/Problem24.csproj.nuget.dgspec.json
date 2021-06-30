@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\YRahman\\OneDrive - Genuent\\Desktop\\Talent Path\\classwork-rahman-yesrat\\ProjectEuler\\Problem24\\Problem24.csproj": {}
+    "C:\\Repos\\classwork-rahman-yesrat\\ProjectEuler\\Problem24\\Problem24.csproj": {}
   },
   "projects": {
-    "C:\\Users\\YRahman\\OneDrive - Genuent\\Desktop\\Talent Path\\classwork-rahman-yesrat\\ProjectEuler\\Problem24\\Problem24.csproj": {
+    "C:\\Repos\\classwork-rahman-yesrat\\ProjectEuler\\Problem24\\Problem24.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\YRahman\\OneDrive - Genuent\\Desktop\\Talent Path\\classwork-rahman-yesrat\\ProjectEuler\\Problem24\\Problem24.csproj",
+        "projectUniqueName": "C:\\Repos\\classwork-rahman-yesrat\\ProjectEuler\\Problem24\\Problem24.csproj",
         "projectName": "Problem24",
-        "projectPath": "C:\\Users\\YRahman\\OneDrive - Genuent\\Desktop\\Talent Path\\classwork-rahman-yesrat\\ProjectEuler\\Problem24\\Problem24.csproj",
+        "projectPath": "C:\\Repos\\classwork-rahman-yesrat\\ProjectEuler\\Problem24\\Problem24.csproj",
         "packagesPath": "C:\\Users\\YRahman\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\YRahman\\OneDrive - Genuent\\Desktop\\Talent Path\\classwork-rahman-yesrat\\ProjectEuler\\Problem24\\obj\\",
+        "outputPath": "C:\\Repos\\classwork-rahman-yesrat\\ProjectEuler\\Problem24\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\YRahman\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\YRahman\\OneDrive - Genuent\\Desktop\\Talent Path\\classwork-rahman-yesrat\\ProjectEuler\\Utils\\Utils.csproj": {
-                "projectPath": "C:\\Users\\YRahman\\OneDrive - Genuent\\Desktop\\Talent Path\\classwork-rahman-yesrat\\ProjectEuler\\Utils\\Utils.csproj"
+              "C:\\Repos\\classwork-rahman-yesrat\\ProjectEuler\\Utils\\Utils.csproj": {
+                "projectPath": "C:\\Repos\\classwork-rahman-yesrat\\ProjectEuler\\Utils\\Utils.csproj"
               }
             }
           }
@@ -62,14 +62,14 @@
         }
       }
     },
-    "C:\\Users\\YRahman\\OneDrive - Genuent\\Desktop\\Talent Path\\classwork-rahman-yesrat\\ProjectEuler\\Utils\\Utils.csproj": {
+    "C:\\Repos\\classwork-rahman-yesrat\\ProjectEuler\\Utils\\Utils.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\YRahman\\OneDrive - Genuent\\Desktop\\Talent Path\\classwork-rahman-yesrat\\ProjectEuler\\Utils\\Utils.csproj",
+        "projectUniqueName": "C:\\Repos\\classwork-rahman-yesrat\\ProjectEuler\\Utils\\Utils.csproj",
         "projectName": "Utils",
-        "projectPath": "C:\\Users\\YRahman\\OneDrive - Genuent\\Desktop\\Talent Path\\classwork-rahman-yesrat\\ProjectEuler\\Utils\\Utils.csproj",
+        "projectPath": "C:\\Repos\\classwork-rahman-yesrat\\ProjectEuler\\Utils\\Utils.csproj",
         "packagesPath": "C:\\Users\\YRahman\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\YRahman\\OneDrive - Genuent\\Desktop\\Talent Path\\classwork-rahman-yesrat\\ProjectEuler\\Utils\\obj\\",
+        "outputPath": "C:\\Repos\\classwork-rahman-yesrat\\ProjectEuler\\Utils\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\YRahman\\AppData\\Roaming\\NuGet\\NuGet.Config",

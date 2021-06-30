@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace SpringFood.Controllers
 {
     [ApiController]
-    [Route("/api")]
+    [Route("/api/category")]
     public class CategoryController: ControllerBase 
     {
         SpringFoodService _service;
@@ -17,14 +17,14 @@ namespace SpringFood.Controllers
         {
             _service = new SpringFoodService(context);
         }
-        [HttpPost("addCategory")]
+        [HttpPost]
         public IActionResult AddCategory(Category toAdd)
         {
             _service.AddCategory(toAdd);
             return this.Accepted(toAdd);
 
         }
-        [HttpGet("categories")]
+        [HttpGet]
         public IActionResult GetAllCategories()
         {
 

@@ -6123,11 +6123,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\YRahman\\OneDrive - Genuent\\Desktop\\Talent Path\\classwork-rahman-yesrat\\EFBlog\\EFBlog\\EFBlog.csproj",
+      "projectUniqueName": "C:\\Repos\\classwork-rahman-yesrat\\EFBlog\\EFBlog\\EFBlog.csproj",
       "projectName": "EFBlog",
-      "projectPath": "C:\\Users\\YRahman\\OneDrive - Genuent\\Desktop\\Talent Path\\classwork-rahman-yesrat\\EFBlog\\EFBlog\\EFBlog.csproj",
+      "projectPath": "C:\\Repos\\classwork-rahman-yesrat\\EFBlog\\EFBlog\\EFBlog.csproj",
       "packagesPath": "C:\\Users\\YRahman\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\YRahman\\OneDrive - Genuent\\Desktop\\Talent Path\\classwork-rahman-yesrat\\EFBlog\\EFBlog\\obj\\",
+      "outputPath": "C:\\Repos\\classwork-rahman-yesrat\\EFBlog\\EFBlog\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\YRahman\\AppData\\Roaming\\NuGet\\NuGet.Config",

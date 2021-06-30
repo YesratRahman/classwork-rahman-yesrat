@@ -1,4 +1,4 @@
-﻿using SpringFood.Models;
+﻿    using SpringFood.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ namespace SpringFood.Interfaces
     public interface IUser
     {
         int AddUser(User toAdd);
-        User GetUsertById(int id);
+        User GetUserById(int id);
         List<User> GetAllUsers();
         void EditUser(User toEdit);
         void DeleteUser(int id);

@@ -14,6 +14,7 @@ namespace SpringFood.Models
         [Required]
         [MaxLength(50)]
         public string Name { get; set; }
+        public List<Product> Products { get; set; }
 
         public Category()
         {
@@ -22,6 +23,11 @@ namespace SpringFood.Models
         public Category(string name)
         {
             this.Name = name; 
+        }
+        public Category(Category that)
+        {
+            this.Id = that.Id;
+            this.Name = that.Name; 
         }
     }
 }

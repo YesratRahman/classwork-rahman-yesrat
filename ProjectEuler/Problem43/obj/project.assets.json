@@ -32,11 +32,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\YRahman\\OneDrive - Genuent\\Desktop\\Talent Path\\classwork-rahman-yesrat\\ProjectEuler\\Problem43\\Problem43.csproj",
+      "projectUniqueName": "C:\\Repos\\classwork-rahman-yesrat\\ProjectEuler\\Problem43\\Problem43.csproj",
       "projectName": "Problem43",
-      "projectPath": "C:\\Users\\YRahman\\OneDrive - Genuent\\Desktop\\Talent Path\\classwork-rahman-yesrat\\ProjectEuler\\Problem43\\Problem43.csproj",
+      "projectPath": "C:\\Repos\\classwork-rahman-yesrat\\ProjectEuler\\Problem43\\Problem43.csproj",
       "packagesPath": "C:\\Users\\YRahman\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\YRahman\\OneDrive - Genuent\\Desktop\\Talent Path\\classwork-rahman-yesrat\\ProjectEuler\\Problem43\\obj\\",
+      "outputPath": "C:\\Repos\\classwork-rahman-yesrat\\ProjectEuler\\Problem43\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\YRahman\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -53,8 +53,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\YRahman\\OneDrive - Genuent\\Desktop\\Talent Path\\classwork-rahman-yesrat\\ProjectEuler\\Utils\\Utils.csproj": {
-              "projectPath": "C:\\Users\\YRahman\\OneDrive - Genuent\\Desktop\\Talent Path\\classwork-rahman-yesrat\\ProjectEuler\\Utils\\Utils.csproj"
+            "C:\\Repos\\classwork-rahman-yesrat\\ProjectEuler\\Utils\\Utils.csproj": {
+              "projectPath": "C:\\Repos\\classwork-rahman-yesrat\\ProjectEuler\\Utils\\Utils.csproj"
             }
           }
         }

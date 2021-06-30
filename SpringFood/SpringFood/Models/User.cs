@@ -20,7 +20,8 @@ namespace SpringFood.Models
         [Required]
         [MaxLength(50)]
         public string Type { get; set; }
-
+        //OneToMany 
+        public List<Cart> Carts { get; set; } = new List<Cart>(); 
         public User()
         {
 

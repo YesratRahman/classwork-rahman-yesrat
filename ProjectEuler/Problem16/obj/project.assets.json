@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\YRahman\\OneDrive - Genuent\\Desktop\\Talent Path\\classwork-rahman-yesrat\\ProjectEuler\\Problem16\\Problem16.csproj",
+      "projectUniqueName": "C:\\Repos\\classwork-rahman-yesrat\\ProjectEuler\\Problem16\\Problem16.csproj",
       "projectName": "Problem16",
-      "projectPath": "C:\\Users\\YRahman\\OneDrive - Genuent\\Desktop\\Talent Path\\classwork-rahman-yesrat\\ProjectEuler\\Problem16\\Problem16.csproj",
+      "projectPath": "C:\\Repos\\classwork-rahman-yesrat\\ProjectEuler\\Problem16\\Problem16.csproj",
       "packagesPath": "C:\\Users\\YRahman\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\YRahman\\OneDrive - Genuent\\Desktop\\Talent Path\\classwork-rahman-yesrat\\ProjectEuler\\Problem16\\obj\\",
+      "outputPath": "C:\\Repos\\classwork-rahman-yesrat\\ProjectEuler\\Problem16\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\YRahman\\AppData\\Roaming\\NuGet\\NuGet.Config",

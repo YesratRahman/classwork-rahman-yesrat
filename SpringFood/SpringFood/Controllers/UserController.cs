@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace SpringFood.Controllers
 {
     [ApiController]
-    [Route("/api")]
+    [Route("/api/user")]
     public class UserController : ControllerBase
     {
         SpringFoodService _service;
@@ -17,24 +17,31 @@ namespace SpringFood.Controllers
         {
             _service = new SpringFoodService(context);
         }
-        [HttpPost("addUser")]
+        [HttpPost]
         public IActionResult AddUser(User toAdd)
         {
             _service.AddUser(toAdd);
             return this.Accepted(toAdd);
 
         }
-        [HttpGet("users")]
+        [HttpGet]
         public IActionResult GetAllUsers()
         {
             return this.Accepted(_service.GetAllUsers());
         }
-        [HttpDelete("user/{id}")]
+        [HttpPut]
+        public IActionResult EditUser(User toEdit)
+        {
+            _service.EdtUser(toEdit);
+            return this.Accepted(toEdit);
+        }
+        [HttpDelete("{id}")]
         public IActionResult DeleteUser(int id)
         {
             _service.DeleteUser(id);
             return this.Accepted();
         }
+        
 
     }
 } 

@@ -19,21 +19,53 @@ namespace SpringFood.Migrations
                 .HasAnnotation("ProductVersion", "5.0.7")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("SpringFood.Models.Brand", b =>
+            modelBuilder.Entity("SpringFood.Models.Cart", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Name")
+                    b.Property<DateTime>("PurchaseDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Status")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Brands");
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Carts");
+                });
+
+            modelBuilder.Entity("SpringFood.Models.CartProduct", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("CartId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CartId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("CartProducts");
                 });
 
             modelBuilder.Entity("SpringFood.Models.Category", b =>
@@ -53,15 +85,47 @@ namespace SpringFood.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("SpringFood.Models.Product", b =>
+            modelBuilder.Entity("SpringFood.Models.Inventory", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("BrandId")
+                    b.Property<int?>("ProductId")
                         .HasColumnType("int");
+
+                    b.Property<int>("ReorderQty")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StockQty")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Inventories");
+                });
+
+            modelBuilder.Entity("SpringFood.Models.Order", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("SpringFood.Models.Product", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int?>("CategoryId")
                         .HasColumnType("int");
@@ -87,8 +151,6 @@ namespace SpringFood.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("BrandId");
 
                     b.HasIndex("CategoryId");
 
@@ -122,19 +184,59 @@ namespace SpringFood.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("SpringFood.Models.Cart", b =>
+                {
+                    b.HasOne("SpringFood.Models.User", "User")
+                        .WithMany("Carts")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("SpringFood.Models.CartProduct", b =>
+                {
+                    b.HasOne("SpringFood.Models.Cart", null)
+                        .WithMany("CartProducts")
+                        .HasForeignKey("CartId");
+
+                    b.HasOne("SpringFood.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId");
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("SpringFood.Models.Inventory", b =>
+                {
+                    b.HasOne("SpringFood.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId");
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("SpringFood.Models.Product", b =>
                 {
-                    b.HasOne("SpringFood.Models.Brand", "Brand")
-                        .WithMany()
-                        .HasForeignKey("BrandId");
-
                     b.HasOne("SpringFood.Models.Category", "Category")
-                        .WithMany()
+                        .WithMany("Products")
                         .HasForeignKey("CategoryId");
 
-                    b.Navigation("Brand");
-
                     b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("SpringFood.Models.Cart", b =>
+                {
+                    b.Navigation("CartProducts");
+                });
+
+            modelBuilder.Entity("SpringFood.Models.Category", b =>
+                {
+                    b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("SpringFood.Models.User", b =>
+                {
+                    b.Navigation("Carts");
                 });
 #pragma warning restore 612, 618
         }

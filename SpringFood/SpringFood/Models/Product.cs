@@ -33,7 +33,7 @@ namespace SpringFood.Models
             this.Name = that.Name;
             this.Quantity = that.Quantity;
             this.Image = that.Image;
-            this.Category = that.Category; 
+            Category = new Category(that.Category); 
         }
 
     }

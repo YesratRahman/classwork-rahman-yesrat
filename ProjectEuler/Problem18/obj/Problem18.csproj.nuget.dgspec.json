@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\YRahman\\OneDrive - Genuent\\Desktop\\Talent Path\\classwork-rahman-yesrat\\ProjectEuler\\Problem18\\Problem18.csproj": {}
+    "C:\\Repos\\classwork-rahman-yesrat\\ProjectEuler\\Problem18\\Problem18.csproj": {}
   },
   "projects": {
-    "C:\\Users\\YRahman\\OneDrive - Genuent\\Desktop\\Talent Path\\classwork-rahman-yesrat\\ProjectEuler\\Problem18\\Problem18.csproj": {
+    "C:\\Repos\\classwork-rahman-yesrat\\ProjectEuler\\Problem18\\Problem18.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\YRahman\\OneDrive - Genuent\\Desktop\\Talent Path\\classwork-rahman-yesrat\\ProjectEuler\\Problem18\\Problem18.csproj",
+        "projectUniqueName": "C:\\Repos\\classwork-rahman-yesrat\\ProjectEuler\\Problem18\\Problem18.csproj",
         "projectName": "Problem18",
-        "projectPath": "C:\\Users\\YRahman\\OneDrive - Genuent\\Desktop\\Talent Path\\classwork-rahman-yesrat\\ProjectEuler\\Problem18\\Problem18.csproj",
+        "projectPath": "C:\\Repos\\classwork-rahman-yesrat\\ProjectEuler\\Problem18\\Problem18.csproj",
         "packagesPath": "C:\\Users\\YRahman\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\YRahman\\OneDrive - Genuent\\Desktop\\Talent Path\\classwork-rahman-yesrat\\ProjectEuler\\Problem18\\obj\\",
+        "outputPath": "C:\\Repos\\classwork-rahman-yesrat\\ProjectEuler\\Problem18\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\YRahman\\AppData\\Roaming\\NuGet\\NuGet.Config",

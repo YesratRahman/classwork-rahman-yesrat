@@ -47,7 +47,7 @@ namespace SpringFood.Repos
             return _context.Users.ToList(); 
         }
 
-        public User GetUsertById(int id)
+        public User GetUserById(int id)
         {
             User toGet = _context.Users.Find(id);
             return toGet; 

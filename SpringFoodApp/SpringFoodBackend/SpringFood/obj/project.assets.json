@@ -5563,11 +5563,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Repos\\classwork-rahman-yesrat\\SpringFood\\SpringFood\\SpringFoodBackend.csproj",
+      "projectUniqueName": "C:\\Repos\\classwork-rahman-yesrat\\Project\\SpringFood\\SpringFood\\SpringFoodBackend.csproj",
       "projectName": "SpringFoodBackend",
-      "projectPath": "C:\\Repos\\classwork-rahman-yesrat\\SpringFood\\SpringFood\\SpringFoodBackend.csproj",
+      "projectPath": "C:\\Repos\\classwork-rahman-yesrat\\Project\\SpringFood\\SpringFood\\SpringFoodBackend.csproj",
       "packagesPath": "C:\\Users\\YRahman\\.nuget\\packages\\",
-      "outputPath": "C:\\Repos\\classwork-rahman-yesrat\\SpringFood\\SpringFood\\obj\\",
+      "outputPath": "C:\\Repos\\classwork-rahman-yesrat\\Project\\SpringFood\\SpringFood\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\YRahman\\AppData\\Roaming\\NuGet\\NuGet.Config",

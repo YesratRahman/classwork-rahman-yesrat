@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace SpringFood.Repos
 {
@@ -24,7 +26,7 @@ namespace SpringFood.Repos
 
         public List<Category> GetAllCategories()
         {
-            return _context.Categories.ToList(); 
+            return _context.Categories.Include(category => category.Products).ToList() ; 
         }
     }
 }

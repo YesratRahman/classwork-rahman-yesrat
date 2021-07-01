@@ -5,7 +5,6 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 
 
 namespace SpringFood.Models
@@ -15,8 +14,11 @@ namespace SpringFood.Models
         [Required]
         public int Quantity { get; set; }
         public Order Order { get; set; }
+        [Key, Column(Order = 0)]
         public int? OrderId { get; set; }
+        [JsonIgnore]
         public Product Product { get; set; }
+        [Key, Column(Order = 1)]
         public int? ProductId { get; set; }
        
     }

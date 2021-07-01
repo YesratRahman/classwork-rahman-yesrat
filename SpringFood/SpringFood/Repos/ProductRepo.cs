@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SpringFood.Exceptions;
 using SpringFood.Interfaces;
 using SpringFood.Models;
 using System;
@@ -21,9 +22,6 @@ namespace SpringFood.Repos
 
         public int AddProduct(Product product)
         {
-            //var category = _context.Categories.Single(x => x.Id == product.CategoryId);
-            //product.Category = category;
-
             _context.Products.Add(product);
             _context.SaveChanges();
             
@@ -40,16 +38,20 @@ namespace SpringFood.Repos
             Product product = _context.Products.Find(id);
             if(product == null)
             {
-                throw new HttpResponseException(HttpStatusCode.NotFound); 
+                throw new ProductNotFoundException($"Couldn't find product with id {id}");
             }
+           
             return product;
         }
 
         public Product GetProductByName(string name)
         {
             Product product = _context.Products.Where(p => p.Name == name).SingleOrDefault();
+            if(product == null)
+            {
+                throw new ProductNotFoundException($"Couldn't find product with name {name}");
+            }
             return product;
-
         }
 
         public void EditProduct(Product toEdit)
@@ -65,6 +67,10 @@ namespace SpringFood.Repos
             {
                 Id = id
             };
+            if(toDelete == null)
+            {
+                throw new ProductNotFoundException($"Couldn't find product with id {id}");
+            }
             _context.Attach(toDelete);
             _context.Remove(toDelete);
             _context.SaveChanges();

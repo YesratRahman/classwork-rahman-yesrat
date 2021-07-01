@@ -17,6 +17,7 @@ namespace SpringFood.Models
         [Required]
         public string Status { get; set; }
         //ManyToOne 
+        public int UserId { get; set; }
         public User User { get; set; }
         //OneToMany
         public List<CartProduct> CartProducts { get; set; } = new List<CartProduct>(); 

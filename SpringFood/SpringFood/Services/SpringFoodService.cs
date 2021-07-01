@@ -1,4 +1,5 @@
-﻿using SpringFood.Models;
+﻿using SpringFood.Exceptions;
+using SpringFood.Models;
 using SpringFood.Repos;
 using System;
 using System.Collections.Generic;
@@ -24,10 +25,32 @@ namespace SpringFood.Services
         } 
         public int AddProduct(Product product)
         {
+            if (product == null)
+            {
+                throw new ArgumentNullException("Can't add a null product"); 
+            }
+            if (product.Name == null)
+            {
+                throw new ArgumentNullException("Can't add a product with null name");
+            }
+            if (product.Description == null)
+            {
+                throw new ArgumentNullException("Can't add a product with null description");
+            }
+            if (product.Name == "")
+            {
+                throw new ArgumentNullException("Can't add a product with empty name");
+            }
+
             return _product.AddProduct(product);
         }
         public Product GetProductById(int id)
         {
+            if (id <= 0)
+            {
+                throw new InvalidIdException("Invalid Id");
+
+            }
             return _product.GetProductById(id);
         }
 

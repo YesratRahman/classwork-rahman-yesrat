@@ -42,13 +42,16 @@ namespace SpringFood.Repos
 
         public List<Inventory> GetAllInventory()
         {
-            return _context.Inventories.ToList(); 
+            return _context.Inventories.Include(inventory=>inventory.Product).ToList(); 
         }
 
         public Inventory GetInventoryById(int id)
         {
-            Inventory toGet = _context.Inventories.Find(id);
-            return toGet; 
+            
+            return _context.Inventories
+                .Where(inventory => inventory.Id == id)
+                .Include(inventory => inventory.Product)
+                .FirstOrDefault(); 
         }
     }
 }

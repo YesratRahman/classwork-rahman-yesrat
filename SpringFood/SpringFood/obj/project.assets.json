@@ -5563,9 +5563,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Repos\\classwork-rahman-yesrat\\SpringFood\\SpringFood\\SpringFood.csproj",
-      "projectName": "SpringFood",
-      "projectPath": "C:\\Repos\\classwork-rahman-yesrat\\SpringFood\\SpringFood\\SpringFood.csproj",
+      "projectUniqueName": "C:\\Repos\\classwork-rahman-yesrat\\SpringFood\\SpringFood\\SpringFoodBackend.csproj",
+      "projectName": "SpringFoodBackend",
+      "projectPath": "C:\\Repos\\classwork-rahman-yesrat\\SpringFood\\SpringFood\\SpringFoodBackend.csproj",
       "packagesPath": "C:\\Users\\YRahman\\.nuget\\packages\\",
       "outputPath": "C:\\Repos\\classwork-rahman-yesrat\\SpringFood\\SpringFood\\obj\\",
       "projectStyle": "PackageReference",

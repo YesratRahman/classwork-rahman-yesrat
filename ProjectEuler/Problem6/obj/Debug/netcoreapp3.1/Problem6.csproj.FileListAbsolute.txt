@@ -14,3 +14,19 @@ C:\Users\YRahman\OneDrive - Genuent\Desktop\Talent Path\classwork-rahman-yesrat\
 C:\Users\YRahman\OneDrive - Genuent\Desktop\Talent Path\classwork-rahman-yesrat\ProjectEuler\Problem6\obj\Debug\netcoreapp3.1\Problem6.dll
 C:\Users\YRahman\OneDrive - Genuent\Desktop\Talent Path\classwork-rahman-yesrat\ProjectEuler\Problem6\obj\Debug\netcoreapp3.1\Problem6.pdb
 C:\Users\YRahman\OneDrive - Genuent\Desktop\Talent Path\classwork-rahman-yesrat\ProjectEuler\Problem6\obj\Debug\netcoreapp3.1\Problem6.genruntimeconfig.cache
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem6\bin\Debug\netcoreapp3.1\Problem6.exe
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem6\bin\Debug\netcoreapp3.1\Problem6.deps.json
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem6\bin\Debug\netcoreapp3.1\Problem6.runtimeconfig.json
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem6\bin\Debug\netcoreapp3.1\Problem6.runtimeconfig.dev.json
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem6\bin\Debug\netcoreapp3.1\Problem6.dll
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem6\bin\Debug\netcoreapp3.1\Problem6.pdb
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem6\bin\Debug\netcoreapp3.1\Utils.dll
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem6\bin\Debug\netcoreapp3.1\Utils.pdb
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem6\obj\Debug\netcoreapp3.1\Problem6.csproj.AssemblyReference.cache
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem6\obj\Debug\netcoreapp3.1\Problem6.AssemblyInfoInputs.cache
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem6\obj\Debug\netcoreapp3.1\Problem6.AssemblyInfo.cs
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem6\obj\Debug\netcoreapp3.1\Problem6.csproj.CoreCompileInputs.cache
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem6\obj\Debug\netcoreapp3.1\Problem6.csproj.CopyComplete
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem6\obj\Debug\netcoreapp3.1\Problem6.dll
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem6\obj\Debug\netcoreapp3.1\Problem6.pdb
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem6\obj\Debug\netcoreapp3.1\Problem6.genruntimeconfig.cache

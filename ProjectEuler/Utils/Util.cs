@@ -107,15 +107,29 @@ namespace Utils
             }
             return squareRoot;
         }
+        public static long GetSquareRoot(long num)
+        {
+            long squareRoot = 0;
 
-        public static bool IsPalindrome(int num)
+            for (long i = 1; i < num; i++)
+            {
+                if ((i * i) > num)
+                {
+                    squareRoot = i - 1;
+                    break;
+                }
+            }
+            return squareRoot;
+        }
+
+        public static bool IsPalindrome(BigInteger num)
         {
 
-            int temp = num;
-            int sum = 0;
+            BigInteger temp = num;
+            BigInteger sum = 0;
             while (num > 0)
             {
-                int rem = num % 10;
+                BigInteger rem = num % 10;
                 num = num / 10;
                 sum = sum * 10 + rem;
             }
@@ -125,6 +139,20 @@ namespace Utils
                 return true;
             }
             return false;
+        }
+
+        public static BigInteger ReverseNum(BigInteger i)
+        {
+            BigInteger reverse = 0;
+            while (i > 0)
+            {
+                BigInteger remainder = i % 10;
+
+                reverse = reverse * 10 + remainder;
+                i /= 10;
+
+            }
+            return reverse;
         }
 
         public static int SumOfSquares(int maxNumber)
@@ -178,7 +206,11 @@ namespace Utils
             //currNum = 0123
             if (availableNums.Count == 0)
             {
-                allPermutations.Add(currNum);
+                if(int.Parse(currNum) %2 != 0)
+                {
+                    allPermutations.Add(currNum);
+
+                }
             }
             else
             {

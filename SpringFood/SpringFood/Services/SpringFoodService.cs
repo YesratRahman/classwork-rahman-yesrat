@@ -12,7 +12,7 @@ namespace SpringFood.Services
         CategoryRepo _category;
         InventoryRepo _inventory;
         CartRepo _cart;
-        OrderRepo _order; 
+        OrderRepo _order;
         public SpringFoodService(SpringFoodDbContext context)
         {
             _product = new ProductRepo(context);
@@ -20,14 +20,12 @@ namespace SpringFood.Services
             _category = new CategoryRepo(context);
             _inventory = new InventoryRepo(context);
             _cart = new CartRepo(context);
-            _order = new OrderRepo(context); 
-
-        }
+            _order = new OrderRepo(context);
+        } 
         public int AddProduct(Product product)
         {
             return _product.AddProduct(product);
         }
-
         public Product GetProductById(int id)
         {
             return _product.GetProductById(id);
@@ -42,8 +40,6 @@ namespace SpringFood.Services
         {
             return _product.GetAllProducts();
         }
-
-
 
         public void DeleteProduct(int id)
         {
@@ -126,6 +122,26 @@ namespace SpringFood.Services
         public void DeleteCart(int id)
         {
             _cart.DeleteCart(id);
+        }
+
+        public int AddOrder(Order toAdd)
+        {
+           return _order.AddOrder(toAdd); 
+        }
+
+        public List<Order> GetAllOrders()
+        {
+            return _order.GetAllOrders(); 
+        }
+
+        public void EdtOrder(Order toEdit)
+        {
+             _order.EditOrder(toEdit); 
+        }
+
+        public void DeleteOrder(int id)
+        {
+            _order.DeleteOrder(id); 
         }
 
     }

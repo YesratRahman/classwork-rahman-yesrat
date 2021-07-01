@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 
 namespace SpringFood
 {
@@ -27,7 +28,7 @@ namespace SpringFood
         public void ConfigureServices(IServiceCollection services)
         {
             string name = "name=ConnectionStrings:Db1";
-            services.AddControllersWithViews();
+            services.AddControllers().AddNewtonsoftJson(o => o.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore); 
             services.AddDbContext<SpringFoodDbContext>((o) => o.UseSqlServer(name));
         }
 

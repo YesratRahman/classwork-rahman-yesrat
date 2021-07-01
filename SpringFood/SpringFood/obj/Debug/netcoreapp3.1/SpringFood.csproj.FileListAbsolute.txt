@@ -187,3 +187,8 @@ C:\Repos\classwork-rahman-yesrat\SpringFood\SpringFood\obj\Debug\netcoreapp3.1\S
 C:\Repos\classwork-rahman-yesrat\SpringFood\SpringFood\obj\Debug\netcoreapp3.1\SpringFood.dll
 C:\Repos\classwork-rahman-yesrat\SpringFood\SpringFood\obj\Debug\netcoreapp3.1\SpringFood.pdb
 C:\Repos\classwork-rahman-yesrat\SpringFood\SpringFood\obj\Debug\netcoreapp3.1\SpringFood.genruntimeconfig.cache
+C:\Repos\classwork-rahman-yesrat\SpringFood\SpringFood\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
+C:\Repos\classwork-rahman-yesrat\SpringFood\SpringFood\bin\Debug\netcoreapp3.1\System.Web.Http.dll
+C:\Repos\classwork-rahman-yesrat\SpringFood\SpringFood\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+C:\Repos\classwork-rahman-yesrat\SpringFood\SpringFood\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+C:\Repos\classwork-rahman-yesrat\SpringFood\SpringFood\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll

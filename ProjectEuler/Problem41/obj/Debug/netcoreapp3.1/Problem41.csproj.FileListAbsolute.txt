@@ -1,0 +1,16 @@
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem41\bin\Debug\netcoreapp3.1\Problem41.exe
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem41\bin\Debug\netcoreapp3.1\Problem41.deps.json
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem41\bin\Debug\netcoreapp3.1\Problem41.runtimeconfig.json
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem41\bin\Debug\netcoreapp3.1\Problem41.runtimeconfig.dev.json
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem41\bin\Debug\netcoreapp3.1\Problem41.dll
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem41\bin\Debug\netcoreapp3.1\Problem41.pdb
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem41\bin\Debug\netcoreapp3.1\Utils.dll
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem41\bin\Debug\netcoreapp3.1\Utils.pdb
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem41\obj\Debug\netcoreapp3.1\Problem41.csproj.AssemblyReference.cache
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem41\obj\Debug\netcoreapp3.1\Problem41.AssemblyInfoInputs.cache
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem41\obj\Debug\netcoreapp3.1\Problem41.AssemblyInfo.cs
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem41\obj\Debug\netcoreapp3.1\Problem41.csproj.CoreCompileInputs.cache
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem41\obj\Debug\netcoreapp3.1\Problem41.csproj.CopyComplete
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem41\obj\Debug\netcoreapp3.1\Problem41.dll
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem41\obj\Debug\netcoreapp3.1\Problem41.pdb
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem41\obj\Debug\netcoreapp3.1\Problem41.genruntimeconfig.cache

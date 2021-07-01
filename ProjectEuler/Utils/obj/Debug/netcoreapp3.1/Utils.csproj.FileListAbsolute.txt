@@ -15,3 +15,12 @@ C:\Users\YRahman\OneDrive - Genuent\Desktop\Talent Path\classwork-rahman-yesrat\
 C:\Users\YRahman\OneDrive - Genuent\Desktop\Talent Path\classwork-rahman-yesrat\ProjectEuler\Utils\bin\Debug\netcoreapp3.1\Utils.deps.json
 C:\Users\YRahman\OneDrive - Genuent\Desktop\Talent Path\classwork-rahman-yesrat\ProjectEuler\Utils\bin\Debug\netcoreapp3.1\Utils.dll
 C:\Users\YRahman\OneDrive - Genuent\Desktop\Talent Path\classwork-rahman-yesrat\ProjectEuler\Utils\bin\Debug\netcoreapp3.1\Utils.pdb
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Utils\bin\Debug\netcoreapp3.1\Utils.deps.json
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Utils\bin\Debug\netcoreapp3.1\Utils.dll
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Utils\bin\Debug\netcoreapp3.1\Utils.pdb
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Utils\obj\Debug\netcoreapp3.1\Utils.csproj.AssemblyReference.cache
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Utils\obj\Debug\netcoreapp3.1\Utils.AssemblyInfoInputs.cache
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Utils\obj\Debug\netcoreapp3.1\Utils.AssemblyInfo.cs
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Utils\obj\Debug\netcoreapp3.1\Utils.csproj.CoreCompileInputs.cache
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Utils\obj\Debug\netcoreapp3.1\Utils.dll
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Utils\obj\Debug\netcoreapp3.1\Utils.pdb

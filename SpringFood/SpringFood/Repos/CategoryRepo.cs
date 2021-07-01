@@ -16,6 +16,7 @@ namespace SpringFood.Repos
         }
         public int AddCategory(Category toAdd)
         {
+
             _context.Categories.Add(toAdd);
             _context.SaveChanges();
             return toAdd.Id;

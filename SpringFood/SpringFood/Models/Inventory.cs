@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+
 
 namespace SpringFood.Models
 {
@@ -15,13 +17,13 @@ namespace SpringFood.Models
         [Required]
         public int ReorderQty { get; set; }
         public Product Product { get; set; }
-        public Inventory() { }
-        public Inventory(Inventory that)
-        {
-            this.Id = that.Id;
-            this.StockQty = that.StockQty;
-            this.ReorderQty = that.ReorderQty;
-            Product = new Product(that.Product);
-        }
+        //public Inventory() { }
+        //public Inventory(Inventory that)
+        //{
+        //    this.Id = that.Id;
+        //    this.StockQty = that.StockQty;
+        //    this.ReorderQty = that.ReorderQty;
+        //    Product = new Product(that.Product);
+        //}
     }
 }

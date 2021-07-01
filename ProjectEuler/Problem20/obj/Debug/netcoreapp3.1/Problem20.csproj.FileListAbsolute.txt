@@ -23,3 +23,16 @@ C:\Users\YRahman\OneDrive - Genuent\Desktop\Talent Path\classwork-rahman-yesrat\
 C:\Users\YRahman\OneDrive - Genuent\Desktop\Talent Path\classwork-rahman-yesrat\ProjectEuler\Problem20\obj\Debug\netcoreapp3.1\Problem20.dll
 C:\Users\YRahman\OneDrive - Genuent\Desktop\Talent Path\classwork-rahman-yesrat\ProjectEuler\Problem20\obj\Debug\netcoreapp3.1\Problem20.pdb
 C:\Users\YRahman\OneDrive - Genuent\Desktop\Talent Path\classwork-rahman-yesrat\ProjectEuler\Problem20\obj\Debug\netcoreapp3.1\Problem20.genruntimeconfig.cache
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem20\bin\Debug\netcoreapp3.1\Problem20.exe
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem20\bin\Debug\netcoreapp3.1\Problem20.deps.json
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem20\bin\Debug\netcoreapp3.1\Problem20.runtimeconfig.json
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem20\bin\Debug\netcoreapp3.1\Problem20.runtimeconfig.dev.json
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem20\bin\Debug\netcoreapp3.1\Problem20.dll
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem20\bin\Debug\netcoreapp3.1\Problem20.pdb
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem20\obj\Debug\netcoreapp3.1\Problem20.csproj.AssemblyReference.cache
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem20\obj\Debug\netcoreapp3.1\Problem20.AssemblyInfoInputs.cache
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem20\obj\Debug\netcoreapp3.1\Problem20.AssemblyInfo.cs
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem20\obj\Debug\netcoreapp3.1\Problem20.csproj.CoreCompileInputs.cache
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem20\obj\Debug\netcoreapp3.1\Problem20.dll
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem20\obj\Debug\netcoreapp3.1\Problem20.pdb
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem20\obj\Debug\netcoreapp3.1\Problem20.genruntimeconfig.cache

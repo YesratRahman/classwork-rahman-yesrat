@@ -29,3 +29,19 @@ C:\Users\YRahman\OneDrive - Genuent\Desktop\Talent Path\classwork-rahman-yesrat\
 C:\Users\YRahman\OneDrive - Genuent\Desktop\Talent Path\classwork-rahman-yesrat\ProjectEuler\Problem12\obj\Debug\netcoreapp3.1\Problem12.dll
 C:\Users\YRahman\OneDrive - Genuent\Desktop\Talent Path\classwork-rahman-yesrat\ProjectEuler\Problem12\obj\Debug\netcoreapp3.1\Problem12.pdb
 C:\Users\YRahman\OneDrive - Genuent\Desktop\Talent Path\classwork-rahman-yesrat\ProjectEuler\Problem12\obj\Debug\netcoreapp3.1\Problem12.genruntimeconfig.cache
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem12\bin\Debug\netcoreapp3.1\Problem12.exe
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem12\bin\Debug\netcoreapp3.1\Problem12.deps.json
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem12\bin\Debug\netcoreapp3.1\Problem12.runtimeconfig.json
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem12\bin\Debug\netcoreapp3.1\Problem12.runtimeconfig.dev.json
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem12\bin\Debug\netcoreapp3.1\Problem12.dll
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem12\bin\Debug\netcoreapp3.1\Problem12.pdb
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem12\bin\Debug\netcoreapp3.1\Utils.dll
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem12\bin\Debug\netcoreapp3.1\Utils.pdb
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem12\obj\Debug\netcoreapp3.1\Problem12.csproj.AssemblyReference.cache
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem12\obj\Debug\netcoreapp3.1\Problem12.AssemblyInfoInputs.cache
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem12\obj\Debug\netcoreapp3.1\Problem12.AssemblyInfo.cs
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem12\obj\Debug\netcoreapp3.1\Problem12.csproj.CoreCompileInputs.cache
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem12\obj\Debug\netcoreapp3.1\Problem12.csproj.CopyComplete
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem12\obj\Debug\netcoreapp3.1\Problem12.dll
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem12\obj\Debug\netcoreapp3.1\Problem12.pdb
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem12\obj\Debug\netcoreapp3.1\Problem12.genruntimeconfig.cache

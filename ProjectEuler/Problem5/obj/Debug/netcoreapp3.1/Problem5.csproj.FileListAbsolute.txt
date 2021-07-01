@@ -11,3 +11,16 @@ C:\Users\YRahman\OneDrive - Genuent\Desktop\Talent Path\classwork-rahman-yesrat\
 C:\Users\YRahman\OneDrive - Genuent\Desktop\Talent Path\classwork-rahman-yesrat\ProjectEuler\Problem5\obj\Debug\netcoreapp3.1\Problem5.dll
 C:\Users\YRahman\OneDrive - Genuent\Desktop\Talent Path\classwork-rahman-yesrat\ProjectEuler\Problem5\obj\Debug\netcoreapp3.1\Problem5.pdb
 C:\Users\YRahman\OneDrive - Genuent\Desktop\Talent Path\classwork-rahman-yesrat\ProjectEuler\Problem5\obj\Debug\netcoreapp3.1\Problem5.genruntimeconfig.cache
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem5\bin\Debug\netcoreapp3.1\Problem5.exe
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem5\bin\Debug\netcoreapp3.1\Problem5.deps.json
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem5\bin\Debug\netcoreapp3.1\Problem5.runtimeconfig.json
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem5\bin\Debug\netcoreapp3.1\Problem5.runtimeconfig.dev.json
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem5\bin\Debug\netcoreapp3.1\Problem5.dll
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem5\bin\Debug\netcoreapp3.1\Problem5.pdb
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem5\obj\Debug\netcoreapp3.1\Problem5.csproj.AssemblyReference.cache
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem5\obj\Debug\netcoreapp3.1\Problem5.AssemblyInfoInputs.cache
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem5\obj\Debug\netcoreapp3.1\Problem5.AssemblyInfo.cs
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem5\obj\Debug\netcoreapp3.1\Problem5.csproj.CoreCompileInputs.cache
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem5\obj\Debug\netcoreapp3.1\Problem5.dll
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem5\obj\Debug\netcoreapp3.1\Problem5.pdb
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem5\obj\Debug\netcoreapp3.1\Problem5.genruntimeconfig.cache

@@ -4,6 +4,9 @@ using SpringFood.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Web.Http; 
+
 
 namespace SpringFood.Repos
 {
@@ -18,8 +21,12 @@ namespace SpringFood.Repos
 
         public int AddProduct(Product product)
         {
+            //var category = _context.Categories.Single(x => x.Id == product.CategoryId);
+            //product.Category = category;
+
             _context.Products.Add(product);
             _context.SaveChanges();
+            
             return product.Id; 
         }
         public List<Product> GetAllProducts()
@@ -31,6 +38,10 @@ namespace SpringFood.Repos
         public Product GetProductById(int id)
         {
             Product product = _context.Products.Find(id);
+            if(product == null)
+            {
+                throw new HttpResponseException(HttpStatusCode.NotFound); 
+            }
             return product;
         }
 

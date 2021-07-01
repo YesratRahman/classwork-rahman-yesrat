@@ -15,9 +15,16 @@ namespace SpringFood
         public DbSet<Inventory> Inventories { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Cart> Carts { get; set; }
+        public DbSet<OrderDetails> OrderDetails { get; set; }
         public SpringFoodDbContext(DbContextOptions<SpringFoodDbContext> options) : base(options)
         {
 
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<OrderDetails>().HasKey(orderDetails => new { orderDetails.OrderId, orderDetails.ProductId });
+            //modelBuilder.Entity<Category>().HasMany(p => p.Products).WithOne(c => c.Category);
+            //modelBuilder.Entity<Product>().HasKey(c => new { c.Id, c.CategoryId });
         }
 
     }

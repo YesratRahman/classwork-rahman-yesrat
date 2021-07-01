@@ -30,7 +30,7 @@ namespace SpringFood.Controllers
             return this.Accepted(product); 
 
         }
-        [HttpGet("{name}")]
+        [HttpGet("name/{name}")]
         public IActionResult GetProductByName(string name)
         {
             Product product = _service.GetProductByName(name); 

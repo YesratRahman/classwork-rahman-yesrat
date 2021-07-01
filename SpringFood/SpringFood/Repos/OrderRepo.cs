@@ -18,25 +18,44 @@ namespace SpringFood.Repos
 
         public int AddOrder(Order toAdd)
         {
-            throw new NotImplementedException();
+            _context.Orders.Add(toAdd);
+            _context.SaveChanges(); 
+            foreach(OrderDetails details in toAdd.OrderDetails)
+            {
+                details.OrderId = toAdd.Id;
+                _context.OrderDetails.Add(details); 
+            }
+            return toAdd.Id; 
         }
 
-        public void DeleteOrder(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void EditOrder(Order toEdit)
-        {
-            throw new NotImplementedException();
-        }
+     
 
         public List<Order> GetAllOrders()
         {
-            throw new NotImplementedException();
+            List<Order> toReturn = _context.Orders.ToList();
+            foreach (Order order in toReturn)
+            {
+                order.OrderDetails = _context.OrderDetails.Where(oDetails => oDetails.OrderId == order.Id).ToList();
+            }
+
+            return toReturn;
         }
 
         public Order GetOrderById(int id)
+        {
+            Order toGet = _context.Orders.Find(id);
+            toGet.OrderDetails = _context.OrderDetails.Where(oDetails => oDetails.OrderId == id).ToList();
+            return toGet;
+        }
+        public void DeleteOrder(int id)
+        {
+            Order toDelete = _context.Orders.Find(id);
+            _context.Attach(toDelete);
+            _context.Remove(toDelete);
+            _context.SaveChanges();
+        }
+
+        public void EditOrder(Order toEdit)
         {
             throw new NotImplementedException();
         }

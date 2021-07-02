@@ -8,6 +8,14 @@ import { AllProductsComponent } from './components/all-products/all-products.com
 import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProductComponent } from './components/product/product.component';
+import { HeaderComponent } from './components/header/header.component';
+import {MatToolbarModule} from '@angular/material/toolbar'; 
+import {MatIconModule} from '@angular/material/icon';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ContactComponent } from './components/contact/contact.component';
+
+
 
 @NgModule({
   declarations: [
@@ -15,12 +23,18 @@ import { ProductComponent } from './components/product/product.component';
     HomeComponent,
     NavbarComponent,
     ProductComponent,
-    AllProductsComponent
+    AllProductsComponent,
+    HeaderComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule, 
     HttpClientModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatSidenavModule,
+    BrowserAnimationsModule
 
 
   ],

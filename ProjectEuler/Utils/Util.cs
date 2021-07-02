@@ -60,6 +60,28 @@ namespace Utils
 
         }
 
+        public static bool IsPrime(long number)
+        {
+            if (number < 2) return false;
+            bool prime = true;
+            long squareRoot = GetSquareRoot(number);
+            if (number % 2 == 0)
+            {
+                return number == 2;
+            }
+
+            for (long i = 3; i <= squareRoot; i += 2)
+            {
+                if (number % i == 0)
+                {
+                    prime = false;
+                    break;
+                }
+            }
+            return prime;
+
+        }
+
         public static bool IsPrime(List<int> Primes, int number)
         {
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Numerics;
+using System.Linq; 
 
 namespace Utils
 {
@@ -161,6 +162,12 @@ namespace Utils
                 return true;
             }
             return false;
+        }
+
+        public static long AsciiSum(string plainText)
+        {
+            return plainText.Select(c => (int)c).Sum(); 
+            
         }
 
         public static BigInteger ReverseNum(BigInteger i)

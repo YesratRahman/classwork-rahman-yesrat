@@ -1,6 +1,29 @@
-<div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
-    <div *ngFor="let product of products">
-        <p>{{product.name}} </p>    
+<app-header> </app-header>  
+<div class="small-container"> 
+
+<div class="container"> 
+    <img [src]="product.image" [alt]="product.name" />
+<div class ="details">
+    <div class="header">
+        <span class="name">
+            {{product.name}}
+        </span> 
+
     </div>
+    <div class="description">
+        <span>
+            {{product.description}}
+        </span> 
+
+    </div>
+    <div class="price">
+        <span>
+            {{product.price | currency}}
+        </span> 
+
+    </div>
+    <button (click)="addToCart()"> Add To Cart</button>
+
+</div> 
 </div>
-<!-- <p>home works!</p> -->
+</div>

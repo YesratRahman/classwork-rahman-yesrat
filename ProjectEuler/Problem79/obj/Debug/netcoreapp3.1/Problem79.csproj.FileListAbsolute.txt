@@ -1,0 +1,13 @@
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem79\bin\Debug\netcoreapp3.1\Problem79.exe
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem79\bin\Debug\netcoreapp3.1\Problem79.deps.json
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem79\bin\Debug\netcoreapp3.1\Problem79.runtimeconfig.json
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem79\bin\Debug\netcoreapp3.1\Problem79.runtimeconfig.dev.json
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem79\bin\Debug\netcoreapp3.1\Problem79.dll
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem79\bin\Debug\netcoreapp3.1\Problem79.pdb
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem79\obj\Debug\netcoreapp3.1\Problem79.csproj.AssemblyReference.cache
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem79\obj\Debug\netcoreapp3.1\Problem79.AssemblyInfoInputs.cache
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem79\obj\Debug\netcoreapp3.1\Problem79.AssemblyInfo.cs
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem79\obj\Debug\netcoreapp3.1\Problem79.csproj.CoreCompileInputs.cache
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem79\obj\Debug\netcoreapp3.1\Problem79.dll
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem79\obj\Debug\netcoreapp3.1\Problem79.pdb
+C:\Repos\classwork-rahman-yesrat\ProjectEuler\Problem79\obj\Debug\netcoreapp3.1\Problem79.genruntimeconfig.cache

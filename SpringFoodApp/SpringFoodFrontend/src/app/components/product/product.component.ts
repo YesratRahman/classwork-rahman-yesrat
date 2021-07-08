@@ -12,10 +12,7 @@ import { ProductService } from 'src/app/services/product.service';
 export class ProductComponent implements OnInit {
 product! : Product; 
 id : number = 0;
-
   constructor(private produtService : ProductService,private cartService: CartService,private router: Router, private route : ActivatedRoute) {} 
-    
-
   ngOnInit(): void {
     this.route.params.subscribe(paramType => {
       this.id = paramType.id;
@@ -23,16 +20,12 @@ id : number = 0;
     
     this.produtService.getProductById(this.id).subscribe(product => {
       this.product = product;
-    });
-
-    
-    
+    }); 
   }
 
   addToCart(){
     this.cartService.addToCart(this.product); 
     this.router.navigateByUrl('/cart-page');
-
   };
 
 }

@@ -11,20 +11,25 @@ import { CartService } from 'src/app/services/cart.service';
 export class CartPageComponent implements OnInit {
   cart!: Cart; 
 
-  constructor( private cartService: CartService) { }
+  constructor( private cartService: CartService) { 
+    this.setCart();
+  }
   ngOnInit(): void {
   }
-  setCart(){
-    this.cart = this.cartService.getCart();
-  }
+  
   removeFromCart(cartProduct: CartProduct){
     this.cartService.removeFromCart(cartProduct.product.id); 
+
     this.setCart();
   }
   changeQuantity(cartProduct: CartProduct, quantityInString: string){
     const quantity = parseInt(quantityInString);
     this.cartService.changeQuantity(cartProduct.product.id, quantity);
     this.setCart();
+  }
+  setCart(){
+    this.cart = this.cartService.getCart();
+    console.log(this.cart);
   }
 
 }

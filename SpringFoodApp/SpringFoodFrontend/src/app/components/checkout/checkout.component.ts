@@ -31,7 +31,9 @@ export class CheckoutComponent implements OnInit {
   postalCode: number = 0; 
 
   constructor(private productService: ProductService, private cartService: CartService,private route : ActivatedRoute,
-    private router : Router) { this.setCart()}
+    private router : Router) { 
+      this.setCart()
+    }
 
   ngOnInit(): void {
     // this.route.params.subscribe(paramType => {

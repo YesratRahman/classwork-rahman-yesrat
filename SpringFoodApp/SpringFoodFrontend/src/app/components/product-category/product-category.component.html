@@ -1,15 +1,15 @@
 <app-header> </app-header>
 
-<div class="small-container"> 
-    
-    
-    <ul> 
-        <li *ngFor="let product of products"> 
-           
-            <a routerLink="/product/{{product.id}}"> 
-                <img src="{{product.image}}" alt=""> 
+<div class="small-container">
+
+
+    <ul>
+        <li *ngFor="let product of products">
+
+            <a routerLink="/product/{{product.id}}">
+                <img src="{{product.image}}" alt="">
                 <div class="content">
-                    <div class="name"> 
+                    <div class="name">
                         {{product.name}}
                     </div>
                     <div class="description">
@@ -17,12 +17,12 @@
                             {{product.description}}
                         </span>
                     </div>
-                <div class="price">
-                    <span>
-                        {{product.price|currency}}
-                    </span>
+                    <div class="price">
+                        <span>
+                            {{product.price|currency}}
+                        </span>
+                    </div>
                 </div>
-            </div>
             </a>
         </li>
     </ul>

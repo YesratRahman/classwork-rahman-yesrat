@@ -5,10 +5,19 @@
 <div class="jumbotron text-center">
     <h3 class="display-3">Thank You!</h3>
     <hr>
-    <p>
-      Having trouble? <a>Contact us</a>
-    </p>
-    <p class="lead">
-      <a class="btn btn-primary btn-sm" href="https://bootstrapcreative.com/" routerLink="/allProducts">Continue to shop</a>
-    </p>
+   
+    <!-- <p class="lead"> -->
+    <!-- <ul> 
+      <li *ngFor="let order of orders"> 
+        <a class="btn btn-primary btn-sm" href="https://bootstrapcreative.com/" routerLink="/order/{{order.id}}">Order Details</a>
+
+      </li>  
+      </ul> -->
+
+      <a class="btn btn-primary btn-sm" href="https://bootstrapcreative.com/" routerLink="/order/{{order.id}}">Order Details</a>
+
+    <!-- </p> -->
   </div>
+
+
+  

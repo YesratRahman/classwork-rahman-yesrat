@@ -30,5 +30,12 @@ namespace SpringFood.Controllers
 
             return this.Accepted(_service.GetAllCategories());
         }
+        [HttpGet("{id}")]
+        public IActionResult GetProductByCatId(int id)
+        {
+            List<Product> product = _service.GetProductByCatId(id);
+            return this.Accepted(product);
+
+        }
     }
 }

@@ -7,9 +7,8 @@ import { Product } from '../interfaces/Product';
   providedIn: 'root'
 })
 export class CartService {
-  private cart:Cart = new Cart(); 
-
   
+  private cart:Cart = new Cart(); 
 
    addToCart(product: Product):void{
     let cartItem = this.cart.items.find(item => item.product.id === product.id);

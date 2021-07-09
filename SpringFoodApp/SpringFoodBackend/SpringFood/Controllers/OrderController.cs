@@ -29,6 +29,11 @@ namespace SpringFood.Controllers
         {
             return this.Accepted(_service.GetAllOrders());
         }
+        [HttpGet("{id}")]
+        public IActionResult GetOrderById(int id)
+        {
+            return Accepted(_service.GetOrderById(id));
+        }
         [HttpPut]
         public IActionResult EditOrder(Order toEdit)
         {
@@ -41,5 +46,6 @@ namespace SpringFood.Controllers
             _service.DeleteOrder(id);
             return this.Accepted();
         }
+
     }
 }

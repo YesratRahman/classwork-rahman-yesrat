@@ -28,5 +28,14 @@ namespace SpringFood.Repos
         {
             return _context.Categories.Include(category => category.Products).ToList() ; 
         }
+
+        public List<Product> GetProductByCatId(int id)
+        {
+            List<Product> products = _context.Products.Where(x => x.CategoryId == id).ToList();
+
+
+           
+            return products;
+        }
     }
 }

@@ -15,12 +15,24 @@ namespace SpringFood.Models
     {
         public int Id { get; set;  }
         [Required]
-        public DateTime Date { get; set; }
+        public string Name { get; set; }
         [Required]
-        public string Address { get; set; }
+        public string Email { get; set; }
+        [Required]
+        public DateTime Date { get; set; }
+     
         [Required]
         [Column(TypeName = "decimal(5,3")]
         public decimal OrderTotal { get; set; }
+        [Required]
+        public string City { get; set; }
+        [Required]
+        public string Street { get;  set; }
+        [Required]
+        public string HomeNumber { get; set; }
+        [Required]
+        public int PostalCode { get; set; }
+   
         public List<OrderDetails> OrderDetails { get; set; }
 
     }

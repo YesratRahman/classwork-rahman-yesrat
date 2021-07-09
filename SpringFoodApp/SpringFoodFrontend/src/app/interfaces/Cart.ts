@@ -11,4 +11,11 @@ export class Cart{
 
         return totalPrice;
     }
+    get tax(): number{
+        let tax = 0; 
+        this.items.forEach(item => {
+            tax = item.price * 0.025;
+        });
+        return tax; 
+    }
 }

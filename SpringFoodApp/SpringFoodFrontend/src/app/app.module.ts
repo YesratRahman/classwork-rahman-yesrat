@@ -16,6 +16,16 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ThankyouComponent } from './components/thankyou/thankyou.component';
 import { CartPageComponent } from './components/cart-page/cart-page.component';
 import { HeaderComponent } from './components/header/header.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { FormsModule } from '@angular/forms';
+import { OrdersComponent } from './components/orders/orders.component';
+import { MatCardModule } from '@angular/material/card';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import { SingleOrderComponent } from './components/single-order/single-order.component';
+import { ProductCategoryComponent } from './components/product-category/product-category.component';
+
+
 
 
 
@@ -29,7 +39,11 @@ import { HeaderComponent } from './components/header/header.component';
     FooterComponent,
     ThankyouComponent,
     HeaderComponent,
-    CartPageComponent  ],
+    CartPageComponent,
+    CheckoutComponent,
+    OrdersComponent,
+    SingleOrderComponent,
+    ProductCategoryComponent  ],
   imports: [
     BrowserModule,
     AppRoutingModule, 
@@ -37,7 +51,11 @@ import { HeaderComponent } from './components/header/header.component';
     MatToolbarModule,
     MatIconModule,
     MatSidenavModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule
 
 
   ],

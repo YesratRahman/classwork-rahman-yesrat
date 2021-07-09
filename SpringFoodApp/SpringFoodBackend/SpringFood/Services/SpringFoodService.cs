@@ -44,6 +44,17 @@ namespace SpringFood.Services
 
             return _product.AddProduct(product);
         }
+
+        public List<Product> GetProductByCatId(int id)
+        {
+            return _category.GetProductByCatId(id); 
+        }
+
+        public Order GetOrderById(int id)
+        {
+            return _order.GetOrderById(id);
+        }
+
         public Product GetProductById(int id)
         {
             if (id <= 0)

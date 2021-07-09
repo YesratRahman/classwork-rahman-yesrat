@@ -15,14 +15,23 @@ order! : Order;
 id : number = 0;
 
 constructor(private productService : ProductService, private route : ActivatedRoute) {
-  this.productService.getOrderById(this.id).subscribe(order => 
-    this.order = order); 
-    console.log(this.order);
- }
+  
+
+} 
 
 ngOnInit(): void {
   // 
-  this.id = parseInt(this.route.snapshot.paramMap.get('id')!); 
+  this.route.params.subscribe(paramType => {
+    this.id = paramType['id'];
+    console.log(this.id);
 
+this.productService.getOrderById(this.id).subscribe(order => 
+    this.order = order); 
+    console.log(this.order);
+  } ); 
 }
 } 
+// this.id = parseInt(this.route.snapshot.paramMap.get('id')!); 
+
+  // this.id = this.route.snapshot.paramMap.get('id')
+  

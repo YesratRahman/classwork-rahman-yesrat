@@ -57,7 +57,7 @@ export class CheckoutComponent implements OnInit {
       orderDetails : this.setOrderDetails(),
     } 
 
-    this.productService.createOrder(toAdd).subscribe((_) => {this.router.navigate(["/orders"])});
+    this.productService.createOrder(toAdd).subscribe(order => {this.router.navigate([`/order/${order.id}`])});
 
     console.log(toAdd);
   }

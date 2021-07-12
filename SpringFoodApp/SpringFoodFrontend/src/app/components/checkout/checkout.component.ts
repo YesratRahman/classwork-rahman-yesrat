@@ -64,7 +64,7 @@ export class CheckoutComponent implements OnInit {
   setOrderDetails() : OrderDetails[] {
     let orderDetails : OrderDetails [] = [];
 
-    for(var i = 0; i < this.cartService.getCart().items.length; i++) {
+    for(var i = 0; i < this.cartService.getCart().items.length; i++) {1
         let orderDetail : OrderDetails = { 
           productId : this.cartService.getCart().items[i].product.id, 
           quantity :  this.cartService.getCart().items[i].quantity

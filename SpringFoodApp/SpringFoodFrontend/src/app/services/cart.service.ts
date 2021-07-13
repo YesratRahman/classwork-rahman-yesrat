@@ -16,7 +16,7 @@ export class CartService {
 
   constructor() { 
   }
-  
+
   addCount() {
     this.count+=1;
     this.simpleObservable.next(this.count)
@@ -57,6 +57,11 @@ export class CartService {
 
   getCart():Cart{
     return this.cart;
+  }
+  clearCart() {
+    this.cart.items = [];
+    this.clearCount();
+    return this.cart.items;
   }
   
 }

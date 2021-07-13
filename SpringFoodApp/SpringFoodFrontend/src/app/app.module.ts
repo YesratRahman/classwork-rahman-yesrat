@@ -24,6 +24,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { SingleOrderComponent } from './components/single-order/single-order.component';
 import { ProductCategoryComponent } from './components/product-category/product-category.component';
+import { AddProductComponent } from './components/add-product/add-product.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 
 
@@ -43,7 +45,9 @@ import { ProductCategoryComponent } from './components/product-category/product-
     CheckoutComponent,
     OrdersComponent,
     SingleOrderComponent,
-    ProductCategoryComponent  ],
+    ProductCategoryComponent,
+    AdminComponent,
+    AddProductComponent  ],
   imports: [
     BrowserModule,
     AppRoutingModule, 

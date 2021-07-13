@@ -31,10 +31,14 @@ namespace SpringFood.Repos
 
         public List<Product> GetProductByCatId(int id)
         {
+            
             List<Product> products = _context.Products.Where(x => x.CategoryId == id).ToList();
 
+            Category toCat = _context.Categories.Find(id);
+            _context.Attach(toCat);
 
-           
+
+
             return products;
         }
     }

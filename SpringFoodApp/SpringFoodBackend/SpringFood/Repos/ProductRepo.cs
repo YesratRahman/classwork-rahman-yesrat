@@ -29,12 +29,15 @@ namespace SpringFood.Repos
         }
         public List<Product> GetAllProducts()
         {
+            
             return _context.Products.ToList();
 
         }
 
         public Product GetProductById(int id)
         {
+            //Category cat = _context.Categories.Find(id);
+            //_context.Attach(cat);
             Product product = _context.Products.Find(id);
             if(product == null)
             {

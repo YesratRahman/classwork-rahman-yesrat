@@ -7,6 +7,6 @@ export interface Product{
     quantity: number, 
     image: string, 
     description: string, 
-    productCategory: Category,
-    categoryId? : number
+    categoryId? : number,
+    // category : Category; 
 }

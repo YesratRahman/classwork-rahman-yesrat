@@ -36,6 +36,55 @@ export class ProductService {
   getProductById(id : number) : Observable<Product> {
     return this.http.get<Product>(this.baseUrl + "/product/" + id);
   }
+
+  addProduct(toAdd : Product) : Observable<Product> {
+    return this.http.post<Product>(this.baseUrl + "/product", toAdd, this.httpOptions).pipe(
+      tap(x => console.log(x)),
+      catchError(err => {
+        alert(err.error);
+        let empty : Product = {
+          name : "",
+          price: 0,
+          quantity: 0, 
+          image: "", 
+          description: "", 
+          // category : {} as Category, 
+        };
+        return of(empty);
+      })
+    );
+  }
+
+
+  deleteProduct(productId: number){
+    return this.http.delete<Product>(this.baseUrl + "/product/" + productId, this.httpOptions)
+      .pipe(
+        tap(x => console.log(x)),
+        catchError(err => {
+          console.log(err);
+          return of(null);
+        })
+      );
+  }
+  updateProduct(toUpdate: Product): Observable<Product>  {
+    return this.http.put<Product>(this.baseUrl + "/product/" + toUpdate.id, toUpdate, this.httpOptions)
+      .pipe(
+        tap(x => console.log(x)),
+        catchError(err => {
+          console.log(err);
+          let empty : Product = {
+            name : "",
+            price: 0,
+            quantity: 0, 
+            image: "", 
+            description: "", 
+            // category : {} as Category,
+            categoryId: 0 
+          };
+          return of(empty);
+        })
+      );
+  }
   createOrder(toAdd : Order) : Observable<Order> {
     return this.http.post<Order>(this.baseUrl + "/order", toAdd, this.httpOptions).pipe(
       tap(x => console.log(x)),

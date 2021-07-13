@@ -16,14 +16,14 @@ ul{
 }
 ul li a{
     height: 400px;
-        width: 20rem;
+    width: 20rem;
     border: 1px solid whitesmoke;
     border-radius: 1rem;
     margin: 0.5rem;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    color: #e72929;
+    /* color: #e72929; */
 }
 
 li a:hover{
@@ -41,4 +41,14 @@ ul li a img{
 .price{
     color:#414141;
     margin-top: .7rem;
+    font-weight: 700;
+}
+.single-cat-name{
+    text-align: center; 
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+ul li a .name{
+    color: #e72929;
+
 }

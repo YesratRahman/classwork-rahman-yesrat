@@ -44,7 +44,7 @@
 </div>   -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
 
-<app-header> </app-header>
+<!-- <app-header> </app-header> -->
 <div class="container shadow p-3 my-5 bg-white rounded">
     <div class="px-4 px-lg-0" *ngIf="!(cart.items.length === 0)">
       <div class="pb-1">
@@ -94,8 +94,14 @@
             <hr>
           </div>
           <div class="text-center">
+            <button class="btn btn-outline-success btn-lg" style="margin:5px;" (click)="clearCart()">Clear Cart</button>
+
             <button routerLink="/checkout" class="btn btn-outline-success btn-lg" >{{ cart.totalPrice | currency}} - Continue to checkout</button>
+
           </div>
+          <!-- <div id="clear-cart-button">
+            <button class="btn btn-outline-success btn-lg" (click)="clearCart()">Clear Cart</button>
+          </div> -->
         </div>
       </div>
     </div>

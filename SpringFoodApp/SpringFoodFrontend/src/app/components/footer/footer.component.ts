@@ -11,5 +11,14 @@ export class FooterComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  onClickedGit()
+  {
+    window.open("https://github.com/YesratRahman");
+  
+  }
+  onClickLinked()
+  {
+    window.open("https://www.linkedin.com/in/yesrat-rahman-84743717a/");
+  
+  }
 }

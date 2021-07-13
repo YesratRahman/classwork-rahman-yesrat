@@ -4,7 +4,10 @@
     padding-left: 25px;
     padding-right: 25px;
 }
-
+.title{
+    text-align: center;
+    margin-top: 50px;
+}
 
 ul{
     display: flex;
@@ -23,7 +26,10 @@ ul li a{
     display: flex;
     flex-direction: column;
     overflow: hidden;
+}
+ul li a .name{
     color: #e72929;
+
 }
 
 li a:hover{
@@ -41,4 +47,5 @@ ul li a img{
 .price{
     color:#414141;
     margin-top: .7rem;
+    font-weight: 700;
 }

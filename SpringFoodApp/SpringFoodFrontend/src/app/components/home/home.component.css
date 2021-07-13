@@ -1,21 +1,4 @@
 
-.navbar{
-    display: flex;
-    align-items: center;
-    padding: 20px;
-}
-nav{
-    flex: 1;
-    text-align: right;
-}
-nav ul{
-    display: inline-block;
-    list-style-type: none;
-}
-nav ul li{
-    display: inline-block;
-    margin-right: 20px;
-}
 .shop{
     text-decoration: none;
     color: #555; 
@@ -74,15 +57,13 @@ p{
 .header{
     background: radial-gradient(#fff,#ffd6d6);
 }
-.header .row{
-    margin-top: 70px;
-}
+
 .categories{
     margin: 70px 0;
 }
 
 .small-container{
-    max-width: 1080px;
+    /* max-width: 1080px; */
     margin : auto; 
     padding-left: 25px; 
     padding-right: 25px;
@@ -95,12 +76,7 @@ p{
 .col-3 img{
     width: 100%;
 }
-.small-container{
-    max-width: 1080px;
-    margin: auto;
-    padding-left: 25px;
-    padding-right: 25px;
-}
+
 
 
 ul{
@@ -112,15 +88,14 @@ ul{
     padding: 0; 
 }
 ul li a{
-    height: 400px;
-        width: 20rem;
-    border: 1px solid whitesmoke;
+    width: 20rem;
+    border: 1px solid rgb(240, 230, 230);
     border-radius: 1rem;
     margin: 0.5rem;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    color: #e72929;
+    color: #cf2222;
 }
 
 li a:hover{
@@ -132,10 +107,14 @@ ul li a img{
     height: 250px;
 } 
 .content{
-    padding: .5rem 1rem;
+    padding: 1rem 1rem;
     position: relative;
 }
 .price{
     color:#414141;
     margin-top: .7rem;
+}
+.name{
+    text-align: center;
+    font-weight: bold;
 }

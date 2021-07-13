@@ -1,14 +1,19 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using SpringFood.Models;
-using SpringFood.Services;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using SpringFoodBackend.Models.Auth;
+using SpringFoodBackend.Models.ViewModels;
+using SpringFoodBackend.Models.ViewModels.Requests;
+using SpringFoodBackend.Repos;
+using SpringFoodBackend.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SpringFood.Controllers
+namespace SpringFoodBackend.Controllers
 {
     [ApiController]
+    [Authorize(Roles = "Admin")]
     [Route("/api/user")]
     public class UserController : ControllerBase
     {
@@ -17,6 +22,24 @@ namespace SpringFood.Controllers
         {
             _service = new SpringFoodService(context);
         }
+        [AllowAnonymous]
+        [HttpPost("register")]
+        public IActionResult RegisterUser(RegisterUserViewModel toAdd)
+        {
+            _service.RegisterUser(toAdd);
+            return Ok(true);
+        }
+
+        [AllowAnonymous]
+        [HttpPost("login")]
+        public IActionResult Login(LoginRequest loginRe)
+        {
+            string token = _service.Login(loginRe);
+            return Ok(new { loginRe.Username, token }); 
+        }
+        
+
+        
         [HttpPost]
         public IActionResult AddUser(User toAdd)
         {
@@ -27,7 +50,8 @@ namespace SpringFood.Controllers
         [HttpGet]
         public IActionResult GetAllUsers()
         {
-            return this.Accepted(_service.GetAllUsers());
+           List<User> userList = _service.GetAllUsers();
+            return Ok(userList.Select(u => new UserView(u))); 
         }
         [HttpPut]
         public IActionResult EditUser(User toEdit)
@@ -41,7 +65,9 @@ namespace SpringFood.Controllers
             _service.DeleteUser(id);
             return this.Accepted();
         }
-        
+
 
     }
+
 } 
+ 

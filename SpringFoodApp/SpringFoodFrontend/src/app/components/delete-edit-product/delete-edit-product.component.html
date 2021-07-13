@@ -1,0 +1,35 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+
+<app-admin></app-admin>
+<div class="small-container">
+    <br> <br> 
+
+    <ul>
+        <li *ngFor="let product of products">
+            <a routerLink="/product/{{product.id}}">
+                <img src="{{product.image}}" alt="">
+                <div class="content">
+                    <div class="name">
+                        {{product.name}} ({{product.quantity}})
+                    </div>
+                    <div class="description">
+                        <span>
+                            {{product.description}}
+                        </span>
+                    </div>
+                    <div class="price">
+                        <span>
+                            {{product.price|currency}}
+                        </span>
+                    </div>
+                   
+                </div>
+            </a>
+            <!-- <div class="col-2 border-0 align-middle text-center my-auto">
+                <i class="fa fa-trash" (click)="deleteProduct()"></i>
+              </div> -->
+              <!-- <button type="button"  mat-button color="warn" (click)="deleteProduct(product.id)">Delete
+            </button> -->
+        </li>
+    </ul>
+</div>

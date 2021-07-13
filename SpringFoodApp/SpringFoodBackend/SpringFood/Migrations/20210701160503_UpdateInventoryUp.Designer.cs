@@ -6,6 +6,8 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SpringFood;
+using SpringFoodBackend.Repos;
+
 
 namespace SpringFood.Migrations
 {

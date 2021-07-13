@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 
 
-namespace SpringFood.Models
+namespace SpringFoodBackend.Models.Domain
 {
-    
+
     public class Inventory
     {
         public int Id { get; set; }

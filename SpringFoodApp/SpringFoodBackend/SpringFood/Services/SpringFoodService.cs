@@ -1,10 +1,17 @@
-﻿using SpringFood.Exceptions;
-using SpringFood.Models;
-using SpringFood.Repos;
+﻿using Microsoft.IdentityModel.Tokens;
+using SpringFoodBackend.Exceptions;
+using SpringFoodBackend.Models.Auth;
+using SpringFoodBackend.Models.Domain;
+using SpringFoodBackend.Models.ViewModels.Requests;
+using SpringFoodBackend.Repos;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
+using System.Security.Claims;
+using System.Text;
 
-namespace SpringFood.Services
+namespace SpringFoodBackend.Services
 {
     public class SpringFoodService
     {
@@ -22,12 +29,94 @@ namespace SpringFood.Services
             _inventory = new InventoryRepo(context);
             _cart = new CartRepo(context);
             _order = new OrderRepo(context);
-        } 
+        }
+
+        public void RegisterUser(RegisterUserViewModel toAdd)
+        {
+            User previouslyUserName = _user.GetUserByUserName(toAdd.Username);
+            if (previouslyUserName != null)
+            {
+                throw new UserNameInUseException(); 
+            }
+            Role basicRole = _user.GetRoleByName("user");
+            UserRole bridgeRow = new UserRole();
+            bridgeRow.RoleId = basicRole.Id;
+            bridgeRow.SelectedRole = basicRole;
+
+            User toAddUser = new User();
+            bridgeRow.EnrolledUser = toAddUser;
+            toAddUser.Roles.Add(bridgeRow);
+
+            toAddUser.Email = toAdd.Email;
+            toAddUser.Username = toAdd.Username;
+            using (var hMac = new System.Security.Cryptography.HMACSHA512())
+            {
+                byte[] salt = hMac.Key;
+                byte[] hash = hMac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(toAdd.Password));
+                toAddUser.PasswordSalt = salt;
+                toAddUser.PasswordHash = hash;
+            }
+            _user.AddUser(toAddUser);
+        }
+
+        public object getOrdersByUserId(int curUserId)
+        {
+           return _order.GetOrdersByUserId(curUserId);
+        }
+
+        public string Login(LoginRequest loginRe)
+        {
+           User curUser =  _user.GetUserByUserName(loginRe.Username);
+            bool passValidated = this.ValidatePassword(loginRe.Password, curUser.PasswordSalt, curUser.PasswordHash);
+            if (!passValidated)
+            {
+                throw new InvalidPasswordException(); 
+            }
+            string token = this.GenerateToken(curUser);
+            return token;
+        }
+
+        private string GenerateToken(User curUser)
+        {
+            JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
+            byte[] key = Encoding.ASCII.GetBytes(AppSettings.Secret);
+            SecurityTokenDescriptor tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(
+                    curUser.Roles.Select(r => new Claim(
+                        ClaimTypes.Role, r.SelectedRole.Name)).Append(
+                        new Claim(ClaimTypes.NameIdentifier, curUser.Id.ToString()))),
+                Expires = DateTime.UtcNow.AddDays(7), 
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256)
+            } ;
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            string tokenString = tokenHandler.WriteToken(token);
+            return tokenString; 
+        }
+
+        private bool ValidatePassword(string password, byte[] passwordSalt, byte[] passwordHash)
+        {
+            using (var hMac = new System.Security.Cryptography.HMACSHA512(passwordSalt))
+            {
+               
+                byte[] passHased = hMac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+                for(int i = 0; i < passwordHash.Length; i++)
+                {
+                    if(passwordHash[i] != passHased[i])
+                    {
+                        return false; 
+                    }
+                }
+                return true; 
+               
+            }
+        }
+
         public int AddProduct(Product product)
         {
             if (product == null)
             {
-                throw new ArgumentNullException("Can't add a null product"); 
+                throw new ArgumentNullException("Can't add a null product");
             }
             if (product.Name == null)
             {
@@ -47,7 +136,7 @@ namespace SpringFood.Services
 
         public List<Product> GetProductByCatId(int id)
         {
-            return _category.GetProductByCatId(id); 
+            return _category.GetProductByCatId(id);
         }
 
         public Order GetOrderById(int id)
@@ -139,19 +228,19 @@ namespace SpringFood.Services
 
         public int AddCart(Cart toAdd)
         {
-            return _cart.AddCart(toAdd); 
+            return _cart.AddCart(toAdd);
         }
         public Cart GetCartById(int id)
         {
-           return _cart.GetCartById(id); 
+            return _cart.GetCartById(id);
         }
         public List<Cart> GetAllCarts()
         {
-           return _cart.GetAllCarts(); 
+            return _cart.GetAllCarts();
         }
         public void EditCart(Cart toEdit)
         {
-            _cart.EditCart(toEdit); 
+            _cart.EditCart(toEdit);
         }
         public void DeleteCart(int id)
         {
@@ -160,22 +249,22 @@ namespace SpringFood.Services
 
         public int AddOrder(Order toAdd)
         {
-           return _order.AddOrder(toAdd); 
+            return _order.AddOrder(toAdd);
         }
 
         public List<Order> GetAllOrders()
         {
-            return _order.GetAllOrders(); 
+            return _order.GetAllOrders();
         }
 
         public void EdtOrder(Order toEdit)
         {
-             _order.EditOrder(toEdit); 
+            _order.EditOrder(toEdit);
         }
 
         public void DeleteOrder(int id)
         {
-            _order.DeleteOrder(id); 
+            _order.DeleteOrder(id);
         }
 
     }

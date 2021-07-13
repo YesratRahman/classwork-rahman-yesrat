@@ -1,15 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SpringFood.Exceptions;
-using SpringFood.Interfaces;
-using SpringFood.Models;
+using SpringFoodBackend.Exceptions;
+using SpringFoodBackend.Interfaces;
+using SpringFoodBackend.Models.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Web.Http; 
+using System.Web.Http;
 
 
-namespace SpringFood.Repos
+namespace SpringFoodBackend.Repos
 {
     public class ProductRepo: IProduct
     {

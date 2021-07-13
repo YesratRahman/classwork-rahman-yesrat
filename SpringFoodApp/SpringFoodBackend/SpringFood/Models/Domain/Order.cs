@@ -1,14 +1,13 @@
-﻿using SpringFood.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using SpringFoodBackend.Models.Auth;
 
-
-namespace SpringFood.Models
+namespace SpringFoodBackend.Models.Domain
 {
     [Table("Orders")]
     public class Order
@@ -34,6 +33,7 @@ namespace SpringFood.Models
         public int PostalCode { get; set; }
    
         public List<OrderDetails> OrderDetails { get; set; }
+        public User Purchaser { get; set; }
 
     }
 }

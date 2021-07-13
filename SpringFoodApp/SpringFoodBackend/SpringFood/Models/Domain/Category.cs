@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace SpringFood.Models
+namespace SpringFoodBackend.Models.Domain
 {
     [Table("Categories")]
     public class Category

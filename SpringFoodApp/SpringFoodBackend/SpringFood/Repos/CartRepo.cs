@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SpringFood.Interfaces;
-using SpringFood.Models;
+using SpringFoodBackend.Interfaces;
+using SpringFoodBackend.Models.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SpringFood.Repos
+namespace SpringFoodBackend.Repos
 {
     public class CartRepo : ICart
     {

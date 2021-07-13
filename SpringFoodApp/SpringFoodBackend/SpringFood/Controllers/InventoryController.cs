@@ -1,12 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SpringFood.Models;
-using SpringFood.Services;
+using SpringFoodBackend.Models.Domain;
+using SpringFoodBackend.Repos;
+using SpringFoodBackend.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SpringFood.Controllers
+namespace SpringFoodBackend.Controllers
 {
     [ApiController]
     [Route("/api/inventory")]

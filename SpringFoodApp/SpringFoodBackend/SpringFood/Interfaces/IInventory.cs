@@ -1,10 +1,10 @@
-﻿using SpringFood.Models;
-using System;
+﻿
+using SpringFoodBackend.Models.Domain;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SpringFood.Interfaces
+namespace SpringFoodBackend.Interfaces
 {
     public interface IInventory
     {

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SpringFood;
+using SpringFoodBackend.Repos;
 
 namespace SpringFood.Migrations
 {
@@ -19,7 +19,65 @@ namespace SpringFood.Migrations
                 .HasAnnotation("ProductVersion", "5.0.7")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("SpringFood.Models.Cart", b =>
+            modelBuilder.Entity("SpringFoodBackend.Models.Auth.Role", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Roles");
+                });
+
+            modelBuilder.Entity("SpringFoodBackend.Models.Auth.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<byte[]>("PasswordSalt")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("SpringFoodBackend.Models.Auth.UserRole", b =>
+                {
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
+
+                    b.HasKey("UserId", "RoleId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("UserRoles");
+                });
+
+            modelBuilder.Entity("SpringFoodBackend.Models.Domain.Cart", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -33,42 +91,12 @@ namespace SpringFood.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Carts");
                 });
 
-            modelBuilder.Entity("SpringFood.Models.CartProduct", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("CartId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CartId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("CartProducts");
-                });
-
-            modelBuilder.Entity("SpringFood.Models.Category", b =>
+            modelBuilder.Entity("SpringFoodBackend.Models.Domain.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -85,7 +113,7 @@ namespace SpringFood.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("SpringFood.Models.Inventory", b =>
+            modelBuilder.Entity("SpringFoodBackend.Models.Domain.Inventory", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -108,7 +136,7 @@ namespace SpringFood.Migrations
                     b.ToTable("Inventories");
                 });
 
-            modelBuilder.Entity("SpringFood.Models.Order", b =>
+            modelBuilder.Entity("SpringFoodBackend.Models.Domain.Order", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -140,16 +168,21 @@ namespace SpringFood.Migrations
                     b.Property<int>("PostalCode")
                         .HasColumnType("int");
 
+                    b.Property<int?>("PurchaserId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Street")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("PurchaserId");
+
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("SpringFood.Models.OrderDetails", b =>
+            modelBuilder.Entity("SpringFoodBackend.Models.Domain.OrderDetails", b =>
                 {
                     b.Property<int?>("OrderId")
                         .HasColumnType("int");
@@ -167,7 +200,7 @@ namespace SpringFood.Migrations
                     b.ToTable("OrderDetails");
                 });
 
-            modelBuilder.Entity("SpringFood.Models.Product", b =>
+            modelBuilder.Entity("SpringFoodBackend.Models.Domain.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -204,60 +237,28 @@ namespace SpringFood.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("SpringFood.Models.User", b =>
+            modelBuilder.Entity("SpringFoodBackend.Models.Auth.UserRole", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.HasOne("SpringFoodBackend.Models.Auth.Role", "SelectedRole")
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasMaxLength(8)
-                        .HasColumnType("nvarchar(8)");
-
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("SpringFood.Models.Cart", b =>
-                {
-                    b.HasOne("SpringFood.Models.User", "User")
-                        .WithMany("Carts")
+                    b.HasOne("SpringFoodBackend.Models.Auth.User", "EnrolledUser")
+                        .WithMany("Roles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("User");
+                    b.Navigation("EnrolledUser");
+
+                    b.Navigation("SelectedRole");
                 });
 
-            modelBuilder.Entity("SpringFood.Models.CartProduct", b =>
+            modelBuilder.Entity("SpringFoodBackend.Models.Domain.Inventory", b =>
                 {
-                    b.HasOne("SpringFood.Models.Cart", null)
-                        .WithMany("CartProducts")
-                        .HasForeignKey("CartId");
-
-                    b.HasOne("SpringFood.Models.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId");
-
-                    b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("SpringFood.Models.Inventory", b =>
-                {
-                    b.HasOne("SpringFood.Models.Product", "Product")
+                    b.HasOne("SpringFoodBackend.Models.Domain.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -266,15 +267,24 @@ namespace SpringFood.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("SpringFood.Models.OrderDetails", b =>
+            modelBuilder.Entity("SpringFoodBackend.Models.Domain.Order", b =>
                 {
-                    b.HasOne("SpringFood.Models.Order", "Order")
+                    b.HasOne("SpringFoodBackend.Models.Auth.User", "Purchaser")
+                        .WithMany()
+                        .HasForeignKey("PurchaserId");
+
+                    b.Navigation("Purchaser");
+                });
+
+            modelBuilder.Entity("SpringFoodBackend.Models.Domain.OrderDetails", b =>
+                {
+                    b.HasOne("SpringFoodBackend.Models.Domain.Order", "Order")
                         .WithMany("OrderDetails")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SpringFood.Models.Product", "Product")
+                    b.HasOne("SpringFoodBackend.Models.Domain.Product", "Product")
                         .WithMany("OrderDetails")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -285,9 +295,9 @@ namespace SpringFood.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("SpringFood.Models.Product", b =>
+            modelBuilder.Entity("SpringFoodBackend.Models.Domain.Product", b =>
                 {
-                    b.HasOne("SpringFood.Models.Category", "Category")
+                    b.HasOne("SpringFoodBackend.Models.Domain.Category", "Category")
                         .WithMany("Products")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -296,29 +306,24 @@ namespace SpringFood.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("SpringFood.Models.Cart", b =>
+            modelBuilder.Entity("SpringFoodBackend.Models.Auth.User", b =>
                 {
-                    b.Navigation("CartProducts");
+                    b.Navigation("Roles");
                 });
 
-            modelBuilder.Entity("SpringFood.Models.Category", b =>
+            modelBuilder.Entity("SpringFoodBackend.Models.Domain.Category", b =>
                 {
                     b.Navigation("Products");
                 });
 
-            modelBuilder.Entity("SpringFood.Models.Order", b =>
+            modelBuilder.Entity("SpringFoodBackend.Models.Domain.Order", b =>
                 {
                     b.Navigation("OrderDetails");
                 });
 
-            modelBuilder.Entity("SpringFood.Models.Product", b =>
+            modelBuilder.Entity("SpringFoodBackend.Models.Domain.Product", b =>
                 {
                     b.Navigation("OrderDetails");
-                });
-
-            modelBuilder.Entity("SpringFood.Models.User", b =>
-                {
-                    b.Navigation("Carts");
                 });
 #pragma warning restore 612, 618
         }

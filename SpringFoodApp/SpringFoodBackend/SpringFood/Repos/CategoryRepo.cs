@@ -1,12 +1,13 @@
-﻿using SpringFood.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
+using SpringFoodBackend.Interfaces;
+using SpringFoodBackend.Models.Domain;
 
-namespace SpringFood.Repos
+namespace SpringFoodBackend.Repos
 {
     public class CategoryRepo : ICategory
     {

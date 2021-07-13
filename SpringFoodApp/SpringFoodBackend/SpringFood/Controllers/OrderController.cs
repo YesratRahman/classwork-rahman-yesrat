@@ -1,12 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using SpringFood.Models;
-using SpringFood.Services;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using SpringFoodBackend.Models.Domain;
+using SpringFoodBackend.Repos;
+using SpringFoodBackend.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace SpringFood.Controllers
+namespace SpringFoodBackend.Controllers
 {
     [ApiController]
     [Route("/api/order")]
@@ -27,7 +30,16 @@ namespace SpringFood.Controllers
         [HttpGet]
         public IActionResult GetAllOrders()
         {
-            return this.Accepted(_service.GetAllOrders());
+            if (this.User.Claims.Any(c => c.Type == ClaimTypes.Role.ToString() && c.Value == "Admin"))
+            {
+                return this.Accepted(_service.GetAllOrders());
+
+            }
+            else
+            {
+                int curUserId = int.Parse(this.User.Claims.Single(c => c.Type == ClaimTypes.NameIdentifier.ToString()).Value);
+                return Ok(_service.getOrdersByUserId(curUserId)); 
+            }
         }
         [HttpGet("{id}")]
         public IActionResult GetOrderById(int id)

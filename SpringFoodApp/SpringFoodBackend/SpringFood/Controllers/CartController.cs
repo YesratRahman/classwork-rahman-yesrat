@@ -1,11 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using SpringFood.Models;
-using SpringFood.Services;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using SpringFoodBackend.Models.Domain;
+using SpringFoodBackend.Repos;
+using SpringFoodBackend.Services;
 
-
-namespace SpringFood.Controllers
+namespace SpringFoodBackend.Controllers
 {
     [ApiController]
+    [Authorize(Roles = "User")]
     [Route("/api/cart")]
     public class CartController:ControllerBase
     {

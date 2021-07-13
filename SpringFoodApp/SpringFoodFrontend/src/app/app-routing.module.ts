@@ -11,6 +11,9 @@ import { SingleOrderComponent } from "./components/single-order/single-order.com
 import { ProductCategoryComponent } from "./components/product-category/product-category.component";
 import { AdminComponent } from "./components/admin/admin.component";
 import { AddProductComponent } from "./components/add-product/add-product.component";
+import { DeleteEditProductComponent } from "./components/delete-edit-product/delete-edit-product.component";
+import { UserRegistrationComponent } from "./components/user-registration/user-registration.component";
+import { UserLoginComponent } from "./components/user-login/user-login.component";
 
 const routes: Routes =[
     // { path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -25,7 +28,10 @@ const routes: Routes =[
     {path: 'order/:id', component: SingleOrderComponent },
     {path: 'product-by-category/:id', component: ProductCategoryComponent},
     {path: 'admin', component: AdminComponent}, 
-    {path: 'admin/addProduct', component: AddProductComponent}
+    {path: 'admin/addProduct', component: AddProductComponent},
+    {path: 'admin/delete-edit-product', component: DeleteEditProductComponent},
+    {path: 'register', component: UserRegistrationComponent},
+    {path: 'login', component: UserLoginComponent}
 
 
 

@@ -26,6 +26,12 @@ import { SingleOrderComponent } from './components/single-order/single-order.com
 import { ProductCategoryComponent } from './components/product-category/product-category.component';
 import { AddProductComponent } from './components/add-product/add-product.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { DeleteEditProductComponent } from './components/delete-edit-product/delete-edit-product.component';
+import { UserRegistrationComponent } from './components/user-registration/user-registration.component';
+import { UserLoginComponent } from './components/user-login/user-login.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './components/token.interceptor';
+import { CartService } from './services/cart.service';
 
 
 
@@ -47,7 +53,10 @@ import { AdminComponent } from './components/admin/admin.component';
     SingleOrderComponent,
     ProductCategoryComponent,
     AdminComponent,
-    AddProductComponent  ],
+    AddProductComponent,
+    DeleteEditProductComponent,
+    UserRegistrationComponent,
+    UserLoginComponent  ],
   imports: [
     BrowserModule,
     AppRoutingModule, 
@@ -59,11 +68,12 @@ import { AdminComponent } from './components/admin/admin.component';
     FormsModule,
     MatCardModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    
 
 
   ],
-  providers: [],
+  providers: [CartService, {provide : HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi : true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

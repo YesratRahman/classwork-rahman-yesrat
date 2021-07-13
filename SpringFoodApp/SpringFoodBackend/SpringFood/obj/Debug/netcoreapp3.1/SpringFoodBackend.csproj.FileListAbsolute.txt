@@ -133,3 +133,4 @@ C:\Repos\classwork-rahman-yesrat\SpringFoodApp\SpringFoodBackend\SpringFood\obj\
 C:\Repos\classwork-rahman-yesrat\SpringFoodApp\SpringFoodBackend\SpringFood\obj\Debug\netcoreapp3.1\SpringFoodBackend.dll
 C:\Repos\classwork-rahman-yesrat\SpringFoodApp\SpringFoodBackend\SpringFood\obj\Debug\netcoreapp3.1\SpringFoodBackend.pdb
 C:\Repos\classwork-rahman-yesrat\SpringFoodApp\SpringFoodBackend\SpringFood\obj\Debug\netcoreapp3.1\SpringFoodBackend.genruntimeconfig.cache
+C:\Repos\classwork-rahman-yesrat\SpringFoodApp\SpringFoodBackend\SpringFood\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll

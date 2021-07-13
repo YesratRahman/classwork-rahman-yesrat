@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Newtonsoft.Json;
 
-namespace SpringFood.Models
+namespace SpringFoodBackend.Models.Domain
 {
     [Table("Products")]
     public class Product
@@ -28,20 +28,6 @@ namespace SpringFood.Models
         public int CategoryId { get; set; }
 
         public Category Category{ get; set; }
-
-
-        //public Product()
-        //{
-        //}
-
-        //public Product(Product that)
-        //{
-        //    this.Id = that.Id;
-        //    this.Name = that.Name;
-        //    this.Quantity = that.Quantity;
-        //    this.Image = that.Image;
-        //    Category = new Category(that.Category); 
-        //}
 
     }
 }

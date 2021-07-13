@@ -7,7 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 
-namespace SpringFood.Models
+namespace SpringFoodBackend.Models.Domain
 {
     public class OrderDetails
     {

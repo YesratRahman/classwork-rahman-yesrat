@@ -17,15 +17,9 @@ export class AllProductsComponent implements OnInit {
   constructor(private produtService : ProductService, private router: Router, private route : ActivatedRoute) { }
 
   ngOnInit(): void {
-    // this.route.params.subscribe(params=>{
-    //   if(params.searchTerm)
-    //   this.products = this.products.filter(product => product.name.toLowerCase().includes(params.searchTerm.toLowerCase()));
-    //   else 
       this.produtService.getAllProducts().subscribe(proList => {
-        // console.log(proList);
         this.products = proList; 
       })
-    // })
     
   }
   

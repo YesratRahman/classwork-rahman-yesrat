@@ -6,11 +6,17 @@
     <h2>Admin Zone</h2>
     <div>
       <nav class="my-2 my-md-0 mr-md-3 mr-md-auto">
-        <a class="p-2 text-dark mr-4" routerLink="/admin/addProduct">Add Products</a>
-        <a class="p-2 text-dark mr-4" routerLink="/">All Products</a>
-        <a class="p-2 text-dark mr-4" routerLink="/">User Activity</a>
+        <a class="p-2 text-dark mr-4" routerLink="/admin/addProduct">Add Product</a>
+        <a class="p-2 text-dark mr-4" routerLink="/admin/delete-edit-product">Delete or Update Product</a>
       </nav>
       <hr>
     </div>
   </div>
+  <div class="container w-75">
+    <div class="row">
+      <div class="col">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+</div>
   

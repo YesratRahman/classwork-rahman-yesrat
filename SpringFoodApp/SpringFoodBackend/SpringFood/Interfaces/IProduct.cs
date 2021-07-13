@@ -1,8 +1,9 @@
-﻿using SpringFood.Models;
+﻿
+using SpringFoodBackend.Models.Domain;
 using System.Collections.Generic;
 
 
-namespace SpringFood.Interfaces
+namespace SpringFoodBackend.Interfaces
 {
     public interface IProduct
     {

@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using SpringFood.Models;
-using SpringFood.Services;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using SpringFoodBackend.Models.Domain;
+using SpringFoodBackend.Repos;
+using SpringFoodBackend.Services;
 
-namespace SpringFood.Controllers
+namespace SpringFoodBackend.Controllers
 {
 
     [ApiController]
@@ -37,7 +39,6 @@ namespace SpringFood.Controllers
             return this.Accepted(product);
 
         }
-
         [HttpGet]
         public IActionResult GetAllProducts()
         {

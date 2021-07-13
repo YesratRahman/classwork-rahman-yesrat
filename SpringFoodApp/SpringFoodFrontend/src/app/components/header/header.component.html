@@ -10,9 +10,17 @@
                     <li><a routerLink="/">Home</a></li>
                     <li><a routerLink="/allProducts" href="#">Products</a></li>
                     <li><a routerLink="/">About</a></li>
-                    <li><a routerLink="/admin">Admin Area</a></li>
+                    <li><a routerLink="/admin/addProduct">Admin Area</a></li>
                     <li><a routerLink="/">Contact</a></li>
-                    <li> </li>
+                    <li *ngIf="!signedIn">
+                        <a routerLink="/register">Sign Up</a>
+                    </li>
+                    <li *ngIf="!signedIn">
+                        <a routerLink="/login">Sign In</a>
+                    </li>
+                    <li *ngIf="signedIn" >
+                        <a (click)="signOut()">Sign Out </a>
+                    </li>
                 </ul>
             </nav>
             <img src="assets/cart.png" routerLink="/cart-page" href="#" width="30px" height="30px">

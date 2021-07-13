@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SpringFood.Interfaces;
-using SpringFood.Models;
+using SpringFoodBackend.Interfaces;
+using SpringFoodBackend.Models.Auth;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SpringFood.Repos
+namespace SpringFoodBackend.Repos
 {
     public class UserRepo : IUser
     {
@@ -51,6 +51,17 @@ namespace SpringFood.Repos
         {
             User toGet = _context.Users.Find(id);
             return toGet; 
+        }
+        public Role GetRoleByName(string name)
+        {
+          Role role =  _context.Roles.SingleOrDefault(r => r.Name.ToLower() == name.ToLower());
+            return role; 
+        }
+
+        public User GetUserByUserName(string username)
+        {
+            User toReturnUser = _context.Users.Include("Roles.SelectedRole").SingleOrDefault(u => u.Username.ToLower() == username.ToLower());
+            return toReturnUser; 
         }
     }
 }

@@ -1,10 +1,8 @@
-﻿    using SpringFood.Models;
-using System;
+﻿ 
+using SpringFoodBackend.Models.Auth;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace SpringFood.Interfaces
+namespace SpringFoodBackend.Interfaces
 {
     public interface IUser
     {
@@ -13,6 +11,8 @@ namespace SpringFood.Interfaces
         List<User> GetAllUsers();
         void EditUser(User toEdit);
         void DeleteUser(int id);
+        Role GetRoleByName(string name);
+        User GetUserByUserName(string username);
 
     }
 }

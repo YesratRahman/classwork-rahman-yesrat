@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace SpringFood.Models
+namespace SpringFoodBackend.Models.Domain
 {
     [Table("Carts")]
     public class Cart
@@ -17,10 +17,10 @@ namespace SpringFood.Models
         [Required]
         public string Status { get; set; }
         //ManyToOne 
-        public int UserId { get; set; }
-        public User User { get; set; }
-        //OneToMany
-        public List<CartProduct> CartProducts { get; set; } = new List<CartProduct>(); 
+        //public int UserId { get; set; }
+        //public User User { get; set; }
+        ////OneToMany
+        //public List<CartProduct> CartProducts { get; set; } = new List<CartProduct>(); 
 
     }
 }

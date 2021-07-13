@@ -1,7 +1,8 @@
-﻿using SpringFood.Models;
+﻿
+using SpringFoodBackend.Models.Domain;
 using System.Collections.Generic;
 
-namespace SpringFood.Repos
+namespace SpringFoodBackend.Interfaces
 {
     public interface ICategory
     {

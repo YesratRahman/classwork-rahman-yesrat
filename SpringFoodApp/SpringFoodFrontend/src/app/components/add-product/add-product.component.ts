@@ -44,16 +44,9 @@ export class AddProductComponent implements OnInit {
     this.productService.addProduct(toAdd).subscribe((_) => {this.router.navigate(["/allProducts"])});
     console.log(toAdd);
   }
-  onDropdownChange(e: number){
-    console.log(e);//you will get the id  
-    this.categoryId =e;  //if you want to bind it to your model
-    console.log(e);
+  onDropdownChange(id: number){
+    this.categoryId = id; 
+   
   }
-  // getAllCategories(){
-  //   this.productService.getAllCategories().subscribe(category => {
-  //     this.categories = category; 
-  //     console.log(this.categories);
-  //   })
-  // // })
-  // }
+  
 }

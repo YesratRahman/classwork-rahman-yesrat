@@ -24,8 +24,8 @@ export class ProductCategoryComponent implements OnInit {
       this.produtService.getAllProductsByCategoryId(this.id).subscribe(product => {
         this.products = product;
         this.products.forEach(product => {
-          // this.name =  product.category.name ; 
-          console.log(this.name);
+             product.category?.name ; 
+          console.log(this.products[0].category?.name );
         });
         
         console.log(this.products)

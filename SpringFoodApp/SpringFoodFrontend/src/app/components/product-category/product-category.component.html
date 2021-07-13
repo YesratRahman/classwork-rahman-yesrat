@@ -1,11 +1,5 @@
-<!-- <app-header> </app-header> -->
-
 <div class="small-container">
-
-        <div> 
-            <h2 class="single-cat-name" > {{name}}</h2>
-
-        </div>
+    <h2 class="single-cat-name"> {{products[0].category?.name}}</h2>
 
     <ul>
         <li *ngFor="let product of products">

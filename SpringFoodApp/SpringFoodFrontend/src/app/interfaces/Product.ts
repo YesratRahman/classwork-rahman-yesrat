@@ -8,5 +8,5 @@ export interface Product{
     image: string, 
     description: string, 
     categoryId? : number,
-    // category : Category; 
+    category? : Category; 
 }

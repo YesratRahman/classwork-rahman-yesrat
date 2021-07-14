@@ -58,8 +58,7 @@ export class CheckoutComponent implements OnInit {
     } 
 
     this.productService.createOrder(toAdd).subscribe(order => {this.router.navigate([`/order/${order.id}`])});
-
-    console.log(toAdd);
+    this.cartService.clearCart(); 
   }
   setOrderDetails() : OrderDetails[] {
     let orderDetails : OrderDetails [] = [];
@@ -74,21 +73,6 @@ export class CheckoutComponent implements OnInit {
 
     return orderDetails;
   }
-
-  resetOrderObj() {
-      
-    this.firstName= "";
-    this.lastName= "";
-
-    this.email = "";
-    this.city = ""; 
-    this.apartment = "", 
-    this.street = ""; 
-    this.homeNumber = "",
-    this.postalCode = 0
-  
-}
-
 
 getNumberOfItems(){
   return this.cartService.getCart().items.length;

@@ -28,6 +28,7 @@ namespace SpringFoodBackend.Controllers
             return Accepted(toAdd); 
         }
         [HttpGet]
+        [Authorize]
         public IActionResult GetAllOrders()
         {
             if (this.User.Claims.Any(c => c.Type == ClaimTypes.Role.ToString() && c.Value == "Admin"))

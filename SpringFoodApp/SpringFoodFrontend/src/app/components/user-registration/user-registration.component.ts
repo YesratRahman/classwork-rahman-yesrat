@@ -13,6 +13,7 @@ export class UserRegistrationComponent implements OnInit {
   userPassword : string = ""; 
   userEmail : string = ""; 
   confirmUserPassword: string = ""; 
+  date : Date | undefined;
   constructor(private authService : AuthService) { }
 
   ngOnInit(): void {
@@ -22,6 +23,7 @@ export class UserRegistrationComponent implements OnInit {
       Username: this.userName,
       Email: this.userEmail,
       Password: this.userPassword,
+      date: new Date()
 
     };
 

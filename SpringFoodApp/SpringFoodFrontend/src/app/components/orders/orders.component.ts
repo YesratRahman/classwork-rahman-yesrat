@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CartProduct } from 'src/app/interfaces/CartProduct';
 import { Order } from 'src/app/interfaces/Order';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -10,28 +11,40 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class OrdersComponent implements OnInit {
 
+  orders: Order[] = [];
 
-order! : Order;
-id : number = 0;
+  constructor(private productService: ProductService) {
 
-constructor(private productService : ProductService, private route : ActivatedRoute) {
-  
 
-} 
+  }
 
-ngOnInit(): void {
-  // 
-  this.route.params.subscribe(paramType => {
-    this.id = paramType['id'];
-    console.log(this.id);
+  ngOnInit(): void {
 
-this.productService.getOrderById(this.id).subscribe(order => 
-    this.order = order); 
-    console.log(this.order);
-  } ); 
+    this.productService.getAllOrders().subscribe(
+      
+      orderList => this.orders = orderList
+      );
+      console.log(this.orders);
+
+  }
 }
-} 
-// this.id = parseInt(this.route.snapshot.paramMap.get('id')!); 
+
+
+
+
+
+
+
+
+// this.id = parseInt(this.route.snapshot.paramMap.get('id')!);
 
   // this.id = this.route.snapshot.paramMap.get('id')
-  
+//   this.route.params.subscribe(paramType => {
+//     this.id = paramType['id'];
+//     console.log(this.id);
+
+// this.productService.getOrderById(this.id).subscribe(order => 
+//     this.order = order); 
+//     console.log(this.order);
+//   } ); 
+// }

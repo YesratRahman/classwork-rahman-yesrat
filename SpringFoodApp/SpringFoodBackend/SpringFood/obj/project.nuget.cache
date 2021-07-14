@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "cUl/8hcrSQzmIuismHzmWRk8mLYESV1LXWCH5cnE1cS3+ZWlxqWvQKY1PNCMWQBTFTFHWHWMmSE+QFoNfxGXFQ==",
+  "dgSpecHash": "AAch4PtyS7L2v9/86B0kic2GJyVLO542naWOHZBXiUV+2Gf0kRRUoXWNzy/9669AQxLOfB27mV7TRL1R63hv9w==",
   "success": true,
   "projectFilePath": "C:\\Repos\\classwork-rahman-yesrat\\SpringFoodApp\\SpringFoodBackend\\SpringFood\\SpringFoodBackend.csproj",
   "expectedPackageFiles": [
@@ -102,7 +102,8 @@
     "C:\\Users\\YRahman\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\YRahman\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\YRahman\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\YRahman\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    "C:\\Users\\YRahman\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
+    "C:\\Users\\YRahman\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.17\\microsoft.netcore.app.host.win-x64.3.1.17.nupkg.sha512"
   ],
   "logs": [
     {

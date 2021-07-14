@@ -22,8 +22,6 @@ namespace SpringFoodBackend.Models.Auth
         public byte[] PasswordSalt { get; set;  }
         [Required]
         public string Email { get; set; }
-        [Required]
-        public DateTime LoginDate { get; set; }
         public List<UserRole> Roles { get; set; } = new List<UserRole>(); 
 
 

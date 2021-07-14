@@ -9,46 +9,35 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class DeleteEditProductComponent implements OnInit {
 
-  products : Product[] = []; 
-  product! : Product ; 
-  @Output() notifyDelete : EventEmitter<number> = new EventEmitter<number>(); 
+  products: Product[] = [];
+  // product! : Product ; 
+  @Output() notifyDelete: EventEmitter<number> = new EventEmitter<number>();
 
 
-  constructor(private productService : ProductService) { 
-   
+  constructor(private productService: ProductService) {
+
   }
 
   ngOnInit(): void {
-    
-      this.productService.getAllProducts().subscribe(proList => {
-        this.products = proList; 
-      })
-    //   if(this.product.id == null || this.product.id == undefined){
-    //     console.log("error"); 
-    //   }
-    //   else {
-    //  this.productService.getProductById(this.product.id).subscribe(); 
-    //   }
-    
+
+    this.productService.getAllProducts().subscribe(proList => {
+      this.products = proList;
+    })
+
+
   }
 
-  // deleteProduct(){
-  //   if(this.product.id == null || this.product.id == undefined){
-  //     console.log("error"); 
-  //   }
-  //   else {
-  //     this.productService.deleteProduct(this.product.id).subscribe(() => {
-  //       this.notifyDelete.emit(this.product.id); 
-  //       console.log(this.product.id);
-  
-  //     }); 
-  //   }
-  deleteProduct(id: number) {
-    this.productService.deleteProduct(id).subscribe(data => {
-      this.productService.getAllProducts(); 
-        })
-    }
-   
-  
-  
+  onDelete(product: Product): void {
+    this.productService.deleteProduct(product.id).subscribe(result => {
+      this.productService.getAllProducts().subscribe(prolist => {
+        this.products = prolist;
+      })
+
+    })
+  }
+
+
+
+
 }
+

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SpringFoodBackend.Repos;
 
 namespace SpringFood.Migrations
 {
     [DbContext(typeof(SpringFoodDbContext))]
-    partial class SpringFoodDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210714171118_ProductTableUpdate")]
+    partial class ProductTableUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

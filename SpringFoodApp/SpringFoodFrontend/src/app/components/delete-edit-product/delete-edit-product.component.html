@@ -2,11 +2,11 @@
 
 <app-admin></app-admin>
 <div class="small-container">
-    <br> <br> 
+    <br> <br>
 
     <ul>
         <li *ngFor="let product of products">
-            <a routerLink="/product/{{product.id}}">
+            <a routerLink="/product/{{product.id}}" class="products">
                 <img src="{{product.image}}" alt="">
                 <div class="content">
                     <div class="name">
@@ -22,13 +22,18 @@
                             {{product.price|currency}}
                         </span>
                     </div>
-                   
+
                 </div>
             </a>
-            <div class="col-2 border-0 align-middle text-center my-auto">
-                <i class="fa fa-trash" (click)="onDelete(product)"></i>
-              </div>
-            
+            <div class="text-center">
+                <a type="button" class="btn btn-success btn-sm text-white mr-2" style="margin:5px;"
+                    href="edit-product/{{product.id}}">Update</a>
+
+                <button (click)="onDelete(product)" class="btn btn-danger btn-sm">
+                    Delete</button>
+
+            </div>
+
         </li>
     </ul>
 </div>

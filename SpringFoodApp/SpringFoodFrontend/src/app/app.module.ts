@@ -32,6 +32,7 @@ import { UserLoginComponent } from './components/user-login/user-login.component
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './components/token.interceptor';
 import { CartService } from './services/cart.service';
+import { EditProductComponent } from './components/edit-product/edit-product.component';
 
 
 
@@ -56,7 +57,8 @@ import { CartService } from './services/cart.service';
     AddProductComponent,
     DeleteEditProductComponent,
     UserRegistrationComponent,
-    UserLoginComponent  ],
+    UserLoginComponent,
+    EditProductComponent  ],
   imports: [
     BrowserModule,
     AppRoutingModule, 

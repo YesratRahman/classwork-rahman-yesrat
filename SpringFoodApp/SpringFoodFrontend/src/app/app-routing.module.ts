@@ -14,6 +14,7 @@ import { AddProductComponent } from "./components/add-product/add-product.compon
 import { DeleteEditProductComponent } from "./components/delete-edit-product/delete-edit-product.component";
 import { UserRegistrationComponent } from "./components/user-registration/user-registration.component";
 import { UserLoginComponent } from "./components/user-login/user-login.component";
+import { EditProductComponent } from "./components/edit-product/edit-product.component";
 
 const routes: Routes =[
     // { path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -31,7 +32,8 @@ const routes: Routes =[
     {path: 'admin/addProduct', component: AddProductComponent},
     {path: 'admin/delete-edit-product', component: DeleteEditProductComponent},
     {path: 'register', component: UserRegistrationComponent},
-    {path: 'login', component: UserLoginComponent}
+    {path: 'login', component: UserLoginComponent},
+    {path: 'edit-product/:id', component: EditProductComponent}
 
 
 

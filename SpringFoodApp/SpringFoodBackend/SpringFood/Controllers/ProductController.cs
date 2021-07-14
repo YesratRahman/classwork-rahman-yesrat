@@ -56,7 +56,7 @@ namespace SpringFoodBackend.Controllers
             return this.Accepted(_service.GetAllProducts());
         }
 
-        [HttpPut]
+        [HttpPut("{id}")]
 
         public IActionResult EditProduct(Product product)
         {
@@ -67,8 +67,17 @@ namespace SpringFoodBackend.Controllers
         [HttpDelete("{id}")]
         public IActionResult DeleteProduct(int id)
         {
-            _service.DeleteProduct(id);
-            return this.Accepted();
+
+            if (this.User.Claims.Any(c => c.Type == ClaimTypes.Role.ToString() && c.Value == "Admin"))
+            {
+                _service.DeleteProduct(id);
+                return this.Accepted();
+            }
+            else
+            {
+                return this.Unauthorized("Only admin can delete a product!");
+            }
+           
         }
 
 

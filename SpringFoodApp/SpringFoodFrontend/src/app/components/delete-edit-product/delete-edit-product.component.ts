@@ -10,7 +10,6 @@ import { ProductService } from 'src/app/services/product.service';
 export class DeleteEditProductComponent implements OnInit {
 
   products: Product[] = [];
-  // product! : Product ; 
   @Output() notifyDelete: EventEmitter<number> = new EventEmitter<number>();
 
 
@@ -30,11 +29,15 @@ export class DeleteEditProductComponent implements OnInit {
   onDelete(product: Product): void {
     this.productService.deleteProduct(product.id).subscribe(result => {
       this.productService.getAllProducts().subscribe(prolist => {
-        this.products = prolist;
+        this.products = prolist;     
+
       })
+    
 
     })
-  }
+
+    
+}
 
 
 

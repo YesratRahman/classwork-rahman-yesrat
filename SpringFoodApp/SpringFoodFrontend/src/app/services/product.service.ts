@@ -78,7 +78,6 @@ export class ProductService {
             quantity: 0, 
             image: "", 
             description: "", 
-            // category : {} as Category,
             categoryId: 0 
           };
           return of(empty);

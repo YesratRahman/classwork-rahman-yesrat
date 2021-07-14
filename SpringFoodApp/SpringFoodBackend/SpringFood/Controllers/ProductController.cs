@@ -20,18 +20,18 @@ namespace SpringFoodBackend.Controllers
             _service = new SpringFoodService(context);
         }
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles ="Admin")]
         public IActionResult AddProduct(Product product)
         {
-            if (this.User.Claims.Any(c => c.Type == ClaimTypes.Role.ToString() && c.Value == "Admin"))
-            {
+            //if (this.User.Claims.Any(c => c.Type == ClaimTypes.Role.ToString() && c.Value == "Admin"))
+            //{
                 _service.AddProduct(product);
                 return this.Accepted(product);
-            }
-            else
-            {
-                return this.Unauthorized("Only admin can addd product!");
-            }
+            //}
+            //else
+            //{
+            //    return this.Unauthorized("Only admin can add product!");
+            //}
 
         }
 
@@ -56,27 +56,38 @@ namespace SpringFoodBackend.Controllers
             return this.Accepted(_service.GetAllProducts());
         }
 
-        [HttpPut("{id}")]
+        [HttpPut]
+        [Authorize(Roles = "Admin")]
 
         public IActionResult EditProduct(Product product)
         {
-            _service.EditProduct(product);
-            return this.Accepted(product);
+            //if (this.User.Claims.Any(c => c.Type == ClaimTypes.Role.ToString() && c.Value == "Admin"))
+            //{
+                _service.EditProduct(product);
+                return this.Accepted(product);
+            //}
+            //else
+            //{
+            //    return this.Unauthorized("Only admin can update a product!");
+            //}
+
+           
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles ="Admin")]
         public IActionResult DeleteProduct(int id)
         {
 
-            if (this.User.Claims.Any(c => c.Type == ClaimTypes.Role.ToString() && c.Value == "Admin"))
-            {
+            //if (this.User.Claims.Any(c => c.Type == ClaimTypes.Role.ToString() && c.Value == "Admin"))
+            //{
                 _service.DeleteProduct(id);
                 return this.Accepted();
-            }
-            else
-            {
-                return this.Unauthorized("Only admin can delete a product!");
-            }
+            //}
+            //else
+            //{
+            //    return this.Unauthorized("Only admin can delete a product!");
+            //}
            
         }
 

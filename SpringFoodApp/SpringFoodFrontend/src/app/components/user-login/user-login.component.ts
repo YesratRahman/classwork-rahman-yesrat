@@ -26,7 +26,6 @@ export class UserLoginComponent implements OnInit {
 
     this.authService.loginUser(toLogin);
     this.router.navigate([""]);
-    console.log(toLogin);
   }
 
 

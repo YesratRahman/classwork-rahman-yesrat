@@ -27,8 +27,6 @@ export class UserRegistrationComponent implements OnInit {
       date: new Date()
 
     };
-
-
     this.authService.registerUser(toAdd).subscribe((_) => { this.router.navigate(["/login"])});
   }
 

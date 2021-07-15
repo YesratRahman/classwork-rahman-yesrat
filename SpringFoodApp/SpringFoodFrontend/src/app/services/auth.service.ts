@@ -22,7 +22,7 @@ export class AuthService {
   }
 
   constructor(private http: HttpClient) { 
-    console.log("Started auth service");
+    
   }
   registerUser(user: RegisterUserRequest): Observable<boolean> {
     return this.http.post<boolean>(this.baseUrl + "/user/register", user, this.httpOptions);

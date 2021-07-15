@@ -44,13 +44,8 @@ export class AddProductComponent implements OnInit {
         image: this.image,
         description: this.description,
         categoryId: this.categoryId
-
-
       };
-
-
       this.productService.addProduct(toAdd).subscribe((_) => { this.router.navigate(["/allProducts"]) });
-      console.log(toAdd);
     }
   }
   onDropdownChange(id: number) {

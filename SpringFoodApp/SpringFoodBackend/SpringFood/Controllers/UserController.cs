@@ -34,8 +34,10 @@ namespace SpringFoodBackend.Controllers
         [HttpPost("login")]
         public IActionResult Login(LoginRequest loginRe)
         {
-            string token = _service.Login(loginRe);
-            return Ok(new { loginRe.Username, token }); 
+            LoginResponse response = _service.Login(loginRe);
+            
+            
+            return Ok(response); 
         }
         
 

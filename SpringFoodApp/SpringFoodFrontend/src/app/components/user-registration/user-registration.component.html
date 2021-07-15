@@ -1,14 +1,42 @@
-<!-- <div id="box">  -->
-        <br> 
-        <br> 
-        <br> 
-        <input name="userName" type="text" placeholder="Enter Username" [(ngModel)]="userName">
-        <input name="userEmail" type="text" placeholder="Enter Email" [(ngModel)]="userEmail">  
-        <input name="userPassword" type="password" placeholder="Enter Password" [(ngModel)]="userPassword">  
-        <input name="userPassword" type="password" placeholder="Confirm Password" [(ngModel)]="confirmUserPassword">  
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-        <button type="submit" (click)="submit()">Register</button>
-        <br> 
-<br> 
-<br> 
-<!-- </div> -->
+<div class="body">
+        <div class="signup-form">
+
+                <form action="/examples/actions/confirmation.php" method="post">
+                        <h2>Register</h2>
+                        <p class="hint-text">Create your account. It's free and only takes a minute.</p>
+                        <div class="form-group">
+
+                                <input type="text" class="form-control" name="userName" placeholder="User Name"
+                                        required="required" [(ngModel)]="userName">
+
+                        </div>
+                        <div class="form-group">
+                                <input type="email" class="form-control" name="userEmail" placeholder="Email"
+                                        required="required" [(ngModel)]="userEmail">
+                        </div>
+                        <div class="form-group">
+                                <input type="password" class="form-control" name="userPassword" placeholder="Password"
+                                        required="required" [(ngModel)]="userPassword">
+                        </div>
+                        <div class="form-group">
+                                <input type="password" class="form-control" name="confirmUserPassword"
+                                        placeholder="Confirm Password" required="required"
+                                        [(ngModel)]="confirmUserPassword">
+                        </div>
+                        <div class="form-group">
+                                <label class="form-check-label"><input type="checkbox" required="required"> I accept the
+                                        <a>Terms of Use</a> &amp; <a>Privacy Policy</a></label>
+                        </div>
+                        <div class="form-group">
+                                <button type="submit" class="btn btn-success btn-lg btn-block"
+                                        (click)="submit()">Register Now</button>
+                        </div>
+                </form>
+                <div class="text-center" style="color: blue;">Already have an account? <a style="color: blue;"
+                                href="/login">Sign in</a></div>
+        </div>
+</div>

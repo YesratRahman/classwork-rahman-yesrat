@@ -59,12 +59,13 @@ namespace SpringFoodBackend.Services
             _user.AddUser(toAddUser);
         }
 
+       
         public object getOrdersByUserId(int curUserId)
         {
            return _order.GetOrdersByUserId(curUserId);
         }
 
-        public string Login(LoginRequest loginRe)
+        public LoginResponse Login(LoginRequest loginRe)
         {
            User curUser =  _user.GetUserByUserName(loginRe.Username);
             bool passValidated = this.ValidatePassword(loginRe.Password, curUser.PasswordSalt, curUser.PasswordHash);
@@ -73,7 +74,11 @@ namespace SpringFoodBackend.Services
                 throw new InvalidPasswordException(); 
             }
             string token = this.GenerateToken(curUser);
-            return token;
+            LoginResponse response = new LoginResponse();
+            response.Token = token;
+            response.Username = curUser.Username;
+            response.IsAdmin = curUser.Roles.Any(r => r.SelectedRole.Name == "Admin");
+            return response; 
         }
 
         private string GenerateToken(User curUser)

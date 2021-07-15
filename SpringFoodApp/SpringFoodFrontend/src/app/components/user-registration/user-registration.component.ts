@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RegisterUserRequest } from 'src/app/interfaces/RegisterUserRequest';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -14,7 +15,7 @@ export class UserRegistrationComponent implements OnInit {
   userEmail : string = ""; 
   confirmUserPassword: string = ""; 
   date : Date | undefined;
-  constructor(private authService : AuthService) { }
+  constructor(private authService : AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -28,7 +29,7 @@ export class UserRegistrationComponent implements OnInit {
     };
 
 
-    this.authService.registerUser(toAdd).subscribe((_) => console.log(_));
+    this.authService.registerUser(toAdd).subscribe((_) => { this.router.navigate(["/login"])});
   }
 
 }

@@ -25,7 +25,7 @@ id : number = 0;
 
   addToCart(){
     this.cartService.addToCart(this.product); 
-    this.router.navigateByUrl('/cart-page');
+    this.router.navigateByUrl('/allProducts');
   };
 
 }

@@ -8,11 +8,11 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  // count : number = this.cartService.getCart().items.length;
-  // totalItem: unknown;
   totalItem = 0;
   signedIn : boolean = false; 
 
+
+  
   constructor(private cartService:  CartService, private authService : AuthService) { }
 
   ngOnInit(): void {
@@ -24,10 +24,19 @@ export class HeaderComponent implements OnInit {
       }
     );
     this.signedIn = this.authService.isSignedIn(); 
+   
+
     this.authService.loginChangedEvent.subscribe(signIn => this.signedIn = signIn); 
+   
   }
   signOut() {
     this.authService.isSignedOut();
   }
+  
+  isAdmin(): boolean{
+    var isAdmin: boolean = this.authService.isAdmin(); 
+    return isAdmin;
+  }
+  
 
 }

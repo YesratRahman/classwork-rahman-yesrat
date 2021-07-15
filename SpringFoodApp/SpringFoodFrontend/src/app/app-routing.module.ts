@@ -3,7 +3,6 @@ import { ProductComponent } from "./components/product/product.component";
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from "./components/home/home.component";
 import { AllProductsComponent } from "./components/all-products/all-products.component";
-import { ContactComponent } from "./components/contact/contact.component";
 import { CartPageComponent } from "./components/cart-page/cart-page.component";
 import { CheckoutComponent } from "./components/checkout/checkout.component";
 import { OrdersComponent } from "./components/orders/orders.component";
@@ -15,12 +14,12 @@ import { DeleteEditProductComponent } from "./components/delete-edit-product/del
 import { UserRegistrationComponent } from "./components/user-registration/user-registration.component";
 import { UserLoginComponent } from "./components/user-login/user-login.component";
 import { EditProductComponent } from "./components/edit-product/edit-product.component";
+import { ContactPageComponent } from "./components/contact-page/contact-page.component";
 
 const routes: Routes =[
     // { path: '', redirectTo: 'home', pathMatch: 'full'},
     { path: '', component: HomeComponent },
     { path: "allProducts", component: AllProductsComponent } , 
-    {path: "contact", component: ContactComponent},
     {path: "search/:searchTerm", component: AllProductsComponent},
     {path: "product/:id", component: ProductComponent},
     {path: "cart-page", component: CartPageComponent}, 
@@ -33,7 +32,8 @@ const routes: Routes =[
     {path: 'admin/delete-edit-product', component: DeleteEditProductComponent},
     {path: 'register', component: UserRegistrationComponent},
     {path: 'login', component: UserLoginComponent},
-    {path: 'edit-product/:id', component: EditProductComponent}
+    {path: 'edit-product/:id', component: EditProductComponent},
+    {path: 'contact', component:ContactPageComponent}
 
 
 

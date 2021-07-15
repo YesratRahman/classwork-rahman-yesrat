@@ -1,4 +1,5 @@
 export interface UserCredentials {
-    Username : string;
+    username : string;
     token : string;
+    isAdmin : boolean; 
 }

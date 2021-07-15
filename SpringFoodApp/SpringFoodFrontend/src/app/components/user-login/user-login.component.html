@@ -1,16 +1,28 @@
-<br>
-<br>
-<br>
-<br>
-<input name="username" type="text" placeholder="Enter Username" [(ngModel)]="username">
-<input name="password" type="password" placeholder="Enter Password" [(ngModel)]="password">
-<button type="submit" (click)="submit()">Submit</button>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="body">
+    <div class="signup-form">
+        <form action="/examples/actions/confirmation.php" method="post">
+            <h2>Login</h2>
+            <p class="hint-text">Login if you have an account</p>
+            <div class="form-group">
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+                <input type="text" class="form-control" name="username" placeholder="User Name" required="required"
+                    [(ngModel)]="username">
+
+            </div>
+
+            <div class="form-group">
+                <input type="password" class="form-control" name="password" placeholder="Password" required="required"
+                    [(ngModel)]="password">
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-success btn-lg btn-block" (click)="submit()">Login Now</button>
+            </div>
+        </form>
+        <div class="text-center" style="color: blue;">Don't have an account? <a style="color: blue;"
+                href="/register">Sign Up</a></div>
+    </div>
+</div>

@@ -11,9 +11,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ContactComponent } from './components/contact/contact.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { ThankyouComponent } from './components/thankyou/thankyou.component';
 import { CartPageComponent } from './components/cart-page/cart-page.component';
 import { HeaderComponent } from './components/header/header.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
@@ -33,6 +31,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './components/token.interceptor';
 import { CartService } from './services/cart.service';
 import { EditProductComponent } from './components/edit-product/edit-product.component';
+import { ContactPageComponent } from './components/contact-page/contact-page.component';
 
 
 
@@ -44,9 +43,7 @@ import { EditProductComponent } from './components/edit-product/edit-product.com
     HomeComponent,
     ProductComponent,
     AllProductsComponent,
-    ContactComponent,
     FooterComponent,
-    ThankyouComponent,
     HeaderComponent,
     CartPageComponent,
     CheckoutComponent,
@@ -58,7 +55,8 @@ import { EditProductComponent } from './components/edit-product/edit-product.com
     DeleteEditProductComponent,
     UserRegistrationComponent,
     UserLoginComponent,
-    EditProductComponent  ],
+    EditProductComponent,
+    ContactPageComponent  ],
   imports: [
     BrowserModule,
     AppRoutingModule, 

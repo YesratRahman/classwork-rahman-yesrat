@@ -50,4 +50,9 @@ export class AuthService {
 
   }
 
+  isAdmin() : boolean {
+    var isAdminChe : boolean =  this.user.isAdmin; 
+    return isAdminChe; 
+  }
+
 }

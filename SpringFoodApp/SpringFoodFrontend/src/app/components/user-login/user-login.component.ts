@@ -21,11 +21,13 @@ export class UserLoginComponent implements OnInit {
   submit() {
     let toLogin : LoginRequest = {
       Username : this.username,
-      Password : this.password
+      Password : this.password,
     }
 
     this.authService.loginUser(toLogin);
     this.router.navigate([""]);
+    console.log(toLogin);
   }
+
 
 }

@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="body">
     <div class="signup-form">
-        <form action="/examples/actions/confirmation.php" method="post">
+        <form action="/examples/actions/confirmation.php" method="post" (ngSubmit)="submit(loginForm)" #loginForm="ngForm">
             <h2>Login</h2>
             <p class="hint-text">Login if you have an account</p>
             <div class="form-group">
@@ -19,7 +19,8 @@
             </div>
 
             <div class="form-group">
-                <button type="submit" class="btn btn-success btn-lg btn-block" (click)="submit()">Login Now</button>
+                <input class="btn btn-success btn-lg btn-block" type="submit" [disabled]="loginForm.invalid" value="Sign In">
+
             </div>
         </form>
         <div class="text-center" style="color: blue;">Don't have an account? <a style="color: blue;"

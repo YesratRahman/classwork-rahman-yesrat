@@ -28,7 +28,7 @@ export class CheckoutComponent implements OnInit {
   street: string ="";
   homeNumber: string ="";
   apartment: string ="";
-  postalCode: number = 0; 
+  postalCode: number; 
 
   constructor(private productService: ProductService, private cartService: CartService,private route : ActivatedRoute,
     private router : Router) { 

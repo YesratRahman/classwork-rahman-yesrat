@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RegisterUserRequest } from 'src/app/interfaces/RegisterUserRequest';
 import { AuthService } from 'src/app/services/auth.service';
@@ -19,7 +20,8 @@ export class UserRegistrationComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  submit(){
+  submit(registerForm : NgForm){
+    if(registerForm.valid) {
     let toAdd: RegisterUserRequest = {
       Username: this.userName,
       Email: this.userEmail,
@@ -29,5 +31,6 @@ export class UserRegistrationComponent implements OnInit {
     };
     this.authService.registerUser(toAdd).subscribe((_) => { this.router.navigate(["/login"])});
   }
+} 
 
 }

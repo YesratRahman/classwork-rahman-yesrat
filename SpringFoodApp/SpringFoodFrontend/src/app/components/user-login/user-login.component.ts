@@ -34,6 +34,6 @@ export class UserLoginComponent implements OnInit {
     this.msg = 'success';
 
   }
-
-  } 
+  }
+  
 }

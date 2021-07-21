@@ -53,4 +53,20 @@ export class AddProductComponent implements OnInit {
 
   }
 
+  save(value: any, valid: any, form: any) {
+    if (valid) {
+      this.addProduct();
+    }
+  }
+  clearForm(productForm: any) {
+    this.resetExpenseObj();
+  }
+  resetExpenseObj() {
+    this.name= null;
+    this.price = null;
+    this.description = null; 
+    this.quantity = null; 
+    this.image = null; 
+  
+}
 }

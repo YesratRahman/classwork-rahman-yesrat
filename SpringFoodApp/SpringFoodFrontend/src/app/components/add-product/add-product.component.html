@@ -2,72 +2,47 @@
 
 <app-admin> </app-admin>
 
-<form class="form-add" #f="ngForm" novalidate (ngSubmit)="save(f.value, f.valid, f)">
+<div class="form-add">
+<br> 
 
-  <br>
+      <h5 class="h3 mb-3 font-weight-bold" style="text-align: center;"> Add Product </h5>
+      <br> 
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="name"> Name</label>
+          <input type="text" id="name" class="form-control mb-0 mb-lg-2" required [(ngModel)]="name">
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="price"> Price</label>
+          <input type="text" id="price" class="form-control mb-0 mb-lg-2" required [(ngModel)]="price">
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="quantity">Quantity</label>
+        <input type="text" id="quantity" required class="form-control" [(ngModel)]="quantity">
+      </div>
+      <div class="mb-3">
+        <label for="image">Image Url</label>
+        <input type="text" id="image" required class="form-control" [(ngModel)]="image">
+      </div>
 
-  <h5 class="h3 mb-3 font-weight-bold" style="text-align: center;"> Add Product </h5>
-  <br>
-  <div class="mb-3">
-    <label for="name"> Name</label>
-    <input type="text" class="form-control mb-0 mb-lg-2" name="name" [(ngModel)]="name" #proName="ngModel" required>
-    <div *ngIf="proName.errors && (proName.dirty || proName.touched)" class="alert alert-danger">
-      <small>Product name is required </small>
-    </div>
+      <div class="mb-3">
+        <label for="description">Description</label>
+        <input type="text" id="description" required class="form-control" [(ngModel)]="description">
+      </div>
+      <div>
+        <label for="category">Category</label>
+        <select class="form-control" [(ngModel)]="categoryId" style="width: 300px;">
+
+          <option *ngFor="let category of categories" value="{{category.id}}">
+            {{category.name}}
+          </option>
+        </select>
+      </div> 
+      <br> 
+      <br> 
+     
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="addProduct()">Add Product</button>
+
   </div>
-  <div class="mb-3">
-    <label for="price"> Price</label>
-    <input type="text" class="form-control mb-0 mb-lg-2" name="price" [(ngModel)]="price" #proPrice="ngModel" required>
-
-    <div *ngIf="proPrice.errors && (proPrice.dirty || proPrice.touched)" class="alert alert-danger">
-      <small>Product price is required </small>
-    </div>
-  </div>
-  <div class="mb-3">
-    <label for="price"> Quantity</label>
-    <input type="text" class="form-control mb-0 mb-lg-2" name="quantity" [(ngModel)]="quantity" #proQuantity="ngModel"
-      required>
-
-    <div *ngIf="proQuantity.errors && (proQuantity.dirty || proQuantity.touched)" class="alert alert-danger">
-      <small>Product quantity is required </small>
-    </div>
-  </div>
-
-  <div class="mb-3">
-    <label for="price"> Image Url</label>
-    <input type="text" class="form-control mb-0 mb-lg-2" name="image" [(ngModel)]="image" #proImage="ngModel" required>
-    <div *ngIf="proImage.errors && (proImage.dirty || proImage.touched)" class="alert alert-danger">
-      <small>Product image url is required </small>
-    </div>
-  </div>
-
-  <div class="mb-3">
-    <label for="price"> Description</label>
-    <input type="text" class="form-control mb-0 mb-lg-2" name="description" [(ngModel)]="description" #proDes="ngModel"
-      required>
-
-    <div *ngIf="proDes.errors && (proDes.dirty || proDes.touched)" class="alert alert-danger">
-      <small>Product description is required </small>
-    </div>
-  </div>
-
-  <div>
-    <label for="category">Category</label>
-    <select class="form-control" [(ngModel)]="categoryId" style="width: 300px;" name="category">
-
-      <option *ngFor="let category of categories" value="{{category.id}}">
-        {{category.name}}
-      </option>
-    </select>
-  </div>
-  <br>
-  <br>
-
-  <div class="d-flex justify-content-end">
-    <button type="button" class="btn btn-lg btn-primary" style="margin-right: 5px;" mat-button color="primary"
-      (click)="clearForm(f)">Reset</button>
-
-    <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="addProduct()" [disabled]="!f.form.valid">Add
-      Product</button>
-  </div>
-</form>
